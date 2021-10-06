@@ -26,6 +26,7 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-material-ui`,
     `gatsby-plugin-sitemap`,
+    `@chakra-ui/gatsby-plugin`,
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-plugin-robots-txt`,
@@ -35,6 +36,14 @@ module.exports = {
         policy: [{ userAgent: '*', allow: '/' }],
       },
     },
+    // {
+    //   resolve: `@chakra-ui/gatsby-plugin`,
+    //   options: {
+    //     // Whether replaceHydrateFunction should call ReactDOM.hydrate or ReactDOM.render
+    //     // Defaults to ReactDOM.render on develop and ReactDOM.hydrate on build
+    //     resetCSS: true,
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-loadable-components-ssr`,
       options: {

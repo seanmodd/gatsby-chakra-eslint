@@ -1,5 +1,5 @@
 //* Potential Problem: Utilizing typeof window !== 'undefined' below...
-
+//! Problem: Commented out the badge because of confliction error with Chakra UI
 import React, { useState, useContext } from 'react'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
@@ -11,7 +11,7 @@ import Tab from '@material-ui/core/Tab'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import Hidden from '@material-ui/core/Hidden'
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
-import Badge from '@mui/material/Badge'
+// import Badge from '@mui/material/Badge'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
@@ -215,14 +215,14 @@ export default function Header({ categories }) {
                 to={action.onClick ? undefined : action.link}
               >
                 {action.alt === 'cart' ? (
-                  <Badge
+                  {/* <Badge
                     key={key}
                     overlap="circular"
                     badgeContent={cart.length}
                     classes={{ badge: classes.badge }}
                   >
                     {image}
-                  </Badge>
+                  </Badge> */}
                 ) : (
                   image
                 )}
