@@ -10,5 +10,6 @@
 // export const wrapRootElement =
 //   typeof window !== 'undefined' && window ? RootWrapper : null
 import RootWrapper from './src/components/ui/root-wrapper'
+import 'firebase/auth'
 
 export const wrapRootElement = RootWrapper

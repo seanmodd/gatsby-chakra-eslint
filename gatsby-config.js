@@ -26,8 +26,21 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-material-ui`,
     `gatsby-plugin-sitemap`,
-    `@chakra-ui/gatsby-plugin`,
     `gatsby-plugin-image`,
+    `@chakra-ui/gatsby-plugin`,
+    {
+      resolve: 'gatsby-plugin-firebase',
+      options: {
+        credentials: {
+          apiKey: 'AIzaSyDjjqmhGw05-ogUP70tWCwj0NSH22armGo',
+          authDomain: 'gatsbyagain.firebaseapp.com',
+          projectId: 'gatsbyagain',
+          storageBucket: 'gatsbyagain.appspot.com',
+          messagingSenderId: '573059554518',
+          appId: '1:573059554518:web:0b9e9a94672b8d46e83d77',
+        },
+      },
+    },
     {
       resolve: `gatsby-plugin-robots-txt`,
       options: {
