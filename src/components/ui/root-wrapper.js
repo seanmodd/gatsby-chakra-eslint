@@ -17,12 +17,14 @@ import theme, { chakraTheme } from './theme'
 
 export default ({ element }) => (
   <ChakraProvider theme={chakraTheme}>
-    {/* <DarkModeSwitch /> */}
+    <DarkModeSwitch />
     <ThemeProvider theme={theme}>
       <ApolloWrapper>
         <UserWrapper>
           <FeedbackWrapper>
-            <CartWrapper>{element}</CartWrapper>
+            <CartWrapper>
+              <MyBox>{element}</MyBox>
+            </CartWrapper>
           </FeedbackWrapper>
         </UserWrapper>
       </ApolloWrapper>
