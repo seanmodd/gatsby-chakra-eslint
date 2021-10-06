@@ -4,7 +4,7 @@
   "description": "The frontend of a JAMstack e-commerce platform built for a Udemy course.",
   "version": "1.0.0",
   "author": "Zachary Reece <jamstack.course@gmail.com>",
-  "license": "MIT",
+  "license": "0BSD",
   "browserslist": [
     ">0.25%",
     "not dead"
@@ -12,9 +12,14 @@
   "dependencies": {
     "@apollo/client": "^3.4.16",
     "@chakra-ui/gatsby-plugin": "^2.0.1",
+    "@chakra-ui/icons": "^1.0.15",
     "@chakra-ui/react": "^1.6.9",
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
+    "@fontsource/alata": "^4.5.0",
+    "@fontsource/inter": "^4.5.0",
+    "@fontsource/poppins": "^4.5.0",
+    "@fontsource/raleway": "^4.5.0",
     "@loadable/component": "^5.15.0",
     "@material-ui/core": "^4.11.0",
     "@material-ui/data-grid": "^4.0.0-alpha.21",
@@ -73,7 +78,6 @@
   "keywords": [
     "gatsby"
   ],
-  "license": "0BSD",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
