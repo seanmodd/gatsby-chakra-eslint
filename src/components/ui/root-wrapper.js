@@ -14,22 +14,22 @@ import { ThemeProvider } from '@material-ui/core/styles'
 import { ApolloWrapper } from '../../apollo/ApolloWrapper'
 import { UserWrapper, FeedbackWrapper, CartWrapper } from '../../contexts'
 import theme, { chakraTheme } from './theme'
-import AuthContextProvider from '../../contexts/AuthContext'
+// import AuthContextProvider from '../../contexts/AuthContext'
 
 export default ({ element }) => (
   <ChakraProvider theme={chakraTheme}>
     <DarkModeSwitch />
     <ThemeProvider theme={theme}>
       <ApolloWrapper>
-        <AuthContextProvider>
-          <UserWrapper>
-            <FeedbackWrapper>
-              <CartWrapper>
-                <MyBox>{element}</MyBox>
-              </CartWrapper>
-            </FeedbackWrapper>
-          </UserWrapper>
-        </AuthContextProvider>
+        {/* <AuthContextProvider> */}
+        <UserWrapper>
+          <FeedbackWrapper>
+            <CartWrapper>
+              <MyBox>{element}</MyBox>
+            </CartWrapper>
+          </FeedbackWrapper>
+        </UserWrapper>
+        {/* </AuthContextProvider> */}
       </ApolloWrapper>
     </ThemeProvider>
   </ChakraProvider>
