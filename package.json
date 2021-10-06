@@ -4,14 +4,7 @@
   "description": "The frontend of a JAMstack e-commerce platform built for a Udemy course.",
   "version": "1.0.0",
   "author": "Zachary Reece <jamstack.course@gmail.com>",
-  "eslintConfig": {
-    "extends": [
-      "wesbos"
-    ],
-    "rules": {
-      "react/prop-types": 0
-    }
-  },
+  "license": "MIT",
   "browserslist": [
     ">0.25%",
     "not dead"
