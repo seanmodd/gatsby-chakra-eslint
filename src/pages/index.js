@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-
+import {Heading} from "@chakra-ui/react"
 import Layout from "../components/ui/layout"
 import SEO from "../components/ui/seo"
 import HeroBlock from "../components/home/HeroBlock"
@@ -12,8 +12,10 @@ import CallToAction from "../components/home/CallToAction"
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
+    <Heading>Heading from ChakraUI</Heading>
     <HeroBlock />
     <PromotionalProducts />
+  
     <FeaturedProducts />
     <MarketingButtons />
     <CallToAction />
