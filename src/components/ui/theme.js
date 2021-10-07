@@ -1,5 +1,5 @@
 import { createTheme } from '@material-ui/core/styles'
-
+import './theme.css'
 // const green = '#7920ff'
 // const darkGreen = '#7920ff'
 const tan = '#FECEA8'

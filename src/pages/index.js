@@ -1,3 +1,4 @@
+import {Button} from 'react-bootstrap';
 import React from "react"
 import { Link } from "gatsby"
 import {Heading} from "@chakra-ui/react"
@@ -12,10 +13,10 @@ import CallToAction from "../components/home/CallToAction"
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
-    <Heading>Heading from ChakraUI</Heading>
+
     <HeroBlock />
     <PromotionalProducts />
-  
+
     <FeaturedProducts />
     <MarketingButtons />
     <CallToAction />
