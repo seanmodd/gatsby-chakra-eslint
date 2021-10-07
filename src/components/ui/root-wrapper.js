@@ -13,21 +13,21 @@ import React from 'react'
 import { ThemeProvider } from '@material-ui/core/styles'
 import { ApolloWrapper } from '../../apollo/ApolloWrapper'
 import { UserWrapper, FeedbackWrapper, CartWrapper } from '../../contexts'
-import theme, { chakraTheme } from './theme'
+import theme from './theme'
 
 export default ({ element }) => (
-  <ChakraProvider theme={chakraTheme}>
-    {/* <DarkModeSwitch /> */}
-    <ThemeProvider theme={theme}>
-      <ApolloWrapper>
-        <UserWrapper>
-          <FeedbackWrapper>
-            <CartWrapper>{element}</CartWrapper>
-          </FeedbackWrapper>
-        </UserWrapper>
-      </ApolloWrapper>
-    </ThemeProvider>
-  </ChakraProvider>
+  // <ChakraProvider>
+
+  <ThemeProvider theme={theme}>
+    <ApolloWrapper>
+      <UserWrapper>
+        <FeedbackWrapper>
+          <CartWrapper>{element}</CartWrapper>
+        </FeedbackWrapper>
+      </UserWrapper>
+    </ApolloWrapper>
+  </ThemeProvider>
+  // </ChakraProvider>
 )
 
 const MyBox = ({ children }) => {
