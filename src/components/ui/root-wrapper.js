@@ -11,7 +11,7 @@ export default ({ element }) => (
     <ApolloWrapper>
       <UserWrapper>
         <FeedbackWrapper>
-          <CssBaseline />
+          {/* <CssBaseline /> */}
 
           <CartWrapper>{element}</CartWrapper>
         </FeedbackWrapper>
