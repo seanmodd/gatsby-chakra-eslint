@@ -4,14 +4,6 @@ import { Button, ButtonGroup, Box, Typography } from '@material-ui/core'
 import { DarkMode, LightMode } from '../ui/theme'
 import Layout from '../ui/layout'
 
-export const MyButton = ({ children }) => (
-  <>
-    <Button color="success" variant="contained">
-      {children}
-    </Button>
-  </>
-)
-
 export const LightButton = () => <Button>LightMode</Button>
 
 function OctoberComponents() {
@@ -33,8 +25,9 @@ function OctoberComponents() {
             <Typography variant="h3" fontWeight="500">
               Here is MyButton:
             </Typography>
-
-            <button onClick={handleChange}>CLICK</button>
+            <Button color="Primary" variant="contained" onClick={handleChange}>
+              CLICK
+            </Button>
             <ButtonGroup>
               <Button>Here</Button>
               <Button>is</Button>
