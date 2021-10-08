@@ -2,7 +2,7 @@ import { ThemeProvider } from '@material-ui/core/styles'
 import React, { useState } from 'react'
 import { Button, ButtonGroup, Box, Typography } from '@material-ui/core'
 import { DarkMode, LightMode } from '../ui/theme'
-import Layout from '../ui/layout'
+import Layout from '../WIP-ui/layout'
 
 export const LightButton = () => <Button>LightMode</Button>
 
@@ -25,7 +25,7 @@ function OctoberComponents() {
             <Typography variant="h3" fontWeight="500">
               Here is MyButton:
             </Typography>
-            <Button color="Primary" variant="contained" onClick={handleChange}>
+            <Button color="primary" variant="contained" onClick={handleChange}>
               CLICK
             </Button>
             <ButtonGroup>

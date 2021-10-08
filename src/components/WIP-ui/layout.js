@@ -25,7 +25,7 @@ const Layout = ({ children }) => {
   const classes = useStyles()
 
   const data = useStaticQuery(graphql`
-    query GetCategories {
+    query GetCategoriesWIP {
       allStrapiCategory {
         edges {
           node {
