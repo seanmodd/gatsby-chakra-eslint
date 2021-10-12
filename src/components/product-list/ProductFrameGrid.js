@@ -50,7 +50,7 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     backgroundColor: theme.palette.primary.main,
-    height: '5rem',
+    height: '3rem',
     borderBottomLeftRadius: '4px',
     borderBottomRightRadius: '4px',
     width: '25rem',
@@ -160,8 +160,11 @@ export default function ProductFrameGrid({
           />
         </Grid>
         <Grid item classes={{ root: classes.title }}>
+          <Typography variant="h6">productName:</Typography>
           <Typography variant="h5">{productName}</Typography>
-          <br />
+        </Grid>
+        <Grid item classes={{ root: classes.title }}>
+          <Typography variant="h6">variant?.price: </Typography>
           <Typography variant="h5">${variant?.price}</Typography>
         </Grid>
       </Grid>
