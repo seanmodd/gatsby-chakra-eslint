@@ -1,26 +1,27 @@
 import React, { useState } from 'react'
 import clsx from 'clsx'
-import Grid from '@material-ui/core/Grid'
-import Typography from '@material-ui/core/Typography'
 import ButtonGroup from '@material-ui/core/ButtonGroup'
 import Button from '@material-ui/core/Button'
+import Grid from '@material-ui/core/Grid'
+import Typography from '@material-ui/core/Typography'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { makeStyles } from '@material-ui/core/styles'
 
-import background from '../../images/repeating-smallest.svg'
+// import background from '../../images/repeating-smallest.svg'
 import ListIcon from '../../images/List'
 import GridIcon from '../../images/Grid'
 
 const useStyles = makeStyles(theme => ({
   description: {
-    color: '#fff',
+    color: theme.palette.primary.main,
+    fontSize: '1.15rem',
   },
   descriptionContainer: {
-    backgroundColor: theme.palette.primary.main,
-    height: '15rem',
-    width: '60%',
-    borderRadius: 25,
-    padding: '1rem',
+    color: theme.palette.primary.main,
+    fontSize: '0.5rem',
+    width: '100%',
+    marginTop: '5rem',
+    // padding: '1rem',
     [theme.breakpoints.down('md')]: {
       width: '100%',
     },
@@ -28,11 +29,18 @@ const useStyles = makeStyles(theme => ({
       borderRadius: 0,
     },
   },
+  itemTitle: {
+    color: theme.palette.primary.main,
+  },
   mainContainer: {
-    padding: '3rem',
-    backgroundImage: `url(${background})`,
+    // padding: '3rem',
+    // backgroundColor: theme.palette.primary.main,
+
+    // backgroundImage: `url(${background})`,
+    fontSize: '0.5rem',
     backgroundSize: 'fill',
     backgroundPosition: 'center',
+    color: '#ff0000',
     backgroundRepeat: 'repeat',
     position: 'relative',
     [theme.breakpoints.down('sm')]: {
@@ -44,7 +52,7 @@ const useStyles = makeStyles(theme => ({
     borderRightColor: `${theme.palette.primary.main} !important`,
     borderRadius: 25,
     backgroundColor: '#fff',
-    padding: '0.5rem 1.5rem',
+    // padding: '0.5rem 1.5rem',
     '&:hover': {
       backgroundColor: '#fff',
     },
@@ -56,11 +64,12 @@ const useStyles = makeStyles(theme => ({
     },
   },
   buttonGroup: {
-    position: 'absolute',
+    // position: 'absolute',
     right: 0,
     bottom: 0,
-    marginRight: '3rem',
-    marginBottom: '3rem',
+    // marginRight: '3rem',
+    marginBottom: '1rem',
+    marginTop: '1rem',
     [theme.breakpoints.down('md')]: {
       position: 'relative',
       display: 'flex',
@@ -99,7 +108,7 @@ export default function DescriptionContainer({
       alignItems={matchesMD ? 'center' : undefined}
     >
       <Grid item classes={{ root: classes.descriptionContainer }}>
-        <Typography align="center" variant="h4">
+        <Typography className={classes.itemTitle} align="center" variant="h4">
           {name}
         </Typography>
         <Typography
