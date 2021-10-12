@@ -29,6 +29,7 @@ const useStyles = makeStyles(theme => ({
     marginTop: '3rem',
   },
   headingContainer: {
+    marginTop: '10rem',
     [theme.breakpoints.down('md')]: {
       padding: '0 1rem',
     },
@@ -56,9 +57,9 @@ export default function CallToAction() {
       classes={{ root: classes.container }}
       direction={matchesMD ? 'column' : 'row'}
     >
-      <Grid item>
+      {/* <Grid item>
         <img src={cta} className={classes.icon} alt="quality committed" />
-      </Grid>
+      </Grid> */}
       <Grid item>
         <Grid container direction="column">
           <Grid item classes={{ root: classes.headingContainer }}>
@@ -71,9 +72,8 @@ export default function CallToAction() {
               align={matchesMD ? 'center' : undefined}
               variant="body1"
             >
-              At VAR X our mission is to provide comfortable, durable, premium,
-              designer clothing and clothing accessories to developers and
-              technology enthusiasts.
+              At CAR X our mission is to provide you with the car shopping
+              experience you deserve.
             </Typography>
           </Grid>
           <Grid

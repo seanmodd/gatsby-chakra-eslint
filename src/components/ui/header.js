@@ -30,9 +30,11 @@ import menu from '../../images/menu.svg'
 
 const useStyles = makeStyles(theme => ({
   coloredIndicator: {
-    backgroundColor: '#fff',
+    backgroundColor: theme.palette.common.offBlack,
   },
   logo: {
+    marginLeft: theme.spacing(2),
+    fontSize: '3.5rem',
     [theme.breakpoints.down('xs')]: {
       fontSize: '3rem',
     },
@@ -42,7 +44,6 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 'normal',
     textDecoration: 'none',
     fontStyle: 'normal',
-    // fontSize: '0.5rem',
   },
   logoContainer: {
     [theme.breakpoints.down('md')]: {
@@ -213,6 +214,7 @@ export default function Header({ categories }) {
             </Typography>
           </Button>
           {matchesMD ? drawer : tabs}
+          {drawer}
           {actions.map(action => {
             const image = (
               <img
@@ -222,29 +224,27 @@ export default function Header({ categories }) {
               />
             )
 
-            if (action.visible) {
-              return (
-                <IconButton
-                  onClick={action.onClick}
-                  key={action.alt}
-                  component={action.onClick ? undefined : Link}
-                  to={action.onClick ? undefined : action.link}
-                >
-                  {action.alt === 'cart' ? (
-                    <Badge
-                      key={key}
-                      overlap="circular"
-                      badgeContent={cart.length}
-                      classes={{ badge: classes.badge }}
-                    >
-                      {image}
-                    </Badge>
-                  ) : (
-                    image
-                  )}
-                </IconButton>
-              )
-            }
+            return (
+              <IconButton
+                onClick={action.onClick}
+                key={action.alt}
+                component={action.onClick ? undefined : Link}
+                to={action.onClick ? undefined : action.link}
+              >
+                {action.alt === 'cart' ? (
+                  <Badge
+                    key={key}
+                    overlap="circular"
+                    badgeContent={cart.length}
+                    classes={{ badge: classes.badge }}
+                  >
+                    {image}
+                  </Badge>
+                ) : (
+                  image
+                )}
+              </IconButton>
+            )
           })}
         </Toolbar>
       </AppBar>

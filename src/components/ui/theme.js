@@ -223,7 +223,7 @@ const theme = createTheme({
       fontFamily: 'Barlow',
       fontWeight: 400,
       fontSize: '1.5rem',
-      color: grey,
+      color: '#000000',
     },
     body2: {
       fontFamily: 'Barlow',
