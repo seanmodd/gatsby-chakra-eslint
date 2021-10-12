@@ -1,41 +1,46 @@
 import { ThemeProvider } from '@material-ui/core/styles'
 import React, { useState } from 'react'
-import { Button, ButtonGroup, Box, Typography } from '@material-ui/core'
+import {
+  Button,
+  ButtonGroup,
+  makeStyles,
+  Box,
+  Typography,
+} from '@material-ui/core'
 import { DarkMode, LightMode } from '../ui/theme'
 import Layout from '../WIP-ui/layout'
 
-export const LightButton = () => <Button>LightMode</Button>
+const useStyles = makeStyles({
+  columnStack: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  rowStack: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    display: 'flex',
+    flexDirection: 'row',
+  },
+})
 
 function OctoberComponents() {
-  const [colorMode, setColorMode] = useState(LightMode)
-
-  const handleChange = () => {
-    if (colorMode === LightMode) {
-      setColorMode(DarkMode)
-    } else {
-      setColorMode(LightMode)
-    }
-  }
+  const classes = useStyles()
 
   return (
     <>
-      <ThemeProvider theme={colorMode}>
-        <Layout>
-          <Box style={{ fontFamily: 'Barlow' }}>
-            <Typography variant="h3" fontWeight="500">
-              Here is MyButton:
-            </Typography>
-            <Button color="primary" variant="contained" onClick={handleChange}>
-              CLICK
-            </Button>
-            <ButtonGroup>
-              <Button>Here</Button>
-              <Button>is</Button>
-              <Button>Button</Button>
-            </ButtonGroup>
-          </Box>
-        </Layout>
-      </ThemeProvider>
+      <Box className={classes.columnStack}>
+        <Typography variant="h3" fontWeight="500">
+          Here is MyButton:
+        </Typography>
+
+        <ButtonGroup className={classes.rowStack}>
+          <Button>Here</Button>
+          <Button>is</Button>
+          <Button>Button</Button>
+        </ButtonGroup>
+      </Box>
     </>
   )
 }

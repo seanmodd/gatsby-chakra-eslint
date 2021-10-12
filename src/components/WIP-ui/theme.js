@@ -86,6 +86,18 @@ export const LightMode = createTheme({
         fontWeight: 400,
       },
     },
+    AutoComplete: {
+      // The default props to change
+      PaperComponent: {
+        backgroundColor: '#ff0000',
+      },
+      popupIndicator: {
+        backgroundColor: '#ff0000',
+      },
+      paper: {
+        backgroundColor: '#ff0000',
+      },
+    },
   },
 })
 
@@ -166,6 +178,18 @@ export const DarkMode = createTheme({
         fontWeight: 400,
       },
     },
+    AutoComplete: {
+      // The default props to change
+      PaperComponent: {
+        backgroundColor: '#ff0000',
+      },
+      popupIndicator: {
+        backgroundColor: '#ff0000',
+      },
+      paper: {
+        backgroundColor: '#ff0000',
+      },
+    },
   },
 })
 
@@ -182,6 +206,21 @@ const theme = createTheme({
       lightRed,
       red,
       offBlack,
+    },
+  },
+  props: {
+    // Name of the component ⚛️
+    AutoComplete: {
+      // The default props to change
+      PaperComponent: {
+        backgroundColor: '#ff0000',
+      },
+      popupIndicator: {
+        backgroundColor: '#ff0000',
+      },
+      paper: {
+        backgroundColor: '#ff0000',
+      },
     },
   },
   typography: {
@@ -242,6 +281,18 @@ const theme = createTheme({
         fontSize: '1.5rem',
         color: '#fff',
         fontWeight: 400,
+      },
+    },
+    AutoComplete: {
+      // The default props to change
+      PaperComponent: {
+        backgroundColor: '#ff0000',
+      },
+      popupIndicator: {
+        backgroundColor: '#ff0000',
+      },
+      paper: {
+        backgroundColor: '#ff0000',
       },
     },
   },
