@@ -22,18 +22,34 @@ const useStyles = makeStyles(theme => ({
     marginRight: '2rem',
     marginBottom: '2rem',
     color: '#fff',
+    // backgroundColor: '#ff0000',
     fontFamily: 'Montserrat',
+    borderRadius: '15px',
     fontSize: '5rem',
     width: '5rem',
     height: '5rem',
   },
   goodSpacing: {
-    height: '150px',
+    height: '200px',
+    width: '100%',
+    // position: 'static',
+    // backgroundColor: '#555555',
+  },
+  goodContainer: {
+    // backgroundColor: '#ff0000',
+    // position: 'static',
+    // top: '-500',
+  },
+  goodSeparation: {
+    // backgroundColor: '#ff0000',
+    // position: 'static',
+    marginLeft: '1rem',
   },
 
   pagination: {
     alignSelf: 'flex-end',
     marginRight: '2%',
+    fontFamily: 'Barlow',
     marginTop: '-3rem',
     marginBottom: '4rem',
     [theme.breakpoints.only('md')]: {
@@ -44,8 +60,8 @@ const useStyles = makeStyles(theme => ({
 
 export const StyledPagination = props => {
   const StyledPaginationItem = styled(PaginationItem)(({ theme }) => ({
-    fontFamily: 'Montserrat',
-    fontSize: '2rem',
+    fontFamily: 'Barlow',
+    fontSize: '1.5rem',
     color: theme.palette.primary.main,
     '&.Mui-selected': {
       color: '#fff',
@@ -177,14 +193,17 @@ export default function ProductList({
           setLayout={setLayout}
         />
         <div className={classes.goodSpacing} />
-        <ListOfProducts
-          page={page}
-          filterOptions={filterOptions}
-          productsPerPage={productsPerPage}
-          layout={layout}
-          products={products}
-          content={content}
-        />
+        <div className={classes.goodContainer}>
+          <ListOfProducts
+            page={page}
+            className={classes.goodSeparation}
+            filterOptions={filterOptions}
+            productsPerPage={productsPerPage}
+            layout={layout}
+            products={products}
+            content={content}
+          />
+        </div>
         <StyledPagination
           count={numPages}
           page={page}

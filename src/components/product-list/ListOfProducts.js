@@ -13,6 +13,7 @@ import ProductFrameList from './ProductFrameList'
 const useStyles = makeStyles(theme => ({
   productContainer: {
     width: '95%',
+    // backgroundColor: '#ff0000',
     [theme.breakpoints.only('xl')]: {
       '& > *': {
         marginRight: ({ layout }) =>
@@ -48,6 +49,11 @@ const useStyles = makeStyles(theme => ({
         marginBottom: '5rem',
       },
     },
+  },
+  goodSeparation: {
+    // backgroundColor: '#ff0000',
+    // position: 'static',
+    marginLeft: '1rem',
   },
 }))
 
@@ -139,6 +145,7 @@ export default function ListOfProducts({
       direction={matchesSM ? 'column' : 'row'}
       alignItems={matchesSM ? 'center' : undefined}
       classes={{ root: classes.productContainer }}
+      className={classes.goodSeparation}
     >
       {content
         .slice((page - 1) * productsPerPage, page * productsPerPage)

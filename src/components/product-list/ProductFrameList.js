@@ -25,7 +25,10 @@ const useStyles = makeStyles(theme => ({
     backgroundPosition: 'center',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
-    height: '28rem',
+    height: '23rem',
+  },
+  priceChip: {
+    margin: '0.5rem',
   },
   info: {
     backgroundColor: theme.palette.primary.main,
@@ -50,7 +53,7 @@ const useStyles = makeStyles(theme => ({
     maxWidth: '13rem',
   },
   chipLabel: {
-    fontSize: '2rem',
+    fontSize: '1.75rem',
     '&:hover': {
       cursor: 'pointer',
     },
@@ -139,7 +142,7 @@ export default function ProductFrameList({
           <Grid item>
             <Rating number={rating} />
           </Grid>
-          <Grid item>
+          <Grid className={classes.priceChip} item>
             <Chip
               label={`$${variant.price}`}
               classes={{ label: classes.chipLabel }}

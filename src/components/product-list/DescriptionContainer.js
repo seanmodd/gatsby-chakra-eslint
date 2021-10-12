@@ -67,6 +67,7 @@ const useStyles = makeStyles(theme => ({
     // position: 'absolute',
     right: 0,
     bottom: 0,
+    elevate: 9,
     // marginRight: '3rem',
     // marginBottom: '1rem',
     marginTop: '1rem',

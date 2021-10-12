@@ -10,7 +10,7 @@ import clsx from 'clsx'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import { makeStyles } from '@material-ui/core/styles'
-// import { useSpring, useSprings, animated } from 'react-spring'
+import { useSpring, useSprings, animated } from 'react-spring'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import useResizeAware from 'react-resize-aware'
 
@@ -24,7 +24,7 @@ import { setUser } from '../../contexts/actions'
 import accountIcon from '../../images/account.svg'
 import settingsIcon from '../../images/settings.svg'
 import orderHistoryIcon from '../../images/order-history.svg'
-import favoritesIcon from '../../images/favorite.svg'
+import favoritesIcon from '../../images/favorite-new.svg'
 import subscriptionIcon from '../../images/subscription.svg'
 import background from '../../images/repeating-smallest.svg'
 
@@ -81,8 +81,8 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-// const AnimatedButton = animated(Button)
-// const AnimatedGrid = animated(Grid)
+const AnimatedButton = animated(Button)
+const AnimatedGrid = animated(Grid)
 
 export default function SettingsPortal() {
   const { user, dispatchUser, defaultUser } = useContext(UserContext)
@@ -122,50 +122,50 @@ export default function SettingsPortal() {
     }
   }
 
-  // const springs = useSprings(
-  //   buttons.length,
-  //   buttons.map(button => ({
-  //     to: async (next, cancel) => {
-  //       const scale = {
-  //         transform:
-  //           selectedSetting === button.label || selectedSetting === null
-  //             ? 'scale(1)'
-  //             : 'scale(0)',
-  //         delay: selectedSetting !== null ? 0 : 600,
-  //       }
+  const springs = useSprings(
+    buttons.length,
+    buttons.map(button => ({
+      to: async (next, cancel) => {
+        const scale = {
+          transform:
+            selectedSetting === button.label || selectedSetting === null
+              ? 'scale(1)'
+              : 'scale(0)',
+          delay: selectedSetting !== null ? 0 : 600,
+        }
 
-  //       const size = {
-  //         height:
-  //           selectedSetting === button.label
-  //             ? matchesMD && button.large
-  //               ? '120rem'
-  //               : '60rem'
-  //             : buttonHeight,
-  //         width:
-  //           selectedSetting === button.label ? `${sizes.width}px` : buttonWidth,
-  //         borderRadius: selectedSetting === button.label ? 0 : 25,
-  //         delay: selectedSetting !== null ? 600 : 0,
-  //       }
+        const size = {
+          height:
+            selectedSetting === button.label
+              ? matchesMD && button.large
+                ? '120rem'
+                : '60rem'
+              : buttonHeight,
+          width:
+            selectedSetting === button.label ? `${sizes.width}px` : buttonWidth,
+          borderRadius: selectedSetting === button.label ? 0 : 25,
+          delay: selectedSetting !== null ? 600 : 0,
+        }
 
-  //       const hide = {
-  //         display:
-  //           selectedSetting === button.label || selectedSetting === null
-  //             ? 'flex'
-  //             : 'none',
-  //         delay: 150,
-  //       }
+        const hide = {
+          display:
+            selectedSetting === button.label || selectedSetting === null
+              ? 'flex'
+              : 'none',
+          delay: 150,
+        }
 
-  //       await next(selectedSetting !== null ? scale : size)
-  //       await next(hide)
-  //       await next(selectedSetting !== null ? size : scale)
-  //     },
-  //   }))
-  // )
+        await next(selectedSetting !== null ? scale : size)
+        await next(hide)
+        await next(selectedSetting !== null ? size : scale)
+      },
+    }))
+  )
 
-  // const styles = useSpring({
-  //   opacity: selectedSetting === null || showComponent ? 1 : 0,
-  //   delay: selectedSetting === null || showComponent ? 0 : 1350,
-  // })
+  const styles = useSpring({
+    opacity: selectedSetting === null || showComponent ? 1 : 0,
+    delay: selectedSetting === null || showComponent ? 0 : 1350,
+  })
 
   const handleLogout = () => {
     dispatchUser(setUser(defaultUser))
@@ -212,7 +212,7 @@ export default function SettingsPortal() {
         justifyContent="space-around"
         direction={matchesMD ? 'column' : 'row'}
       >
-        {/* {springs.map((prop, i) => {
+        {springs.map((prop, i) => {
           const button = buttons[i]
 
           return (
@@ -220,7 +220,7 @@ export default function SettingsPortal() {
               item
               key={i}
               onClick={() => (showComponent ? null : handleClick(button.label))}
-              // style={prop}
+              style={prop}
               classes={{
                 root: clsx(classes.button, {
                   [classes.addHover]: !showComponent,
@@ -228,7 +228,7 @@ export default function SettingsPortal() {
               }}
             >
               <AnimatedGrid
-                // style={styles}
+                style={styles}
                 container
                 direction="column"
                 alignItems="center"
@@ -253,7 +253,7 @@ export default function SettingsPortal() {
               </AnimatedGrid>
             </AnimatedGrid>
           )
-        })} */}
+        })}
       </Grid>
     </Grid>
   )

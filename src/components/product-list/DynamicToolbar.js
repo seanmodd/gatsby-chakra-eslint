@@ -75,7 +75,7 @@ export default function DynamicToolbar({
     <HideOnScroll>
       <div className={classes.wrapper}>
         <Grid direction="column" classes={{ root: classes.toolbar }}>
-          <Header categories={data.allStrapiCategory.edges} />
+          {/* <Header categories={data.allStrapiCategory.edges} /> */}
           <FunctionContainer
             option={option}
             setOption={setOption}
