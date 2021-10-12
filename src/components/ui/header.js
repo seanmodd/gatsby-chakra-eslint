@@ -7,6 +7,8 @@ import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
 import Tabs from '@material-ui/core/Tabs'
+import Slide from '@material-ui/core/Slide'
+import useScrollTrigger from '@material-ui/core/useScrollTrigger'
 import Tab from '@material-ui/core/Tab'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import Hidden from '@material-ui/core/Hidden'
@@ -50,10 +52,14 @@ const useStyles = makeStyles(theme => ({
   tab: {
     ...theme.typography.body1,
     fontWeight: 500,
+    fontSize: '0.875rem',
   },
   tabs: {
     marginLeft: 'auto',
     marginRight: 'auto',
+  },
+  appBar: {
+    backgroundColor: '#f0f0f0',
   },
   icon: {
     height: '3rem',
@@ -81,7 +87,19 @@ const useStyles = makeStyles(theme => ({
     },
   },
 }))
+function HideOnScroll(props) {
+  const { children, window } = props
+  // Note that you normally won't need to set the window ref as useScrollTrigger
+  // will default to window.
+  // This is only being set here because the demo is in an iframe.
+  const trigger = useScrollTrigger({ target: window ? window() : undefined })
 
+  return (
+    <Slide appear={false} direction="down" in={!trigger}>
+      {children}
+    </Slide>
+  )
+}
 export default function Header({ categories }) {
   const classes = useStyles()
   const { cart } = useContext(CartContext)
@@ -90,13 +108,6 @@ export default function Header({ categories }) {
 
   const [drawerOpen, setDrawerOpen] = useState(false)
 
-  //* Potentially show Jayen this is what's causing the problem likely... because process.browser gave me an error I changed it to typeof window !=== 'undefined'
-  // const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent)
-  // const iOS =
-  //   typeof window !== 'undefined' &&
-  //   window &&
-  //   window.window === window &&
-  //   /iPad|iPhone|iPod/.test(navigator.userAgent)
   const iOS =
     typeof window !== 'undefined' &&
     /iPad|iPhone|iPod/.test(navigator.userAgent)
@@ -189,48 +200,54 @@ export default function Header({ categories }) {
   ]
 
   return (
-    <AppBar color="transparent" elevation={0} position="static">
-      <Toolbar disableGutters>
-        <Button
-          component={Link}
-          to="/"
-          classes={{ root: classes.logoContainer }}
-        >
-          <Typography variant="h1" classes={{ root: classes.logo }}>
-            <span className={classes.logoText}>CAR</span> X
-          </Typography>
-        </Button>
-        {matchesMD ? drawer : tabs}
-        {actions.map(action => {
-          const image = (
-            <img className={classes.icon} src={action.icon} alt={action.alt} />
-          )
-
-          if (action.visible) {
-            return (
-              <IconButton
-                onClick={action.onClick}
-                key={action.alt}
-                component={action.onClick ? undefined : Link}
-                to={action.onClick ? undefined : action.link}
-              >
-                {action.alt === 'cart' ? (
-                  <Badge
-                    key={key}
-                    overlap="circular"
-                    badgeContent={cart.length}
-                    classes={{ badge: classes.badge }}
-                  >
-                    {image}
-                  </Badge>
-                ) : (
-                  image
-                )}
-              </IconButton>
+    <HideOnScroll>
+      <AppBar className={classes.appBar} color="transparent" elevation={0}>
+        <Toolbar disableGutters>
+          <Button
+            component={Link}
+            to="/"
+            classes={{ root: classes.logoContainer }}
+          >
+            <Typography variant="h1" classes={{ root: classes.logo }}>
+              <span className={classes.logoText}>CAR</span> X
+            </Typography>
+          </Button>
+          {matchesMD ? drawer : tabs}
+          {actions.map(action => {
+            const image = (
+              <img
+                className={classes.icon}
+                src={action.icon}
+                alt={action.alt}
+              />
             )
-          }
-        })}
-      </Toolbar>
-    </AppBar>
+
+            if (action.visible) {
+              return (
+                <IconButton
+                  onClick={action.onClick}
+                  key={action.alt}
+                  component={action.onClick ? undefined : Link}
+                  to={action.onClick ? undefined : action.link}
+                >
+                  {action.alt === 'cart' ? (
+                    <Badge
+                      key={key}
+                      overlap="circular"
+                      badgeContent={cart.length}
+                      classes={{ badge: classes.badge }}
+                    >
+                      {image}
+                    </Badge>
+                  ) : (
+                    image
+                  )}
+                </IconButton>
+              )
+            }
+          })}
+        </Toolbar>
+      </AppBar>
+    </HideOnScroll>
   )
 }
