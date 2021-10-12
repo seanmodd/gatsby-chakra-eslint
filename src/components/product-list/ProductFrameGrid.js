@@ -126,7 +126,11 @@ export default function ProductFrameGrid({
   const image = getImage(imgURL)
 
   const productName = product.node.name.split(' ')[0]
-
+  console.log('product: ', product)
+  console.log('productName: ', productName)
+  console.log('product.node.name: ', product.node.name)
+  console.log('variant: ', variant)
+  console.log('variant.colorLabel: ', variant.colorLabel)
   //! SHOW JAYEN BELOW IS WHERE WE CAN FIX THE BLANK WITHIN RECENTLY VIEWED ITEMS!
   return (
     <Grid
