@@ -64,7 +64,8 @@ export default function CallToAction() {
         <Grid container direction="column">
           <Grid item classes={{ root: classes.headingContainer }}>
             <Typography align={matchesMD ? 'center' : undefined} variant="h1">
-              Committed To Quality
+              The Online Car Dealer <br />
+              That Works For You
             </Typography>
           </Grid>
           <Grid item classes={{ root: classes.body }}>

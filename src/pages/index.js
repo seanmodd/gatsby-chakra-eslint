@@ -14,11 +14,11 @@ const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
 
-    <HeroBlock />
+    <CallToAction />
+    {/* <HeroBlock /> */}
     {/* <PromotionalProducts /> */}
     {/* <FeaturedProducts /> */}
     {/* <MarketingButtons /> */}
-    <CallToAction />
   </Layout>
 )
 

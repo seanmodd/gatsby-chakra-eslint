@@ -1,4 +1,4 @@
-//old: Commented out all validate related functions 
+// old: Commented out all validate related functions
 
 import React, { useState, useContext } from 'react'
 import Grid from '@material-ui/core/Grid'
@@ -26,6 +26,7 @@ import validate from '../components/ui/validate'
 
 const useStyles = makeStyles(theme => ({
   mainContainer: {
+    marginTop: '15rem',
     height: '45rem',
     backgroundColor: theme.palette.primary.main,
     marginBottom: '10rem',
@@ -221,7 +222,7 @@ const ContactPage = () => {
       label: (
         <span>
           3566 Stevens Creek Blvd,
-        <br /> {matchesXS ? <br /> : null}San Jose, CA 95117
+          <br /> {matchesXS ? <br /> : null}San Jose, CA 95117
         </span>
       ),
       icon: <img className={classes.contactIcon} src={address} alt="address" />,

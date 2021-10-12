@@ -10,12 +10,12 @@ import FeaturedProduct from './FeaturedProduct'
 
 const useStyles = makeStyles(theme => ({
   background: {
-    backgroundImage: `url(${featuredAdornment})`,
+    // backgroundImage: `url(${featuredAdornment})`,
     backgroundPosition: 'top',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     width: '100%',
-    height: '180rem',
+    height: '90rem',
     padding: '0 2.5rem',
     [theme.breakpoints.down('md')]: {
       height: '220rem',

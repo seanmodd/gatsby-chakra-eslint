@@ -10,12 +10,16 @@ import { navigate } from 'gatsby'
 
 import QuickView from './QuickView'
 
-import frame from '../../images/product-frame-grid.svg'
+// import frame from '../../images/product-frame-grid.svg'
 
 const useStyles = makeStyles(theme => ({
   frame: {
-    backgroundImage: `url(${frame})`,
+    // backgroundImage: `url(${frame})`,
+    borderWidth: '1px',
+    borderStyle: 'solid',
+    borderColor: '#7920ff',
     backgroundPosition: 'center',
+    borderRadius: '4px',
     backgroundSize: 'contain',
     backgroundRepeat: 'no-repeat',
     height: '25rem',
@@ -47,6 +51,8 @@ const useStyles = makeStyles(theme => ({
   title: {
     backgroundColor: theme.palette.primary.main,
     height: '5rem',
+    borderBottomLeftRadius: '4px',
+    borderBottomRightRadius: '4px',
     width: '25rem',
     display: 'flex',
     justifyContent: 'center',

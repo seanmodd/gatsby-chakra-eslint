@@ -59,7 +59,7 @@ export default function HeroBlock() {
           </Grid>
         </Grid>
       </Grid>
-      <Grid item>
+      {/* <Grid item>
         <Lottie
           isStopped
           options={defaultOptions}
@@ -73,7 +73,7 @@ export default function HeroBlock() {
               : '50rem'
           }
         />
-      </Grid>
+      </Grid> */}
     </Grid>
   )
 }
