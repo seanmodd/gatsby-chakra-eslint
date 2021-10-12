@@ -11,6 +11,14 @@ import Layout from '../ui/layout'
 import Header from '../ui/header'
 
 const useStyles = makeStyles(theme => ({
+  wrapper: {
+    height: '145px',
+    zIndex: 9999,
+    // marginBottom: '5000px',
+    width: '100%',
+    backgroundColor: '#f0f0f0',
+    position: 'fixed',
+  },
   toolbar: {
     // border: `5px solid ${theme.palette.primary.main}`,
     // borderRadius: 25,
@@ -65,28 +73,30 @@ export default function DynamicToolbar({
   `)
   return (
     <HideOnScroll>
-      <Grid direction="column" classes={{ root: classes.toolbar }}>
-        <Header categories={data.allStrapiCategory.edges} />
-        <FunctionContainer
-          option={option}
-          setOption={setOption}
-          layout={layout}
-          setLayout={setLayout}
-          filterOptions={filterOptions}
-          setFilterOptions={setFilterOptions}
-          sortOptions={sortOptions}
-          setSortOptions={setSortOptions}
-        />
-        {option === null && (
-          <DescriptionContainer
+      <div className={classes.wrapper}>
+        <Grid direction="column" classes={{ root: classes.toolbar }}>
+          <Header categories={data.allStrapiCategory.edges} />
+          <FunctionContainer
+            option={option}
+            setOption={setOption}
             layout={layout}
             setLayout={setLayout}
-            name={name}
-            className={classes.DescriptionContainerStyles}
-            description={description}
+            filterOptions={filterOptions}
+            setFilterOptions={setFilterOptions}
+            sortOptions={sortOptions}
+            setSortOptions={setSortOptions}
           />
-        )}
-      </Grid>
+          {option === null && (
+            <DescriptionContainer
+              layout={layout}
+              setLayout={setLayout}
+              name={name}
+              className={classes.DescriptionContainerStyles}
+              description={description}
+            />
+          )}
+        </Grid>
+      </div>
     </HideOnScroll>
   )
 }

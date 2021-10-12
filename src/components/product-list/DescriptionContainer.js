@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.primary.main,
     fontSize: '0.5rem',
     width: '100%',
-    marginTop: '5rem',
+    // marginTop: '5rem',
     // padding: '1rem',
     [theme.breakpoints.down('md')]: {
       width: '100%',
@@ -38,11 +38,11 @@ const useStyles = makeStyles(theme => ({
 
     // backgroundImage: `url(${background})`,
     fontSize: '0.5rem',
-    backgroundSize: 'fill',
-    backgroundPosition: 'center',
-    color: '#ff0000',
-    backgroundRepeat: 'repeat',
-    position: 'relative',
+    // backgroundSize: 'fill',
+    // backgroundPosition: 'center',
+    // color: '#ff0000',
+    // backgroundRepeat: 'repeat',
+    // position: 'relative',
     [theme.breakpoints.down('sm')]: {
       padding: '3rem 0',
     },
@@ -68,7 +68,7 @@ const useStyles = makeStyles(theme => ({
     right: 0,
     bottom: 0,
     // marginRight: '3rem',
-    marginBottom: '1rem',
+    // marginBottom: '1rem',
     marginTop: '1rem',
     [theme.breakpoints.down('md')]: {
       position: 'relative',
@@ -107,7 +107,7 @@ export default function DescriptionContainer({
       justifyContent="center"
       alignItems={matchesMD ? 'center' : undefined}
     >
-      <Grid item classes={{ root: classes.descriptionContainer }}>
+      {/* <Grid item classes={{ root: classes.descriptionContainer }}>
         <Typography className={classes.itemTitle} align="center" variant="h4">
           {name}
         </Typography>
@@ -118,7 +118,7 @@ export default function DescriptionContainer({
         >
           {description}
         </Typography>
-      </Grid>
+      </Grid> */}
       <Grid item classes={{ root: classes.buttonGroup }}>
         <ButtonGroup>
           <Button

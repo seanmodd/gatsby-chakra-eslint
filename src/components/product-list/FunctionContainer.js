@@ -18,8 +18,8 @@ const useStyles = makeStyles(theme => ({
   functionContainer: {
     backgroundColor: theme.palette.primary.main,
     // maxHeight: 'rem',
-    height: 'auto',
-    position: 'fixed',
+    // height: 'auto',
+    // position: 'fixed',
     // borderRadius: ({ option }) =>
     //   option !== null ? '10px' : '10px 10px 0px 0px',
   },
@@ -44,7 +44,7 @@ const useStyles = makeStyles(theme => ({
     right: 0,
     bottom: 0,
     marginRight: '3rem',
-    marginBottom: '3rem',
+    // marginBottom: '3rem',
     [theme.breakpoints.down('md')]: {
       position: 'relative',
       display: 'flex',
