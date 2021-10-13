@@ -161,134 +161,18 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const encode = data =>
-  Object.keys(data)
-    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
-    .join('&')
-
-const ContactPage = () => {
+const Page = () => {
   const classes = useStyles()
   const theme = useTheme()
-
-  const { dispatchFeedback } = useContext(FeedbackContext)
 
   const matchesMD = useMediaQuery(theme => theme.breakpoints.down('md'))
   const matchesXS = useMediaQuery(theme => theme.breakpoints.down('xs'))
 
-  const [values, setValues] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: '',
-  })
-  const [errors, setErrors] = useState({})
-
-  const fields = {
-    name: {
-      helperText: 'you must enter a name',
-      placeholder: 'Name',
-      adornment: <img src={nameAdornment} alt="name" />,
-    },
-    email: {
-      helperText: 'invalid email',
-      placeholder: 'Email',
-      adornment: (
-        <div className={classes.emailAdornment}>
-          <Email color={theme.palette.secondary.main} />
-        </div>
-      ),
-    },
-    phone: {
-      helperText: 'invalid phone',
-      placeholder: 'Phone Number',
-      adornment: (
-        <div className={classes.phoneAdornment}>
-          <PhoneAdornment color={theme.palette.secondary.main} />
-        </div>
-      ),
-    },
-    message: {
-      helperText: 'you must enter a message',
-      placeholder: 'Message',
-      inputClasses: {
-        multiline: classes.multiline,
-        error: classes.multilineError,
-      },
-    },
-  }
-
-  const info = [
-    {
-      label: (
-        <span>
-          3566 Stevens Creek Blvd,
-          <br /> {matchesXS ? <br /> : null}San Jose, CA 95117
-        </span>
-      ),
-      icon: <img className={classes.contactIcon} src={address} alt="address" />,
-    },
-    {
-      label: '(650) 353-6570',
-      icon: (
-        <div className={classes.contactIcon}>
-          <PhoneAdornment />
-        </div>
-      ),
-    },
-    {
-      label: 'sean@senpex.com',
-      icon: (
-        <div className={classes.contactEmailIcon}>
-          <Email color="#fff" />
-        </div>
-      ),
-    },
-  ]
-
-  const disabled =
-    Object.keys(errors).some(error => errors[error] === true) ||
-    Object.keys(errors).length !== 4
-
-  const handleSubmit = e => {
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({
-        'form-name': 'contact',
-        name: values.name,
-        number: values.phone,
-        email: values.email,
-        message: values.message,
-      }),
-    })
-      .then(() => {
-        setValues({ name: '', phone: '', email: '', message: '' })
-        dispatchFeedback(
-          setSnackbar({
-            status: 'success',
-            message: 'Message sent successfully.',
-          })
-        )
-      })
-      .catch(error => {
-        console.error(error)
-        dispatchFeedback(
-          setSnackbar({
-            status: 'error',
-            message:
-              'There was a problem sending your message. Please try again.',
-          })
-        )
-      })
-
-    e.preventDefault()
-  }
-
   return (
     <Layout>
       <SEO
-        title="Contact Us"
-        description="Send us a message and learn more about the high quality clothing standards at VAR-X."
+        title="Financing"
+        description="Find out why we're the best solution for your auto financing."
       />
       <Grid
         container
@@ -319,115 +203,8 @@ const ContactPage = () => {
                 root: clsx(classes.titleContainer, classes.blockContainer),
               }}
             >
-              <Typography variant="h4">Contact Us</Typography>
+              <Typography variant="h4">Coming Soon!</Typography>
             </Grid>
-            <Grid item>
-              <Grid container direction="column">
-                {Object.keys(fields).map(field => {
-                  const validateHelper = event =>
-                    validate({ [field]: event.target.value })
-
-                  return (
-                    <Grid
-                      item
-                      key={field}
-                      classes={{
-                        root:
-                          field === 'message'
-                            ? classes.multilineContainer
-                            : classes.fieldContainer,
-                      }}
-                    >
-                      <TextField
-                        name={field}
-                        value={values[field]}
-                        onChange={e => {
-                          const valid = validateHelper(e)
-
-                          if (errors[field] || valid[field] === true) {
-                            setErrors({ ...errors, [field]: !valid[field] })
-                          }
-
-                          setValues({ ...values, [field]: e.target.value })
-                        }}
-                        onBlur={e => {
-                          const valid = validateHelper(e)
-                          setErrors({ ...errors, [field]: !valid[field] })
-                        }}
-                        error={errors[field]}
-                        helperText={errors[field] && fields[field].helperText}
-                        placeholder={fields[field].placeholder}
-                        classes={{ root: classes.textField }}
-                        multiline={field === 'message'}
-                        rows={field === 'message' ? 8 : undefined}
-                        InputProps={{
-                          classes: {
-                            input: classes.input,
-                            ...fields[field].inputClasses,
-                          },
-                          disableUnderline: field === 'message',
-                          startAdornment:
-                            field === 'message' ? undefined : (
-                              <InputAdornment position="start">
-                                {fields[field].adornment}
-                              </InputAdornment>
-                            ),
-                        }}
-                      />
-                    </Grid>
-                  )
-                })}
-              </Grid>
-            </Grid>
-            <Grid
-              item
-              type="submit"
-              onClick={handleSubmit}
-              component={Button}
-              disabled={disabled}
-              classes={{
-                root: clsx(classes.buttonContainer, classes.blockContainer, {
-                  [classes.buttonDisabled]: disabled,
-                }),
-              }}
-            >
-              <Typography variant="h4" classes={{ root: classes.sendMessage }}>
-                send message
-              </Typography>
-              <img src={send} className={classes.sendIcon} alt="send message" />
-            </Grid>
-          </Grid>
-        </Grid>
-
-        {/* Contact Info */}
-        <Grid item>
-          <Grid
-            container
-            direction="column"
-            justifyContent="space-between"
-            classes={{ root: classes.infoContainer }}
-          >
-            {info.map((section, i) => (
-              <Grid
-                item
-                key={section.label}
-                container
-                alignItems="center"
-                classes={{ root: i === 1 ? classes.middleInfo : undefined }}
-              >
-                <Grid item classes={{ root: classes.iconContainer }}>
-                  {section.icon}
-                </Grid>
-                <Grid item>
-                  <Typography
-                    classes={{ root: classes.contactInfo }}
-                    variant="h2"
-                  >
-                    {section.label}
-                  </Typography>
-                </Grid>
-              </Grid>
-            ))}
           </Grid>
         </Grid>
       </Grid>
@@ -435,4 +212,4 @@ const ContactPage = () => {
   )
 }
 
-export default ContactPage
+export default Page
