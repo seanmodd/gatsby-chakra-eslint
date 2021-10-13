@@ -49,10 +49,7 @@ exports.createPages = async ({ graphql, actions }) => {
                   checked
                   label
                 }
-                Style {
-                  checked
-                  label
-                }
+
                 Color {
                   checked
                   label
