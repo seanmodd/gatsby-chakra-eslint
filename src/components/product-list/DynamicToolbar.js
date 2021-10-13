@@ -13,11 +13,11 @@ import Header from '../ui/header'
 const useStyles = makeStyles(theme => ({
   wrapper: {
     height: '145px',
-    zIndex: 9999,
+    // zIndex: 9999,
     // marginBottom: '5000px',
     width: '100%',
     backgroundColor: '#f0f0f0',
-    position: 'fixed',
+    // position: 'fixed',
   },
   toolbar: {
     // border: `5px solid ${theme.palette.primary.main}`,

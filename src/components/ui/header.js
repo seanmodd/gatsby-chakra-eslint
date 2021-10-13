@@ -131,6 +131,9 @@ export default function Header({ categories }) {
 
   const routes = [
     ...categories,
+    { node: { name: 'Search Cars', strapiId: 'search', link: '/search' } },
+    { node: { name: 'Sell/Trade', strapiId: 'sellCar', link: '/sell-my-car' } },
+    { node: { name: 'Financing', strapiId: 'financing', link: '/financing' } },
     { node: { name: 'Contact Us', strapiId: 'contact', link: '/contact' } },
   ]
 
@@ -192,6 +195,17 @@ export default function Header({ categories }) {
     // },
     { icon: cartIcon, alt: 'cart', visible: true, link: '/cart' },
     { icon: account, alt: 'account', visible: !matchesMD, link: '/account' },
+  ]
+
+  const newactions = [
+    // {
+    //   icon: search,
+    //   alt: 'search',
+    //   visible: true,
+    //   onClick: () => console.log('search'),
+    // },
+    // { icon: cartIcon, alt: 'cart', visible: true, link: '/cart' },
+    // { icon: account, alt: 'account', visible: !matchesMD, link: '/account' },
     {
       icon: menu,
       alt: 'menu',
@@ -201,21 +215,22 @@ export default function Header({ categories }) {
   ]
 
   return (
-    <HideOnScroll>
-      <AppBar className={classes.appBar} color="transparent" elevation={0}>
-        <Toolbar disableGutters>
-          <Button
-            component={Link}
-            to="/"
-            classes={{ root: classes.logoContainer }}
-          >
-            <Typography variant="h1" classes={{ root: classes.logo }}>
-              <span className={classes.logoText}>CAR</span> X
-            </Typography>
-          </Button>
-          {matchesMD ? drawer : tabs}
-          {drawer}
-          {actions.map(action => {
+    // <HideOnScroll>
+    <AppBar className={classes.appBar} color="transparent" elevation={0}>
+      <Toolbar disableGutters>
+        <Button
+          component={Link}
+          to="/"
+          classes={{ root: classes.logoContainer }}
+        >
+          <Typography variant="h1" classes={{ root: classes.logo }}>
+            <span className={classes.logoText}>CAR</span> X
+          </Typography>
+        </Button>
+        {matchesMD ? drawer : tabs}
+        {drawer}
+        {!matchesMD &&
+          actions.map(action => {
             const image = (
               <img
                 className={classes.icon}
@@ -246,8 +261,40 @@ export default function Header({ categories }) {
               </IconButton>
             )
           })}
-        </Toolbar>
-      </AppBar>
-    </HideOnScroll>
+        {matchesMD &&
+          newactions.map(action => {
+            const image = (
+              <img
+                className={classes.icon}
+                src={action.icon}
+                alt={action.alt}
+              />
+            )
+
+            return (
+              <IconButton
+                onClick={action.onClick}
+                key={action.alt}
+                component={action.onClick ? undefined : Link}
+                to={action.onClick ? undefined : action.link}
+              >
+                {action.alt === 'cart' ? (
+                  <Badge
+                    key={key}
+                    overlap="circular"
+                    badgeContent={cart.length}
+                    classes={{ badge: classes.badge }}
+                  >
+                    {image}
+                  </Badge>
+                ) : (
+                  image
+                )}
+              </IconButton>
+            )
+          })}
+      </Toolbar>
+    </AppBar>
+    // </HideOnScroll>
   )
 }

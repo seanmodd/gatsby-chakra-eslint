@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     // height: '60.4rem',
-    position: 'fixed',
+    // position: 'fixed',
     height: '32rem',
     borderRadius: '15px',
     backgroundColor: '#fff',
@@ -39,7 +39,7 @@ const useStyles = makeStyles(theme => ({
   },
   dialog: {
     maxWidth: '100%',
-    position: 'fixed',
+    // position: 'fixed',
     zIndex: '999999999999999',
   },
   productImage: {
