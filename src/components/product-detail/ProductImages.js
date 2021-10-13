@@ -37,9 +37,12 @@ export default function ProductImages({
   setSelectedImage,
 }) {
   const classes = useStyles()
+  if (!images) return null
 
   const image = getImage(images[selectedImage].localFile)
-
+  // const myimage = image.images.fallback.src
+  // const myimageURL = `https://shopcarx.netlify.app${myimage}`
+  // console.log('myimage: ', myimage)
   return (
     <Grid item container direction="column" alignItems="center" lg={6}>
       <Grid item>
@@ -60,6 +63,7 @@ export default function ProductImages({
               <IconButton onClick={() => setSelectedImage(i)}>
                 <GatsbyImage
                   image={image}
+                  // image={myimageURL}
                   alt={`product_small${i}`}
                   className={classes.small}
                 />
