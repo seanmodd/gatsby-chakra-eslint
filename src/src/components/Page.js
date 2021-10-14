@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react'
-import Head from 'next/head'
+// import Head from 'next/head'
 import PropTypes from 'prop-types'
 // material
 import { Box } from '@mui/material'
@@ -8,9 +8,9 @@ import { Box } from '@mui/material'
 
 const Page = forwardRef(({ children, title = '', ...other }, ref) => (
   <Box ref={ref} {...other}>
-    <Head>
+    {/* <Head>
       <title>{title}</title>
-    </Head>
+    </Head> */}
     {children}
   </Box>
 ))

@@ -5,7 +5,7 @@ import facebookFill from '@iconify/icons-eva/facebook-fill'
 import linkedinFill from '@iconify/icons-eva/linkedin-fill'
 import { Link as ScrollLink } from 'react-scroll'
 // next
-import NextLink from 'next/link'
+// import NextLink from 'next/link'
 import { Link as GatsbyLink } from 'gatsby'
 // material
 import { styled } from '@mui/material/styles'

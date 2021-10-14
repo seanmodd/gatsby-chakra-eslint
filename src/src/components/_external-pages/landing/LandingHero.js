@@ -2,7 +2,7 @@ import { Icon } from '@iconify/react'
 import { motion } from 'framer-motion'
 import flashFill from '@iconify/icons-eva/flash-fill'
 // next
-import NextLink from 'next/link'
+// import NextLink from 'next/link'
 import { Link as GatsbyLink } from 'gatsby'
 // material
 import { styled } from '@mui/material/styles'

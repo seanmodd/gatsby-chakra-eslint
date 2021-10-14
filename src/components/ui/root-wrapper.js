@@ -4,7 +4,7 @@ import 'simplebar/src/simplebar.css'
 import 'react-quill/dist/quill.snow.css'
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 // next
-import Head from 'next/head'
+// import Head from 'next/head'
 import { CacheProvider } from '@emotion/react'
 // material
 import { NoSsr } from '@mui/material'
@@ -42,12 +42,12 @@ export default ({ element }) => {
     <SettingsProvider>
       <CollapseDrawerProvider>
         <CacheProvider value={emotionCache}>
-          <Head>
+          {/* <Head>
             <meta
               name="viewport"
               content="initial-scale=1, width=device-width"
             />
-          </Head>
+          </Head> */}
 
           <ThemeConfig>
             <ThemePrimaryColor>
