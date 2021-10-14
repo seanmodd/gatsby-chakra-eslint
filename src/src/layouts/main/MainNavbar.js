@@ -1,24 +1,25 @@
 // next
-import NextLink from 'next/link';
-import { useRouter } from 'next/router';
+import NextLink from 'next/link'
+import { Link as GatsbyLink } from 'gatsby'
+import { useRouter } from 'next/router'
 // material
-import { styled } from '@mui/material/styles';
-import { Box, Button, AppBar, Toolbar, Container } from '@mui/material';
+import { styled } from '@mui/material/styles'
+import { Box, Button, AppBar, Toolbar, Container } from '@mui/material'
 // hooks
-import useOffSetTop from '../../hooks/useOffSetTop';
+import useOffSetTop from '../../hooks/useOffSetTop'
 // components
-import Logo from '../../components/Logo';
-import Label from '../../components/Label';
-import { MHidden } from '../../components/@material-extend';
+import Logo from '../../components/Logo'
+import Label from '../../components/Label'
+import { MHidden } from '../../components/@material-extend'
 //
-import MenuDesktop from './MenuDesktop';
-import MenuMobile from './MenuMobile';
-import navConfig from './MenuConfig';
+import MenuDesktop from './MenuDesktop'
+import MenuMobile from './MenuMobile'
+import navConfig from './MenuConfig'
 
 // ----------------------------------------------------------------------
 
-const APP_BAR_MOBILE = 64;
-const APP_BAR_DESKTOP = 88;
+const APP_BAR_MOBILE = 64
+const APP_BAR_DESKTOP = 88
 
 const ToolbarStyle = styled(Toolbar)(({ theme }) => ({
   height: APP_BAR_MOBILE,
@@ -29,7 +30,7 @@ const ToolbarStyle = styled(Toolbar)(({ theme }) => ({
   [theme.breakpoints.up('md')]: {
     height: APP_BAR_DESKTOP,
   },
-}));
+}))
 
 const ToolbarShadowStyle = styled('div')(({ theme }) => ({
   left: 0,
@@ -42,14 +43,14 @@ const ToolbarShadowStyle = styled('div')(({ theme }) => ({
   position: 'absolute',
   width: `calc(100% - 48px)`,
   boxShadow: theme.customShadows.z8,
-}));
+}))
 
 // ----------------------------------------------------------------------
 
 export default function MainNavbar() {
-  const isOffset = useOffSetTop(100);
-  const { pathname } = useRouter();
-  const isHome = pathname === '/';
+  const isOffset = useOffSetTop(100)
+  const { pathname } = useRouter()
+  const isHome = pathname === '/'
 
   return (
     <AppBar sx={{ boxShadow: 0, bgcolor: 'transparent' }}>
@@ -63,22 +64,22 @@ export default function MainNavbar() {
         }}
       >
         <Container
-          maxWidth='lg'
+          maxWidth="lg"
           sx={{
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
           }}
         >
-          <NextLink href='/'>
+          <GatsbyLink to="/">
             <Logo />
-          </NextLink>
-          <Label color='info' sx={{ ml: 1 }}>
-            Next Js v2.6.0
+          </GatsbyLink>
+          <Label color="info" sx={{ ml: 1 }}>
+            Gatsby Js
           </Label>
           <Box sx={{ flexGrow: 1 }} />
 
-          <MHidden width='mdDown'>
+          <MHidden width="mdDown">
             <MenuDesktop
               isOffset={isOffset}
               isHome={isHome}
@@ -87,14 +88,14 @@ export default function MainNavbar() {
           </MHidden>
 
           <Button
-            variant='contained'
-            target='_blank'
-            href='https://material-ui.com/store/items/minimal-dashboard/'
+            variant="contained"
+            target="_blank"
+            href="https://material-ui.com/store/items/minimal-dashboard/"
           >
             Purchase Now
           </Button>
 
-          <MHidden width='mdUp'>
+          <MHidden width="mdUp">
             <MenuMobile
               isOffset={isOffset}
               isHome={isHome}
@@ -106,5 +107,5 @@ export default function MainNavbar() {
 
       {isOffset && <ToolbarShadowStyle />}
     </AppBar>
-  );
+  )
 }

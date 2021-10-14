@@ -1,14 +1,15 @@
-import PropTypes from 'prop-types';
-import { Icon } from '@iconify/react';
-import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
-import arrowIosUpwardFill from '@iconify/icons-eva/arrow-ios-upward-fill';
-import arrowIosDownwardFill from '@iconify/icons-eva/arrow-ios-downward-fill';
+import PropTypes from 'prop-types'
+import { Icon } from '@iconify/react'
+import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
+import arrowIosUpwardFill from '@iconify/icons-eva/arrow-ios-upward-fill'
+import arrowIosDownwardFill from '@iconify/icons-eva/arrow-ios-downward-fill'
 // next
-import NextLink from 'next/link';
-import { useRouter } from 'next/router';
+import NextLink from 'next/link'
+import { Link as GatsbyLink } from 'gatsby'
+import { useRouter } from 'next/router'
 // material
-import { styled } from '@mui/material/styles';
+import { styled } from '@mui/material/styles'
 import {
   Box,
   Link,
@@ -19,7 +20,7 @@ import {
   ListItem,
   ListSubheader,
   CardActionArea,
-} from '@mui/material';
+} from '@mui/material'
 
 // ----------------------------------------------------------------------
 
@@ -34,7 +35,7 @@ const LinkStyle = styled(Link)(({ theme }) => ({
     opacity: 0.48,
     textDecoration: 'none',
   },
-}));
+}))
 
 const ListItemStyle = styled(ListItem)(({ theme }) => ({
   ...theme.typography.body2,
@@ -45,19 +46,19 @@ const ListItemStyle = styled(ListItem)(({ theme }) => ({
   '&:hover': {
     color: theme.palette.text.primary,
   },
-}));
+}))
 
 // ----------------------------------------------------------------------
 
 IconBullet.propTypes = {
   type: PropTypes.oneOf(['subheader', 'item']),
-};
+}
 
 function IconBullet({ type = 'item' }) {
   return (
     <Box sx={{ width: 24, height: 16, display: 'flex', alignItems: 'center' }}>
       <Box
-        component='span'
+        component="span"
         sx={{
           ml: '2px',
           width: 4,
@@ -73,7 +74,7 @@ function IconBullet({ type = 'item' }) {
         }}
       />
     </Box>
-  );
+  )
 }
 
 MenuDesktopItem.propTypes = {
@@ -84,7 +85,7 @@ MenuDesktopItem.propTypes = {
   isOpen: PropTypes.bool,
   onOpen: PropTypes.func,
   onClose: PropTypes.func,
-};
+}
 
 function MenuDesktopItem({
   item,
@@ -95,8 +96,8 @@ function MenuDesktopItem({
   onOpen,
   onClose,
 }) {
-  const { title, path, children } = item;
-  const isActive = pathname === path;
+  const { title, path, children } = item
+  const isActive = pathname === path
 
   if (children) {
     return (
@@ -122,7 +123,7 @@ function MenuDesktopItem({
 
         <Popover
           open={isOpen}
-          anchorReference='anchorPosition'
+          anchorReference="anchorPosition"
           anchorPosition={{ top: 80, left: 0 }}
           anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
           transformOrigin={{ vertical: 'top', horizontal: 'center' }}
@@ -136,13 +137,13 @@ function MenuDesktopItem({
               margin: 'auto',
               maxWidth: 1280,
               borderRadius: 2,
-              boxShadow: (theme) => theme.customShadows.z24,
+              boxShadow: theme => theme.customShadows.z24,
             },
           }}
         >
           <Grid container spacing={3}>
-            {children.map((list) => {
-              const { subheader, items } = list;
+            {children.map(list => {
+              const { subheader, items } = list
 
               return (
                 <Grid
@@ -163,11 +164,11 @@ function MenuDesktopItem({
                         typography: 'overline',
                       }}
                     >
-                      <IconBullet type='subheader' /> {subheader}
+                      <IconBullet type="subheader" /> {subheader}
                     </ListSubheader>
 
-                    {items.map((item) => (
-                      <NextLink key={item.title} href={item.path}>
+                    {items.map(item => (
+                      <GatsbyLink key={item.title} to={item.path}>
                         <ListItemStyle
                           sx={{
                             ...(item.path === pathname && {
@@ -188,13 +189,13 @@ function MenuDesktopItem({
                             >
                               <Box
                                 component={motion.img}
-                                whileTap='tap'
-                                whileHover='hover'
+                                whileTap="tap"
+                                whileHover="hover"
                                 variants={{
                                   hover: { scale: 1.02 },
                                   tap: { scale: 0.98 },
                                 }}
-                                src='/static/illustrations/illustration_dashboard.png'
+                                src="/static/illustrations/illustration_dashboard.png"
                               />
                             </CardActionArea>
                           ) : (
@@ -204,20 +205,20 @@ function MenuDesktopItem({
                             </>
                           )}
                         </ListItemStyle>
-                      </NextLink>
+                      </GatsbyLink>
                     ))}
                   </List>
                 </Grid>
-              );
+              )
             })}
           </Grid>
         </Popover>
       </>
-    );
+    )
   }
 
   return (
-    <NextLink key={title} href={path} passHref>
+    <GatsbyLink key={title} to={path}>
       <LinkStyle
         sx={{
           ...(isHome && { color: 'common.white' }),
@@ -227,38 +228,38 @@ function MenuDesktopItem({
       >
         {title}
       </LinkStyle>
-    </NextLink>
-  );
+    </GatsbyLink>
+  )
 }
 
 MenuDesktop.propTypes = {
   isOffset: PropTypes.bool,
   isHome: PropTypes.bool,
   navConfig: PropTypes.array,
-};
+}
 
 export default function MenuDesktop({ isOffset, isHome, navConfig }) {
-  const { pathname } = useRouter();
-  const [open, setOpen] = useState(false);
+  const { pathname } = useRouter()
+  const [open, setOpen] = useState(false)
 
   useEffect(() => {
     if (open) {
-      handleClose();
+      handleClose()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname]);
+  }, [pathname])
 
   const handleOpen = () => {
-    setOpen(true);
-  };
+    setOpen(true)
+  }
 
   const handleClose = () => {
-    setOpen(false);
-  };
+    setOpen(false)
+  }
 
   return (
-    <Stack direction='row'>
-      {navConfig.map((link) => (
+    <Stack direction="row">
+      {navConfig.map(link => (
         <MenuDesktopItem
           key={link.title}
           item={link}
@@ -271,5 +272,5 @@ export default function MenuDesktop({ isOffset, isHome, navConfig }) {
         />
       ))}
     </Stack>
-  );
+  )
 }

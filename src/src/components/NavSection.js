@@ -4,7 +4,8 @@ import { Icon } from '@iconify/react'
 import arrowIosForwardFill from '@iconify/icons-eva/arrow-ios-forward-fill'
 import arrowIosDownwardFill from '@iconify/icons-eva/arrow-ios-downward-fill'
 // next
-import NextLink from 'next/link'
+// import NextLink from 'next/link'
+import { Link } from 'gatsby'
 import { useRouter } from 'next/router'
 // material
 import { alpha, useTheme, styled } from '@mui/material/styles'
@@ -126,7 +127,7 @@ function NavItem({ item, isShow }) {
                 const isActiveSub = pathname.includes(path)
 
                 return (
-                  <NextLink key={item.title} href={item.path}>
+                  <Link key={item.title} to={item.path}>
                     <ListItemStyle
                       sx={{
                         ...(isActiveSub && activeSubStyle),
@@ -154,7 +155,7 @@ function NavItem({ item, isShow }) {
                       </ListItemIconStyle>
                       <ListItemText disableTypography primary={title} />
                     </ListItemStyle>
-                  </NextLink>
+                  </Link>
                 )
               })}
             </List>
@@ -165,7 +166,7 @@ function NavItem({ item, isShow }) {
   }
 
   return (
-    <NextLink href={path}>
+    <Link to={path}>
       <ListItemStyle
         sx={{
           ...(isActiveRoot && activeRootStyle),
@@ -179,7 +180,7 @@ function NavItem({ item, isShow }) {
           </>
         )}
       </ListItemStyle>
-    </NextLink>
+    </Link>
   )
 }
 

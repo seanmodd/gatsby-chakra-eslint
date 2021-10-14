@@ -1,14 +1,15 @@
-import PropTypes from 'prop-types';
-import { Icon } from '@iconify/react';
-import { useState, useEffect } from 'react';
-import menu2Fill from '@iconify/icons-eva/menu-2-fill';
-import arrowIosForwardFill from '@iconify/icons-eva/arrow-ios-forward-fill';
-import arrowIosDownwardFill from '@iconify/icons-eva/arrow-ios-downward-fill';
+import PropTypes from 'prop-types'
+import { Icon } from '@iconify/react'
+import { useState, useEffect } from 'react'
+import menu2Fill from '@iconify/icons-eva/menu-2-fill'
+import arrowIosForwardFill from '@iconify/icons-eva/arrow-ios-forward-fill'
+import arrowIosDownwardFill from '@iconify/icons-eva/arrow-ios-downward-fill'
 // next
-import NextLink from 'next/link';
-import { useRouter } from 'next/router';
+import NextLink from 'next/link'
+import { Link as GatsbyLink } from 'gatsby'
+import { useRouter } from 'next/router'
 // material
-import { alpha, styled } from '@mui/material/styles';
+import { alpha, styled } from '@mui/material/styles'
 import {
   Box,
   List,
@@ -17,18 +18,18 @@ import {
   ListItemText,
   ListItemIcon,
   ListItemButton,
-} from '@mui/material';
+} from '@mui/material'
 // components
-import Logo from '../../components/Logo';
-import NavSection from '../../components/NavSection';
-import Scrollbar from '../../components/Scrollbar';
-import { MIconButton } from '../../components/@material-extend';
+import Logo from '../../components/Logo'
+import NavSection from '../../components/NavSection'
+import Scrollbar from '../../components/Scrollbar'
+import { MIconButton } from '../../components/@material-extend'
 
 // ----------------------------------------------------------------------
 
-const ICON_SIZE = 22;
-const ITEM_SIZE = 48;
-const PADDING = 2.5;
+const ICON_SIZE = 22
+const ITEM_SIZE = 48
+const PADDING = 2.5
 
 const ListItemStyle = styled(ListItemButton)(({ theme }) => ({
   ...theme.typography.body2,
@@ -37,7 +38,7 @@ const ListItemStyle = styled(ListItemButton)(({ theme }) => ({
   paddingLeft: theme.spacing(PADDING),
   paddingRight: theme.spacing(2.5),
   color: theme.palette.text.secondary,
-}));
+}))
 
 // ----------------------------------------------------------------------
 
@@ -46,10 +47,10 @@ MenuMobileItem.propTypes = {
   isOpen: PropTypes.bool,
   isActive: PropTypes.bool,
   onOpen: PropTypes.func,
-};
+}
 
 function MenuMobileItem({ item, isOpen, isActive, onOpen }) {
-  const { title, path, icon, children } = item;
+  const { title, path, icon, children } = item
 
   if (children) {
     return (
@@ -64,7 +65,7 @@ function MenuMobileItem({ item, isOpen, isActive, onOpen }) {
           />
         </ListItemStyle>
 
-        <Collapse in={isOpen} timeout='auto' unmountOnExit>
+        <Collapse in={isOpen} timeout="auto" unmountOnExit>
           <Box sx={{ display: 'flex', flexDirection: 'column-reverse' }}>
             <NavSection
               navConfig={children}
@@ -114,17 +115,17 @@ function MenuMobileItem({ item, isOpen, isActive, onOpen }) {
           </Box>
         </Collapse>
       </>
-    );
+    )
   }
 
   return (
-    <NextLink key={title} href={path}>
+    <GatsbyLink key={title} to={path}>
       <ListItemStyle
         sx={{
           ...(isActive && {
             color: 'primary.main',
             fontWeight: 'fontWeightMedium',
-            bgcolor: (theme) =>
+            bgcolor: theme =>
               alpha(
                 theme.palette.primary.main,
                 theme.palette.action.selectedOpacity
@@ -135,39 +136,39 @@ function MenuMobileItem({ item, isOpen, isActive, onOpen }) {
         <ListItemIcon>{icon}</ListItemIcon>
         <ListItemText disableTypography primary={title} />
       </ListItemStyle>
-    </NextLink>
-  );
+    </GatsbyLink>
+  )
 }
 
 MenuMobile.propTypes = {
   isOffset: PropTypes.bool,
   isHome: PropTypes.bool,
   navConfig: PropTypes.array,
-};
+}
 
 export default function MenuMobile({ isOffset, isHome, navConfig }) {
-  const { pathname } = useRouter();
-  const [open, setOpen] = useState(false);
-  const [drawerOpen, setDrawerOpen] = useState(false);
+  const { pathname } = useRouter()
+  const [open, setOpen] = useState(false)
+  const [drawerOpen, setDrawerOpen] = useState(false)
 
   useEffect(() => {
     if (drawerOpen) {
-      handleDrawerClose();
+      handleDrawerClose()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname]);
+  }, [pathname])
 
   const handleOpen = () => {
-    setOpen(!open);
-  };
+    setOpen(!open)
+  }
 
   const handleDrawerOpen = () => {
-    setDrawerOpen(true);
-  };
+    setDrawerOpen(true)
+  }
 
   const handleDrawerClose = () => {
-    setDrawerOpen(false);
-  };
+    setDrawerOpen(false)
+  }
 
   return (
     <>
@@ -190,13 +191,13 @@ export default function MenuMobile({ isOffset, isHome, navConfig }) {
       >
         <Scrollbar>
           <Box sx={{ display: 'inline-flex' }}>
-            <NextLink href='/'>
+            <GatsbyLink to="/">
               <Logo sx={{ mx: PADDING, my: 3 }} />
-            </NextLink>
+            </GatsbyLink>
           </Box>
 
           <List disablePadding>
-            {navConfig.map((link) => (
+            {navConfig.map(link => (
               <MenuMobileItem
                 key={link.title}
                 item={link}
@@ -209,5 +210,5 @@ export default function MenuMobile({ isOffset, isHome, navConfig }) {
         </Scrollbar>
       </Drawer>
     </>
-  );
+  )
 }

@@ -3,6 +3,7 @@ import { last } from 'lodash'
 import PropTypes from 'prop-types'
 // next
 import NextLink from 'next/link'
+import { Link as GatsbyLink } from 'gatsby'
 // material
 import { Typography, Box, Link, Breadcrumbs } from '@mui/material'
 
@@ -22,7 +23,7 @@ LinkItem.propTypes = {
 function LinkItem({ link }) {
   const { href, name, icon } = link
   return (
-    <NextLink key={name} href={href} passHref>
+    <GatsbyLink key={name} to={href} passHref>
       <Link
         variant="body2"
         sx={{
@@ -45,7 +46,7 @@ function LinkItem({ link }) {
         )}
         {name}
       </Link>
-    </NextLink>
+    </GatsbyLink>
   )
 }
 

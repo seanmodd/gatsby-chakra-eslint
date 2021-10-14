@@ -1,10 +1,11 @@
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 // next
-import NextLink from 'next/link';
+import NextLink from 'next/link'
+import { Link as GatsbyLink } from 'gatsby'
 // material
-import { styled } from '@mui/material/styles';
+import { styled } from '@mui/material/styles'
 // components
-import Logo from '../components/Logo';
+import Logo from '../components/Logo'
 
 // ----------------------------------------------------------------------
 
@@ -18,23 +19,23 @@ const HeaderStyle = styled('header')(({ theme }) => ({
   [theme.breakpoints.up('sm')]: {
     padding: theme.spacing(5, 5, 0),
   },
-}));
+}))
 
 // ----------------------------------------------------------------------
 
 LogoOnlyLayout.propTypes = {
   children: PropTypes.node,
-};
+}
 
 export default function LogoOnlyLayout({ children }) {
   return (
     <>
       <HeaderStyle>
-        <NextLink href='/'>
+        <GatsbyLink to="/">
           <Logo />
-        </NextLink>
+        </GatsbyLink>
       </HeaderStyle>
       {children}
     </>
-  );
+  )
 }
