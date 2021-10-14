@@ -1,0 +1,22 @@
+import React, { forwardRef } from 'react'
+import PropTypes from 'prop-types'
+// material
+import { IconButton } from '@mui/material'
+//
+import { ButtonAnimate } from '../animate'
+
+// ----------------------------------------------------------------------
+
+const MIconButton = forwardRef(({ children, ...other }, ref) => (
+  <ButtonAnimate>
+    <IconButton ref={ref} {...other}>
+      {children}
+    </IconButton>
+  </ButtonAnimate>
+))
+
+MIconButton.propTypes = {
+  children: PropTypes.node,
+}
+
+export default MIconButton
