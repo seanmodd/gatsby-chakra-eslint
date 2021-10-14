@@ -1,24 +1,35 @@
-import PropTypes from 'prop-types';
-import { Link as ScrollLink } from 'react-scroll';
+//! utilizes useRouter from Next to get the current path
+import React from 'react'
+import React, { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
+import { Link as ScrollLink } from 'react-scroll'
 // next
-import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
 // material
-import { Box, Link, Container, Typography } from '@mui/material';
+import { Box, Link, Container, Typography } from '@mui/material'
 // components
-import Logo from '../../components/Logo';
+import Logo from '../../components/Logo'
 //
-import MainNavbar from './MainNavbar';
-import MainFooter from './MainFooter';
+import MainNavbar from './MainNavbar'
+import MainFooter from './MainFooter'
 
 // ----------------------------------------------------------------------
 
 MainLayout.propTypes = {
   children: PropTypes.node,
-};
+}
 
 export default function MainLayout({ children }) {
-  const { pathname } = useRouter();
-  const isHome = pathname === '/';
+  // const { pathname } = useRouter();
+  //! New for gatsby configuration
+  const [activePathname, setActivePathname] = useState('')
+  useEffect(() => {
+    setActivePathname(window && window.location ? window.location.pathname : '')
+  }, [])
+  console.log('activePathname', activePathname)
+
+  // const isHome = pathname === '/'
+  const isHome = activePathname === '/'
 
   return (
     <>
@@ -36,19 +47,19 @@ export default function MainLayout({ children }) {
             bgcolor: 'background.default',
           }}
         >
-          <Container maxWidth='lg'>
-            <ScrollLink to='move_top' spy smooth>
+          <Container maxWidth="lg">
+            <ScrollLink to="move_top" spy smooth>
               <Logo sx={{ mb: 1, mx: 'auto', cursor: 'pointer' }} />
             </ScrollLink>
 
-            <Typography variant='caption' component='p'>
+            <Typography variant="caption" component="p">
               © All rights reserved
               <br /> made by &nbsp;
-              <Link href='https://minimals.cc/'>minimals.cc</Link>
+              <Link href="https://shopcarx.com/">shopcarx.com</Link>
             </Typography>
           </Container>
         </Box>
       )}
     </>
-  );
+  )
 }

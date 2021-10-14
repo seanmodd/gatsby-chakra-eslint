@@ -1,9 +1,11 @@
+//! utilizes useRouter from Next to get the current path
 // next
 // import NextLink from 'next/link'
 import { Link as GatsbyLink } from 'gatsby'
-import { useRouter } from 'next/router'
+// import { useRouter } from 'next/router'
 // material
 import { styled } from '@mui/material/styles'
+import React, { useState, useEffect } from 'react'
 import { Box, Button, AppBar, Toolbar, Container } from '@mui/material'
 // hooks
 import useOffSetTop from '../../hooks/useOffSetTop'
@@ -49,8 +51,16 @@ const ToolbarShadowStyle = styled('div')(({ theme }) => ({
 
 export default function MainNavbar() {
   const isOffset = useOffSetTop(100)
-  const { pathname } = useRouter()
-  const isHome = pathname === '/'
+  // const { pathname } = useRouter()
+  //! New for gatsby configuration
+  const [activePathname, setActivePathname] = useState('')
+  useEffect(() => {
+    setActivePathname(window && window.location ? window.location.pathname : '')
+  }, [])
+  console.log('activePathname', activePathname)
+
+  // const isHome = pathname === '/'
+  const isHome = activePathname === '/'
 
   return (
     <AppBar sx={{ boxShadow: 0, bgcolor: 'transparent' }}>

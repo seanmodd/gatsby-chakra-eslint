@@ -1,13 +1,14 @@
+//! utilizes useRouter from Next to get the current pathname
 import PropTypes from 'prop-types'
 import { Icon } from '@iconify/react'
 import { motion } from 'framer-motion'
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import arrowIosUpwardFill from '@iconify/icons-eva/arrow-ios-upward-fill'
 import arrowIosDownwardFill from '@iconify/icons-eva/arrow-ios-downward-fill'
 // next
 // import NextLink from 'next/link'
 import { Link as GatsbyLink } from 'gatsby'
-import { useRouter } from 'next/router'
+// import { useRouter } from 'next/router'
 // material
 import { styled } from '@mui/material/styles'
 import {
@@ -97,7 +98,16 @@ function MenuDesktopItem({
   onClose,
 }) {
   const { title, path, children } = item
-  const isActive = pathname === path
+
+  //! New for gatsby configuration
+  const [activePathname, setActivePathname] = useState('')
+  useEffect(() => {
+    setActivePathname(window && window.location ? window.location.pathname : '')
+  }, [])
+  console.log('activePathname', activePathname)
+
+  // const isActive = pathname === path
+  const isActive = activePathname === path
 
   if (children) {
     return (
@@ -171,7 +181,7 @@ function MenuDesktopItem({
                       <GatsbyLink key={item.title} to={item.path}>
                         <ListItemStyle
                           sx={{
-                            ...(item.path === pathname && {
+                            ...(item.path === activePathname && {
                               typography: 'subtitle2',
                               color: 'text.primary',
                             }),
@@ -239,7 +249,14 @@ MenuDesktop.propTypes = {
 }
 
 export default function MenuDesktop({ isOffset, isHome, navConfig }) {
-  const { pathname } = useRouter()
+  // const { pathname } = useRouter()
+  //! New for gatsby configuration
+  const [activePathname, setActivePathname] = useState('')
+  useEffect(() => {
+    setActivePathname(window && window.location ? window.location.pathname : '')
+  }, [])
+  console.log('activePathname', activePathname)
+
   const [open, setOpen] = useState(false)
 
   useEffect(() => {
@@ -247,7 +264,7 @@ export default function MenuDesktop({ isOffset, isHome, navConfig }) {
       handleClose()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname])
+  }, [activePathname])
 
   const handleOpen = () => {
     setOpen(true)
@@ -263,7 +280,7 @@ export default function MenuDesktop({ isOffset, isHome, navConfig }) {
         <MenuDesktopItem
           key={link.title}
           item={link}
-          pathname={pathname}
+          pathname={activePathname}
           isOpen={open}
           onOpen={handleOpen}
           onClose={handleClose}

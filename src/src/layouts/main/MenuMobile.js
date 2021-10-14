@@ -1,13 +1,14 @@
+//! utilizes useRouter from Next to get the current pathname
 import PropTypes from 'prop-types'
 import { Icon } from '@iconify/react'
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import menu2Fill from '@iconify/icons-eva/menu-2-fill'
 import arrowIosForwardFill from '@iconify/icons-eva/arrow-ios-forward-fill'
 import arrowIosDownwardFill from '@iconify/icons-eva/arrow-ios-downward-fill'
 // next
 // import NextLink from 'next/link'
 import { Link as GatsbyLink } from 'gatsby'
-import { useRouter } from 'next/router'
+// import { useRouter } from 'next/router'
 // material
 import { alpha, styled } from '@mui/material/styles'
 import {
@@ -147,7 +148,14 @@ MenuMobile.propTypes = {
 }
 
 export default function MenuMobile({ isOffset, isHome, navConfig }) {
-  const { pathname } = useRouter()
+  //! New for gatsby configuration
+  const [activePathname, setActivePathname] = useState('')
+  useEffect(() => {
+    setActivePathname(window && window.location ? window.location.pathname : '')
+  }, [])
+  console.log('activePathname', activePathname)
+  // const { pathname } = useRouter()
+
   const [open, setOpen] = useState(false)
   const [drawerOpen, setDrawerOpen] = useState(false)
 
@@ -156,7 +164,7 @@ export default function MenuMobile({ isOffset, isHome, navConfig }) {
       handleDrawerClose()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname])
+  }, [activePathname])
 
   const handleOpen = () => {
     setOpen(!open)
@@ -203,7 +211,7 @@ export default function MenuMobile({ isOffset, isHome, navConfig }) {
                 item={link}
                 isOpen={open}
                 onOpen={handleOpen}
-                isActive={pathname === link.path}
+                isActive={activePathname === link.path}
               />
             ))}
           </List>

@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+//! utilizes useRouter from Next to get the current pathname
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Icon } from '@iconify/react'
 import arrowIosForwardFill from '@iconify/icons-eva/arrow-ios-forward-fill'
@@ -70,9 +71,19 @@ NavItem.propTypes = {
 
 function NavItem({ item, isShow }) {
   const theme = useTheme()
-  const { pathname } = useRouter()
+
+  //! New for gatsby configuration
+  const [activePathname, setActivePathname] = useState('')
+  useEffect(() => {
+    setActivePathname(window && window.location ? window.location.pathname : '')
+  }, [])
+  console.log('activePathname', activePathname)
+
+  // const { pathname } = useRouter()
+
   const { title, path, icon, info, children } = item
-  const isActiveRoot = pathname.includes(path)
+  // const isActiveRoot = pathname.includes(path)
+  const isActiveRoot = activePathname.includes(path)
 
   const [open, setOpen] = useState(isActiveRoot)
 
@@ -124,7 +135,10 @@ function NavItem({ item, isShow }) {
             <List component="div" disablePadding>
               {children.map(item => {
                 const { title, path } = item
-                const isActiveSub = pathname.includes(path)
+                {
+                  /* const isActiveSub = pathname.includes(path) */
+                }
+                const isActiveSub = activePathname.includes(path)
 
                 return (
                   <Link key={item.title} to={item.path}>

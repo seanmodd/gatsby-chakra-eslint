@@ -1,15 +1,17 @@
+//! utilizes useRouter from Next to utilize events.on and events.off to listen for changes in the router
+
 import React from 'react'
 import NProgress from 'nprogress'
-import { Router } from 'next/router'
+// import { Router } from 'next/router'
 // material
 import { useTheme } from '@mui/material/styles'
 import { GlobalStyles } from '@mui/material'
 
-NProgress.configure({ showSpinner: false })
+// NProgress.configure({ showSpinner: false })
 
-Router.events.on('routeChangeStart', () => NProgress.start())
-Router.events.on('routeChangeComplete', () => NProgress.done())
-Router.events.on('routeChangeError', () => NProgress.done())
+// Router.events.on('routeChangeStart', () => NProgress.start())
+// Router.events.on('routeChangeComplete', () => NProgress.done())
+// Router.events.on('routeChangeError', () => NProgress.done())
 
 // ----------------------------------------------------------------------
 

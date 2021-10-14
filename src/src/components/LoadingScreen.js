@@ -1,5 +1,6 @@
+//! utilizes useRouter from Next to see events on the router meaning that the user has navigated to a new page
 import React, { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
+// import { useRouter } from 'next/router'
 import { motion } from 'framer-motion'
 // material
 import { alpha, styled } from '@mui/material/styles'
@@ -23,24 +24,24 @@ const RootStyle = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function LoadingScreen({ ...other }) {
-  const router = useRouter()
+  // const router = useRouter()
   const [loading, setLoading] = useState(false)
 
-  useEffect(() => {
-    const handleStart = url => url !== router.asPath && setLoading(true)
+  // useEffect(() => {
+  //   const handleStart = url => url !== router.asPath && setLoading(true)
 
-    const handleComplete = url => url === router.asPath && setLoading(false)
+  //   const handleComplete = url => url === router.asPath && setLoading(false)
 
-    router.events.on('routeChangeStart', handleStart)
-    router.events.on('routeChangeComplete', handleComplete)
-    router.events.on('routeChangeError', handleComplete)
+  //   router.events.on('routeChangeStart', handleStart)
+  //   router.events.on('routeChangeComplete', handleComplete)
+  //   router.events.on('routeChangeError', handleComplete)
 
-    return () => {
-      router.events.off('routeChangeStart', handleStart)
-      router.events.off('routeChangeComplete', handleComplete)
-      router.events.off('routeChangeError', handleComplete)
-    }
-  })
+  //   return () => {
+  //     router.events.off('routeChangeStart', handleStart)
+  //     router.events.off('routeChangeComplete', handleComplete)
+  //     router.events.off('routeChangeError', handleComplete)
+  //   }
+  // })
 
   if (loading) {
     return (

@@ -1,9 +1,10 @@
+//! utilizes useRouter from Next to get the current path
 import PropTypes from 'prop-types'
-import { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 // next
 // import NextLink from 'next/link'
 import { Link as GatsbyLink } from 'gatsby'
-import { useRouter } from 'next/router'
+// import { useRouter } from 'next/router'
 // material
 import { alpha, styled } from '@mui/material/styles'
 import {
@@ -98,7 +99,13 @@ DashboardSidebar.propTypes = {
 }
 
 export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
-  const { pathname } = useRouter()
+  //! New for gatsby configuration
+  const [activePathname, setActivePathname] = useState('')
+  useEffect(() => {
+    setActivePathname(window && window.location ? window.location.pathname : '')
+  }, [])
+  console.log('activePathname', activePathname)
+  // const { pathname } = useRouter()
 
   const {
     isCollapse,
@@ -114,7 +121,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
       onCloseSidebar()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname])
+  }, [activePathname])
 
   const renderContent = (
     <Scrollbar
