@@ -23,6 +23,7 @@ import PhoneAdornment from '../../images/PhoneAdornment'
 
 import Layout from '../../components/ui/layout'
 import validate from '../../components/ui/validate'
+import DashboardLayout from '../../src/layouts/dashboard'
 
 const useStyles = makeStyles(theme => ({
   mainContainer: {
@@ -285,153 +286,162 @@ const ContactPage = () => {
   }
 
   return (
-    <Layout>
-      <SEO
-        title="Contact Us"
-        description="Send us a message and learn more about the high quality clothing standards at VAR-X."
-      />
-      <Grid
-        container
-        justifyContent="space-around"
-        alignItems="center"
-        classes={{ root: classes.mainContainer }}
-        direction={matchesMD ? 'column' : 'row'}
-      >
-        {/* Contact Form */}
+    <DashboardLayout>
+      <Layout>
+        <SEO
+          title="Contact Us"
+          description="Send us a message and learn more about the high quality clothing standards at VAR-X."
+        />
         <Grid
-          component="form"
-          name="contact"
-          method="POST"
-          data-netlify="true"
-          item
-          classes={{ root: classes.formWrapper }}
+          container
+          justifyContent="space-around"
+          alignItems="center"
+          classes={{ root: classes.mainContainer }}
+          direction={matchesMD ? 'column' : 'row'}
         >
+          {/* Contact Form */}
           <Grid
-            container
-            classes={{ root: classes.formContainer }}
-            direction="column"
-            justifyContent="space-between"
-            alignItems="center"
+            component="form"
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            item
+            classes={{ root: classes.formWrapper }}
           >
             <Grid
-              item
-              classes={{
-                root: clsx(classes.titleContainer, classes.blockContainer),
-              }}
+              container
+              classes={{ root: classes.formContainer }}
+              direction="column"
+              justifyContent="space-between"
+              alignItems="center"
             >
-              <Typography variant="h4">Contact Us</Typography>
-            </Grid>
-            <Grid item>
-              <Grid container direction="column">
-                {Object.keys(fields).map(field => {
-                  const validateHelper = event =>
-                    validate({ [field]: event.target.value })
-
-                  return (
-                    <Grid
-                      item
-                      key={field}
-                      classes={{
-                        root:
-                          field === 'message'
-                            ? classes.multilineContainer
-                            : classes.fieldContainer,
-                      }}
-                    >
-                      <TextField
-                        name={field}
-                        value={values[field]}
-                        onChange={e => {
-                          const valid = validateHelper(e)
-
-                          if (errors[field] || valid[field] === true) {
-                            setErrors({ ...errors, [field]: !valid[field] })
-                          }
-
-                          setValues({ ...values, [field]: e.target.value })
-                        }}
-                        onBlur={e => {
-                          const valid = validateHelper(e)
-                          setErrors({ ...errors, [field]: !valid[field] })
-                        }}
-                        error={errors[field]}
-                        helperText={errors[field] && fields[field].helperText}
-                        placeholder={fields[field].placeholder}
-                        classes={{ root: classes.textField }}
-                        multiline={field === 'message'}
-                        rows={field === 'message' ? 8 : undefined}
-                        InputProps={{
-                          classes: {
-                            input: classes.input,
-                            ...fields[field].inputClasses,
-                          },
-                          disableUnderline: field === 'message',
-                          startAdornment:
-                            field === 'message' ? undefined : (
-                              <InputAdornment position="start">
-                                {fields[field].adornment}
-                              </InputAdornment>
-                            ),
-                        }}
-                      />
-                    </Grid>
-                  )
-                })}
-              </Grid>
-            </Grid>
-            <Grid
-              item
-              type="submit"
-              onClick={handleSubmit}
-              component={Button}
-              disabled={disabled}
-              classes={{
-                root: clsx(classes.buttonContainer, classes.blockContainer, {
-                  [classes.buttonDisabled]: disabled,
-                }),
-              }}
-            >
-              <Typography variant="h4" classes={{ root: classes.sendMessage }}>
-                send message
-              </Typography>
-              <img src={send} className={classes.sendIcon} alt="send message" />
-            </Grid>
-          </Grid>
-        </Grid>
-
-        {/* Contact Info */}
-        <Grid item>
-          <Grid
-            container
-            direction="column"
-            justifyContent="space-between"
-            classes={{ root: classes.infoContainer }}
-          >
-            {info.map((section, i) => (
               <Grid
                 item
-                key={section.label}
-                container
-                alignItems="center"
-                classes={{ root: i === 1 ? classes.middleInfo : undefined }}
+                classes={{
+                  root: clsx(classes.titleContainer, classes.blockContainer),
+                }}
               >
-                <Grid item classes={{ root: classes.iconContainer }}>
-                  {section.icon}
-                </Grid>
-                <Grid item>
-                  <Typography
-                    classes={{ root: classes.contactInfo }}
-                    variant="h2"
-                  >
-                    {section.label}
-                  </Typography>
+                <Typography variant="h4">Contact Us</Typography>
+              </Grid>
+              <Grid item>
+                <Grid container direction="column">
+                  {Object.keys(fields).map(field => {
+                    const validateHelper = event =>
+                      validate({ [field]: event.target.value })
+
+                    return (
+                      <Grid
+                        item
+                        key={field}
+                        classes={{
+                          root:
+                            field === 'message'
+                              ? classes.multilineContainer
+                              : classes.fieldContainer,
+                        }}
+                      >
+                        <TextField
+                          name={field}
+                          value={values[field]}
+                          onChange={e => {
+                            const valid = validateHelper(e)
+
+                            if (errors[field] || valid[field] === true) {
+                              setErrors({ ...errors, [field]: !valid[field] })
+                            }
+
+                            setValues({ ...values, [field]: e.target.value })
+                          }}
+                          onBlur={e => {
+                            const valid = validateHelper(e)
+                            setErrors({ ...errors, [field]: !valid[field] })
+                          }}
+                          error={errors[field]}
+                          helperText={errors[field] && fields[field].helperText}
+                          placeholder={fields[field].placeholder}
+                          classes={{ root: classes.textField }}
+                          multiline={field === 'message'}
+                          rows={field === 'message' ? 8 : undefined}
+                          InputProps={{
+                            classes: {
+                              input: classes.input,
+                              ...fields[field].inputClasses,
+                            },
+                            disableUnderline: field === 'message',
+                            startAdornment:
+                              field === 'message' ? undefined : (
+                                <InputAdornment position="start">
+                                  {fields[field].adornment}
+                                </InputAdornment>
+                              ),
+                          }}
+                        />
+                      </Grid>
+                    )
+                  })}
                 </Grid>
               </Grid>
-            ))}
+              <Grid
+                item
+                type="submit"
+                onClick={handleSubmit}
+                component={Button}
+                disabled={disabled}
+                classes={{
+                  root: clsx(classes.buttonContainer, classes.blockContainer, {
+                    [classes.buttonDisabled]: disabled,
+                  }),
+                }}
+              >
+                <Typography
+                  variant="h4"
+                  classes={{ root: classes.sendMessage }}
+                >
+                  send message
+                </Typography>
+                <img
+                  src={send}
+                  className={classes.sendIcon}
+                  alt="send message"
+                />
+              </Grid>
+            </Grid>
+          </Grid>
+
+          {/* Contact Info */}
+          <Grid item>
+            <Grid
+              container
+              direction="column"
+              justifyContent="space-between"
+              classes={{ root: classes.infoContainer }}
+            >
+              {info.map((section, i) => (
+                <Grid
+                  item
+                  key={section.label}
+                  container
+                  alignItems="center"
+                  classes={{ root: i === 1 ? classes.middleInfo : undefined }}
+                >
+                  <Grid item classes={{ root: classes.iconContainer }}>
+                    {section.icon}
+                  </Grid>
+                  <Grid item>
+                    <Typography
+                      classes={{ root: classes.contactInfo }}
+                      variant="h2"
+                    >
+                      {section.label}
+                    </Typography>
+                  </Grid>
+                </Grid>
+              ))}
+            </Grid>
           </Grid>
         </Grid>
-      </Grid>
-    </Layout>
+      </Layout>
+    </DashboardLayout>
   )
 }
 

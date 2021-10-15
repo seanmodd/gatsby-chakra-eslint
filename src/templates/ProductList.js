@@ -178,44 +178,52 @@ export default function ProductList({
   const numPages = Math.ceil(content.length / productsPerPage)
 
   return (
-    <Layout>
-      <SEO title={name} description={description} />
-      <Grid container direction="column" alignItems="center">
-        <div ref={scrollRef} />
-        <DynamicToolbar
-          filterOptions={filterOptions}
-          setFilterOptions={setFilterOptions}
-          sortOptions={sortOptions}
-          setSortOptions={setSortOptions}
-          name={name}
-          description={description}
-          layout={layout}
-          setLayout={setLayout}
-        />
-        <div className={classes.goodSpacing} />
-        <div className={classes.goodContainer}>
-          <ListOfProducts
-            page={page}
-            className={classes.goodSeparation}
-            filterOptions={filterOptions}
-            productsPerPage={productsPerPage}
-            layout={layout}
-            products={products}
-            content={content}
-          />
-        </div>
-        <StyledPagination
-          count={numPages}
-          page={page}
-          onChange={(e, newPage) => setPage(newPage)}
-          color="primary"
-          classes={{ root: classes.pagination }}
-        />
-        <Fab onClick={scroll} color="primary" classes={{ root: classes.fab }}>
-          ^
-        </Fab>
-      </Grid>
-    </Layout>
+    <>
+      <DashboardLayout>
+        <Layout>
+          <SEO title={name} description={description} />
+          <Grid container direction="column" alignItems="center">
+            <div ref={scrollRef} />
+            <DynamicToolbar
+              filterOptions={filterOptions}
+              setFilterOptions={setFilterOptions}
+              sortOptions={sortOptions}
+              setSortOptions={setSortOptions}
+              name={name}
+              description={description}
+              layout={layout}
+              setLayout={setLayout}
+            />
+            <div className={classes.goodSpacing} />
+            <div className={classes.goodContainer}>
+              <ListOfProducts
+                page={page}
+                className={classes.goodSeparation}
+                filterOptions={filterOptions}
+                productsPerPage={productsPerPage}
+                layout={layout}
+                products={products}
+                content={content}
+              />
+            </div>
+            <StyledPagination
+              count={numPages}
+              page={page}
+              onChange={(e, newPage) => setPage(newPage)}
+              color="primary"
+              classes={{ root: classes.pagination }}
+            />
+            <Fab
+              onClick={scroll}
+              color="primary"
+              classes={{ root: classes.fab }}
+            >
+              ^
+            </Fab>
+          </Grid>
+        </Layout>
+      </DashboardLayout>
+    </>
   )
 }
 
