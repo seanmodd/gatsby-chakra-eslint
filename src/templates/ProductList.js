@@ -5,7 +5,7 @@ import PaginationItem from '@material-ui/lab/PaginationItem'
 import Grid from '@material-ui/core/Grid'
 import { makeStyles, styled } from '@material-ui/core/styles'
 import { graphql } from 'gatsby'
-
+import DashboardLayout from '../src/layouts/dashboard'
 import Layout from '../components/ui/layout'
 import SEO from '../components/ui/seo'
 import DynamicToolbar from '../components/product-list/DynamicToolbar'

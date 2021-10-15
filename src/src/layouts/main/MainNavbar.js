@@ -97,12 +97,8 @@ export default function MainNavbar() {
             />
           </MHidden>
 
-          <Button
-            variant="contained"
-            target="_blank"
-            href="https://material-ui.com/store/items/minimal-dashboard/"
-          >
-            Purchase Now
+          <Button variant="contained" target="_blank">
+            <GatsbyLink to="/dashboard">Get Started</GatsbyLink>
           </Button>
 
           <MHidden width="mdUp">
