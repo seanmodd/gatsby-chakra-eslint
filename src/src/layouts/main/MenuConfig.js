@@ -1,3 +1,4 @@
+//! menu for desktop
 import React, { useState, useEffect } from 'react'
 import { Icon } from '@iconify/react'
 import homeFill from '@iconify/icons-eva/home-fill'
@@ -20,7 +21,22 @@ const menuConfig = [
   },
   {
     title: 'Dashboard',
-    path: PATH_DASHBOARD.root,
+    path: '/dashboard',
+    icon: <Icon icon={fileFill} {...ICON_SIZE} />,
+  },
+  {
+    title: 'Account',
+    path: '/account',
+    icon: <Icon icon={fileFill} {...ICON_SIZE} />,
+  },
+  {
+    title: 'New',
+    path: '/new',
+    icon: <Icon icon={fileFill} {...ICON_SIZE} />,
+  },
+  {
+    title: 'Pre-Owned',
+    path: '/pre-owned',
     icon: <Icon icon={fileFill} {...ICON_SIZE} />,
   },
 ]

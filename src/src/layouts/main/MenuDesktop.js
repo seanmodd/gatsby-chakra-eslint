@@ -22,6 +22,7 @@ import {
   ListSubheader,
   CardActionArea,
 } from '@mui/material'
+import illustration_dashboard from '../../static/illustrations/illustration_dashboard.png'
 
 // ----------------------------------------------------------------------
 
@@ -205,7 +206,7 @@ function MenuDesktopItem({
                                   hover: { scale: 1.02 },
                                   tap: { scale: 0.98 },
                                 }}
-                                src="/static/illustrations/illustration_dashboard.png"
+                                src={illustration_dashboard}
                               />
                             </CardActionArea>
                           ) : (
