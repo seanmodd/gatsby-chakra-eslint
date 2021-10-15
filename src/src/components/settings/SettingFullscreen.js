@@ -1,3 +1,4 @@
+//! must check this, as I have commented out the document requestFullscreen and setFullscreen(true)
 import React, { useState } from 'react'
 import { Icon } from '@iconify/react'
 import roundFullscreen from '@iconify/icons-ic/round-fullscreen'
@@ -13,11 +14,13 @@ export default function SettingFullscreen() {
 
   const toggleFullScreen = () => {
     if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen()
-      setFullscreen(true)
+      // document.documentElement.requestFullscreen()
+      // setFullscreen(true)
+      console.log('setFullscreen should be true')
     } else if (document.exitFullscreen) {
-      document.exitFullscreen()
-      setFullscreen(false)
+      // document.exitFullscreen()
+      // setFullscreen(false)
+      console.log('setFullscreen should be false')
     }
   }
 

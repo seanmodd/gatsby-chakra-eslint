@@ -1,3 +1,4 @@
+//! must check edits made to document.body.style.overflow....
 import React, { useState, useEffect } from 'react'
 import { Icon } from '@iconify/react'
 import closeFill from '@iconify/icons-eva/close-fill'
@@ -30,9 +31,11 @@ export default function Settings() {
 
   useEffect(() => {
     if (open) {
-      document.body.style.overflow = 'hidden'
+      // document.body.style.overflow = 'hidden'
+      console.log('bodystyle overflow is equaled to hidden')
     } else {
-      document.body.style.overflow = 'unset'
+      // document.body.style.overflow = 'unset'
+      console.log('bodystyle overflow is equaled to unset')
     }
   }, [open])
 

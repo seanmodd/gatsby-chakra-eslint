@@ -18,7 +18,8 @@ export default function RtlLayout({ children }) {
   const theme = useTheme()
 
   useEffect(() => {
-    document.dir = theme.direction
+    // document.dir = theme.direction
+    console.log('theme.direction', theme.direction)
   }, [theme.direction])
 
   const cacheRtl = createCache({
