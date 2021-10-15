@@ -41,10 +41,10 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Header categories={data.allStrapiCategory.edges} />
+      {/* <Header categories={data.allStrapiCategory.edges} /> */}
       <div className={classes.spacer} />
       <main>{children}</main>
-      <Footer />
+      {/* <Footer /> */}
     </>
   )
 }
