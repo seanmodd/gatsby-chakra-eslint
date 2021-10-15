@@ -5,24 +5,26 @@ import { Box, MenuItem, ListItemIcon, ListItemText } from '@mui/material'
 // components
 import MenuPopover from '../../components/MenuPopover'
 import { MIconButton } from '../../components/@material-extend'
-
+import ic_flag_en from '../../static/icons/ic_flag_en.svg'
+import ic_flag_de from '../../static/icons/ic_flag_de.svg'
+import ic_flag_fr from '../../static/icons/ic_flag_fr.svg'
 // ----------------------------------------------------------------------
 
 const LANGS = [
   {
     value: 'en',
     label: 'English',
-    icon: '/static/icons/ic_flag_en.svg',
+    icon: ic_flag_en,
   },
   {
     value: 'de',
     label: 'German',
-    icon: '/static/icons/ic_flag_de.svg',
+    icon: ic_flag_de,
   },
   {
     value: 'fr',
     label: 'French',
-    icon: '/static/icons/ic_flag_fr.svg',
+    icon: ic_flag_fr,
   },
 ]
 
