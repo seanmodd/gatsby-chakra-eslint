@@ -41,6 +41,11 @@ const sidebarConfig = [
         path: PATH_DASHBOARD.general.pageThree,
         icon: ICONS.analytics,
       },
+      {
+        title: 'Account',
+        path: PATH_DASHBOARD.general.pageFour,
+        icon: ICONS.analytics,
+      },
     ],
   },
 

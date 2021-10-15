@@ -16,6 +16,7 @@ import {
   MenuItem,
   Typography,
 } from '@mui/material'
+import avatar_default from '../../static/mock-images/avatars/avatar_default.jpg'
 // components
 import MenuPopover from '../../components/MenuPopover'
 import { MIconButton } from '../../components/@material-extend'
@@ -64,10 +65,7 @@ export default function AccountPopover() {
           }),
         }}
       >
-        <Avatar
-          alt="My Avatar"
-          src="/static/mock-images/avatars/avatar_default.jpg"
-        />
+        <Avatar alt="My Avatar" src={avatar_default} />
       </MIconButton>
 
       <MenuPopover
@@ -78,7 +76,7 @@ export default function AccountPopover() {
       >
         <Box sx={{ my: 1.5, px: 2.5 }}>
           <Typography variant="subtitle1" noWrap>
-            displayName
+            Guest User
           </Typography>
           <Typography variant="body2" sx={{ color: 'text.secondary' }} noWrap>
             email

@@ -18,6 +18,8 @@ import {
 } from '@mui/material'
 // hooks
 import useCollapseDrawer from '../../hooks/useCollapseDrawer'
+import avatar_default from '../../static/mock-images/avatars/avatar_default.jpg'
+
 // components
 import Logo from '../../components/Logo'
 import Scrollbar from '../../components/Scrollbar'
@@ -169,23 +171,20 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
         {isCollapse ? (
           <Avatar
             alt="My Avatar"
-            src="/static/mock-images/avatars/avatar_default.jpg"
+            src={avatar_default}
             sx={{ mx: 'auto', mb: 2 }}
           />
         ) : (
           <GatsbyLink to="#">
             <AccountStyle>
-              <Avatar
-                alt="My Avatar"
-                src="/static/mock-images/avatars/avatar_default.jpg"
-              />
+              <Avatar alt="My Avatar" src={avatar_default} />
               <Box sx={{ ml: 2 }}>
                 <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
-                  displayName
+                  Guest User
                 </Typography>
-                <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                {/* <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                   role
-                </Typography>
+                </Typography> */}
               </Box>
             </AccountStyle>
           </GatsbyLink>

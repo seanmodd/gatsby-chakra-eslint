@@ -43,8 +43,8 @@ export default function LandingPage() {
         <LandingMinimal />
         <LandingHugePackElements />
         <LandingDarkMode />
-        {/* <LandingThemeColor /> */}
-        {/* <LandingCleanInterfaces /> */}
+        <LandingThemeColor />
+        <LandingCleanInterfaces />
         <LandingPricingPlans />
         <LandingAdvertisement />
       </ContentStyle>
