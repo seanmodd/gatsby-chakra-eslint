@@ -28,6 +28,7 @@ import { ApolloWrapper } from '../../apollo/ApolloWrapper'
 import { UserWrapper, FeedbackWrapper, CartWrapper } from '../../contexts'
 import theme from './theme'
 import Layout from './layout'
+import MainLayout from '../../src/layouts/main'
 
 const clientSideEmotionCache = createEmotionCache()
 export default ({ element }) => {
@@ -62,7 +63,9 @@ export default ({ element }) => {
                   <ApolloWrapper>
                     <UserWrapper>
                       <FeedbackWrapper>
-                        <CartWrapper>{element}</CartWrapper>
+                        <CartWrapper>
+                          <MainLayout>{element}</MainLayout>
+                        </CartWrapper>
                       </FeedbackWrapper>
                     </UserWrapper>
                   </ApolloWrapper>

@@ -1,15 +1,16 @@
-import { Icon } from '@iconify/react';
-import homeFill from '@iconify/icons-eva/home-fill';
-import fileFill from '@iconify/icons-eva/file-fill';
+import React, { useState, useEffect } from 'react'
+import { Icon } from '@iconify/react'
+import homeFill from '@iconify/icons-eva/home-fill'
+import fileFill from '@iconify/icons-eva/file-fill'
 // routes
-import { PATH_DASHBOARD } from '../../routes/paths';
+import { PATH_DASHBOARD } from '../../routes/paths'
 
 // ----------------------------------------------------------------------
 
 const ICON_SIZE = {
   width: 22,
   height: 22,
-};
+}
 
 const menuConfig = [
   {
@@ -22,6 +23,6 @@ const menuConfig = [
     path: PATH_DASHBOARD.root,
     icon: <Icon icon={fileFill} {...ICON_SIZE} />,
   },
-];
+]
 
-export default menuConfig;
+export default menuConfig

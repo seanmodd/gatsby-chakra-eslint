@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react'
 import { Icon } from '@iconify/react'
 import { motion } from 'framer-motion'
 import flashFill from '@iconify/icons-eva/flash-fill'
@@ -8,6 +9,16 @@ import { Link as GatsbyLink } from 'gatsby'
 import { styled } from '@mui/material/styles'
 import { Box, Link, Stack, Button, Container, Typography } from '@mui/material'
 // routes
+// import 'src/src/static/home/ic_figma.svg'
+import ic_figma from '../../../static/home/ic_figma.svg'
+import ic_material from '../../../static/home/ic_material.svg'
+import overlay from '../../../static/overlay.svg'
+import hero from '../../../static/home/hero.png'
+import ic_ts from '../../../static/home/ic_ts.svg'
+import ic_js from '../../../static/home/ic_js.svg'
+import ic_sketch from '../../../static/home/ic_sketch.svg'
+import ic_sketch_small from '../../../static/home/ic_sketch_small.svg'
+import ic_react from '../../../static/home/ic_react.svg'
 import { PATH_DASHBOARD } from '../../../routes/paths'
 //
 import {
@@ -78,17 +89,9 @@ export default function LandingHero() {
   return (
     <>
       <RootStyle initial="initial" animate="animate" variants={varWrapEnter}>
-        <HeroOverlayStyle
-          alt="overlay"
-          src="/static/overlay.svg"
-          variants={varFadeIn}
-        />
+        <HeroOverlayStyle alt="overlay" src={overlay} variants={varFadeIn} />
 
-        <HeroImgStyle
-          alt="hero"
-          src="/static/home/hero.png"
-          variants={varFadeInUp}
-        />
+        <HeroImgStyle alt="hero" src={hero} variants={varFadeInUp} />
 
         <Container maxWidth="lg">
           <ContentStyle>
@@ -123,7 +126,7 @@ export default function LandingHero() {
             >
               <img
                 alt="sketch icon"
-                src="/static/home/ic_sketch_small.svg"
+                src={ic_sketch_small}
                 width={20}
                 height={20}
               />
@@ -154,30 +157,13 @@ export default function LandingHero() {
               spacing={1.5}
               justifyContent={{ xs: 'center', md: 'flex-start' }}
             >
-              <motion.img
-                variants={varFadeInRight}
-                src="/static/home/ic_sketch.svg"
-              />
-              <motion.img
-                variants={varFadeInRight}
-                src="/static/home/ic_figma.svg"
-              />
-              <motion.img
-                variants={varFadeInRight}
-                src="/static/home/ic_material.svg"
-              />
-              <motion.img
-                variants={varFadeInRight}
-                src="/static/home/ic_react.svg"
-              />
-              <motion.img
-                variants={varFadeInRight}
-                src="/static/home/ic_js.svg"
-              />
-              <motion.img
-                variants={varFadeInRight}
-                src="/static/home/ic_ts.svg"
-              />
+              <motion.img variants={varFadeInRight} src={ic_sketch} />
+              <motion.img variants={varFadeInUp} src={ic_figma} />
+
+              <motion.img variants={varFadeInRight} src={ic_material} />
+              <motion.img variants={varFadeInRight} src={ic_react} />
+              <motion.img variants={varFadeInRight} src={ic_js} />
+              <motion.img variants={varFadeInRight} src={ic_ts} />
             </Stack>
           </ContentStyle>
         </Container>

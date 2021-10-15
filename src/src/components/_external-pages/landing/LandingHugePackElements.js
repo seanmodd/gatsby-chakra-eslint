@@ -1,9 +1,12 @@
+//! must look at!
+import React, { useState, useEffect } from 'react'
 // material
-import { alpha, useTheme, styled } from '@mui/material/styles';
-import { Box, Grid, Button, Container, Typography } from '@mui/material';
+import { alpha, useTheme, styled } from '@mui/material/styles'
+import { Box, Grid, Button, Container, Typography } from '@mui/material'
 //
-import { varFadeInUp, MotionInView } from '../../animate';
-
+import { varFadeInUp, MotionInView } from '../../animate'
+import light from '../../../static/home/screen_light_1.png'
+import dark from '../../../static/home/screen_dark_1.png'
 // ----------------------------------------------------------------------
 
 const RootStyle = styled('div')(({ theme }) => ({
@@ -14,7 +17,7 @@ const RootStyle = styled('div')(({ theme }) => ({
           theme.palette.grey[300]
         } 100%)`
       : 'none',
-}));
+}))
 
 const ContentStyle = styled('div')(({ theme }) => ({
   width: '100%',
@@ -24,7 +27,7 @@ const ContentStyle = styled('div')(({ theme }) => ({
     textAlign: 'left',
     marginBottom: 0,
   },
-}));
+}))
 
 const ScreenStyle = styled(MotionInView)(({ theme }) => ({
   paddingRight: 2,
@@ -44,7 +47,7 @@ const ScreenStyle = styled(MotionInView)(({ theme }) => ({
       borderRadius: 12,
     },
   },
-}));
+}))
 
 const COMMON = {
   scaleX: 0.86,
@@ -54,36 +57,36 @@ const COMMON = {
   translateX: 0,
   translateY: 0,
   opacity: 0,
-};
+}
 
 const variantScreenLeft = {
   initial: COMMON,
   animate: { ...COMMON, translateX: '-50%', translateY: 40, opacity: 1 },
-};
+}
 const variantScreenCenter = {
   initial: COMMON,
   animate: { ...COMMON, opacity: 1 },
-};
+}
 const variantScreenRight = {
   initial: COMMON,
   animate: { ...COMMON, translateX: '50%', translateY: -40, opacity: 1 },
-};
+}
 
 // ----------------------------------------------------------------------
 
 export default function LandingHugePackElements() {
-  const theme = useTheme();
-  const isLight = theme.palette.mode === 'light';
-  const isRTL = theme.direction === 'rtl';
+  const theme = useTheme()
+  const isLight = theme.palette.mode === 'light'
+  const isRTL = theme.direction === 'rtl'
 
-  const screenLeftAnimate = variantScreenLeft;
-  const screenCenterAnimate = variantScreenCenter;
-  const screenRightAnimate = variantScreenRight;
+  const screenLeftAnimate = variantScreenLeft
+  const screenCenterAnimate = variantScreenCenter
+  const screenRightAnimate = variantScreenRight
 
   return (
     <RootStyle>
-      <Container maxWidth='lg'>
-        <Grid container spacing={5} justifyContent='center'>
+      <Container maxWidth="lg">
+        <Grid container spacing={5} justifyContent="center">
           <Grid
             item
             xs={12}
@@ -93,8 +96,8 @@ export default function LandingHugePackElements() {
             <ContentStyle>
               <MotionInView variants={varFadeInUp}>
                 <Typography
-                  component='p'
-                  variant='overline'
+                  component="p"
+                  variant="overline"
                   sx={{ mb: 2, color: 'text.secondary' }}
                 >
                   Interface Starter Kit
@@ -102,7 +105,7 @@ export default function LandingHugePackElements() {
               </MotionInView>
 
               <MotionInView variants={varFadeInUp}>
-                <Typography variant='h2' sx={{ mb: 3 }}>
+                <Typography variant="h2" sx={{ mb: 3 }}>
                   Huge pack <br />
                   of elements
                 </Typography>
@@ -121,14 +124,14 @@ export default function LandingHugePackElements() {
               </MotionInView>
 
               <MotionInView variants={varFadeInUp}>
-                <Button size='large' color='inherit' variant='outlined'>
+                <Button size="large" color="inherit" variant="outlined">
                   View All Components
                 </Button>
               </MotionInView>
             </ContentStyle>
           </Grid>
 
-          <Grid item xs={12} md={8} dir='ltr'>
+          <Grid item xs={12} md={8} dir="ltr">
             <Box
               sx={{
                 display: 'flex',
@@ -168,9 +171,7 @@ export default function LandingHugePackElements() {
                 >
                   <img
                     alt={`screen ${index + 1}`}
-                    src={`/static/home/screen_${isLight ? 'light' : 'dark'}_${
-                      index + 1
-                    }.png`}
+                    src={isLight ? light : dark}
                   />
                 </ScreenStyle>
               ))}
@@ -179,5 +180,5 @@ export default function LandingHugePackElements() {
         </Grid>
       </Container>
     </RootStyle>
-  );
+  )
 }

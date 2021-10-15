@@ -1,5 +1,6 @@
+import React, { useState, useEffect } from 'react'
 // material
-import { alpha, useTheme, styled } from '@mui/material/styles';
+import { alpha, useTheme, styled } from '@mui/material/styles'
 import {
   Box,
   Grid,
@@ -7,47 +8,50 @@ import {
   Container,
   Typography,
   useMediaQuery,
-} from '@mui/material';
+} from '@mui/material'
+import ic_design from '../../../static/icons/ic_design.svg'
+import ic_code from '../../../static/icons/ic_code.svg'
+import logo_single from '../../../static/brand/logo_single.svg'
 //
-import { varFadeInUp, MotionInView, varFadeInDown } from '../../animate';
+import { varFadeInUp, MotionInView, varFadeInDown } from '../../animate'
 
 // ----------------------------------------------------------------------
 
 const CARDS = [
   {
-    icon: '/static/icons/ic_design.svg',
+    icon: ic_design,
     title: 'UI & UX Design',
     description:
       'The set is built on the principles of the atomic design system. It helps you to create projects fastest and easily customized packages for your projects.',
   },
   {
-    icon: '/static/icons/ic_code.svg',
+    icon: ic_code,
     title: 'Development',
     description:
       'Easy to customize and extend each component, saving you time and money.',
   },
   {
-    icon: '/static/brand/logo_single.svg',
+    icon: logo_single,
     title: 'Branding',
     description:
       'Consistent design in colors, fonts ... makes brand recognition easy.',
   },
-];
+]
 
-const shadowIcon = (color) => `drop-shadow(2px 2px 2px ${alpha(color, 0.48)})`;
+const shadowIcon = color => `drop-shadow(2px 2px 2px ${alpha(color, 0.48)})`
 
 const RootStyle = styled('div')(({ theme }) => ({
   paddingTop: theme.spacing(15),
   [theme.breakpoints.up('md')]: {
     paddingBottom: theme.spacing(15),
   },
-}));
+}))
 
 const CardStyle = styled(Card)(({ theme }) => {
-  const shadowCard = (opacity) =>
+  const shadowCard = opacity =>
     theme.palette.mode === 'light'
       ? alpha(theme.palette.grey[500], opacity)
-      : alpha(theme.palette.common.black, opacity);
+      : alpha(theme.palette.common.black, opacity)
 
   return {
     maxWidth: 380,
@@ -86,8 +90,8 @@ const CardStyle = styled(Card)(({ theme }) => {
         },
       },
     },
-  };
-});
+  }
+})
 
 const CardIconStyle = styled('img')(({ theme }) => ({
   width: 40,
@@ -95,30 +99,30 @@ const CardIconStyle = styled('img')(({ theme }) => ({
   margin: 'auto',
   marginBottom: theme.spacing(10),
   filter: shadowIcon(theme.palette.primary.main),
-}));
+}))
 
 // ----------------------------------------------------------------------
 
 export default function LandingMinimalHelps() {
-  const theme = useTheme();
-  const isLight = theme.palette.mode === 'light';
-  const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
+  const theme = useTheme()
+  const isLight = theme.palette.mode === 'light'
+  const isDesktop = useMediaQuery(theme.breakpoints.up('lg'))
 
   return (
     <RootStyle>
-      <Container maxWidth='lg'>
+      <Container maxWidth="lg">
         <Box sx={{ mb: { xs: 10, md: 25 } }}>
           <MotionInView variants={varFadeInUp}>
             <Typography
-              component='p'
-              variant='overline'
+              component="p"
+              variant="overline"
               sx={{ mb: 2, color: 'text.secondary', textAlign: 'center' }}
             >
               Minimal
             </Typography>
           </MotionInView>
           <MotionInView variants={varFadeInDown}>
-            <Typography variant='h2' sx={{ textAlign: 'center' }}>
+            <Typography variant="h2" sx={{ textAlign: 'center' }}>
               What minimal helps you?
             </Typography>
           </MotionInView>
@@ -138,14 +142,14 @@ export default function LandingMinimalHelps() {
                     alt={card.title}
                     sx={{
                       ...(index === 0 && {
-                        filter: (theme) => shadowIcon(theme.palette.info.main),
+                        filter: theme => shadowIcon(theme.palette.info.main),
                       }),
                       ...(index === 1 && {
-                        filter: (theme) => shadowIcon(theme.palette.error.main),
+                        filter: theme => shadowIcon(theme.palette.error.main),
                       }),
                     }}
                   />
-                  <Typography variant='h5' paragraph>
+                  <Typography variant="h5" paragraph>
                     {card.title}
                   </Typography>
                   <Typography
@@ -160,5 +164,5 @@ export default function LandingMinimalHelps() {
         </Grid>
       </Container>
     </RootStyle>
-  );
+  )
 }

@@ -1,7 +1,8 @@
-import { capitalCase } from 'change-case';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react'
+import { capitalCase } from 'change-case'
+import { motion } from 'framer-motion'
 // material
-import { styled, alpha } from '@mui/material/styles';
+import { styled, alpha } from '@mui/material/styles'
 import {
   Box,
   Stack,
@@ -12,12 +13,12 @@ import {
   RadioGroup,
   CardActionArea,
   FormControlLabel,
-} from '@mui/material';
+} from '@mui/material'
 // hooks
-import useSettings from '../../../hooks/useSettings';
+import useSettings from '../../../hooks/useSettings'
 //
-import { MotionInView, varFadeInUp, varFadeInDown } from '../../animate';
-
+import { MotionInView, varFadeInUp, varFadeInDown } from '../../animate'
+import grid from '../../../static/home/theme-color/grid.png'
 // ----------------------------------------------------------------------
 
 const RootStyle = styled('div')(({ theme }) => ({
@@ -29,23 +30,23 @@ const RootStyle = styled('div')(({ theme }) => ({
           0
         )} 100%)`
       : 'none',
-}));
+}))
 
 // ----------------------------------------------------------------------
 
 export default function LandingThemeColor() {
-  const { themeColor, onChangeColor, colorOption } = useSettings();
+  const { themeColor, onChangeColor, colorOption } = useSettings()
 
   return (
     <RootStyle>
       <Container
-        maxWidth='lg'
+        maxWidth="lg"
         sx={{ position: 'relative', textAlign: 'center' }}
       >
         <MotionInView variants={varFadeInUp}>
           <Typography
-            component='p'
-            variant='overline'
+            component="p"
+            variant="overline"
             sx={{ mb: 2, color: 'text.disabled', display: 'block' }}
           >
             choose your style
@@ -53,7 +54,7 @@ export default function LandingThemeColor() {
         </MotionInView>
 
         <MotionInView variants={varFadeInUp}>
-          <Typography variant='h2' sx={{ mb: 3 }}>
+          <Typography variant="h2" sx={{ mb: 3 }}>
             Theme color
           </Typography>
         </MotionInView>
@@ -61,7 +62,7 @@ export default function LandingThemeColor() {
         <MotionInView variants={varFadeInUp}>
           <Typography
             sx={{
-              color: (theme) =>
+              color: theme =>
                 theme.palette.mode === 'light'
                   ? 'text.secondary'
                   : 'text.primary',
@@ -72,30 +73,30 @@ export default function LandingThemeColor() {
         </MotionInView>
 
         <RadioGroup
-          name='themeColor'
+          name="themeColor"
           value={themeColor}
           onChange={onChangeColor}
           sx={{ my: 5 }}
         >
           <Stack
             direction={{ xs: 'row', lg: 'column' }}
-            justifyContent='center'
+            justifyContent="center"
             spacing={1}
             sx={{
               position: { lg: 'absolute' },
               right: { lg: 0 },
             }}
           >
-            {colorOption.map((color) => {
-              const colorName = color.name;
-              const colorValue = color.value;
-              const isSelected = themeColor === colorName;
+            {colorOption.map(color => {
+              const colorName = color.name
+              const colorValue = color.value
+              const isSelected = themeColor === colorName
 
               return (
                 <Tooltip
                   key={colorName}
                   title={capitalCase(colorName)}
-                  placement='right'
+                  placement="right"
                 >
                   <CardActionArea
                     sx={{
@@ -129,7 +130,7 @@ export default function LandingThemeColor() {
                           ...(isSelected && {
                             width: 14,
                             height: 14,
-                            transition: (theme) =>
+                            transition: theme =>
                               theme.transitions.create('all', {
                                 easing: theme.transitions.easing.easeInOut,
                                 duration: theme.transitions.duration.shorter,
@@ -138,7 +139,7 @@ export default function LandingThemeColor() {
                         }}
                       />
                       <FormControlLabel
-                        label=''
+                        label=""
                         value={colorName}
                         control={<Radio sx={{ display: 'none' }} />}
                         sx={{
@@ -153,19 +154,19 @@ export default function LandingThemeColor() {
                     </Box>
                   </CardActionArea>
                 </Tooltip>
-              );
+              )
             })}
           </Stack>
         </RadioGroup>
 
         <Box sx={{ position: 'relative' }}>
-          <Box component='img' src='/static/home/theme-color/grid.png' />
+          <Box component="img" src={grid} />
 
           <Box sx={{ position: 'absolute', top: 0 }}>
             <MotionInView variants={varFadeInUp}>
               <img
-                alt='screen'
-                src={`/static/home/theme-color/screen-${themeColor}.png`}
+                alt="screen"
+                src={`../../../static/home/theme-color/screen-${themeColor}.png`}
               />
             </MotionInView>
           </Box>
@@ -177,8 +178,8 @@ export default function LandingThemeColor() {
                 transition={{ duration: 8, repeat: Infinity }}
               >
                 <img
-                  alt='sidebar'
-                  src={`/static/home/theme-color/block1-${themeColor}.png`}
+                  alt="sidebar"
+                  src={`../../../static/home/theme-color/block1-${themeColor}.png`}
                 />
               </motion.div>
             </MotionInView>
@@ -191,8 +192,8 @@ export default function LandingThemeColor() {
                 transition={{ duration: 8, repeat: Infinity }}
               >
                 <img
-                  alt='sidebar'
-                  src={`/static/home/theme-color/block2-${themeColor}.png`}
+                  alt="sidebar"
+                  src={`../../../static/home/theme-color/block2-${themeColor}.png`}
                 />
               </motion.div>
             </MotionInView>
@@ -205,8 +206,8 @@ export default function LandingThemeColor() {
                 transition={{ duration: 10, repeat: Infinity }}
               >
                 <img
-                  alt='sidebar'
-                  src={`/static/home/theme-color/sidebar-${themeColor}.png`}
+                  alt="sidebar"
+                  src={`../../../static/home/theme-color/sidebar-${themeColor}.png`}
                 />
               </motion.div>
             </MotionInView>
@@ -214,5 +215,5 @@ export default function LandingThemeColor() {
         </Box>
       </Container>
     </RootStyle>
-  );
+  )
 }

@@ -1,19 +1,21 @@
+//! must fix the dybnamic referencing of the image
+import React, { useState, useEffect } from 'react'
 // material
-import { alpha, styled } from '@mui/material/styles';
-import { Box, Container, Typography, useTheme } from '@mui/material';
+import { alpha, styled } from '@mui/material/styles'
+import { Box, Container, Typography, useTheme } from '@mui/material'
 //
-import { varFadeInUp, MotionInView } from '../../animate';
+import { varFadeInUp, MotionInView } from '../../animate'
 
 // ----------------------------------------------------------------------
 
 const IMG = [...Array(10)].map(
   (_, index) => `/static/home/clean-${index + 1}.png`
-);
+)
 
 const RootStyle = styled('div')(({ theme }) => ({
   paddingTop: theme.spacing(15),
   paddingBottom: theme.spacing(10),
-}));
+}))
 
 const ContentStyle = styled('div')(({ theme }) => ({
   maxWidth: 520,
@@ -24,22 +26,22 @@ const ContentStyle = styled('div')(({ theme }) => ({
     textAlign: 'left',
     position: 'absolute',
   },
-}));
+}))
 
 // ----------------------------------------------------------------------
 
 export default function LandingCleanInterfaces() {
-  const theme = useTheme();
-  const isLight = theme.palette.mode === 'light';
+  const theme = useTheme()
+  const isLight = theme.palette.mode === 'light'
 
   return (
     <RootStyle>
-      <Container maxWidth='lg'>
+      <Container maxWidth="lg">
         <ContentStyle>
           <MotionInView variants={varFadeInUp}>
             <Typography
-              component='p'
-              variant='overline'
+              component="p"
+              variant="overline"
               sx={{ mb: 2, color: 'text.secondary' }}
             >
               clean & clear
@@ -48,11 +50,11 @@ export default function LandingCleanInterfaces() {
 
           <MotionInView variants={varFadeInUp}>
             <Typography
-              variant='h2'
+              variant="h2"
               paragraph
               sx={{
                 ...(!isLight && {
-                  textShadow: (theme) =>
+                  textShadow: theme =>
                     `4px 4px 16px ${alpha(theme.palette.grey[800], 0.48)}`,
                 }),
               }}
@@ -77,7 +79,7 @@ export default function LandingCleanInterfaces() {
               }}
             >
               <Box
-                component='img'
+                component="img"
                 src={`/static/home/clean-${index + 1}.png`}
               />
             </MotionInView>
@@ -85,5 +87,5 @@ export default function LandingCleanInterfaces() {
         </Box>
       </Container>
     </RootStyle>
-  );
+  )
 }

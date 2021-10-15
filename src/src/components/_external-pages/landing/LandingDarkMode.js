@@ -1,15 +1,19 @@
+import React, { useState, useEffect } from 'react'
 // material
-import { styled } from '@mui/material/styles';
-import { Box, Grid, Container, Typography } from '@mui/material';
+import { styled } from '@mui/material/styles'
+import { Box, Grid, Container, Typography } from '@mui/material'
+import lightmode from '../../../static/home/lightmode.png'
+import darkmode from '../../../static/home/darkmode.png'
+import shape from '../../../static/home/shape.svg'
 //
-import { MotionInView, varFadeInUp, varFadeInDown } from '../../animate';
+import { MotionInView, varFadeInUp, varFadeInDown } from '../../animate'
 
 // ----------------------------------------------------------------------
 
 const RootStyle = styled('div')(({ theme }) => ({
   padding: theme.spacing(28, 0),
   backgroundColor: theme.palette.grey[900],
-}));
+}))
 
 const ContentStyle = styled('div')(({ theme }) => ({
   textAlign: 'center',
@@ -24,18 +28,18 @@ const ContentStyle = styled('div')(({ theme }) => ({
     justifyContent: 'center',
     alignItems: 'flex-start',
   },
-}));
+}))
 
 // ----------------------------------------------------------------------
 
 export default function LandingDarkMode() {
   return (
     <RootStyle>
-      <Container maxWidth='lg' sx={{ position: 'relative' }}>
+      <Container maxWidth="lg" sx={{ position: 'relative' }}>
         <Box
-          component='img'
-          alt='image shape'
-          src='/static/home/shape.svg'
+          component="img"
+          alt="image shape"
+          src={shape}
           sx={{
             top: 0,
             right: 0,
@@ -50,15 +54,15 @@ export default function LandingDarkMode() {
         <Grid
           container
           spacing={5}
-          direction='row-reverse'
-          justifyContent='space-between'
+          direction="row-reverse"
+          justifyContent="space-between"
         >
           <Grid item xs={12} md={4}>
             <ContentStyle>
               <MotionInView variants={varFadeInUp}>
                 <Typography
-                  component='p'
-                  variant='overline'
+                  component="p"
+                  variant="overline"
                   sx={{ mb: 2, color: 'text.disabled', display: 'block' }}
                 >
                   Easy switch between styles.
@@ -66,7 +70,7 @@ export default function LandingDarkMode() {
               </MotionInView>
 
               <MotionInView variants={varFadeInUp}>
-                <Typography variant='h2' sx={{ mb: 3, color: 'common.white' }}>
+                <Typography variant="h2" sx={{ mb: 3, color: 'common.white' }}>
                   Dark mode
                 </Typography>
               </MotionInView>
@@ -81,18 +85,18 @@ export default function LandingDarkMode() {
 
           <Grid item xs={12} md={7} sx={{ position: 'relative' }}>
             <MotionInView threshold={0.5} variants={varFadeInUp}>
-              <img alt='light mode' src='/static/home/lightmode.png' />
+              <img alt="light mode" src={lightmode} />
             </MotionInView>
             <MotionInView
               threshold={0.5}
               variants={varFadeInDown}
               sx={{ top: 0, left: 0, position: 'absolute' }}
             >
-              <img alt='dark mode' src='/static/home/darkmode.png' />
+              <img alt="dark mode" src={darkmode} />
             </MotionInView>
           </Grid>
         </Grid>
       </Container>
     </RootStyle>
-  );
+  )
 }

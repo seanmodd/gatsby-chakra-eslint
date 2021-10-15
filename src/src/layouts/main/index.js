@@ -1,5 +1,5 @@
 //! utilizes useRouter from Next to get the current path
-import React from 'react'
+
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Link as ScrollLink } from 'react-scroll'
