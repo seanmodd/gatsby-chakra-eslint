@@ -56,12 +56,12 @@ export default function Footer() {
       { label: 'sean@senpex.com', href: 'mailto:sean@senpex.com' },
     ],
     'Customer Service': [
-      { label: 'Contact Us', link: '/contact' },
-      { label: 'My Account', link: '/account' },
+      { label: 'Contact Us', link: '/dashboard/contact' },
+      { label: 'My Account', link: '/dashboard/account' },
     ],
     Information: [
-      { label: 'Privacy Policy', link: '/privacy-policy' },
-      { label: 'Terms and Conditions', link: '/terms-conditions' },
+      { label: 'Privacy Policy', link: '/dashboard/privacy-policy' },
+      { label: 'Terms and Conditions', link: '/dashboard/terms-conditions' },
     ],
   }
 

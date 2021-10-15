@@ -1,3 +1,4 @@
+//! must check the url with the to={`/dashboard/${slides[selectedSlide].url}`}
 //* Potential Problem: Utilizing typeof window !== 'undefined' below...
 
 import React, { useState, useContext } from 'react'
@@ -122,7 +123,7 @@ export default function Header({ categories }) {
     const found = routes.indexOf(
       routes.filter(
         ({ node: { name, link } }) =>
-          (link || `/${name.toLowerCase()}`) === `/${pathname}`
+          (link || `/dashboard/${name.toLowerCase()}`) === `/${pathname}`
       )[0]
     )
 
@@ -131,10 +132,34 @@ export default function Header({ categories }) {
 
   const routes = [
     ...categories,
-    { node: { name: 'Search Cars', strapiId: 'search', link: '/search' } },
-    { node: { name: 'Sell/Trade', strapiId: 'sellCar', link: '/sell-my-car' } },
-    { node: { name: 'Financing', strapiId: 'financing', link: '/financing' } },
-    { node: { name: 'Contact Us', strapiId: 'contact', link: '/contact' } },
+    {
+      node: {
+        name: 'Search Cars',
+        strapiId: 'search',
+        link: '/dashboard/search',
+      },
+    },
+    {
+      node: {
+        name: 'Sell/Trade',
+        strapiId: 'sellCar',
+        link: '/dashboard/sell-my-car',
+      },
+    },
+    {
+      node: {
+        name: 'Financing',
+        strapiId: 'financing',
+        link: '/dashboard/financing',
+      },
+    },
+    {
+      node: {
+        name: 'Contact Us',
+        strapiId: 'contact',
+        link: '/dashboard/contact',
+      },
+    },
   ]
 
   const tabs = (
@@ -145,7 +170,7 @@ export default function Header({ categories }) {
       {routes.map(route => (
         <Tab
           component={Link}
-          to={route.node.link || `/${route.node.name.toLowerCase()}`}
+          to={route.node.link || `/dashboard/${route.node.name.toLowerCase()}`}
           classes={{ root: classes.tab }}
           label={route.node.name}
           key={route.node.strapiId}
@@ -166,12 +191,20 @@ export default function Header({ categories }) {
       <List disablePadding>
         {[
           ...routes,
-          { node: { name: 'Account', strapiId: 'account', link: '/account' } },
+          {
+            node: {
+              name: 'Account',
+              strapiId: 'account',
+              link: '/dashboard/account',
+            },
+          },
         ].map((route, i) => (
           <ListItem
             selected={!isClient ? false : activeIndex() === i}
             component={Link}
-            to={route.node.link || `/${route.node.name.toLowerCase()}`}
+            to={
+              route.node.link || `/dashboard/${route.node.name.toLowerCase()}`
+            }
             divider
             button
             key={route.node.strapiId}
@@ -193,8 +226,13 @@ export default function Header({ categories }) {
     //   visible: true,
     //   onClick: () => console.log('search'),
     // },
-    { icon: cartIcon, alt: 'cart', visible: true, link: '/cart' },
-    { icon: account, alt: 'account', visible: !matchesMD, link: '/account' },
+    { icon: cartIcon, alt: 'cart', visible: true, link: '/dashboard/cart' },
+    {
+      icon: account,
+      alt: 'account',
+      visible: !matchesMD,
+      link: '/dashboard/account',
+    },
   ]
 
   const newactions = [

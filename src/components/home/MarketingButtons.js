@@ -66,8 +66,8 @@ export default function MarketingButtons() {
   const classes = useStyles()
 
   const buttons = [
-    { label: 'Store', icon: store, link: '/hoodies' },
-    { label: 'More By Us', icon: moreByUs, href: 'https://www.google.com' },
+    { label: 'Store', icon: store, link: '/dashboard/new' },
+    // { label: 'More By Us', icon: moreByUs, href: 'https://www.google.com' },
   ]
 
   return (
