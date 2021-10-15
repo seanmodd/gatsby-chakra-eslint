@@ -1,23 +1,23 @@
-import PropTypes from 'prop-types';
-import { useState } from 'react';
+import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 // material
-import { styled, useTheme } from '@mui/material/styles';
+import { styled, useTheme } from '@mui/material/styles'
 // hooks
-import useCollapseDrawer from '../../hooks/useCollapseDrawer';
+import useCollapseDrawer from '../../hooks/useCollapseDrawer'
 //
-import DashboardNavbar from './DashboardNavbar';
-import DashboardSidebar from './DashboardSidebar';
+import DashboardNavbar from './DashboardNavbar'
+import DashboardSidebar from './DashboardSidebar'
 
 // ----------------------------------------------------------------------
 
-const APP_BAR_MOBILE = 64;
-const APP_BAR_DESKTOP = 92;
+const APP_BAR_MOBILE = 64
+const APP_BAR_DESKTOP = 92
 
 const RootStyle = styled('div')({
   display: 'flex',
   minHeight: '100%',
   overflow: 'hidden',
-});
+})
 
 const MainStyle = styled('div')(({ theme }) => ({
   flexGrow: 1,
@@ -30,18 +30,18 @@ const MainStyle = styled('div')(({ theme }) => ({
     paddingLeft: theme.spacing(2),
     paddingRight: theme.spacing(2),
   },
-}));
+}))
 
 // ----------------------------------------------------------------------
 
 DashboardLayout.propTypes = {
   children: PropTypes.node,
-};
+}
 
 export default function DashboardLayout({ children }) {
-  const theme = useTheme();
-  const { collapseClick } = useCollapseDrawer();
-  const [open, setOpen] = useState(false);
+  const theme = useTheme()
+  const { collapseClick } = useCollapseDrawer()
+  const [open, setOpen] = useState(false)
 
   return (
     <RootStyle>
@@ -63,5 +63,5 @@ export default function DashboardLayout({ children }) {
         {children}
       </MainStyle>
     </RootStyle>
-  );
+  )
 }

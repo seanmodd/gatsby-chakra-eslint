@@ -1,8 +1,8 @@
-import { Icon } from '@iconify/react';
-import { useState } from 'react';
-import searchFill from '@iconify/icons-eva/search-fill';
+import React, { useState } from 'react'
+import { Icon } from '@iconify/react'
+import searchFill from '@iconify/icons-eva/search-fill'
 // material
-import { styled, alpha } from '@mui/material/styles';
+import { styled, alpha } from '@mui/material/styles'
 import {
   Box,
   Input,
@@ -10,14 +10,14 @@ import {
   Button,
   InputAdornment,
   ClickAwayListener,
-} from '@mui/material';
+} from '@mui/material'
 // components
-import { MIconButton } from '../../components/@material-extend';
+import { MIconButton } from '../../components/@material-extend'
 
 // ----------------------------------------------------------------------
 
-const APPBAR_MOBILE = 64;
-const APPBAR_DESKTOP = 92;
+const APPBAR_MOBILE = 64
+const APPBAR_DESKTOP = 92
 
 const SearchbarStyle = styled('div')(({ theme }) => ({
   top: 0,
@@ -37,20 +37,20 @@ const SearchbarStyle = styled('div')(({ theme }) => ({
     height: APPBAR_DESKTOP,
     padding: theme.spacing(0, 5),
   },
-}));
+}))
 
 // ----------------------------------------------------------------------
 
 export default function Searchbar() {
-  const [isOpen, setOpen] = useState(false);
+  const [isOpen, setOpen] = useState(false)
 
   const handleOpen = () => {
-    setOpen((prev) => !prev);
-  };
+    setOpen(prev => !prev)
+  }
 
   const handleClose = () => {
-    setOpen(false);
-  };
+    setOpen(false)
+  }
 
   return (
     <ClickAwayListener onClickAway={handleClose}>
@@ -61,15 +61,15 @@ export default function Searchbar() {
           </MIconButton>
         )}
 
-        <Slide direction='down' in={isOpen} mountOnEnter unmountOnExit>
+        <Slide direction="down" in={isOpen} mountOnEnter unmountOnExit>
           <SearchbarStyle>
             <Input
               autoFocus
               fullWidth
               disableUnderline
-              placeholder='Search…'
+              placeholder="Search…"
               startAdornment={
-                <InputAdornment position='start'>
+                <InputAdornment position="start">
                   <Box
                     component={Icon}
                     icon={searchFill}
@@ -79,12 +79,12 @@ export default function Searchbar() {
               }
               sx={{ mr: 1, fontWeight: 'fontWeightBold' }}
             />
-            <Button variant='contained' onClick={handleClose}>
+            <Button variant="contained" onClick={handleClose}>
               Search
             </Button>
           </SearchbarStyle>
         </Slide>
       </div>
     </ClickAwayListener>
-  );
+  )
 }

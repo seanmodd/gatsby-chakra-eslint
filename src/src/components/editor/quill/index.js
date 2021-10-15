@@ -1,14 +1,16 @@
-import PropTypes from 'prop-types';
+//! must check how it utilizes dynamic from 'next/dynamic'
+import React from 'react'
+import PropTypes from 'prop-types'
 // next
-import dynamic from 'next/dynamic';
+// import dynamic from 'next/dynamic'
 // material
-import { styled } from '@mui/material/styles';
-import { Box } from '@mui/material';
+import { styled } from '@mui/material/styles'
+import { Box } from '@mui/material'
 //
-import EditorToolbar, { formats } from './QuillEditorToolbar';
+import EditorToolbar, { formats } from './QuillEditorToolbar'
 
-const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
-
+// const ReactQuill = dynamic(() => import('react-quill'), { ssr: false })
+const ReactQuill = require('react-quill')
 // ----------------------------------------------------------------------
 
 const RootStyle = styled(Box)(({ theme }) => ({
@@ -32,7 +34,7 @@ const RootStyle = styled(Box)(({ theme }) => ({
       backgroundColor: theme.palette.grey[900],
     },
   },
-}));
+}))
 
 // ----------------------------------------------------------------------
 
@@ -43,7 +45,7 @@ QuillEditor.propTypes = {
   error: PropTypes.bool,
   simple: PropTypes.bool,
   sx: PropTypes.object,
-};
+}
 
 export default function QuillEditor({
   id = 'minimal-quill',
@@ -66,13 +68,13 @@ export default function QuillEditor({
     clipboard: {
       matchVisual: false,
     },
-  };
+  }
 
   return (
     <RootStyle
       sx={{
         ...(error && {
-          border: (theme) => `solid 1px ${theme.palette.error.main}`,
+          border: theme => `solid 1px ${theme.palette.error.main}`,
         }),
         ...sx,
       }}
@@ -83,9 +85,9 @@ export default function QuillEditor({
         onChange={onChange}
         modules={modules}
         formats={formats}
-        placeholder='Write something awesome...'
+        placeholder="Write something awesome..."
         {...other}
       />
     </RootStyle>
-  );
+  )
 }
