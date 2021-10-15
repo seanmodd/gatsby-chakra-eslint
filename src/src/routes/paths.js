@@ -18,6 +18,9 @@ export const PATH_DASHBOARD = {
     pageFour: path(ROOTS_DASHBOARD, '/dashboard/account'),
     pageFive: path(ROOTS_DASHBOARD, '/dashboard/cart'),
     pageSix: path(ROOTS_DASHBOARD, '/dashboard/contact'),
+    //! Below is where the real links are:
+    pageNew: path(ROOTS_DASHBOARD, '/dashboard/new'),
+    pagePreOwned: path(ROOTS_DASHBOARD, '/dashboard/pre-owned'),
   },
   app: {
     root: path(ROOTS_DASHBOARD, '/dashboard/app'),
@@ -26,5 +29,9 @@ export const PATH_DASHBOARD = {
     pageSix: path(ROOTS_DASHBOARD, '/dashboard/app/six'),
     pageSeven: path(ROOTS_DASHBOARD, '/dashboard/new'),
     pageEight: path(ROOTS_DASHBOARD, '/dashboard/pre-owned'),
+    //! Below is where the real links are:
+    pageAccount: path(ROOTS_DASHBOARD, '/dashboard/account'),
+    pageCart: path(ROOTS_DASHBOARD, '/dashboard/cart'),
+    pageContact: path(ROOTS_DASHBOARD, '/dashboard/contact'),
   },
 }

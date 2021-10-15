@@ -4,77 +4,60 @@ import React from 'react'
 import { PATH_DASHBOARD } from '../../routes/paths'
 // components
 import SvgIconStyle from '../../components/SvgIconStyle'
-
+import ic_ecommerce from '../../static/icons/navbar/ic_ecommerce.svg'
+import ic_user from '../../static/icons/navbar/ic_user.svg'
+import ic_analytics from '../../static/icons/navbar/ic_analytics.svg'
+import ic_dashboard from '../../static/icons/navbar/ic_dashboard.svg'
 // ----------------------------------------------------------------------
 
 const getIcon = name => (
-  <SvgIconStyle
-    src={`/static/icons/navbar/${name}.svg`}
-    sx={{ width: '100%', height: '100%' }}
-  />
+  <SvgIconStyle src={name} sx={{ width: '100%', height: '100%' }} />
 )
 
 const ICONS = {
-  user: getIcon('ic_user'),
-  ecommerce: getIcon('ic_ecommerce'),
-  analytics: getIcon('ic_analytics'),
-  dashboard: getIcon('ic_dashboard'),
+  user: getIcon(ic_user),
+  ecommerce: getIcon(ic_ecommerce),
+  analytics: getIcon(ic_analytics),
+  dashboard: getIcon(ic_dashboard),
 }
 
 const sidebarConfig = [
   // GENERAL
   // ----------------------------------------------------------------------
   {
-    subheader: 'general',
+    subheader: 'View The Shop',
     items: [
+      {
+        title: 'New',
+        path: PATH_DASHBOARD.general.pageNew,
+        icon: ICONS.ecommerce,
+      },
+      {
+        title: 'Pre-Owned',
+        path: PATH_DASHBOARD.general.pagePreOwned,
+        icon: ICONS.ecommerce,
+      },
       // {
-      //   title: 'One',
-      //   path: PATH_DASHBOARD.general.pageOne,
-      //   icon: ICONS.dashboard,
-      // },
-      // {
-      //   title: 'Two',
-      //   path: PATH_DASHBOARD.general.pageTwo,
-      //   icon: ICONS.ecommerce,
-      // },
-      // {
-      //   title: 'Three',
-      //   path: PATH_DASHBOARD.general.pageThree,
+      //   title: 'Contact',
+      //   path: PATH_DASHBOARD.general.pageSix,
       //   icon: ICONS.analytics,
       // },
-      {
-        title: 'Account',
-        path: PATH_DASHBOARD.general.pageFour,
-        icon: ICONS.analytics,
-      },
-      {
-        title: 'Cart',
-        path: PATH_DASHBOARD.general.pageFive,
-        icon: ICONS.analytics,
-      },
-      {
-        title: 'Contact',
-        path: PATH_DASHBOARD.general.pageSix,
-        icon: ICONS.analytics,
-      },
     ],
   },
 
   // MANAGEMENT
   // ----------------------------------------------------------------------
   {
-    subheader: 'Inventory',
+    subheader: 'Profile',
     items: [
       {
         title: 'user',
         path: PATH_DASHBOARD.app.root,
         icon: ICONS.user,
         children: [
-          // { title: 'Four', path: PATH_DASHBOARD.app.pageFour },
-          // { title: 'Five', path: PATH_DASHBOARD.app.pageFive },
-          // { title: 'Six', path: PATH_DASHBOARD.app.pageSix },
-          { title: 'New', path: PATH_DASHBOARD.app.pageSeven },
-          { title: 'Pre-Owned', path: PATH_DASHBOARD.app.pageEight },
+          { title: 'Account', path: PATH_DASHBOARD.app.pageAccount },
+          { title: 'Cart', path: PATH_DASHBOARD.app.pageCart },
+          { title: 'Contact', path: PATH_DASHBOARD.app.pageContact },
         ],
       },
     ],
