@@ -1,3 +1,4 @@
+//! menu for dashboard
 import React from 'react'
 // routes
 import { PATH_DASHBOARD } from '../../routes/paths'

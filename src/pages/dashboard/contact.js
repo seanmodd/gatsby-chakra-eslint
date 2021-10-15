@@ -11,18 +11,18 @@ import clsx from 'clsx'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import { Link } from 'gatsby'
 
-import SEO from '../components/ui/seo'
-import { FeedbackContext } from '../contexts'
-import { setSnackbar } from '../contexts/actions'
+import SEO from '../../components/ui/seo'
+import { FeedbackContext } from '../../contexts'
+import { setSnackbar } from '../../contexts/actions'
 
-import address from '../images/address.svg'
-import Email from '../images/EmailAdornment'
-import send from '../images/send.svg'
-import nameAdornment from '../images/name-adornment.svg'
-import PhoneAdornment from '../images/PhoneAdornment'
+import address from '../../images/address.svg'
+import Email from '../../images/EmailAdornment'
+import send from '../../images/send.svg'
+import nameAdornment from '../../images/name-adornment.svg'
+import PhoneAdornment from '../../images/PhoneAdornment'
 
-import Layout from '../components/ui/layout'
-import validate from '../components/ui/validate'
+import Layout from '../../components/ui/layout'
+import validate from '../../components/ui/validate'
 
 const useStyles = makeStyles(theme => ({
   mainContainer: {

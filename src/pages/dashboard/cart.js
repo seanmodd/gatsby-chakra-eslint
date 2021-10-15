@@ -4,12 +4,12 @@ import Typography from "@material-ui/core/Typography"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
 import { makeStyles } from "@material-ui/core/styles"
 
-import Layout from "../components/ui/layout"
-import SEO from "../components/ui/seo"
-import CheckoutPortal from "../components/cart/CheckoutPortal"
-import CartItems from "../components/cart/CartItems"
+import Layout from "../../components/ui/layout"
+import SEO from "../../components/ui/seo"
+import CheckoutPortal from "../../components/cart/CheckoutPortal"
+import CartItems from "../../components/cart/CartItems"
 
-import { UserContext } from "../contexts"
+import { UserContext } from "../../contexts"
 
 const useStyles = makeStyles(theme => ({
   cartContainer: {

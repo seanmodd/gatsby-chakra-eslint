@@ -26,17 +26,27 @@ const menuConfig = [
   },
   {
     title: 'Account',
-    path: '/account',
+    path: '/dashboard/account',
     icon: <Icon icon={fileFill} {...ICON_SIZE} />,
   },
   {
     title: 'New',
-    path: '/new',
+    path: '/dashboard/new',
     icon: <Icon icon={fileFill} {...ICON_SIZE} />,
   },
   {
     title: 'Pre-Owned',
-    path: '/pre-owned',
+    path: '/dashboard/pre-owned',
+    icon: <Icon icon={fileFill} {...ICON_SIZE} />,
+  },
+  {
+    title: 'Cart',
+    path: '/dashboard/cart',
+    icon: <Icon icon={fileFill} {...ICON_SIZE} />,
+  },
+  {
+    title: 'Contact',
+    path: '/dashboard/contact',
     icon: <Icon icon={fileFill} {...ICON_SIZE} />,
   },
 ]
