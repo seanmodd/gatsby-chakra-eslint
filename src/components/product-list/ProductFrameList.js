@@ -104,7 +104,7 @@ export default function ProductFrameList({
               item
               key={image.url}
               component={Link}
-              to={`/${product.node.category.name.toLowerCase()}/${product.node.name
+              to={`/dashboard/${product.node.category.name.toLowerCase()}/${product.node.name
                 .split(' ')[0]
                 .toLowerCase()}${hasStyles ? `?style=${variant.style}` : ''}`}
             >
@@ -130,7 +130,7 @@ export default function ProductFrameList({
           container
           direction="column"
           component={Link}
-          to={`/${product.node.category.name.toLowerCase()}/${product.node.name
+          to={`/dashboard/${product.node.category.name.toLowerCase()}/${product.node.name
             .split(' ')[0]
             .toLowerCase()}${hasStyles ? `?style=${variant.style}` : ''}`}
         >

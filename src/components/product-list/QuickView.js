@@ -134,7 +134,7 @@ export default function QuickView({
           <Grid
             item
             component={Link}
-            to={`/${product.node.category.name.toLowerCase()}/${product.node.name
+            to={`/dashboard/${product.node.category.name.toLowerCase()}/${product.node.name
               .split(' ')[0]
               .toLowerCase()}${hasStyles ? `?style=${variant?.style}` : ''}`}
           >
@@ -157,7 +157,7 @@ export default function QuickView({
                 justifyContent="space-between"
                 classes={{ root: classes.infoContainer }}
                 component={Link}
-                to={`/${product.node.category.name.toLowerCase()}/${product.node.name
+                to={`/dashboard/${product.node.category.name.toLowerCase()}/${product.node.name
                   .split(' ')[0]
                   .toLowerCase()}${
                   hasStyles ? `?style=${variant?.style}` : ''
