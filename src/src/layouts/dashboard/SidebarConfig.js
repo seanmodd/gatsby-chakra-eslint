@@ -22,9 +22,64 @@ const ICONS = {
 }
 
 const sidebarConfig = [
-  // GENERAL
+  // MANAGEMENT
   // ----------------------------------------------------------------------
   {
+    subheader: 'Profile',
+    // items: [
+    //   {
+    //     title: 'Dashboard Home',
+    //     path: PATH_DASHBOARD.general.pageHome,
+    //     icon: ICONS.dashboard,
+    //   },
+    // ],
+    items: [
+      {
+        title: 'Dashboard',
+        path: PATH_DASHBOARD.general.pageHome,
+        icon: ICONS.dashboard,
+      },
+      {
+        title: 'user',
+        path: PATH_DASHBOARD.app.root,
+        icon: ICONS.user,
+        children: [
+          { title: 'Account', path: PATH_DASHBOARD.app.pageAccount },
+          { title: 'Cart', path: PATH_DASHBOARD.app.pageCart },
+          { title: 'Contact', path: PATH_DASHBOARD.app.pageContact },
+        ],
+      },
+    ],
+  },
+
+  // GENERAL
+  // ----------------------------------------------------------------------
+  // {
+  // items: [
+  //   {
+  //     title: 'Dashboard Home',
+  //     path: PATH_DASHBOARD.general.pageHome,
+  //     icon: ICONS.ecommerce,
+  //   },
+  // ],
+
+  //   items: [
+  //     {
+  //       title: 'Dashboard Home',
+  //       path: PATH_DASHBOARD.general.pageHome,
+  //       icon: ICONS.dashboard,
+  //     },
+  //   ],
+  // },
+  {
+    // items: [
+    //   {
+    //     title: 'Dashboard Home',
+    //     path: PATH_DASHBOARD.general.pageHome,
+    //     icon: ICONS.ecommerce,
+    //   },
+    // ],
+
     subheader: 'View The Shop',
     items: [
       {
@@ -36,24 +91,6 @@ const sidebarConfig = [
         title: 'Pre-Owned',
         path: PATH_DASHBOARD.general.pagePreOwned,
         icon: ICONS.ecommerce,
-      },
-    ],
-  },
-
-  // MANAGEMENT
-  // ----------------------------------------------------------------------
-  {
-    subheader: 'Profile',
-    items: [
-      {
-        title: 'user',
-        path: PATH_DASHBOARD.app.root,
-        icon: ICONS.user,
-        children: [
-          { title: 'Account', path: PATH_DASHBOARD.app.pageAccount },
-          { title: 'Cart', path: PATH_DASHBOARD.app.pageCart },
-          { title: 'Contact', path: PATH_DASHBOARD.app.pageContact },
-        ],
       },
     ],
   },

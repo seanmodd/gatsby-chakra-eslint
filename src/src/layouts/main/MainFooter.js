@@ -113,11 +113,23 @@ export default function MainFooter() {
                       {headline}
                     </Typography>
                     {children.map(link => (
-                      <GatsbyLink key={link.name} to={link.href} passHref>
+                      <GatsbyLink
+                        style={{ textDecoration: 'none' }}
+                        key={link.name}
+                        to={link.href}
+                        passHref
+                      >
                         <Link
                           color="inherit"
                           variant="body2"
-                          sx={{ display: 'block' }}
+                          // sx={{ display: 'block' }}
+                          sx={{
+                            // color: theme => alpha(theme.primary.grey[900], 0.72),
+                            color: theme => theme.palette.primary.main,
+                            typography: 'body2',
+                            py: 1,
+                            px: 2.5,
+                          }}
                         >
                           {link.name}
                         </Link>

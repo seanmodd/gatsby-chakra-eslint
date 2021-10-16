@@ -21,7 +21,7 @@ const menuConfig = [
   },
   {
     title: 'Dashboard',
-    path: '/dashboard',
+    path: '/dashboard/home',
     icon: <Icon icon={fileFill} {...ICON_SIZE} />,
   },
   // {

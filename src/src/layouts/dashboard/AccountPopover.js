@@ -1,3 +1,4 @@
+//! This is the popover for the dashboard
 import React, { useRef, useState } from 'react'
 import { Icon } from '@iconify/react'
 import homeFill from '@iconify/icons-eva/home-fill'
@@ -24,9 +25,9 @@ import { MIconButton } from '../../components/@material-extend'
 // ----------------------------------------------------------------------
 
 const MENU_OPTIONS = [
-  { label: 'Home', icon: homeFill, linkTo: '/' },
-  { label: 'Profile', icon: personFill, linkTo: '#' },
-  { label: 'Settings', icon: settings2Fill, linkTo: '#' },
+  { label: 'Home', icon: homeFill, linkTo: '/dashboard/home' },
+  { label: 'Profile', icon: personFill, linkTo: '/dashboard/account' },
+  { label: 'Settings', icon: settings2Fill, linkTo: '/dashboard/cart' },
 ]
 
 // ----------------------------------------------------------------------
@@ -78,18 +79,30 @@ export default function AccountPopover() {
           <Typography variant="subtitle1" noWrap>
             Guest User
           </Typography>
-          <Typography variant="body2" sx={{ color: 'text.secondary' }} noWrap>
+          {/* <Typography variant="body2" sx={{ color: 'text.secondary' }} noWrap>
             email
-          </Typography>
+          </Typography> */}
         </Box>
 
         <Divider sx={{ my: 1 }} />
 
         {MENU_OPTIONS.map(option => (
-          <GatsbyLink key={option.label} to={option.linkTo}>
+          <GatsbyLink
+            // style={{ color: 'black' }}
+            style={{ textDecoration: 'none' }}
+            key={option.label}
+            to={option.linkTo}
+          >
             <MenuItem
               onClick={handleClose}
-              sx={{ typography: 'body2', py: 1, px: 2.5 }}
+              // sx={{ typography: 'body2', py: 1, px: 2.5 }}
+              sx={{
+                // color: theme => alpha(theme.primary.grey[900], 0.72),
+                color: theme => theme.palette.primary.main,
+                typography: 'body2',
+                py: 1,
+                px: 2.5,
+              }}
             >
               <Box
                 component={Icon}

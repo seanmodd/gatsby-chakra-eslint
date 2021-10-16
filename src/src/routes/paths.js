@@ -12,7 +12,7 @@ const ROOTS_DASHBOARD = ''
 export const PATH_DASHBOARD = {
   root: ROOTS_DASHBOARD,
   general: {
-    pageOne: path(ROOTS_DASHBOARD, '/dashboard/one'),
+    pageHome: path(ROOTS_DASHBOARD, '/dashboard/home'),
     pageTwo: path(ROOTS_DASHBOARD, '/dashboard/two'),
     pageThree: path(ROOTS_DASHBOARD, '/dashboard/three'),
     pageFour: path(ROOTS_DASHBOARD, '/dashboard/account'),
