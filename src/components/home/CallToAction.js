@@ -71,7 +71,7 @@ export default function CallToAction() {
               align={matchesMD ? 'center' : undefined}
               variant="h1"
             >
-              The Online Car Dealer <br />
+              The Only Car Dealer <br />
               That Works For You
             </Typography>
           </Grid>
