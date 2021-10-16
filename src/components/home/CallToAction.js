@@ -66,7 +66,11 @@ export default function CallToAction() {
       <Grid item>
         <Grid container direction="column">
           <Grid item classes={{ root: classes.headingContainer }}>
-            <Typography align={matchesMD ? 'center' : undefined} variant="h1">
+            <Typography
+              style={{ letterSpacing: '-6px' }}
+              align={matchesMD ? 'center' : undefined}
+              variant="h1"
+            >
               The Online Car Dealer <br />
               That Works For You
             </Typography>

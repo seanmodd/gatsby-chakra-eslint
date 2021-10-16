@@ -1,3 +1,6 @@
+import '@fontsource/barlow'
+import '@fontsource/inter'
+import '@fontsource/karla'
 //! utilizes useRouter from Next to get the current path
 // next
 // import NextLink from 'next/link'
@@ -84,8 +87,8 @@ export default function MainNavbar() {
           <GatsbyLink to="/">
             <Logo />
           </GatsbyLink>
-          <Label color="info" sx={{ ml: 1 }}>
-            Gatsby Js
+          <Label style={{ fontFamily: 'Karla' }} color="info" sx={{ ml: 1 }}>
+            Car X
           </Label>
           <Box sx={{ flexGrow: 1 }} />
 

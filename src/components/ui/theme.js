@@ -175,15 +175,15 @@ const theme = createTheme({
     // primary: {
     //   main: '#7920ff',
     // },
-    secondary: {
-      main: '#000033',
-    },
-    common: {
-      tan,
-      lightRed,
-      red,
-      offBlack,
-    },
+    // secondary: {
+    //   main: '#000033',
+    // },
+    // common: {
+    //   tan,
+    //   lightRed,
+    //   red,
+    //   offBlack,
+    // },
   },
   typography: {
     fontFamily: 'Inter',

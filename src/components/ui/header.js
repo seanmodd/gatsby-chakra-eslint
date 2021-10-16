@@ -61,7 +61,7 @@ const useStyles = makeStyles(theme => ({
     marginRight: 'auto',
   },
   appBar: {
-    backgroundColor: '#f0f0f0',
+    // backgroundColor: '#f0f0f0',
   },
   icon: {
     height: '3rem',
