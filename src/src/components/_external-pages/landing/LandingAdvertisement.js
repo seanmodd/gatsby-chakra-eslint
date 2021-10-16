@@ -3,17 +3,17 @@ import { motion } from 'framer-motion'
 // material
 import { styled } from '@mui/material/styles'
 import { Button, Box, Container, Typography } from '@mui/material'
-import rocket from '../../../static/home/rocket.png'
+import rocket from '../../../static/home/keys.png'
 //
 import { varFadeInDown, varFadeInUp, MotionInView } from '../../animate'
 
 // ----------------------------------------------------------------------
 
 const ContentStyle = styled('div')(({ theme }) => ({
-  maxWidth: 456,
+  maxWidth: 400,
   margin: 'auto',
   overflow: 'hidden',
-  paddingBottom: theme.spacing(10),
+  paddingBottom: theme.spacing(5),
   borderRadius: theme.shape.borderRadiusMd,
   backgroundImage: `linear-gradient(135deg,
     ${theme.palette.primary.main} 0%,
@@ -21,7 +21,9 @@ const ContentStyle = styled('div')(({ theme }) => ({
   [theme.breakpoints.up('md')]: {
     display: 'flex',
     maxWidth: '100%',
-    paddingBottom: 0,
+    paddingBottom: 10,
+    marginBottom: '100px',
+    height: '375px',
     alignItems: 'center',
   },
 }))
@@ -35,18 +37,18 @@ export default function LandingAdvertisement() {
         <MotionInView
           variants={varFadeInUp}
           sx={{
-            mb: { xs: 3, md: 0 },
+            mb: { xs: 0, md: 0 },
           }}
         >
           <motion.div
-            animate={{ y: [-20, 0, -20] }}
+            animate={{ y: [-5, 0, -5] }}
             transition={{ duration: 4, repeat: Infinity }}
           >
             <Box
               component="img"
               alt="rocket"
               src={rocket}
-              sx={{ maxWidth: 460, width: 1 }}
+              sx={{ maxWidth: 600, width: 1 }}
             />
           </motion.div>
         </MotionInView>
