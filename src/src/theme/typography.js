@@ -1,3 +1,4 @@
+//! This is where the fonts are chosen!
 // ----------------------------------------------------------------------
 
 function pxToRem(value) {
@@ -18,7 +19,7 @@ function responsiveFontSizes({ sm, md, lg }) {
   }
 }
 
-const FONT_PRIMARY = 'Barlow, Public Sans, sans-serif' // Google Font
+const FONT_PRIMARY = 'Inter, Public Sans, sans-serif' // Google Font
 // const FONT_SECONDARY = 'CircularStd, sans-serif'; // Local Font
 
 const typography = {
@@ -27,19 +28,20 @@ const typography = {
   fontWeightMedium: 600,
   fontWeightBold: 700,
   h1: {
-    fontWeight: 700,
+    fontWeight: 600,
     lineHeight: 80 / 64,
+
     fontSize: pxToRem(40),
     ...responsiveFontSizes({ sm: 52, md: 58, lg: 64 }),
   },
   h2: {
-    fontWeight: 700,
+    fontWeight: 600,
     lineHeight: 64 / 48,
     fontSize: pxToRem(32),
     ...responsiveFontSizes({ sm: 40, md: 44, lg: 48 }),
   },
   h3: {
-    fontWeight: 700,
+    fontWeight: 600,
     lineHeight: 1.5,
     fontSize: pxToRem(24),
     ...responsiveFontSizes({ sm: 26, md: 30, lg: 32 }),

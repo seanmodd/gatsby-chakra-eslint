@@ -1,3 +1,5 @@
+import '@fontsource/inter'
+import '@fontsource/karla'
 import '@fontsource/barlow'
 import { createTheme } from '@material-ui/core/styles'
 import './theme.css'
@@ -183,54 +185,55 @@ const theme = createTheme({
       offBlack,
     },
   },
-  // typography: {
-  //   fontFamily: 'Barlow',
-  //   h1: {
-  //     fontSize: '4.5rem',
-  //     fontFamily: 'Barlow',
-  //     fontStyle: 'normal',
-  //     fontWeight: 500,
-  //     color: '#7920ff',
-  //   },
-  //   h2: {
-  //     fontFamily: 'Barlow',
-  //     fontSize: '3rem',
-  //     fontWeight: 500,
-  //     color: '#fff',
-  //   },
-  //   h3: {
-  //     fontFamily: 'Barlow',
-  //     fontSize: '2rem',
-  //     fontWeight: 300,
-  //     color: '#7920ff',
-  //   },
-  //   h4: {
-  //     fontFamily: 'Barlow',
-  //     fontStyle: 'normal',
-  //     fontWeight: 500,
-  //     fontSize: '3rem',
-  //     color: '#fff',
-  //   },
-  //   h5: {
-  //     fontFamily: 'Barlow',
-  //     fontSize: '2rem',
-  //     fontWeight: 500,
-  //     fontStyle: 'normal',
-  //     color: '#fff',
-  //   },
-  //   body1: {
-  //     fontFamily: 'Barlow',
-  //     fontWeight: 400,
-  //     fontSize: '1.5rem',
-  //     color: '#000000',
-  //   },
-  //   body2: {
-  //     fontFamily: 'Barlow',
-  //     fontWeight: 400,
-  //     fontSize: '1.5rem',
-  //     color: '#fff',
-  //   },
-  // },
+  typography: {
+    fontFamily: 'Inter',
+
+    //   h1: {
+    //     fontSize: '4.5rem',
+    //     fontFamily: 'Barlow',
+    //     fontStyle: 'normal',
+    //     fontWeight: 500,
+    //     color: '#7920ff',
+    //   },
+    //   h2: {
+    //     fontFamily: 'Barlow',
+    //     fontSize: '3rem',
+    //     fontWeight: 500,
+    //     color: '#fff',
+    //   },
+    //   h3: {
+    //     fontFamily: 'Barlow',
+    //     fontSize: '2rem',
+    //     fontWeight: 300,
+    //     color: '#7920ff',
+    //   },
+    //   h4: {
+    //     fontFamily: 'Barlow',
+    //     fontStyle: 'normal',
+    //     fontWeight: 500,
+    //     fontSize: '3rem',
+    //     color: '#fff',
+    //   },
+    //   h5: {
+    //     fontFamily: 'Barlow',
+    //     fontSize: '2rem',
+    //     fontWeight: 500,
+    //     fontStyle: 'normal',
+    //     color: '#fff',
+    //   },
+    //   body1: {
+    //     fontFamily: 'Barlow',
+    //     fontWeight: 400,
+    //     fontSize: '1.5rem',
+    //     color: '#000000',
+    //   },
+    //   body2: {
+    //     fontFamily: 'Barlow',
+    //     fontWeight: 400,
+    //     fontSize: '1.5rem',
+    //     color: '#fff',
+    //   },
+  },
   overrides: {
     MuiChip: {
       root: {
