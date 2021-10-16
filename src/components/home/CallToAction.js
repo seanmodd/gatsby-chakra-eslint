@@ -96,7 +96,7 @@ export default function CallToAction() {
                 Contact Us
               </Button>
             </Grid>
-            <Grid item>
+            <Grid style={{ marginLeft: '25px' }} item>
               <Button
                 variant="contained"
                 color="primary"

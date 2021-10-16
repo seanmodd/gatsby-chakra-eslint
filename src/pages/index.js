@@ -26,7 +26,7 @@ function IndexPage() {
         </GatsbyLink>
       </Button> */}
       <CallToAction />
-      <Button variant="contained" target="_blank">
+      {/* <Button variant="contained" target="_blank">
         <GatsbyLink style={{ color: '#fff' }} to="/dashboard">
           Get Started
         </GatsbyLink>
@@ -58,7 +58,7 @@ function IndexPage() {
             Create Account
           </Button>
         </Grid>
-      </Grid>
+      </Grid> */}
       {/* <HeroBlock /> */}
       {/* <PromotionalProducts /> */}
       {/* <FeaturedProducts /> */}
