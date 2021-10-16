@@ -1,6 +1,7 @@
 //! utilizes useRouter from Next to see events on the router meaning that the user has navigated to a new page
 import React, { useState, useEffect } from 'react'
 // import { useRouter } from 'next/router'
+import { globalHistory } from '@reach/router'
 import { motion } from 'framer-motion'
 // material
 import { alpha, styled } from '@mui/material/styles'
@@ -25,6 +26,7 @@ const RootStyle = styled('div')(({ theme }) => ({
 
 export default function LoadingScreen({ ...other }) {
   // const router = useRouter()
+  console.log('globalHistory.listen : ', globalHistory.listen)
   const [loading, setLoading] = useState(false)
 
   // useEffect(() => {
@@ -42,6 +44,15 @@ export default function LoadingScreen({ ...other }) {
   //     router.events.off('routeChangeError', handleComplete)
   //   }
   // })
+
+  useEffect(
+    () =>
+      globalHistory.listen(({ action }) => {
+        if (action === 'PUSH') setLoading(false)
+        if (action === 'POP') setLoading(false)
+      }),
+    [setLoading]
+  )
 
   if (loading) {
     return (
