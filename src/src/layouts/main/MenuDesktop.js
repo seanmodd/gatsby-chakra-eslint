@@ -1,3 +1,4 @@
+//! This one is where the menu link has been set to black and white at the appropriate time.
 //! utilizes useRouter from Next to get the current pathname
 import PropTypes from 'prop-types'
 import { Icon } from '@iconify/react'
@@ -232,7 +233,7 @@ function MenuDesktopItem({
     <GatsbyLink key={title} to={path}>
       <LinkStyle
         sx={{
-          ...(isHome && { color: 'common.white' }),
+          ...(isHome && { color: 'common.primary' }),
           ...(isOffset && { color: 'text.primary' }),
           ...(isActive && { color: 'primary.main' }),
         }}

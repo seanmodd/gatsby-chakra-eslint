@@ -37,11 +37,6 @@ const sidebarConfig = [
         path: PATH_DASHBOARD.general.pagePreOwned,
         icon: ICONS.ecommerce,
       },
-      // {
-      //   title: 'Contact',
-      //   path: PATH_DASHBOARD.general.pageSix,
-      //   icon: ICONS.analytics,
-      // },
     ],
   },
 

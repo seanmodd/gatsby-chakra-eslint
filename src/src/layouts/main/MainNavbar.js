@@ -96,9 +96,10 @@ export default function MainNavbar() {
               navConfig={navConfig}
             />
           </MHidden>
-
           <Button variant="contained" target="_blank">
-            <GatsbyLink to="/dashboard">Get Started</GatsbyLink>
+            <GatsbyLink style={{ color: '#fff' }} to="/dashboard">
+              Get Started
+            </GatsbyLink>
           </Button>
 
           <MHidden width="mdUp">

@@ -1,5 +1,5 @@
-import { Router, Link } from 'gatsby'
-import { Button } from 'react-bootstrap'
+import { Router, Link, Link as GatsbyLink } from 'gatsby'
+import { Button, Grid } from '@mui/material'
 import React, { useState, useEffect } from 'react'
 import { Heading } from '@chakra-ui/react'
 import Layout from '../components/ui/layout'
@@ -20,8 +20,45 @@ function IndexPage() {
   return (
     <Layout>
       <SEO title="Home" />
-
+      {/* <Button variant="contained" target="_blank">
+        <GatsbyLink style={{ color: '#fff' }} to="/dashboard">
+          Get Started
+        </GatsbyLink>
+      </Button> */}
       <CallToAction />
+      <Button variant="contained" target="_blank">
+        <GatsbyLink style={{ color: '#fff' }} to="/dashboard">
+          Get Started
+        </GatsbyLink>
+      </Button>
+      <Grid
+        item
+        container
+        // justifyContent={matchesMD ? 'center' : undefined}
+        // classes={{ root: classes.buttonContainer }}
+      >
+        <Grid item>
+          <Button
+            component={GatsbyLink}
+            to="/contact"
+            variant="outlined"
+            color="primary"
+          >
+            Contact Us
+          </Button>
+        </Grid>
+        <Grid item>
+          <Button
+            variant="contained"
+            color="primary"
+            component={GatsbyLink}
+            to="/dashboard/account"
+            // classes={{ root: classes.account }}
+          >
+            Create Account
+          </Button>
+        </Grid>
+      </Grid>
       {/* <HeroBlock /> */}
       {/* <PromotionalProducts /> */}
       {/* <FeaturedProducts /> */}
