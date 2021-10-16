@@ -58,7 +58,7 @@ export default ({ element }) => {
                 </NoSsr>
                 <GlobalStyles />
                 <ProgressBar />
-                {/* <LoadingScreen /> */}
+                <LoadingScreen />
                 <ThemeProvider theme={theme}>
                   <ApolloWrapper>
                     <UserWrapper>
