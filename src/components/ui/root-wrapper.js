@@ -52,6 +52,7 @@ export default ({ element }) => {
   return (
     //! Below is the code from the next.js docs
     <SettingsProvider>
+      {/* <ModernSettingsProvider> */}
       <CollapseDrawerProvider>
         <CacheProvider value={emotionCache}>
           {/* <Head>
@@ -86,6 +87,7 @@ export default ({ element }) => {
           </ThemeConfig>
         </CacheProvider>
       </CollapseDrawerProvider>
+      {/* </ModernSettingsProvider> */}
     </SettingsProvider>
   )
 }
