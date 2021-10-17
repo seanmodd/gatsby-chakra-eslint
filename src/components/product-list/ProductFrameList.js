@@ -8,9 +8,6 @@ import Chip from '@material-ui/core/Chip'
 import { makeStyles } from '@material-ui/core/styles'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { Link } from 'gatsby'
-import ColorPreview from '../../_MODERN/minimalComponents/ColorPreview'
-import { fCurrency } from '../../_MODERN/utils/formatNumber'
-import Label from '../../_MODERN/minimalComponents/Label'
 
 import Rating from '../home/Rating'
 import Sizes from './Sizes'
@@ -194,72 +191,6 @@ export default function ProductFrameList({
           />
         </Grid>
       </Grid>
-      //! Below is an item
-      <Card>
-        <Box sx={{ pt: '100%', position: 'relative' }}>
-          {rating && (
-            <Label
-              variant="filled"
-              color={(rating === 'sale' && 'error') || 'info'}
-              sx={{
-                top: 16,
-                right: 16,
-                zIndex: 9,
-                position: 'absolute',
-                textTransform: 'uppercase',
-              }}
-            >
-              {rating}
-            </Label>
-          )}
-
-          {images.map((image, i) => {
-            const gatsbyData = getImage(image.localFile)
-
-            return <ProductImgStyle alt={image.url} src={gatsbyData} />
-          })}
-        </Box>
-
-        <Stack spacing={2} sx={{ p: 3 }}>
-          <Link
-            color="inherit"
-            component={Link}
-            to={`/dashboard/${product.node.category.name.toLowerCase()}/${product.node.name
-              .split(' ')[0]
-              .toLowerCase()}${hasStyles ? `?style=${variant.style}` : ''}`}
-          >
-            <Typography variant="subtitle2" noWrap>
-              {/* {name} */}
-              {product.node.name}
-            </Typography>
-          </Link>
-
-          <Stack
-            direction="row"
-            alignItems="center"
-            justifyContent="space-between"
-          >
-            <ColorPreview colors={colors} />
-            <Typography variant="subtitle1">
-              <Typography
-                component="span"
-                variant="body1"
-                sx={{
-                  color: 'text.disabled',
-                  textDecoration: 'line-through',
-                }}
-              >
-                {/* {priceSale && fCurrency(priceSale)} */}
-                {`$${variant.price}`}
-              </Typography>
-              &nbsp;
-              {/* {fCurrency(price)} */}
-              {`$${variant.price}`}
-            </Typography>
-          </Stack>
-        </Stack>
-      </Card>
-      //! above is an item
     </>
   )
 }
