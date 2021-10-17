@@ -78,51 +78,51 @@ export default ({ element }) => {
   console.log('element: ', element)
   return (
     //! Below is the code from the next.js docs
-    <HelmetProvider>
-      <ReduxProvider store={store}>
-        <PersistGate loading={<LoadingScreen />} persistor={persistor}>
-          <LocalizationProvider dateAdapter={AdapterDateFns}>
-            <SettingsProvider>
-              {/* <ModernSettingsProvider> */}
-              <CollapseDrawerProvider>
-                <CacheProvider value={emotionCache}>
-                  {/* <Head>
+    // <HelmetProvider>
+    // {/* <ReduxProvider store={store}> */}
+    // {/* <PersistGate loading={<LoadingScreen />} persistor={persistor}> */}
+    // <LocalizationProvider dateAdapter={AdapterDateFns}>
+    <SettingsProvider>
+      {/* <ModernSettingsProvider> */}
+      <CollapseDrawerProvider>
+        <CacheProvider value={emotionCache}>
+          {/* <Head>
             <meta
               name="viewport"
               content="initial-scale=1, width=device-width"
             />
           </Head> */}
 
-                  <ThemeConfig>
-                    <ThemePrimaryColor>
-                      <RtlLayout>
-                        <NoSsr>
-                          <Settings />
-                        </NoSsr>
-                        <GlobalStyles />
-                        <ProgressBar />
-                        <LoadingScreen />
-                        <ThemeProvider theme={theme}>
-                          <ApolloWrapper>
-                            <UserWrapper>
-                              <FeedbackWrapper>
-                                <CartWrapper>
-                                  <MainLayout>{element}</MainLayout>
-                                </CartWrapper>
-                              </FeedbackWrapper>
-                            </UserWrapper>
-                          </ApolloWrapper>
-                        </ThemeProvider>
-                      </RtlLayout>
-                    </ThemePrimaryColor>
-                  </ThemeConfig>
-                </CacheProvider>
-              </CollapseDrawerProvider>
-              {/* </ModernSettingsProvider> */}
-            </SettingsProvider>
-          </LocalizationProvider>
-        </PersistGate>
-      </ReduxProvider>
-    </HelmetProvider>
+          <ThemeConfig>
+            <ThemePrimaryColor>
+              <RtlLayout>
+                <NoSsr>
+                  <Settings />
+                </NoSsr>
+                <GlobalStyles />
+                <ProgressBar />
+                <LoadingScreen />
+                <ThemeProvider theme={theme}>
+                  <ApolloWrapper>
+                    <UserWrapper>
+                      <FeedbackWrapper>
+                        <CartWrapper>
+                          <MainLayout>{element}</MainLayout>
+                        </CartWrapper>
+                      </FeedbackWrapper>
+                    </UserWrapper>
+                  </ApolloWrapper>
+                </ThemeProvider>
+              </RtlLayout>
+            </ThemePrimaryColor>
+          </ThemeConfig>
+        </CacheProvider>
+      </CollapseDrawerProvider>
+      {/* </ModernSettingsProvider> */}
+    </SettingsProvider>
+    // {/* </LocalizationProvider> */}
+    // {/* </PersistGate> */}
+    // {/* </ReduxProvider> */}
+    // {/* </HelmetProvider> */}
   )
 }

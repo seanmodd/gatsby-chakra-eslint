@@ -126,10 +126,31 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
           },
         ],
       },
+      resolve: {
+        fallback: {
+          // assert: require.resolve('assert/'),
+          crypto: require.resolve('crypto-browserify'),
+          // http: require.resolve('stream-http'),
+          // https: require.resolve('https-browserify'),
+          // os: require.resolve('os-browserify/browser'),
+          stream: require.resolve('stream-browserify'),
+        },
+      },
     })
   }
 }
+// exports.onCreateWebpackConfig = ({ actions }) => {
+//   actions.setWebpackConfig({
+//     resolve: {
+//       fallback: {
+//         crypto: require.resolve('crypto-browserify'),
+//         stream: require.resolve('stream-browserify'),
+//       },
+//     },
+//   })
+// }
 
+//! IDk
 // exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
 //   if (stage === 'build-html') {
 //     actions.setWebpackConfig({
