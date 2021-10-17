@@ -1,27 +1,27 @@
-import PropTypes from 'prop-types';
-import { Helmet } from 'react-helmet-async';
-import { useLocation } from 'react-router-dom';
-import { forwardRef, useEffect, useCallback } from 'react';
+import React, { forwardRef, useEffect, useCallback } from 'react'
+import PropTypes from 'prop-types'
+import { Helmet } from 'react-helmet-async'
+import { useLocation } from 'react-router-dom'
 // material
-import { Box } from '@mui/material';
+import { Box } from '@mui/material'
 // utils
-import track from '../utils/analytics';
+import track from '../utils/analytics'
 
 // ----------------------------------------------------------------------
 
 const Page = forwardRef(({ children, title = '', ...other }, ref) => {
-  const { pathname } = useLocation();
+  const { pathname } = useLocation()
 
   const sendPageViewEvent = useCallback(() => {
     track.pageview({
-      page_path: pathname
-    });
+      page_path: pathname,
+    })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [])
 
   useEffect(() => {
-    sendPageViewEvent();
-  }, [sendPageViewEvent]);
+    sendPageViewEvent()
+  }, [sendPageViewEvent])
 
   return (
     <Box ref={ref} {...other}>
@@ -30,12 +30,12 @@ const Page = forwardRef(({ children, title = '', ...other }, ref) => {
       </Helmet>
       {children}
     </Box>
-  );
-});
+  )
+})
 
 Page.propTypes = {
   children: PropTypes.node.isRequired,
-  title: PropTypes.string
-};
+  title: PropTypes.string,
+}
 
-export default Page;
+export default Page

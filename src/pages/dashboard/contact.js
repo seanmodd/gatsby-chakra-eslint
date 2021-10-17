@@ -23,7 +23,7 @@ import PhoneAdornment from '../../images/PhoneAdornment'
 
 import Layout from '../../components/ui/layout'
 import validate from '../../components/ui/validate'
-import DashboardLayout from '../../src/layouts/dashboard'
+import DashboardLayout from '../../_SHELL/layouts/dashboard'
 
 const useStyles = makeStyles(theme => ({
   mainContainer: {

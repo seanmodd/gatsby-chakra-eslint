@@ -1,28 +1,29 @@
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 // material
-import { alpha, styled } from '@mui/material/styles';
+import { alpha, styled } from '@mui/material/styles'
 
 // ----------------------------------------------------------------------
 
 const RootStyle = styled('span')(({ theme, ownerState }) => {
-  const isLight = theme.palette.mode === 'light';
-  const { color, variant } = ownerState;
+  const isLight = theme.palette.mode === 'light'
+  const { color, variant } = ownerState
 
-  const styleFilled = (color) => ({
+  const styleFilled = color => ({
     color: theme.palette[color].contrastText,
-    backgroundColor: theme.palette[color].main
-  });
+    backgroundColor: theme.palette[color].main,
+  })
 
-  const styleOutlined = (color) => ({
+  const styleOutlined = color => ({
     color: theme.palette[color].main,
     backgroundColor: 'transparent',
-    border: `1px solid ${theme.palette[color].main}`
-  });
+    border: `1px solid ${theme.palette[color].main}`,
+  })
 
-  const styleGhost = (color) => ({
+  const styleGhost = color => ({
     color: theme.palette[color][isLight ? 'dark' : 'light'],
-    backgroundColor: alpha(theme.palette[color].main, 0.16)
-  });
+    backgroundColor: alpha(theme.palette[color].main, 0.16),
+  })
 
   return {
     height: 22,
@@ -45,34 +46,49 @@ const RootStyle = styled('span')(({ theme, ownerState }) => {
       ? {
           ...(variant === 'filled' && { ...styleFilled(color) }),
           ...(variant === 'outlined' && { ...styleOutlined(color) }),
-          ...(variant === 'ghost' && { ...styleGhost(color) })
+          ...(variant === 'ghost' && { ...styleGhost(color) }),
         }
       : {
           ...(variant === 'outlined' && {
             backgroundColor: 'transparent',
             color: theme.palette.text.primary,
-            border: `1px solid ${theme.palette.grey[500_32]}`
+            border: `1px solid ${theme.palette.grey[500_32]}`,
           }),
           ...(variant === 'ghost' && {
-            color: isLight ? theme.palette.text.secondary : theme.palette.common.white,
-            backgroundColor: theme.palette.grey[500_16]
-          })
-        })
-  };
-});
+            color: isLight
+              ? theme.palette.text.secondary
+              : theme.palette.common.white,
+            backgroundColor: theme.palette.grey[500_16],
+          }),
+        }),
+  }
+})
 
 // ----------------------------------------------------------------------
 
-export default function Label({ color = 'default', variant = 'ghost', children, ...other }) {
+export default function Label({
+  color = 'default',
+  variant = 'ghost',
+  children,
+  ...other
+}) {
   return (
     <RootStyle ownerState={{ color, variant }} {...other}>
       {children}
     </RootStyle>
-  );
+  )
 }
 
 Label.propTypes = {
   children: PropTypes.node,
-  color: PropTypes.oneOf(['default', 'primary', 'secondary', 'info', 'success', 'warning', 'error']),
-  variant: PropTypes.oneOf(['filled', 'outlined', 'ghost'])
-};
+  color: PropTypes.oneOf([
+    'default',
+    'primary',
+    'secondary',
+    'info',
+    'success',
+    'warning',
+    'error',
+  ]),
+  variant: PropTypes.oneOf(['filled', 'outlined', 'ghost']),
+}

@@ -1,16 +1,17 @@
-import PropTypes from 'prop-types';
-import { paramCase } from 'change-case';
-import { Link as RouterLink } from 'react-router-dom';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { paramCase } from 'change-case'
+import { Link as RouterLink } from 'react-router-dom'
 // material
-import { Box, Card, Link, Typography, Stack } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import { Box, Card, Link, Typography, Stack } from '@mui/material'
+import { styled } from '@mui/material/styles'
 // routes
-import { PATH_DASHBOARD } from '../../../../routes/paths';
+import { PATH_DASHBOARD } from '../../../../routes/paths'
 // utils
-import { fCurrency } from '../../../../utils/formatNumber';
+import { fCurrency } from '../../../../utils/formatNumber'
 //
-import Label from '../../../Label';
-import ColorPreview from '../../../ColorPreview';
+import Label from '../../../Label'
+import ColorPreview from '../../../ColorPreview'
 
 // ----------------------------------------------------------------------
 
@@ -19,18 +20,18 @@ const ProductImgStyle = styled('img')({
   width: '100%',
   height: '100%',
   objectFit: 'cover',
-  position: 'absolute'
-});
+  position: 'absolute',
+})
 
 // ----------------------------------------------------------------------
 
 ShopProductCard.propTypes = {
-  product: PropTypes.object
-};
+  product: PropTypes.object,
+}
 
 export default function ShopProductCard({ product }) {
-  const { name, cover, price, colors, status, priceSale } = product;
-  const linkTo = `${PATH_DASHBOARD.eCommerce.root}/product/${paramCase(name)}`;
+  const { name, cover, price, colors, status, priceSale } = product
+  const linkTo = `${PATH_DASHBOARD.eCommerce.root}/product/${paramCase(name)}`
 
   return (
     <Card>
@@ -44,7 +45,7 @@ export default function ShopProductCard({ product }) {
               right: 16,
               zIndex: 9,
               position: 'absolute',
-              textTransform: 'uppercase'
+              textTransform: 'uppercase',
             }}
           >
             {status}
@@ -60,7 +61,11 @@ export default function ShopProductCard({ product }) {
           </Typography>
         </Link>
 
-        <Stack direction="row" alignItems="center" justifyContent="space-between">
+        <Stack
+          direction="row"
+          alignItems="center"
+          justifyContent="space-between"
+        >
           <ColorPreview colors={colors} />
           <Typography variant="subtitle1">
             <Typography
@@ -68,7 +73,7 @@ export default function ShopProductCard({ product }) {
               variant="body1"
               sx={{
                 color: 'text.disabled',
-                textDecoration: 'line-through'
+                textDecoration: 'line-through',
               }}
             >
               {priceSale && fCurrency(priceSale)}
@@ -79,5 +84,5 @@ export default function ShopProductCard({ product }) {
         </Stack>
       </Stack>
     </Card>
-  );
+  )
 }

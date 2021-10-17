@@ -11,19 +11,19 @@ import { NoSsr } from '@mui/material'
 import React from 'react'
 import { ThemeProvider } from '@material-ui/core/styles'
 import CssBaseline from '@mui/material'
-import ThemeConfig from '../../src/theme'
-import GlobalStyles from '../../src/theme/globalStyles'
+import ThemeConfig from '../../_SHELL/theme'
+import GlobalStyles from '../../_SHELL/theme/globalStyles'
 // utils
-import createEmotionCache from '../../src/utils/createEmotionCache'
+import createEmotionCache from '../../_SHELL/utils/createEmotionCache'
 // components
-import Settings from '../../src/components/settings'
-import RtlLayout from '../../src/components/RtlLayout'
-import ProgressBar from '../../src/components/ProgressBar'
-import LoadingScreen from '../../src/components/LoadingScreen'
-import ThemePrimaryColor from '../../src/components/ThemePrimaryColor'
+import Settings from '../../_SHELL/components/settings'
+import RtlLayout from '../../_SHELL/components/RtlLayout'
+import ProgressBar from '../../_SHELL/components/ProgressBar'
+import LoadingScreen from '../../_SHELL/components/LoadingScreen'
+import ThemePrimaryColor from '../../_SHELL/components/ThemePrimaryColor'
 
-import { CollapseDrawerProvider } from '../../src/contexts/CollapseDrawerContext'
-import { SettingsProvider } from '../../src/contexts/SettingsContext'
+import { CollapseDrawerProvider } from '../../_SHELL/contexts/CollapseDrawerContext'
+import { SettingsProvider } from '../../_SHELL/contexts/SettingsContext'
 
 import ModernSettings from '../../_MODERN/minimalComponents/settings'
 import ModernRtlLayout from '../../_MODERN/minimalComponents/RtlLayout'
@@ -39,7 +39,7 @@ import { ApolloWrapper } from '../../apollo/ApolloWrapper'
 import { UserWrapper, FeedbackWrapper, CartWrapper } from '../../contexts'
 import theme from './theme'
 import Layout from './layout'
-import MainLayout from '../../src/layouts/main'
+import MainLayout from '../../_SHELL/layouts/main'
 
 const clientSideEmotionCache = createEmotionCache()
 export default ({ element }) => {

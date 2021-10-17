@@ -11,11 +11,11 @@ import {
   CardContent,
 } from '@mui/material'
 // layouts
-import DashboardLayout from '../../src/layouts/dashboard'
+import DashboardLayout from '../../_SHELL/layouts/dashboard'
 // hooks
-import useSettings from '../../src/hooks/useSettings'
+import useSettings from '../../_SHELL/hooks/useSettings'
 // components
-import Page from '../../src/components/Page'
+import Page from '../../_SHELL/components/Page'
 
 // ----------------------------------------------------------------------
 

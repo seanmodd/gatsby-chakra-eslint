@@ -5,7 +5,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { makeStyles } from '@material-ui/core/styles'
 
 import Layout from '../../components/ui/layout'
-import DashboardLayout from '../../src/layouts/dashboard'
+import DashboardLayout from '../../_SHELL/layouts/dashboard'
 import SEO from '../../components/ui/seo'
 import CheckoutPortal from '../../components/cart/CheckoutPortal'
 import CartItems from '../../components/cart/CartItems'

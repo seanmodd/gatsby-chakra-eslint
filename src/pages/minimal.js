@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 // layouts
 import { styled } from '@mui/material/styles'
-import MainLayout from '../src/layouts/main'
+import MainLayout from '../_SHELL/layouts/main'
 // material
 // components
-import Page from '../src/components/Page'
+import Page from '../_SHELL/components/Page'
 import {
   LandingHero,
   LandingMinimal,
@@ -14,7 +14,7 @@ import {
   LandingAdvertisement,
   LandingCleanInterfaces,
   LandingHugePackElements,
-} from '../src/components/_external-pages/landing'
+} from '../_SHELL/components/_external-pages/landing'
 
 // ----------------------------------------------------------------------
 

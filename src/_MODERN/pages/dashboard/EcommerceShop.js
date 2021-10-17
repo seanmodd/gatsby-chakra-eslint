@@ -1,85 +1,98 @@
-import { useFormik } from 'formik';
-import { useEffect, useState } from 'react';
-import { filter, includes, orderBy } from 'lodash';
+import React, { useEffect, useState } from 'react'
+import { useFormik } from 'formik'
+import { filter, includes, orderBy } from 'lodash'
 // material
-import { Backdrop, Container, Typography, CircularProgress, Stack } from '@mui/material';
+import {
+  Backdrop,
+  Container,
+  Typography,
+  CircularProgress,
+  Stack,
+} from '@mui/material'
 // redux
-import { useDispatch, useSelector } from '../../redux/store';
-import { getProducts, filterProducts } from '../../redux/slices/product';
+import { useDispatch, useSelector } from '../../redux/store'
+import { getProducts, filterProducts } from '../../redux/slices/product'
 // routes
-import { PATH_DASHBOARD } from '../../routes/paths';
+import { PATH_DASHBOARD } from '../../routes/paths'
 // utils
-import fakeRequest from '../../utils/fakeRequest';
+import fakeRequest from '../../utils/fakeRequest'
 // hooks
-import useSettings from '../../hooks/useSettings';
+import useSettings from '../../hooks/useSettings'
 // components
-import Page from '../../minimalComponents/Page';
-import HeaderBreadcrumbs from '../../minimalComponents/HeaderBreadcrumbs';
+import Page from '../../minimalComponents/Page'
+import HeaderBreadcrumbs from '../../minimalComponents/HeaderBreadcrumbs'
 import {
   ShopTagFiltered,
   ShopProductSort,
   ShopProductList,
-  ShopFilterSidebar
-} from '../../minimalComponents/_dashboard/e-commerce/shop';
-import CartWidget from '../../minimalComponents/_dashboard/e-commerce/CartWidget';
+  ShopFilterSidebar,
+} from '../../minimalComponents/_dashboard/e-commerce/shop'
+import CartWidget from '../../minimalComponents/_dashboard/e-commerce/CartWidget'
 
 // ----------------------------------------------------------------------
 
 function applyFilter(products, sortBy, filters) {
   // SORT BY
   if (sortBy === 'featured') {
-    products = orderBy(products, ['sold'], ['desc']);
+    products = orderBy(products, ['sold'], ['desc'])
   }
   if (sortBy === 'newest') {
-    products = orderBy(products, ['createdAt'], ['desc']);
+    products = orderBy(products, ['createdAt'], ['desc'])
   }
   if (sortBy === 'priceDesc') {
-    products = orderBy(products, ['price'], ['desc']);
+    products = orderBy(products, ['price'], ['desc'])
   }
   if (sortBy === 'priceAsc') {
-    products = orderBy(products, ['price'], ['asc']);
+    products = orderBy(products, ['price'], ['asc'])
   }
   // FILTER PRODUCTS
   if (filters.gender.length > 0) {
-    products = filter(products, (_product) => includes(filters.gender, _product.gender));
+    products = filter(products, _product =>
+      includes(filters.gender, _product.gender)
+    )
   }
   if (filters.category !== 'All') {
-    products = filter(products, (_product) => _product.category === filters.category);
+    products = filter(
+      products,
+      _product => _product.category === filters.category
+    )
   }
   if (filters.colors.length > 0) {
-    products = filter(products, (_product) => _product.colors.some((color) => filters.colors.includes(color)));
+    products = filter(products, _product =>
+      _product.colors.some(color => filters.colors.includes(color))
+    )
   }
   if (filters.priceRange) {
-    products = filter(products, (_product) => {
+    products = filter(products, _product => {
       if (filters.priceRange === 'below') {
-        return _product.price < 25;
+        return _product.price < 25
       }
       if (filters.priceRange === 'between') {
-        return _product.price >= 25 && _product.price <= 75;
+        return _product.price >= 25 && _product.price <= 75
       }
-      return _product.price > 75;
-    });
+      return _product.price > 75
+    })
   }
   if (filters.rating) {
-    products = filter(products, (_product) => {
-      const convertRating = (value) => {
-        if (value === 'up4Star') return 4;
-        if (value === 'up3Star') return 3;
-        if (value === 'up2Star') return 2;
-        return 1;
-      };
-      return _product.totalRating > convertRating(filters.rating);
-    });
+    products = filter(products, _product => {
+      const convertRating = value => {
+        if (value === 'up4Star') return 4
+        if (value === 'up3Star') return 3
+        if (value === 'up2Star') return 2
+        return 1
+      }
+      return _product.totalRating > convertRating(filters.rating)
+    })
   }
-  return products;
+  return products
 }
 
 export default function EcommerceShop() {
-  const { themeStretch } = useSettings();
-  const dispatch = useDispatch();
-  const [openFilter, setOpenFilter] = useState(false);
-  const { products, sortBy, filters } = useSelector((state) => state.product);
-  const filteredProducts = applyFilter(products, sortBy, filters);
+  const { themeStretch } = useSettings()
+  const dispatch = useDispatch()
+  const [openFilter, setOpenFilter] = useState(false)
+  const { products, sortBy, filters } = useSelector(state => state.product)
+  const filteredProducts = applyFilter(products, sortBy, filters)
 
   const formik = useFormik({
     initialValues: {
@@ -87,48 +100,49 @@ export default function EcommerceShop() {
       category: filters.category,
       colors: filters.colors,
       priceRange: filters.priceRange,
-      rating: filters.rating
+      rating: filters.rating,
     },
     onSubmit: async (values, { setSubmitting }) => {
       try {
-        await fakeRequest(500);
-        setSubmitting(false);
+        await fakeRequest(500)
+        setSubmitting(false)
       } catch (error) {
-        console.error(error);
-        setSubmitting(false);
+        console.error(error)
+        setSubmitting(false)
       }
-    }
-  });
+    },
+  })
 
-  const { values, resetForm, handleSubmit, isSubmitting, initialValues } = formik;
+  const { values, resetForm, handleSubmit, isSubmitting, initialValues } =
+    formik
 
   const isDefault =
     !values.priceRange &&
     !values.rating &&
     values.gender.length === 0 &&
     values.colors.length === 0 &&
-    values.category === 'All';
+    values.category === 'All'
 
   useEffect(() => {
-    dispatch(getProducts());
-  }, [dispatch]);
+    dispatch(getProducts())
+  }, [dispatch])
 
   useEffect(() => {
-    dispatch(filterProducts(values));
-  }, [dispatch, values]);
+    dispatch(filterProducts(values))
+  }, [dispatch, values])
 
   const handleOpenFilter = () => {
-    setOpenFilter(true);
-  };
+    setOpenFilter(true)
+  }
 
   const handleCloseFilter = () => {
-    setOpenFilter(false);
-  };
+    setOpenFilter(false)
+  }
 
   const handleResetFilter = () => {
-    handleSubmit();
-    resetForm();
-  };
+    handleSubmit()
+    resetForm()
+  }
 
   return (
     <Page title="Ecommerce: Shop | Minimal-UI">
@@ -145,9 +159,9 @@ export default function EcommerceShop() {
             { name: 'Dashboard', href: PATH_DASHBOARD.root },
             {
               name: 'E-Commerce',
-              href: PATH_DASHBOARD.eCommerce.root
+              href: PATH_DASHBOARD.eCommerce.root,
             },
-            { name: 'Shop' }
+            { name: 'Shop' },
           ]}
         />
 
@@ -160,7 +174,13 @@ export default function EcommerceShop() {
           </Typography>
         )}
 
-        <Stack direction="row" flexWrap="wrap-reverse" alignItems="center" justifyContent="flex-end" sx={{ mb: 5 }}>
+        <Stack
+          direction="row"
+          flexWrap="wrap-reverse"
+          alignItems="center"
+          justifyContent="flex-end"
+          sx={{ mb: 5 }}
+        >
           <ShopTagFiltered
             filters={filters}
             formik={formik}
@@ -181,9 +201,12 @@ export default function EcommerceShop() {
           </Stack>
         </Stack>
 
-        <ShopProductList products={filteredProducts} isLoad={!filteredProducts && !initialValues} />
+        <ShopProductList
+          products={filteredProducts}
+          isLoad={!filteredProducts && !initialValues}
+        />
         <CartWidget />
       </Container>
     </Page>
-  );
+  )
 }
