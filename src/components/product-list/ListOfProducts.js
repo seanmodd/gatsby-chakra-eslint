@@ -1,9 +1,12 @@
+import { paramCase } from 'change-case'
 import React, { useState, useEffect } from 'react'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { makeStyles } from '@material-ui/core/styles'
+
 import { useQuery } from '@apollo/client'
+
 
 import { GET_DETAILS } from '../../apollo/queries'
 

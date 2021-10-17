@@ -6,6 +6,7 @@ import DashboardLayout from '../../_SHELL/layouts/dashboard'
 import useSettings from '../../_SHELL/hooks/useSettings'
 // components
 import Page from '../../_SHELL/components/Page'
+import EcommerceShop from '../../_MODERN/pages/dashboard/EcommerceShop'
 
 // ----------------------------------------------------------------------
 
@@ -14,7 +15,7 @@ export default function PageOne() {
 
   return (
     <DashboardLayout>
-      <Page title="Dashboard Homepage | Car X Dashboard">
+      {/* <Page title="Dashboard Homepage | Car X Dashboard">
         <Container maxWidth={themeStretch ? false : 'xl'}>
           <Typography variant="h3" component="h1" paragraph>
             Dashboard Homepage
@@ -42,6 +43,8 @@ export default function PageOne() {
           </Typography>
         </Container>
       </Page>
+       */}
+      <EcommerceShop />
     </DashboardLayout>
   )
 }

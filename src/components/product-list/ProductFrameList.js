@@ -1,10 +1,16 @@
+import { styled } from '@mui/material/styles'
+import { Box, Card, Typography, Stack } from '@mui/material'
+// import { Box, Card, Link, Typography, Stack } from '@mui/material'
 import React from 'react'
 import Grid from '@material-ui/core/Grid'
-import Typography from '@material-ui/core/Typography'
+// import Typography from '@material-ui/core/Typography'
 import Chip from '@material-ui/core/Chip'
 import { makeStyles } from '@material-ui/core/styles'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { Link } from 'gatsby'
+import ColorPreview from '../../_MODERN/minimalComponents/ColorPreview'
+import { fCurrency } from '../../_MODERN/utils/formatNumber'
+import Label from '../../_MODERN/minimalComponents/Label'
 
 import Rating from '../home/Rating'
 import Sizes from './Sizes'
@@ -60,6 +66,14 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
+const ProductImgStyle = styled('img')({
+  top: 0,
+  width: '100%',
+  height: '100%',
+  objectFit: 'cover',
+  position: 'absolute',
+})
+
 export default function ProductFrameList({
   product,
   variant,
@@ -87,97 +101,165 @@ export default function ProductFrameList({
   const stockDisplay = getStockDisplay(stock, selectedVariant)
 
   return (
-    <Grid item container>
-      <Grid
-        item
-        lg={9}
-        container
-        alignItems="center"
-        justifyContent="space-around"
-        classes={{ root: classes.frame }}
-      >
-        {images.map((image, i) => {
-          const gatsbyData = getImage(image.localFile)
+    <>
+      <Grid item container>
+        <Grid
+          item
+          lg={9}
+          container
+          alignItems="center"
+          justifyContent="space-around"
+          classes={{ root: classes.frame }}
+        >
+          {images.map((image, i) => {
+            const gatsbyData = getImage(image.localFile)
 
-          return (
-            <Grid
-              item
-              key={image.url}
-              component={Link}
-              to={`/dashboard/${product.node.category.name.toLowerCase()}/${product.node.name
-                .split(' ')[0]
-                .toLowerCase()}${hasStyles ? `?style=${variant.style}` : ''}`}
-            >
-              <GatsbyImage
-                image={gatsbyData}
-                alt={image.url}
-                className={classes.productImage}
+            return (
+              <Grid
+                item
+                key={image.url}
+                component={Link}
+                to={`/dashboard/${product.node.category.name.toLowerCase()}/${product.node.name
+                  .split(' ')[0]
+                  .toLowerCase()}${hasStyles ? `?style=${variant.style}` : ''}`}
+              >
+                <GatsbyImage
+                  image={gatsbyData}
+                  alt={image.url}
+                  className={classes.productImage}
+                />
+              </Grid>
+            )
+          })}
+        </Grid>
+        <Grid
+          item
+          lg={3}
+          container
+          direction="column"
+          justifyContent="space-between"
+          classes={{ root: classes.info }}
+        >
+          <Grid
+            item
+            container
+            direction="column"
+            component={Link}
+            to={`/dashboard/${product.node.category.name.toLowerCase()}/${product.node.name
+              .split(' ')[0]
+              .toLowerCase()}${hasStyles ? `?style=${variant.style}` : ''}`}
+          >
+            <Grid item>
+              <Typography variant="h4">
+                {product.node.name.split(' ')[0]}
+              </Typography>
+            </Grid>
+            <Grid item>
+              <Rating number={rating} />
+            </Grid>
+            <Grid className={classes.priceChip} item>
+              <Chip
+                label={`$${variant.price}`}
+                classes={{ label: classes.chipLabel }}
               />
             </Grid>
-          )
-        })}
-      </Grid>
-      <Grid
-        item
-        lg={3}
-        container
-        direction="column"
-        justifyContent="space-between"
-        classes={{ root: classes.info }}
-      >
-        <Grid
-          item
-          container
-          direction="column"
-          component={Link}
-          to={`/dashboard/${product.node.category.name.toLowerCase()}/${product.node.name
-            .split(' ')[0]
-            .toLowerCase()}${hasStyles ? `?style=${variant.style}` : ''}`}
-        >
-          <Grid item>
-            <Typography variant="h4">
-              {product.node.name.split(' ')[0]}
-            </Typography>
+            <Grid item>
+              <Typography variant="h3" classes={{ root: classes.stock }}>
+                {stockDisplay}
+              </Typography>
+            </Grid>
           </Grid>
-          <Grid item>
-            <Rating number={rating} />
-          </Grid>
-          <Grid className={classes.priceChip} item>
-            <Chip
-              label={`$${variant.price}`}
-              classes={{ label: classes.chipLabel }}
+          <Grid
+            item
+            container
+            direction="column"
+            classes={{ root: classes.sizesAndSwatches }}
+          >
+            <Sizes
+              sizes={sizes}
+              selectedSize={selectedSize}
+              setSelectedSize={setSelectedSize}
+            />
+            <Swatches
+              colors={colors}
+              selectedColor={selectedColor}
+              setSelectedColor={setSelectedColor}
             />
           </Grid>
-          <Grid item>
-            <Typography variant="h3" classes={{ root: classes.stock }}>
-              {stockDisplay}
-            </Typography>
-          </Grid>
-        </Grid>
-        <Grid
-          item
-          container
-          direction="column"
-          classes={{ root: classes.sizesAndSwatches }}
-        >
-          <Sizes
-            sizes={sizes}
-            selectedSize={selectedSize}
-            setSelectedSize={setSelectedSize}
-          />
-          <Swatches
-            colors={colors}
-            selectedColor={selectedColor}
-            setSelectedColor={setSelectedColor}
+          <QtyButton
+            variants={product.node.variants}
+            name={product.node.name.split(' ')[0]}
+            stock={stock}
+            selectedVariant={selectedVariant}
           />
         </Grid>
-        <QtyButton
-          variants={product.node.variants}
-          name={product.node.name.split(' ')[0]}
-          stock={stock}
-          selectedVariant={selectedVariant}
-        />
       </Grid>
-    </Grid>
+      //! Below is an item
+      <Card>
+        <Box sx={{ pt: '100%', position: 'relative' }}>
+          {rating && (
+            <Label
+              variant="filled"
+              color={(rating === 'sale' && 'error') || 'info'}
+              sx={{
+                top: 16,
+                right: 16,
+                zIndex: 9,
+                position: 'absolute',
+                textTransform: 'uppercase',
+              }}
+            >
+              {rating}
+            </Label>
+          )}
+
+          {images.map((image, i) => {
+            const gatsbyData = getImage(image.localFile)
+
+            return <ProductImgStyle alt={image.url} src={gatsbyData} />
+          })}
+        </Box>
+
+        <Stack spacing={2} sx={{ p: 3 }}>
+          <Link
+            color="inherit"
+            component={Link}
+            to={`/dashboard/${product.node.category.name.toLowerCase()}/${product.node.name
+              .split(' ')[0]
+              .toLowerCase()}${hasStyles ? `?style=${variant.style}` : ''}`}
+          >
+            <Typography variant="subtitle2" noWrap>
+              {/* {name} */}
+              {product.node.name}
+            </Typography>
+          </Link>
+
+          <Stack
+            direction="row"
+            alignItems="center"
+            justifyContent="space-between"
+          >
+            <ColorPreview colors={colors} />
+            <Typography variant="subtitle1">
+              <Typography
+                component="span"
+                variant="body1"
+                sx={{
+                  color: 'text.disabled',
+                  textDecoration: 'line-through',
+                }}
+              >
+                {/* {priceSale && fCurrency(priceSale)} */}
+                {`$${variant.price}`}
+              </Typography>
+              &nbsp;
+              {/* {fCurrency(price)} */}
+              {`$${variant.price}`}
+            </Typography>
+          </Stack>
+        </Stack>
+      </Card>
+      //! above is an item
+    </>
   )
 }

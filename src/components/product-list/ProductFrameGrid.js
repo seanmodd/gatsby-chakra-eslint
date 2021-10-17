@@ -1,12 +1,17 @@
 //! Problem: This is possible where the portion of the Recently Viewed items turns up as null and is blanked out in production and development...
 import React, { useState } from 'react'
 import clsx from 'clsx'
+import { Link, navigate } from 'gatsby'
+import { styled } from '@mui/material/styles'
+import { Box, Card, Typography, Stack } from '@mui/material'
 import Grid from '@material-ui/core/Grid'
-import Typography from '@material-ui/core/Typography'
+// import Typography from '@material-ui/core/Typography'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { makeStyles } from '@material-ui/core/styles'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
-import { navigate } from 'gatsby'
+import ColorPreview from '../../_MODERN/minimalComponents/ColorPreview'
+import { fCurrency } from '../../_MODERN/utils/formatNumber'
+import Label from '../../_MODERN/minimalComponents/Label'
 
 import QuickView from './QuickView'
 
@@ -85,6 +90,14 @@ export const colorIndex = (product, variant, color) =>
     )[0]
   )
 
+const ProductImgStyle = styled('img')({
+  top: 0,
+  width: '100%',
+  height: '100%',
+  objectFit: 'cover',
+  position: 'absolute',
+})
+
 export default function ProductFrameGrid({
   product,
   variant,
@@ -133,64 +146,130 @@ export default function ProductFrameGrid({
   console.log('variant.colorLabel: ', variant.colorLabel)
   //! SHOW JAYEN BELOW IS WHERE WE CAN FIX THE BLANK WITHIN RECENTLY VIEWED ITEMS!
   return (
-    <Grid
-      item
-      classes={{
-        root: clsx(classes.frameContainer, {
-          [classes.invisibility]: open === true,
-        }),
-      }}
-    >
+    <>
       <Grid
-        container
-        direction="column"
-        onClick={() =>
-          matchesMD || disableQuickView
-            ? navigate(
-                `/${product.node.category.name.toLowerCase()}/${product.node.name
-                  .split(' ')[0]
-                  .toLowerCase()}${
-                  hasStyles ? `?style=${variant.style}` : null
-                }`
-              )
-            : setOpen(true)
-        }
+        item
+        classes={{
+          root: clsx(classes.frameContainer, {
+            [classes.invisibility]: open === true,
+          }),
+        }}
       >
-        <Grid item classes={{ root: classes.frame }}>
-          <GatsbyImage
-            image={image}
-            alt={product.node.name}
-            className={classes.product}
-          />
+        <Grid
+          container
+          direction="column"
+          onClick={() =>
+            matchesMD || disableQuickView
+              ? navigate(
+                  `/${product.node.category.name.toLowerCase()}/${product.node.name
+                    .split(' ')[0]
+                    .toLowerCase()}${
+                    hasStyles ? `?style=${variant.style}` : null
+                  }`
+                )
+              : setOpen(true)
+          }
+        >
+          <Grid item classes={{ root: classes.frame }}>
+            <GatsbyImage
+              image={image}
+              alt={product.node.name}
+              className={classes.product}
+            />
+          </Grid>
+          <Grid item classes={{ root: classes.title }}>
+            <Typography variant="h6">productName:</Typography>
+            <Typography variant="h5">{productName}</Typography>
+          </Grid>
+          <Grid item classes={{ root: classes.title }}>
+            <Typography variant="h6">variant?.price: </Typography>
+            <Typography variant="h5">${variant?.price}</Typography>
+          </Grid>
         </Grid>
-        <Grid item classes={{ root: classes.title }}>
-          <Typography variant="h6">productName:</Typography>
-          <Typography variant="h5">{productName}</Typography>
-        </Grid>
-        <Grid item classes={{ root: classes.title }}>
-          <Typography variant="h6">variant?.price: </Typography>
-          <Typography variant="h5">${variant?.price}</Typography>
-        </Grid>
+        <QuickView
+          open={open}
+          setOpen={setOpen}
+          image={image}
+          name={productName}
+          price={variant?.price}
+          product={product}
+          variant={variant}
+          sizes={sizes}
+          colors={colors}
+          selectedSize={selectedSize}
+          selectedColor={selectedColor}
+          setSelectedSize={setSelectedSize}
+          setSelectedColor={setSelectedColor}
+          hasStyles={hasStyles}
+          stock={stock}
+          rating={rating}
+          imageIndex={imageIndex}
+        />
       </Grid>
-      <QuickView
-        open={open}
-        setOpen={setOpen}
-        image={image}
-        name={productName}
-        price={variant?.price}
-        product={product}
-        variant={variant}
-        sizes={sizes}
-        colors={colors}
-        selectedSize={selectedSize}
-        selectedColor={selectedColor}
-        setSelectedSize={setSelectedSize}
-        setSelectedColor={setSelectedColor}
-        hasStyles={hasStyles}
-        stock={stock}
-        rating={rating}
-        imageIndex={imageIndex}
-      />
-    </Grid>
+      //! Below is an item
+      <Card>
+        <Box sx={{ pt: '100%', position: 'relative' }}>
+          {rating && (
+            <Label
+              variant="filled"
+              color={(rating === 'sale' && 'error') || 'info'}
+              sx={{
+                top: 16,
+                right: 16,
+                zIndex: 9,
+                position: 'absolute',
+                textTransform: 'uppercase',
+              }}
+            >
+              {rating}
+            </Label>
+          )}
+          {/* {images.map((image, i) => { */}
+          {/* const gatsbyData = getImage(image.localFile) */}
+          return <ProductImgStyle alt={image.url} src={image} />
+          {/* })} */}
+        </Box>
+
+        <Stack spacing={2} sx={{ p: 3 }}>
+          <Link
+            color="inherit"
+            component={Link}
+            to={`/dashboard/${product.node.category.name.toLowerCase()}/${product.node.name
+              .split(' ')[0]
+              .toLowerCase()}${hasStyles ? `?style=${variant.style}` : ''}`}
+          >
+            <Typography variant="subtitle2" noWrap>
+              {/* {name} */}
+              {product.node.name}
+            </Typography>
+          </Link>
+
+          <Stack
+            direction="row"
+            alignItems="center"
+            justifyContent="space-between"
+          >
+            <ColorPreview colors={colors} />
+            <Typography variant="subtitle1">
+              <Typography
+                component="span"
+                variant="body1"
+                sx={{
+                  color: 'text.disabled',
+                  textDecoration: 'line-through',
+                }}
+              >
+                {/* {priceSale && fCurrency(priceSale)} */}
+                {`$${variant.price}`}
+              </Typography>
+              &nbsp;
+              {/* {fCurrency(price)} */}
+              {`$${variant.price}`}
+            </Typography>
+          </Stack>
+        </Stack>
+      </Card>
+      //! above is an item
+    </>
   )
 }

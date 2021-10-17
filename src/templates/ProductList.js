@@ -1,13 +1,17 @@
 import React, { useState, useRef, useEffect } from 'react'
+
 import Fab from '@material-ui/core/Fab'
 import Pagination from '@material-ui/lab/Pagination'
 import PaginationItem from '@material-ui/lab/PaginationItem'
-import Grid from '@material-ui/core/Grid'
+// import Grid from '@material-ui/core/Grid'
+import { Grid } from '@mui/material'
 import { makeStyles, styled } from '@material-ui/core/styles'
 import { graphql } from 'gatsby'
+
 import DashboardLayout from '../_SHELL/layouts/dashboard'
 import Layout from '../components/ui/layout'
 import SEO from '../components/ui/seo'
+
 import DynamicToolbar from '../components/product-list/DynamicToolbar'
 import ListOfProducts from '../components/product-list/ListOfProducts'
 import {
@@ -222,6 +226,18 @@ export default function ProductList({
             </Fab>
           </Grid>
         </Layout>
+
+        {/* <Grid container spacing={3} {...other}> */}
+        <Grid container spacing={3}>
+          {/* {products.map(product => ( */}
+          <Grid item xs={12} sm={6} md={3}>
+            //! INSERT CAR DATA HERE.
+            {/* <ShopProductCard product={products} /> */}
+          </Grid>
+          {/* ))} */}
+
+          {/* {isLoad && SkeletonLoad} */}
+        </Grid>
       </DashboardLayout>
     </>
   )
