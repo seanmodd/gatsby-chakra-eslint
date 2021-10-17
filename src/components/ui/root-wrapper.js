@@ -25,21 +25,17 @@ import ThemePrimaryColor from '../../_SHELL/components/ThemePrimaryColor'
 import { CollapseDrawerProvider } from '../../_SHELL/contexts/CollapseDrawerContext'
 import { SettingsProvider } from '../../_SHELL/contexts/SettingsContext'
 
-import ModernSettings from '../../_MODERN/minimalComponents/settings'
-import ModernRtlLayout from '../../_MODERN/minimalComponents/RtlLayout'
-import ModernLoadingScreen, {
-  ProgressBarStyle as ModernProgressBarStyle,
-} from '../../_MODERN/minimalComponents/LoadingScreen'
-import ModernThemePrimaryColor from '../../_MODERN/minimalComponents/ThemePrimaryColor'
-
-import { CollapseDrawerProvider as ModernCollapseDrawerProvider } from '../../_MODERN/contexts/CollapseDrawerContext'
-import { SettingsProvider as ModernSettingsProvider } from '../../_MODERN/contexts/SettingsContext'
-
+// import { SettingsProvider } from '../../_MODERN/contexts/SettingsContext'
 import { ApolloWrapper } from '../../apollo/ApolloWrapper'
 import { UserWrapper, FeedbackWrapper, CartWrapper } from '../../contexts'
 import theme from './theme'
 import Layout from './layout'
 import MainLayout from '../../_SHELL/layouts/main'
+// import { idk } from '../../_MODERN/config'
+// import { AuthProvider } from './contexts/JWTContext';
+// import { AuthProvider } from '../../_MODERN/contexts/JWTContext'
+// import { CollapseDrawerProvider } from '../../_MODERN/contexts/CollapseDrawerContext'
+// import LoadingScreen from '../../_MODERN/minimalComponents/LoadingScreen'
 
 const clientSideEmotionCache = createEmotionCache()
 export default ({ element }) => {

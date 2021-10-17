@@ -1,169 +1,175 @@
-import { createContext, useEffect, useReducer } from 'react';
-import PropTypes from 'prop-types';
-// utils
-import axios from '../utils/axios';
-import { isValidToken, setSession } from '../utils/jwt';
+import React from 'react'
 
-// ----------------------------------------------------------------------
+function JWTContext() {}
 
-const initialState = {
-  isAuthenticated: false,
-  isInitialized: false,
-  user: null
-};
+export default JWTContext
+// import React, { createContext, useEffect, useReducer } from 'react'
+// import PropTypes from 'prop-types'
+// // utils
+// import axios from '../utils/axios'
+// import { isValidToken, setSession } from '../utils/jwt'
 
-const handlers = {
-  INITIALIZE: (state, action) => {
-    const { isAuthenticated, user } = action.payload;
-    return {
-      ...state,
-      isAuthenticated,
-      isInitialized: true,
-      user
-    };
-  },
-  LOGIN: (state, action) => {
-    const { user } = action.payload;
+// // ----------------------------------------------------------------------
 
-    return {
-      ...state,
-      isAuthenticated: true,
-      user
-    };
-  },
-  LOGOUT: (state) => ({
-    ...state,
-    isAuthenticated: false,
-    user: null
-  }),
-  REGISTER: (state, action) => {
-    const { user } = action.payload;
+// const initialState = {
+//   isAuthenticated: false,
+//   isInitialized: false,
+//   user: null,
+// }
 
-    return {
-      ...state,
-      isAuthenticated: true,
-      user
-    };
-  }
-};
+// const handlers = {
+//   INITIALIZE: (state, action) => {
+//     const { isAuthenticated, user } = action.payload
+//     return {
+//       ...state,
+//       isAuthenticated,
+//       isInitialized: true,
+//       user,
+//     }
+//   },
+//   LOGIN: (state, action) => {
+//     const { user } = action.payload
 
-const reducer = (state, action) => (handlers[action.type] ? handlers[action.type](state, action) : state);
+//     return {
+//       ...state,
+//       isAuthenticated: true,
+//       user,
+//     }
+//   },
+//   LOGOUT: state => ({
+//     ...state,
+//     isAuthenticated: false,
+//     user: null,
+//   }),
+//   REGISTER: (state, action) => {
+//     const { user } = action.payload
 
-const AuthContext = createContext({
-  ...initialState,
-  method: 'jwt',
-  login: () => Promise.resolve(),
-  logout: () => Promise.resolve(),
-  register: () => Promise.resolve()
-});
+//     return {
+//       ...state,
+//       isAuthenticated: true,
+//       user,
+//     }
+//   },
+// }
 
-AuthProvider.propTypes = {
-  children: PropTypes.node
-};
+// const reducer = (state, action) =>
+//   handlers[action.type] ? handlers[action.type](state, action) : state
 
-function AuthProvider({ children }) {
-  const [state, dispatch] = useReducer(reducer, initialState);
+// const AuthContext = createContext({
+//   ...initialState,
+//   method: 'jwt',
+//   login: () => Promise.resolve(),
+//   logout: () => Promise.resolve(),
+//   register: () => Promise.resolve(),
+// })
 
-  useEffect(() => {
-    const initialize = async () => {
-      try {
-        const accessToken = window.localStorage.getItem('accessToken');
+// AuthProvider.propTypes = {
+//   children: PropTypes.node,
+// }
 
-        if (accessToken && isValidToken(accessToken)) {
-          setSession(accessToken);
+// function AuthProvider({ children }) {
+//   const [state, dispatch] = useReducer(reducer, initialState)
 
-          const response = await axios.get('/api/account/my-account');
-          const { user } = response.data;
+//   useEffect(() => {
+//     const initialize = async () => {
+//       try {
+//         const accessToken = window.localStorage.getItem('accessToken')
 
-          dispatch({
-            type: 'INITIALIZE',
-            payload: {
-              isAuthenticated: true,
-              user
-            }
-          });
-        } else {
-          dispatch({
-            type: 'INITIALIZE',
-            payload: {
-              isAuthenticated: false,
-              user: null
-            }
-          });
-        }
-      } catch (err) {
-        console.error(err);
-        dispatch({
-          type: 'INITIALIZE',
-          payload: {
-            isAuthenticated: false,
-            user: null
-          }
-        });
-      }
-    };
+//         if (accessToken && isValidToken(accessToken)) {
+//           setSession(accessToken)
 
-    initialize();
-  }, []);
+//           const response = await axios.get('/api/account/my-account')
+//           const { user } = response.data
 
-  const login = async (email, password) => {
-    const response = await axios.post('/api/account/login', {
-      email,
-      password
-    });
-    const { accessToken, user } = response.data;
+//           dispatch({
+//             type: 'INITIALIZE',
+//             payload: {
+//               isAuthenticated: true,
+//               user,
+//             },
+//           })
+//         } else {
+//           dispatch({
+//             type: 'INITIALIZE',
+//             payload: {
+//               isAuthenticated: false,
+//               user: null,
+//             },
+//           })
+//         }
+//       } catch (err) {
+//         console.error(err)
+//         dispatch({
+//           type: 'INITIALIZE',
+//           payload: {
+//             isAuthenticated: false,
+//             user: null,
+//           },
+//         })
+//       }
+//     }
 
-    setSession(accessToken);
-    dispatch({
-      type: 'LOGIN',
-      payload: {
-        user
-      }
-    });
-  };
+//     initialize()
+//   }, [])
 
-  const register = async (email, password, firstName, lastName) => {
-    const response = await axios.post('/api/account/register', {
-      email,
-      password,
-      firstName,
-      lastName
-    });
-    const { accessToken, user } = response.data;
+//   const login = async (email, password) => {
+//     const response = await axios.post('/api/account/login', {
+//       email,
+//       password,
+//     })
+//     const { accessToken, user } = response.data
 
-    window.localStorage.setItem('accessToken', accessToken);
-    dispatch({
-      type: 'REGISTER',
-      payload: {
-        user
-      }
-    });
-  };
+//     setSession(accessToken)
+//     dispatch({
+//       type: 'LOGIN',
+//       payload: {
+//         user,
+//       },
+//     })
+//   }
 
-  const logout = async () => {
-    setSession(null);
-    dispatch({ type: 'LOGOUT' });
-  };
+//   const register = async (email, password, firstName, lastName) => {
+//     const response = await axios.post('/api/account/register', {
+//       email,
+//       password,
+//       firstName,
+//       lastName,
+//     })
+//     const { accessToken, user } = response.data
 
-  const resetPassword = () => {};
+//     window.localStorage.setItem('accessToken', accessToken)
+//     dispatch({
+//       type: 'REGISTER',
+//       payload: {
+//         user,
+//       },
+//     })
+//   }
 
-  const updateProfile = () => {};
+//   const logout = async () => {
+//     setSession(null)
+//     dispatch({ type: 'LOGOUT' })
+//   }
 
-  return (
-    <AuthContext.Provider
-      value={{
-        ...state,
-        method: 'jwt',
-        login,
-        logout,
-        register,
-        resetPassword,
-        updateProfile
-      }}
-    >
-      {children}
-    </AuthContext.Provider>
-  );
-}
+//   const resetPassword = () => {}
 
-export { AuthContext, AuthProvider };
+//   const updateProfile = () => {}
+
+//   return (
+//     <AuthContext.Provider
+//       value={{
+//         ...state,
+//         method: 'jwt',
+//         login,
+//         logout,
+//         register,
+//         resetPassword,
+//         updateProfile,
+//       }}
+//     >
+//       {children}
+//     </AuthContext.Provider>
+//   )
+// }
+
+// export { AuthContext, AuthProvider }
