@@ -1,56 +1,57 @@
-import React, { useContext, useState, useRef } from "react"
-import axios from "axios"
-import clsx from "clsx"
-import Grid from "@material-ui/core/Grid"
-import Button from "@material-ui/core/Button"
-import Typography from "@material-ui/core/Typography"
-import CircularProgress from "@material-ui/core/CircularProgress"
-import { makeStyles } from "@material-ui/core/styles"
+import React, { useContext, useState, useRef } from 'react'
+import axios from 'axios'
+import clsx from 'clsx'
+import Grid from '@material-ui/core/Grid'
+import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
+import CircularProgress from '@material-ui/core/CircularProgress'
+import { makeStyles } from '@material-ui/core/styles'
 
-import Rating from "../home/Rating"
-import Fields from "../auth/Fields"
+import Rating from '../home/Rating'
+import Fields from '../auth/Fields'
 
-import { FeedbackContext } from "../../contexts"
-import { setSnackbar } from "../../contexts/actions"
+import { FeedbackContext } from '../../contexts'
+import { setSnackbar } from '../../contexts/actions'
 
 const useStyles = makeStyles(theme => ({
   light: {
     color: theme.palette.primary.main,
   },
   date: {
-    marginTop: "-0.5rem",
+    marginTop: '-0.5rem',
   },
   rating: {
-    cursor: "pointer",
+    cursor: 'pointer',
   },
   review: {
-    marginBottom: "3rem",
+    marginBottom: '3rem',
   },
   reviewButtonText: {
-    color: "#fff",
-    fontFamily: "Montserrat",
+    color: '#fff',
+    fontFamily: 'Inter',
     fontWeight: 600,
   },
   cancelButtonText: {
     color: theme.palette.primary.main,
     fontWeight: 600,
-    fontFamily: "Montserrat",
+    fontFamily: 'Inter',
   },
   buttonContainer: {
-    marginTop: "1rem",
+    marginTop: '1rem',
   },
   delete: {
     backgroundColor: theme.palette.error.main,
-    marginLeft: "0.5rem",
-    "&:hover": {
+    marginLeft: '0.5rem',
+    '&:hover': {
       backgroundColor: theme.palette.error.dark,
     },
   },
-  "@global": {
-    ".MuiInput-underline:before, .MuiInput-underline:hover:not(.Mui-disabled):before": {
-      borderBottom: `2px solid ${theme.palette.primary.main}`,
-    },
-    ".MuiInput-underline:after": {
+  '@global': {
+    '.MuiInput-underline:before, .MuiInput-underline:hover:not(.Mui-disabled):before':
+      {
+        borderBottom: `2px solid ${theme.palette.primary.main}`,
+      },
+    '.MuiInput-underline:after': {
       borderBottom: `2px solid ${theme.palette.secondary.main}`,
     },
   },
@@ -72,7 +73,7 @@ export default function ProductReview({
     ? reviews.find(review => review.user.username === user.username)
     : null
 
-  const [values, setValues] = useState({ message: found ? found.text : "" })
+  const [values, setValues] = useState({ message: found ? found.text : '' })
   const [tempRating, setTempRating] = useState(0)
   const [rating, setRating] = useState(
     review ? review.rating : found ? found.rating : null
@@ -81,18 +82,18 @@ export default function ProductReview({
 
   const fields = {
     message: {
-      helperText: "",
-      placeholder: "Write your review.",
+      helperText: '',
+      placeholder: 'Write your review.',
     },
   }
 
   const handleReview = option => {
-    setLoading(option === "delete" ? "delete-review" : "leave-review")
+    setLoading(option === 'delete' ? 'delete-review' : 'leave-review')
 
     const axiosFunction =
-      option === "delete" ? axios.delete : found ? axios.put : axios.post
+      option === 'delete' ? axios.delete : found ? axios.put : axios.post
     const route =
-      found || option === "delete" ? `/reviews/${found.id}` : "/reviews"
+      found || option === 'delete' ? `/reviews/${found.id}` : '/reviews'
 
     const auth = { Authorization: `Bearer ${user.jwt}` }
 
@@ -102,7 +103,7 @@ export default function ProductReview({
         text: values.message,
         product,
         rating,
-        headers: option === "delete" ? auth : undefined,
+        headers: option === 'delete' ? auth : undefined,
       },
       {
         headers: auth,
@@ -113,9 +114,9 @@ export default function ProductReview({
 
         dispatchFeedback(
           setSnackbar({
-            status: "success",
+            status: 'success',
             message: `${
-              option === "delete" ? "Review Deleted" : "Product Reviewed"
+              option === 'delete' ? 'Review Deleted' : 'Product Reviewed'
             } Successfully`,
           })
         )
@@ -123,7 +124,7 @@ export default function ProductReview({
         let newReviews = [...reviews]
         const reviewIndex = newReviews.indexOf(found)
 
-        if (option === "delete") {
+        if (option === 'delete') {
           newReviews = newReviews.filter(review => review !== found)
         } else if (found) {
           newReviews[reviewIndex] = response.data
@@ -140,9 +141,9 @@ export default function ProductReview({
 
         dispatchFeedback(
           setSnackbar({
-            status: "error",
+            status: 'error',
             message: `There was a problem ${
-              option === "delete" ? "removing" : "leaving"
+              option === 'delete' ? 'removing' : 'leaving'
             } your review. Please try again.`,
           })
         )
@@ -195,9 +196,9 @@ export default function ProductReview({
         >
           {review
             ? new Date(review.updatedAt).toLocaleString([], {
-                day: "numeric",
-                month: "numeric",
-                year: "numeric",
+                day: 'numeric',
+                month: 'numeric',
+                year: 'numeric',
               })
             : new Date().toLocaleDateString()}
         </Typography>
@@ -218,7 +219,7 @@ export default function ProductReview({
       {review ? null : (
         <Grid item container classes={{ root: classes.buttonContainer }}>
           <Grid item>
-            {loading === "leave-review" ? (
+            {loading === 'leave-review' ? (
               <CircularProgress />
             ) : (
               <Button
@@ -228,18 +229,18 @@ export default function ProductReview({
                 color="primary"
               >
                 <span className={classes.reviewButtonText}>
-                  {found ? "Edit" : "Leave"} Review
+                  {found ? 'Edit' : 'Leave'} Review
                 </span>
               </Button>
             )}
           </Grid>
           {found ? (
             <Grid item>
-              {loading === "delete-review" ? (
+              {loading === 'delete-review' ? (
                 <CircularProgress />
               ) : (
                 <Button
-                  onClick={() => handleReview("delete")}
+                  onClick={() => handleReview('delete')}
                   variant="contained"
                   classes={{ root: classes.delete }}
                 >

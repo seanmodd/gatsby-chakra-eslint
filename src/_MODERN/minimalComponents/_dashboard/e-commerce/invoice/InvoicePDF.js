@@ -1,15 +1,26 @@
-import { sum } from 'lodash';
-import PropTypes from 'prop-types';
-import { Page, View, Text, Font, Image, Document, StyleSheet } from '@react-pdf/renderer';
+import { sum } from 'lodash'
+import PropTypes from 'prop-types'
+import {
+  Page,
+  View,
+  Text,
+  Font,
+  Image,
+  Document,
+  StyleSheet,
+} from '@react-pdf/renderer'
 // utils
-import { fCurrency } from '../../../../utils/formatNumber';
+import { fCurrency } from '../../../../utils/formatNumber'
 
 // ----------------------------------------------------------------------
 
 Font.register({
   family: 'Roboto',
-  fonts: [{ src: '/fonts/Roboto-Regular.ttf' }, { src: '/fonts/Roboto-Bold.ttf' }]
-});
+  fonts: [
+    { src: '/fonts/Roboto-Regular.ttf' },
+    { src: '/fonts/Roboto-Bold.ttf' },
+  ],
+})
 
 const styles = StyleSheet.create({
   col4: { width: '25%' },
@@ -22,7 +33,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     fontWeight: 700,
     letterSpacing: 1.2,
-    textTransform: 'uppercase'
+    textTransform: 'uppercase',
   },
   h3: { fontSize: 16, fontWeight: 700 },
   h4: { fontSize: 13, fontWeight: 700 },
@@ -33,9 +44,9 @@ const styles = StyleSheet.create({
     padding: '40px 24px 0 24px',
     fontSize: 9,
     lineHeight: 1.6,
-    fontFamily: 'Roboto',
+    fontFamily: 'Inter',
     backgroundColor: '#fff',
-    textTransform: 'capitalize'
+    textTransform: 'capitalize',
   },
   footer: {
     left: 0,
@@ -46,7 +57,7 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderStyle: 'solid',
     position: 'absolute',
-    borderColor: '#DFE3E8'
+    borderColor: '#DFE3E8',
   },
   gridContainer: { flexDirection: 'row', justifyContent: 'space-between' },
   table: { display: 'flex', width: 'auto' },
@@ -57,24 +68,24 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     borderBottomWidth: 1,
     borderStyle: 'solid',
-    borderColor: '#DFE3E8'
+    borderColor: '#DFE3E8',
   },
   noBorder: { paddingTop: 8, paddingBottom: 0, borderBottomWidth: 0 },
   tableCell_1: { width: '5%' },
   tableCell_2: { width: '50%', paddingRight: 16 },
-  tableCell_3: { width: '15%' }
-});
+  tableCell_3: { width: '15%' },
+})
 
 // ----------------------------------------------------------------------
 
 InvoicePDF.propTypes = {
-  invoice: PropTypes.object.isRequired
-};
+  invoice: PropTypes.object.isRequired,
+}
 
 export default function InvoicePDF({ invoice }) {
-  const { id, items, taxes, status, discount, invoiceTo, invoiceFrom } = invoice;
-  const subTotal = sum(items.map((item) => item.price * item.qty));
-  const total = subTotal - discount + taxes;
+  const { id, items, taxes, status, discount, invoiceTo, invoiceFrom } = invoice
+  const subTotal = sum(items.map(item => item.price * item.qty))
+  const total = subTotal - discount + taxes
 
   return (
     <Document>
@@ -200,7 +211,10 @@ export default function InvoicePDF({ invoice }) {
         <View style={[styles.gridContainer, styles.footer]}>
           <View style={styles.col8}>
             <Text style={styles.subtitle2}>NOTES</Text>
-            <Text>We appreciate your business. Should you need us to add VAT or extra notes let us know!</Text>
+            <Text>
+              We appreciate your business. Should you need us to add VAT or
+              extra notes let us know!
+            </Text>
           </View>
           <View style={[styles.col4, styles.alignRight]}>
             <Text style={styles.subtitle2}>Have a Question?</Text>
@@ -209,5 +223,5 @@ export default function InvoicePDF({ invoice }) {
         </View>
       </Page>
     </Document>
-  );
+  )
 }

@@ -87,7 +87,7 @@ export default function MainNavbar() {
           <GatsbyLink to="/">
             <Logo />
           </GatsbyLink>
-          <Label style={{ fontFamily: 'Karla' }} color="info" sx={{ ml: 1 }}>
+          <Label style={{ fontFamily: 'Inter' }} color="info" sx={{ ml: 1 }}>
             Car X
           </Label>
           <Box sx={{ flexGrow: 1 }} />

@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
     marginBottom: '2rem',
     color: '#fff',
     // backgroundColor: '#ff0000',
-    fontFamily: 'Montserrat',
+    fontFamily: 'Inter',
     borderRadius: '15px',
     fontSize: '5rem',
     width: '5rem',
@@ -49,7 +49,7 @@ const useStyles = makeStyles(theme => ({
   pagination: {
     alignSelf: 'flex-end',
     marginRight: '2%',
-    fontFamily: 'Barlow',
+    fontFamily: 'Inter',
     marginTop: '-3rem',
     marginBottom: '4rem',
     [theme.breakpoints.only('md')]: {
@@ -60,7 +60,7 @@ const useStyles = makeStyles(theme => ({
 
 export const StyledPagination = props => {
   const StyledPaginationItem = styled(PaginationItem)(({ theme }) => ({
-    fontFamily: 'Barlow',
+    fontFamily: 'Inter',
     fontSize: '1.5rem',
     color: theme.palette.primary.main,
     '&.Mui-selected': {

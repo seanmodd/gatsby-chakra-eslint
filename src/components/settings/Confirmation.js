@@ -1,25 +1,25 @@
-import React, { useState } from "react"
-import axios from "axios"
-import CircularProgress from "@material-ui/core/CircularProgress"
-import Dialog from "@material-ui/core/Dialog"
-import DialogTitle from "@material-ui/core/DialogTitle"
-import DialogContent from "@material-ui/core/DialogContent"
-import DialogContentText from "@material-ui/core/DialogContentText"
-import DialogActions from "@material-ui/core/DialogActions"
-import Button from "@material-ui/core/Button"
-import Typography from "@material-ui/core/Typography"
-import useMediaQuery from "@material-ui/core/useMediaQuery"
-import { makeStyles } from "@material-ui/core/styles"
+import React, { useState } from 'react'
+import axios from 'axios'
+import CircularProgress from '@material-ui/core/CircularProgress'
+import Dialog from '@material-ui/core/Dialog'
+import DialogTitle from '@material-ui/core/DialogTitle'
+import DialogContent from '@material-ui/core/DialogContent'
+import DialogContentText from '@material-ui/core/DialogContentText'
+import DialogActions from '@material-ui/core/DialogActions'
+import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
+import { makeStyles } from '@material-ui/core/styles'
 
-import Fields from "../auth/Fields"
-import { EmailPassword } from "../auth/Login"
+import Fields from '../auth/Fields'
+import { EmailPassword } from '../auth/Login'
 
 const useStyles = makeStyles(theme => ({
   title: {
     color: theme.palette.error.main,
   },
   button: {
-    fontFamily: "Montserrat",
+    fontFamily: 'Inter',
   },
 }))
 
@@ -31,18 +31,18 @@ export default function Confirmation({
   setSnackbar,
 }) {
   const classes = useStyles()
-  const [values, setValues] = useState({ password: "", confirmation: "" })
+  const [values, setValues] = useState({ password: '', confirmation: '' })
   const [errors, setErrors] = useState({})
   const [visible, setVisible] = useState(false)
   const [loading, setLoading] = useState(false)
 
-  const matchesXS = useMediaQuery(theme => theme.breakpoints.down("xs"))
+  const matchesXS = useMediaQuery(theme => theme.breakpoints.down('xs'))
 
   const { password } = EmailPassword(false, false, visible, setVisible)
 
   const fields = {
-    password: { ...password, placeholder: "Old Password" },
-    confirmation: { ...password, placeholder: "New Password" },
+    password: { ...password, placeholder: 'Old Password' },
+    confirmation: { ...password, placeholder: 'New Password' },
   }
 
   const disabled =
@@ -53,15 +53,14 @@ export default function Confirmation({
     setLoading(true)
 
     axios
-      .post(process.env.GATSBY_STRAPI_URL + "/auth/local", {
+      .post(`${process.env.GATSBY_STRAPI_URL}/auth/local`, {
         identifier: user.email,
         password: values.password,
       })
       .then(response => {
         axios
           .post(
-            process.env.GATSBY_STRAPI_URL +
-              "/users-permissions/change-password",
+            `${process.env.GATSBY_STRAPI_URL}/users-permissions/change-password`,
             {
               password: values.confirmation,
             },
@@ -72,20 +71,20 @@ export default function Confirmation({
             setDialogOpen(false)
             dispatchFeedback(
               setSnackbar({
-                status: "success",
-                message: "Password Changed Successfully",
+                status: 'success',
+                message: 'Password Changed Successfully',
               })
             )
-            setValues({ password: "", confirmation: "" })
+            setValues({ password: '', confirmation: '' })
           })
           .catch(error => {
             setLoading(false)
             console.error(error)
             dispatchFeedback(
               setSnackbar({
-                status: "error",
+                status: 'error',
                 message:
-                  "There was a problem changing your password, please try again.",
+                  'There was a problem changing your password, please try again.',
               })
             )
           })
@@ -94,7 +93,7 @@ export default function Confirmation({
         setLoading(false)
         console.error(error)
         dispatchFeedback(
-          setSnackbar({ status: "error", message: "Old Password Invalid." })
+          setSnackbar({ status: 'error', message: 'Old Password Invalid.' })
         )
       })
   }
@@ -103,8 +102,8 @@ export default function Confirmation({
     setDialogOpen(false)
     dispatchFeedback(
       setSnackbar({
-        status: "error",
-        message: "Your password has NOT been changed.",
+        status: 'error',
+        message: 'Your password has NOT been changed.',
       })
     )
   }
@@ -113,7 +112,7 @@ export default function Confirmation({
     <Dialog open={dialogOpen} onClose={() => setDialogOpen(false)}>
       <DialogTitle disableTypography>
         <Typography
-          align={matchesXS ? "center" : undefined}
+          align={matchesXS ? 'center' : undefined}
           variant="h3"
           classes={{ root: classes.title }}
         >
@@ -121,7 +120,7 @@ export default function Confirmation({
         </Typography>
       </DialogTitle>
       <DialogContent>
-        <DialogContentText align={matchesXS ? "center" : undefined}>
+        <DialogContentText align={matchesXS ? 'center' : undefined}>
           You are changing your account password. Please confirm old password
           and new password.
         </DialogContentText>
@@ -149,7 +148,7 @@ export default function Confirmation({
           color="secondary"
           classes={{ root: classes.button }}
         >
-          {loading ? <CircularProgress /> : "Yes, Change My Password"}
+          {loading ? <CircularProgress /> : 'Yes, Change My Password'}
         </Button>
       </DialogActions>
     </Dialog>

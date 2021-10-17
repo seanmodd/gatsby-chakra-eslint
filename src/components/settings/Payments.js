@@ -1,3 +1,4 @@
+//! Utilized
 import React, { useState, useEffect, useContext } from 'react'
 import axios from 'axios'
 import clsx from 'clsx'
@@ -42,7 +43,7 @@ const useStyles = makeStyles(theme => ({
   removeCardText: {
     fontSize: '1rem',
     color: theme.palette.primary.main,
-    fontFamily: 'Philosopher',
+    fontFamily: 'Inter',
     fontStyle: 'italic',
   },
   icon: {
@@ -213,7 +214,7 @@ export default function Payments({
           style: {
             base: {
               fontSize: '20px',
-              fontFamily: 'Montserrat',
+              fontFamily: 'Inter',
               color: '#fff',
               iconColor: '#fff',
               '::placeholder': {

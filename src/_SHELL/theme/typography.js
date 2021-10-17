@@ -1,3 +1,4 @@
+//! Utilized
 //! This is where the fonts are chosen!
 // ----------------------------------------------------------------------
 
@@ -19,7 +20,7 @@ function responsiveFontSizes({ sm, md, lg }) {
   }
 }
 
-const FONT_PRIMARY = 'Inter, Public Sans, sans-serif' // Google Font
+const FONT_PRIMARY = 'Inter' // Google Font
 // const FONT_SECONDARY = 'CircularStd, sans-serif'; // Local Font
 
 const typography = {
