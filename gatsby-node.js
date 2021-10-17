@@ -116,7 +116,6 @@ exports.createPages = async ({ graphql, actions }) => {
 // }
 //! Replacing with below...
 exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
-  if (stage === 'build-html') {
     actions.setWebpackConfig({
       module: {
         rules: [
@@ -133,7 +132,6 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
         },
       },
     })
-  }
 }
 // exports.onCreateWebpackConfig = ({ actions }) => {
 //   actions.setWebpackConfig({
