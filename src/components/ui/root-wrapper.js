@@ -59,10 +59,10 @@ import { store, persistor } from '../../_MODERN/redux/store'
 import '../../_MODERN/_apis_'
 
 // i18n
-import '../../_MODERN/locales/i18n'
+// import '../../_MODERN/locales/i18n'
 
 // highlight
-import '../../_MODERN/utils/highlight'
+// import '../../_MODERN/utils/highlight'
 // import { AuthProvider } from './contexts/JWTContext';
 // import { AuthProvider } from '../../_MODERN/contexts/JWTContext'
 // import { CollapseDrawerProvider } from '../../_MODERN/contexts/CollapseDrawerContext'

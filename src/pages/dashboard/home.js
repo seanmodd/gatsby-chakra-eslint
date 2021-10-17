@@ -15,7 +15,7 @@ export default function PageOne() {
 
   return (
     <DashboardLayout>
-      <EcommerceShop />
+      {/* <EcommerceShop /> */}
       <Page title="Dashboard Homepage | Car X Dashboard">
         <Container maxWidth={themeStretch ? false : 'xl'}>
           <Typography variant="h3" component="h1" paragraph>
