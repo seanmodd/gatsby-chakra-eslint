@@ -37,10 +37,11 @@ AuthLayout.propTypes = {
 export default function AuthLayout({ children }) {
   return (
     <HeaderStyle>
-      <Link to="/">
-        <Logo />
-      </Link>
-
+      <div style={{ marginTop: '100px' }}>
+        <Link to="/">
+          <Logo />
+        </Link>
+      </div>
       <MHidden width="smDown">
         <Typography
           variant="body2"

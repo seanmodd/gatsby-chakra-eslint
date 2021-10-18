@@ -5,6 +5,8 @@ import { Link } from 'gatsby'
 // material
 import { styled } from '@mui/material/styles'
 import { Box, Card, Container, Typography, Tooltip } from '@mui/material'
+import registerIcon from '../../../../static/illustrations/illustration_register.png'
+import jwtLogo from '../../../../static/auth/ic_jwt.png'
 // import { Box, Card, Link, Container, Typography, Tooltip } from '@mui/material'
 // hooks
 // import useAuth from '../../hooks/useAuth'
@@ -18,6 +20,7 @@ import Page from '../../../components/_MODERN/minimalComponents/Page'
 import { MHidden } from '../../../components/_MODERN/minimalComponents/@material-extend'
 import { RegisterForm } from '../../../components/_MODERN/minimalComponents/authentication/register'
 import AuthFirebaseSocials from '../../../components/_MODERN/minimalComponents/authentication/AuthFirebaseSocial'
+import DashboardLayout from '../../../_SHELL/layouts/dashboard'
 
 // ----------------------------------------------------------------------
 
@@ -52,79 +55,82 @@ export default function Register() {
   const { method } = useAuth()
 
   return (
-    <RootStyle title="Register | Minimal-UI">
-      <AuthLayout>
-        Already have an account? &nbsp;
-        <Link
-          underline="none"
-          variant="subtitle2"
-          // component={RouterLink}
-          to="/dashboard/home"
-        >
-          Login
-        </Link>
-      </AuthLayout>
-
-      <MHidden width="mdDown">
-        <SectionStyle>
-          <Typography variant="h3" sx={{ px: 5, mt: 10, mb: 5 }}>
-            Manage the job more effectively with Minimal
-          </Typography>
-          <img
-            alt="register"
-            src="/static/illustrations/illustration_register.png"
-          />
-        </SectionStyle>
-      </MHidden>
-
-      <Container>
-        <ContentStyle>
-          <Box sx={{ mb: 5, display: 'flex', alignItems: 'center' }}>
-            <Box sx={{ flexGrow: 1 }}>
-              <Typography variant="h4" gutterBottom>
-                Get started absolutely free.
-              </Typography>
-              <Typography sx={{ color: 'text.secondary' }}>
-                Free forever. No credit card needed.
-              </Typography>
-            </Box>
-            <Tooltip title={capitalCase(method)}>
-              <Box
-                component="img"
-                src={`/static/auth/ic_${method}.png`}
-                sx={{ width: 32, height: 32 }}
-              />
-            </Tooltip>
-          </Box>
-
-          {method === 'firebase' && <AuthFirebaseSocials />}
-
-          <RegisterForm />
-
-          <Typography
-            variant="body2"
-            align="center"
-            sx={{ color: 'text.secondary', mt: 3 }}
+    <DashboardLayout>
+      <RootStyle title="Register | Minimal-UI">
+        <AuthLayout>
+          Already have an account? &nbsp;
+          <Link
+            underline="none"
+            variant="subtitle2"
+            // component={RouterLink}
+            to="/dashboard/home"
           >
-            By registering, I agree to Minimal&nbsp;
-            <Link underline="always" color="text.primary" href="#">
-              Terms of Service
-            </Link>
-            &nbsp;and&nbsp;
-            <Link underline="always" color="text.primary" href="#">
-              Privacy Policy
-            </Link>
-            .
-          </Typography>
+            Login
+          </Link>
+        </AuthLayout>
 
-          <MHidden width="smUp">
-            <Typography variant="subtitle2" sx={{ mt: 3, textAlign: 'center' }}>
-              Already have an account?&nbsp;
-              <Link to="/dashboard/home">Login</Link>
+        <MHidden width="mdDown">
+          <SectionStyle>
+            <Typography variant="h3" sx={{ px: 5, mt: 10, mb: 5 }}>
+              Make your car shopping experience easier than ever with Car X.
             </Typography>
-          </MHidden>
-        </ContentStyle>
-      </Container>
-    </RootStyle>
+            <img alt="register" src={registerIcon} />
+          </SectionStyle>
+        </MHidden>
+
+        <Container>
+          <ContentStyle>
+            <Box sx={{ mb: 5, display: 'flex', alignItems: 'center' }}>
+              <Box sx={{ flexGrow: 1 }}>
+                <Typography variant="h4" gutterBottom>
+                  Get started absolutely free.
+                </Typography>
+                <Typography sx={{ color: 'text.secondary' }}>
+                  Free forever. No credit card needed.
+                </Typography>
+              </Box>
+              <Tooltip title={capitalCase(method)}>
+                <Box
+                  component="img"
+                  // src={`../../../../static/auth/ic_${method}.png`}
+                  src={jwtLogo}
+                  sx={{ width: 32, height: 32 }}
+                />
+              </Tooltip>
+            </Box>
+
+            {method === 'firebase' && <AuthFirebaseSocials />}
+
+            <RegisterForm />
+
+            <Typography
+              variant="body2"
+              align="center"
+              sx={{ color: 'text.secondary', mt: 3 }}
+            >
+              By registering, I agree to Car X&nbsp;
+              <Link underline="always" color="text.primary" href="#">
+                Terms of Service
+              </Link>
+              &nbsp;and&nbsp;
+              <Link underline="always" color="text.primary" href="#">
+                Privacy Policy
+              </Link>
+              .
+            </Typography>
+
+            <MHidden width="smUp">
+              <Typography
+                variant="subtitle2"
+                sx={{ mt: 3, textAlign: 'center' }}
+              >
+                Already have an account?&nbsp;
+                <Link to="/dashboard/home">Login</Link>
+              </Typography>
+            </MHidden>
+          </ContentStyle>
+        </Container>
+      </RootStyle>
+    </DashboardLayout>
   )
 }
