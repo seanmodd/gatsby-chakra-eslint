@@ -1,0 +1,75 @@
+/* greens darkest to lightest */
+/* gray darkest to lightest */
+/* blue darkest to lightest */
+/* widths */
+/* line 26, ../sass/tablet.scss */
+.phone {
+  display: none;
+}
+
+/* line 30, ../sass/tablet.scss */
+.desktop {
+  display: none !important;
+}
+
+/* line 34, ../sass/tablet.scss */
+.tablet {
+  display: block;
+}
+
+/* line 38, ../sass/tablet.scss */
+#serach-row {
+  height: 40px;
+}
+
+/* line 44, ../sass/tablet.scss */
+.drop-down-mobile {
+  position: absolute;
+  display: none;
+  left: 0;
+  right: 0;
+  top: 50px;
+  width: 100%;
+  -webkit-border-radius: 5px 5px;
+  -moz-border-radius: 5px / 5px;
+  border-radius: 5px / 5px;
+}
+/* line 53, ../sass/tablet.scss */
+.drop-down-mobile li {
+  border-bottom: 1px solid #b5bdc1;
+  padding: 10px;
+  text-align: center;
+}
+/* line 57, ../sass/tablet.scss */
+.drop-down-mobile li a {
+  color: #b5bdc1;
+  font-size: 13px;
+  text-decoration: none;
+}
+/* line 64, ../sass/tablet.scss */
+.drop-down-mobile .search-box {
+  width: 95%;
+  margin: 0 auto;
+  float: left;
+}
+/* line 70, ../sass/tablet.scss */
+.drop-down-mobile .search-input {
+  width: 85%;
+}
+/* line 74, ../sass/tablet.scss */
+.drop-down-mobile .search-btn {
+  width: 7%;
+  min-width: 25px;
+  background-repeat: no-repeat;
+  background-position: center top;
+}
+
+/* line 82, ../sass/tablet.scss */
+.responsive-bg {
+  height: 300px;
+}
+
+/* line 86, ../sass/tablet.scss */
+.green-post-box {
+  top: 60px;
+}

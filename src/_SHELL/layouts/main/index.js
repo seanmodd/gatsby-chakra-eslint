@@ -12,7 +12,7 @@ import Logo from '../../components/Logo'
 //
 import MainNavbar from './MainNavbar'
 import MainFooter from './MainFooter'
-
+import SEO from '../../../components/ui/seo'
 // ----------------------------------------------------------------------
 
 MainLayout.propTypes = {

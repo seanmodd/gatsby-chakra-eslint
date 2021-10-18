@@ -187,7 +187,7 @@ const theme = createTheme({
     // },
   },
   typography: {
-    fontFamily: 'Inter',
+    fontFamily: 'Proxima Nova',
 
     //   h1: {
     //     fontSize: '4.5rem',
@@ -241,7 +241,7 @@ const theme = createTheme({
         backgroundColor: '#000033',
       },
       label: {
-        fontFamily: 'Barlow',
+        fontFamily: 'Public Sans',
         fontSize: '1.5rem',
         color: '#fff',
         fontWeight: 400,

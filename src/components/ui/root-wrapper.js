@@ -13,6 +13,7 @@ import { ThemeProvider } from '@material-ui/core/styles'
 import CssBaseline from '@mui/material'
 import ThemeConfig from '../../_SHELL/theme'
 import GlobalStyles from '../../_SHELL/theme/globalStyles'
+import SEO from './seo'
 // utils
 import createEmotionCache from '../../_SHELL/utils/createEmotionCache'
 // components
@@ -25,13 +26,11 @@ import ThemePrimaryColor from '../../_SHELL/components/ThemePrimaryColor'
 import { CollapseDrawerProvider } from '../../_SHELL/contexts/CollapseDrawerContext'
 import { SettingsProvider } from '../../_SHELL/contexts/SettingsContext'
 
-
 import { ApolloWrapper } from '../../apollo/ApolloWrapper'
 import { UserWrapper, FeedbackWrapper, CartWrapper } from '../../contexts'
 import theme from './theme'
 import Layout from './layout'
 import MainLayout from '../../_SHELL/layouts/main'
-
 
 const clientSideEmotionCache = createEmotionCache()
 export default ({ element }) => {
