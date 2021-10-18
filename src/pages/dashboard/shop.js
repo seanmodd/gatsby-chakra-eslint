@@ -9,6 +9,8 @@ import {
   CircularProgress,
   Stack,
 } from '@mui/material'
+import products from '../../components/_MODERN/_apis_/products'
+import DashboardLayout from '../../_SHELL/layouts/dashboard'
 // redux
 import { useDispatch, useSelector } from '../../components/_MODERN/redux/store'
 import {
@@ -148,27 +150,27 @@ export default function EcommerceShop() {
   }
 
   return (
-    <Page title="Ecommerce: Shop | Minimal-UI">
-      {values && (
-        <Backdrop open={isSubmitting} sx={{ zIndex: 9999 }}>
-          <CircularProgress />
-        </Backdrop>
-      )}
+    <DashboardLayout>
+      <Page title="Ecommerce: Shop | Minimal-UI">
+        {values && (
+          <Backdrop open={isSubmitting} sx={{ zIndex: 9999 }}>
+            <CircularProgress />
+          </Backdrop>
+        )}
 
-      <Container maxWidth={themeStretch ? false : 'lg'}>
-        <HeaderBreadcrumbs
-          heading="Shop"
-          links={[
-            { name: 'Dashboard', href: '/' },
-            {
-              name: 'E-Commerce',
-              href: '/',
-            },
-            { name: 'Shop' },
-          ]}
-        />
-
-        {/* {!isDefault && (
+        <Container maxWidth={themeStretch ? false : 'lg'}>
+          <HeaderBreadcrumbs
+            heading="Shop"
+            links={[
+              { name: 'Dashboard', href: '/' },
+              {
+                name: 'E-Commerce',
+                href: '/',
+              },
+              { name: 'Shop' },
+            ]}
+          />
+          {/* {!isDefault && (
           <Typography gutterBottom>
             <Typography component="span" variant="subtitle1">
               {filteredProducts.length}
@@ -176,15 +178,14 @@ export default function EcommerceShop() {
             &nbsp;Products found
           </Typography>
         )} */}
-
-        <Stack
-          direction="row"
-          flexWrap="wrap-reverse"
-          alignItems="center"
-          justifyContent="flex-end"
-          sx={{ mb: 5 }}
-        >
-          {/* <ShopTagFiltered
+          <Stack
+            direction="row"
+            flexWrap="wrap-reverse"
+            alignItems="center"
+            justifyContent="flex-end"
+            sx={{ mb: 5 }}
+          >
+            {/* <ShopTagFiltered
             filters={filters}
             formik={formik}
             isShowReset={openFilter}
@@ -192,24 +193,25 @@ export default function EcommerceShop() {
             isDefault={isDefault}
           /> */}
 
-          <Stack direction="row" spacing={1} flexShrink={0} sx={{ my: 1 }}>
-            {/* <ShopFilterSidebar
+            <Stack direction="row" spacing={1} flexShrink={0} sx={{ my: 1 }}>
+              {/* <ShopFilterSidebar
               formik={formik}
               isOpenFilter={openFilter}
               onResetFilter={handleResetFilter}
               onOpenFilter={handleOpenFilter}
               onCloseFilter={handleCloseFilter}
             /> */}
-            {/* <ShopProductSort /> */}
+              {/* <ShopProductSort /> */}
+            </Stack>
           </Stack>
-        </Stack>
+          <ShopProductList
+            products={filteredProducts}
+            isLoad={!filteredProducts && !initialValues}
+          />
 
-        <ShopProductList
-          products={filteredProducts}
-          isLoad={!filteredProducts && !initialValues}
-        />
-        <CartWidget />
-      </Container>
-    </Page>
+          <CartWidget />
+        </Container>
+      </Page>
+    </DashboardLayout>
   )
 }

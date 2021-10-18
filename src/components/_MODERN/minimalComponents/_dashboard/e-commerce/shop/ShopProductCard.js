@@ -1,4 +1,4 @@
-//* Integrate 1
+//* Integrate
 import React from 'react'
 import PropTypes from 'prop-types'
 import { paramCase } from 'change-case'
@@ -6,8 +6,9 @@ import { Link as RouterLink } from 'gatsby'
 // material
 import { Box, Card, Link, Typography, Stack } from '@mui/material'
 import { styled } from '@mui/material/styles'
+import product from '../../../../_apis_/products'
 // routes
-// import { PATH_DASHBOARD } from '../../../../routes/paths'
+import { PATH_DASHBOARD } from '../../../../routes/paths'
 // utils
 import { fCurrency } from '../../../../utils/formatNumber'
 //
@@ -32,10 +33,11 @@ ShopProductCard.propTypes = {
 
 export default function ShopProductCard({ product }) {
   const { name, cover, price, colors, status, priceSale } = product
-  const linkTo = `/dashboard/product/${paramCase(name)}`
+  const linkTo = `${PATH_DASHBOARD.eCommerce.root}/product/${paramCase(name)}`
 
   return (
     <Card>
+      HERE
       <Box sx={{ pt: '100%', position: 'relative' }}>
         {status && (
           <Label
@@ -54,7 +56,6 @@ export default function ShopProductCard({ product }) {
         )}
         <ProductImgStyle alt={name} src={cover} />
       </Box>
-
       <Stack spacing={2} sx={{ p: 3 }}>
         <Link to={linkTo} color="inherit" component={RouterLink}>
           <Typography variant="subtitle2" noWrap>
