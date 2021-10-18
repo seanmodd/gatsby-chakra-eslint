@@ -73,7 +73,6 @@ export default ({ element }) => {
       <ReduxProvider store={store}>
         <PersistGate loading={<LoadingScreen />} persistor={persistor}>
           <LocalizationProvider dateAdapter={AdapterDateFns}>
-            //! Below is the code from the next.js docs
             <SettingsProvider>
               {/* <ModernSettingsProvider> */}
               <CollapseDrawerProvider>
