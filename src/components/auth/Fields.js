@@ -19,7 +19,9 @@ const useStyles = makeStyles(theme => ({
     },
   },
   input: {
-    color: ({ isWhite }) => (isWhite ? '#fff' : theme.palette.secondary.main),
+    // color: ({ isWhite }) => (isWhite ? '#fff' : theme.palette.secondary.main),
+    color: ({ isWhite }) => (isWhite ? '#fff' : '#2d3238'),
+    backgroundColor: '#e8f0fe',
     fontSize: ({ xs }) => (xs ? '1.25rem' : undefined),
   },
 }))

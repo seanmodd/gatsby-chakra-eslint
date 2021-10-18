@@ -21,6 +21,16 @@ const useStyles = makeStyles(theme => ({
       marginBottom: '2rem',
     },
   },
+  middleBox: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    textAlign: 'center',
+
+    // height: '5rem',
+    // [theme.breakpoints.down('md')]: {
+    //   // marginBottom: '2rem',
+    // },
+  },
 }))
 
 const Layout = ({ children }) => {
@@ -43,7 +53,9 @@ const Layout = ({ children }) => {
     <>
       {/* <Header categories={data.allStrapiCategory.edges} /> */}
       <div className={classes.spacer} />
-      <main>{children}</main>
+      <div className={classes.middleBox}>
+        <main>{children}</main>
+      </div>
       {/* <Footer /> */}
     </>
   )

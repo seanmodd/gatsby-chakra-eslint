@@ -1,48 +1,65 @@
-import React, { useState } from "react"
-import clsx from "clsx"
-import axios from "axios"
-import Grid from "@material-ui/core/Grid"
-import Typography from "@material-ui/core/Typography"
-import TextField from "@material-ui/core/TextField"
-import InputAdornment from "@material-ui/core/InputAdornment"
-import CircularProgress from "@material-ui/core/CircularProgress"
-import Button from "@material-ui/core/Button"
-import IconButton from "@material-ui/core/IconButton"
-import { makeStyles } from "@material-ui/core/styles"
+import { Icon, InlineIcon } from '@iconify/react'
+import facebookIcon from '@iconify/icons-simple-icons/facebook'
 
-import Fields from "./Fields"
-import { EmailPassword } from "./Login"
-import { setUser, setSnackbar } from "../../contexts/actions"
+import React, { useState } from 'react'
+import clsx from 'clsx'
+import axios from 'axios'
+import Grid from '@material-ui/core/Grid'
+import Typography from '@material-ui/core/Typography'
+import TextField from '@material-ui/core/TextField'
+import InputAdornment from '@material-ui/core/InputAdornment'
+import CircularProgress from '@material-ui/core/CircularProgress'
+import Button from '@material-ui/core/Button'
+import IconButton from '@material-ui/core/IconButton'
+import { makeStyles } from '@material-ui/core/styles'
 
-import addUserIcon from "../../images/add-user.svg"
-import nameAdornment from "../../images/name-adornment.svg"
-import forward from "../../images/forward-outline.svg"
-import backward from "../../images/backwards-outline.svg"
+import Fields from './Fields'
+import { EmailPassword } from './Login'
+import { setUser, setSnackbar } from '../../contexts/actions'
+
+import addUserIcon from '../../images/add-user.svg'
+import nameAdornment from '../../images/name-adornment.svg'
+import forward from '../../images/forward-outline.svg'
+import backward from '../../images/backwards-outline.svg'
 
 const useStyles = makeStyles(theme => ({
   addUserIcon: {
-    height: "10rem",
-    width: "11rem",
-    marginTop: "5rem",
+    height: '10rem',
+    width: '11rem',
+    marginTop: '5rem',
+  },
+  addUserIcons: {
+    // height: '10rem',
+    // width: '11rem',
+    backgroundColor: '#2d3238',
+    // borderWidth: '2px',
+    color: '#2d3238',
+    // marginTop: '5rem',
   },
   facebookSignUp: {
-    width: "20rem",
+    width: '15rem',
+    backgroundColor: '#2d3238',
     borderRadius: 50,
-    marginTop: "-3rem",
-    [theme.breakpoints.down("xs")]: {
-      width: "15rem",
+    // fontSize: '0.5rem',
+    marginTop: '1rem',
+    [theme.breakpoints.down('xs')]: {
+      width: '15rem',
     },
   },
   facebookText: {
-    textTransform: "none",
-    fontSize: "1.5rem",
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "1.25rem",
+    textTransform: 'none',
+    fontSize: '1rem',
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '1.25rem',
     },
   },
+  facebookLogo: {
+    fontSize: '1.25rem',
+    marginRight: '15px',
+  },
   navigation: {
-    height: "4rem",
-    width: "4rem",
+    height: '4rem',
+    width: '4rem',
   },
   visibleIcon: {
     padding: 0,
@@ -65,9 +82,9 @@ export default function SignUp({
 }) {
   const classes = useStyles()
   const [values, setValues] = useState({
-    email: "",
-    password: "",
-    name: "",
+    email: '',
+    password: '',
+    name: '',
   })
   const [errors, setErrors] = useState({})
   const [visible, setVisible] = useState(false)
@@ -75,16 +92,14 @@ export default function SignUp({
   const [loading, setLoading] = useState(false)
 
   const handleNavigate = direction => {
-    if (direction === "forward") {
+    if (direction === 'forward') {
       setInfo(true)
+    } else if (info) {
+      setInfo(false)
     } else {
-      if (info) {
-        setInfo(false)
-      } else {
-        const login = steps.find(step => step.label === "Login")
+      const login = steps.find(step => step.label === 'Login')
 
-        setSelectedStep(steps.indexOf(login))
-      }
+      setSelectedStep(steps.indexOf(login))
     }
   }
 
@@ -92,7 +107,7 @@ export default function SignUp({
     setLoading(true)
 
     axios
-      .post(process.env.GATSBY_STRAPI_URL + "/auth/local/register", {
+      .post(`${process.env.GATSBY_STRAPI_URL}/auth/local/register`, {
         username: values.name,
         email: values.email,
         password: values.password,
@@ -101,7 +116,7 @@ export default function SignUp({
         setLoading(false)
         dispatchUser(setUser({ ...response.data.user, jwt: response.data.jwt }))
 
-        const complete = steps.find(step => step.label === "Complete")
+        const complete = steps.find(step => step.label === 'Complete')
 
         setSelectedStep(steps.indexOf(complete))
       })
@@ -109,14 +124,14 @@ export default function SignUp({
         const { message } = error.response.data.message[0].messages[0]
         setLoading(false)
         console.error(error)
-        dispatchFeedback(setSnackbar({ status: "error", message }))
+        dispatchFeedback(setSnackbar({ status: 'error', message }))
       })
   }
 
   const nameField = {
     name: {
-      helperText: "you must enter a name",
-      placeholder: "Name",
+      helperText: 'you must enter a name',
+      placeholder: 'Username*',
       startAdornment: <img src={nameAdornment} alt="name" />,
     },
   }
@@ -135,6 +150,7 @@ export default function SignUp({
         <img src={addUserIcon} alt="new user" className={classes.addUserIcon} />
       </Grid>
       <Fields
+        className={classes.addUserIcons}
         fields={fields}
         errors={errors}
         setErrors={setErrors}
@@ -145,7 +161,7 @@ export default function SignUp({
         <Button
           variant="contained"
           color="secondary"
-          component={!info ? "a" : undefined}
+          component={!info ? 'a' : undefined}
           href={
             !info
               ? `${process.env.GATSBY_STRAPI_URL}/connect/facebook`
@@ -162,15 +178,18 @@ export default function SignUp({
           {loading ? (
             <CircularProgress />
           ) : (
-            <Typography variant="h5" classes={{ root: classes.facebookText }}>
-              sign up{info ? "" : " with Facebook"}
-            </Typography>
+            <>
+              <Icon className={classes.facebookLogo} icon={facebookIcon} />
+              <Typography variant="h5" classes={{ root: classes.facebookText }}>
+                Sign up{info ? '' : ' with Facebook'}
+              </Typography>
+            </>
           )}
         </Button>
       </Grid>
       <Grid item container justifyContent="space-between">
         <Grid item>
-          <IconButton onClick={() => handleNavigate("backward")}>
+          <IconButton onClick={() => handleNavigate('backward')}>
             <img
               src={backward}
               alt="back to login"
@@ -180,7 +199,7 @@ export default function SignUp({
         </Grid>
         {info ? null : (
           <Grid item>
-            <IconButton onClick={() => handleNavigate("forward")}>
+            <IconButton onClick={() => handleNavigate('forward')}>
               <img
                 src={forward}
                 alt="continue registration"

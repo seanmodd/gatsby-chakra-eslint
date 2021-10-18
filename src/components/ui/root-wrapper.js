@@ -25,7 +25,7 @@ import ThemePrimaryColor from '../../_SHELL/components/ThemePrimaryColor'
 
 import { CollapseDrawerProvider } from '../../_SHELL/contexts/CollapseDrawerContext'
 import { SettingsProvider } from '../../_SHELL/contexts/SettingsContext'
-
+import { AuthProvider } from '../_MODERN/contexts/JWTContext'
 import { ApolloWrapper } from '../../apollo/ApolloWrapper'
 import { UserWrapper, FeedbackWrapper, CartWrapper } from '../../contexts'
 import theme from './theme'
@@ -67,7 +67,9 @@ export default ({ element }) => {
                     <UserWrapper>
                       <FeedbackWrapper>
                         <CartWrapper>
-                          <MainLayout>{element}</MainLayout>
+                          <AuthProvider>
+                            <MainLayout>{element}</MainLayout>
+                          </AuthProvider>
                         </CartWrapper>
                       </FeedbackWrapper>
                     </UserWrapper>

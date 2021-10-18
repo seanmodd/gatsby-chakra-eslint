@@ -115,16 +115,30 @@ exports.createPages = async ({ graphql, actions }) => {
 //   }
 // }
 //! Replacing with below...
-exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
-  if (stage === 'build-html') {
+// exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
+//   if (stage === 'build-html') {
+//     actions.setWebpackConfig({
+//       module: {
+//         rules: [
+//           {
+//             test: /bad-module/,
+//             use: loaders.null(),
+//           },
+//         ],
+//       },
+//     })
+//   }
+// }
+
+exports.onCreateWebpackConfig = ({ actions, stage, plugins }) => {
+  if (stage === 'build-javascript' || stage === 'develop') {
     actions.setWebpackConfig({
-      module: {
-        rules: [
-          {
-            test: /bad-module/,
-            use: loaders.null(),
-          },
-        ],
+      plugins: [plugins.provide({ process: 'process/browser' })],
+      resolve: {
+        fallback: {
+          crypto: require.resolve('crypto-browserify'),
+          stream: require.resolve('stream-browserify'),
+        },
       },
     })
   }

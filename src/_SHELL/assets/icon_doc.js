@@ -5,10 +5,10 @@ import { Box } from '@mui/material';
 // ----------------------------------------------------------------------
 
 export default function DocIcon({ ...other }) {
-  const theme = useTheme();
-  const PRIMARY_LIGHTER = theme.palette.primary.lighter;
-  const PRIMARY_LIGHT = theme.palette.primary.light;
-  const PRIMARY_MAIN = theme.palette.primary.main;
+  const mytheme = useTheme();
+  const PRIMARY_LIGHTER = mytheme.palette.primary.lighter;
+  const PRIMARY_LIGHT = mytheme.palette.primary.light;
+  const PRIMARY_MAIN = mytheme.palette.primary.main;
 
   return (
     <Box {...other}>

@@ -16,10 +16,11 @@ import { setUser, setSnackbar } from '../../contexts/actions'
 
 const useStyles = makeStyles(theme => ({
   paper: {
-    border: `2rem solid ${theme.palette.secondary.main}`,
+    // border: `2rem solid ${theme.palette.background.default}`,
+    // border: `2rem solid ${theme.palette.primary.darker}`,
     width: '50rem',
     height: '40rem',
-    borderRadius: 0,
+    borderRadius: '15px',
     [theme.breakpoints.down('md')]: {
       width: '30rem',
     },
@@ -31,7 +32,15 @@ const useStyles = makeStyles(theme => ({
   inner: {
     height: '40rem',
     width: '100%',
-    border: `2rem solid ${theme.palette.primary.main}`,
+    borderRadius: '5px',
+    border: `0.5rem solid #2d3238`,
+    paddingTop: '35px',
+    paddingBottom: '35px',
+    paddingLeft: '20px',
+    paddingRight: '20px',
+    // border: `2rem solid ${theme.palette.primary.light}`,
+    // border: `2rem solid ${theme.palette.background.default}`,
+    // border: `2rem solid ${theme.palette.primary.main}`,
     [theme.breakpoints.down('xs')]: {
       borderWidth: '1rem',
     },
@@ -45,10 +54,12 @@ const useStyles = makeStyles(theme => ({
   '@global': {
     '.MuiInput-underline:before, .MuiInput-underline:hover:not(.Mui-disabled):before':
       {
-        borderBottom: `2px solid ${theme.palette.secondary.main}`,
+        borderBottom: `0px solid ${theme.palette.secondary.main}`,
+        // borderBottom: `2px solid ${theme.palette.secondary.main}`,
       },
     '.MuiInput-underline:after': {
-      borderBottom: `2px solid ${theme.palette.primary.main}`,
+      // borderBottom: `2px solid ${theme.palette.primary.main}`,
+      borderBottom: `2px solid #1f73e8`,
     },
   },
 }))
@@ -101,6 +112,7 @@ export default function AuthPortal() {
         })
     }
   }, [])
+  console.log('STEP IS as FOLLOWS: ', steps[0])
 
   return (
     <Grid
@@ -119,20 +131,49 @@ export default function AuthPortal() {
           >
             {steps.map((Step, i) =>
               selectedStep === i ? (
-                <Step.component
-                  setSelectedStep={setSelectedStep}
-                  steps={steps}
-                  user={user}
-                  dispatchUser={dispatchUser}
-                  feedback={feedback}
-                  dispatchFeedback={dispatchFeedback}
-                  key={Step.label}
-                />
+                <>
+                  {Step.label}
+                  {Step.component}
+                  <Step.component
+                    setSelectedStep={setSelectedStep}
+                    steps={steps}
+                    user={user}
+                    dispatchUser={dispatchUser}
+                    feedback={feedback}
+                    dispatchFeedback={dispatchFeedback}
+                    key={Step.label}
+                  />
+                </>
               ) : null
             )}
           </Grid>
         </Paper>
       </Grid>
+      {/* <Grid item>
+        <Paper elevation={6} classes={{ root: classes.paper }}>
+          <Grid
+            container
+            direction="column"
+            justifyContent="space-between"
+            alignItems="center"
+            classes={{ root: classes.inner }}
+          >
+            {steps.map((Step, i) =>
+              selectedStep === i ? (
+                <h1>
+                  Login
+                  {Step.label}
+                  {Step.component}
+                  {console.log(
+                    'INNER CONSOLE LOG OF SELECTED STEP: ',
+                    Step.label
+                  )}
+                </h1>
+              ) : null
+            )}
+          </Grid>
+        </Paper>
+      </Grid> */}
     </Grid>
   )
 }
