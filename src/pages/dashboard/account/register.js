@@ -78,7 +78,7 @@ export default function Register() {
                     underline="none"
                     variant="subtitle2"
                     // component={RouterLink}
-                    to="/dashboard/home"
+                    to="/dashboard/account/login"
                   >
                     Login
                   </Link>
@@ -126,7 +126,7 @@ export default function Register() {
                 sx={{ mt: 3, textAlign: 'center' }}
               >
                 Already have an account?&nbsp;
-                <Link to="/dashboard/home">Login</Link>
+                <Link to="/dashboard/account/login">Login</Link>
               </Typography>
             </MHidden>
           </ContentStyle>
