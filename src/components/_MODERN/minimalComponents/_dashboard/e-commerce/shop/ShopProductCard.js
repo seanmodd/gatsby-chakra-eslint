@@ -6,7 +6,7 @@ import { Link as RouterLink } from 'gatsby'
 // material
 import { Box, Card, Link, Typography, Stack } from '@mui/material'
 import { styled } from '@mui/material/styles'
-import product from '../../../../_apis_/products'
+
 // routes
 import { PATH_DASHBOARD } from '../../../../routes/paths'
 // utils

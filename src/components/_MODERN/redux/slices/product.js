@@ -228,6 +228,7 @@ export function getProducts() {
 // ----------------------------------------------------------------------
 
 export function getProduct(name) {
+  
   return async (dispatch) => {
     dispatch(slice.actions.startLoading());
     try {

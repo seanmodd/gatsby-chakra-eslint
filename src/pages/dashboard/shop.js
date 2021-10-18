@@ -9,7 +9,7 @@ import {
   CircularProgress,
   Stack,
 } from '@mui/material'
-import products from '../../components/_MODERN/_apis_/products'
+
 import DashboardLayout from '../../_SHELL/layouts/dashboard'
 // redux
 import { useDispatch, useSelector } from '../../components/_MODERN/redux/store'
