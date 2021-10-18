@@ -57,17 +57,7 @@ export default function Register() {
   return (
     <DashboardLayout>
       <RootStyle title="Register | Minimal-UI">
-        <AuthLayout>
-          Already have an account? &nbsp;
-          <Link
-            underline="none"
-            variant="subtitle2"
-            // component={RouterLink}
-            to="/dashboard/home"
-          >
-            Login
-          </Link>
-        </AuthLayout>
+        <AuthLayout />
 
         <MHidden width="mdDown">
           <SectionStyle>
@@ -82,6 +72,17 @@ export default function Register() {
           <ContentStyle>
             <Box sx={{ mb: 5, display: 'flex', alignItems: 'center' }}>
               <Box sx={{ flexGrow: 1 }}>
+                <div style={{ marginBottom: '10px' }}>
+                  Already have an account? &nbsp;
+                  <Link
+                    underline="none"
+                    variant="subtitle2"
+                    // component={RouterLink}
+                    to="/dashboard/home"
+                  >
+                    Login
+                  </Link>
+                </div>
                 <Typography variant="h4" gutterBottom>
                   Get started absolutely free.
                 </Typography>
