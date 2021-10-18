@@ -170,14 +170,14 @@ export default function EcommerceShop() {
               { name: 'Shop' },
             ]}
           />
-          {/* {!isDefault && (
-          <Typography gutterBottom>
-            <Typography component="span" variant="subtitle1">
-              {filteredProducts.length}
+          {!isDefault && (
+            <Typography gutterBottom>
+              <Typography component="span" variant="subtitle1">
+                {filteredProducts.length}
+              </Typography>
+              &nbsp;Products found
             </Typography>
-            &nbsp;Products found
-          </Typography>
-        )} */}
+          )}
           <Stack
             direction="row"
             flexWrap="wrap-reverse"
@@ -185,23 +185,23 @@ export default function EcommerceShop() {
             justifyContent="flex-end"
             sx={{ mb: 5 }}
           >
-            {/* <ShopTagFiltered
-            filters={filters}
-            formik={formik}
-            isShowReset={openFilter}
-            onResetFilter={handleResetFilter}
-            isDefault={isDefault}
-          /> */}
+            <ShopTagFiltered
+              filters={filters}
+              formik={formik}
+              isShowReset={openFilter}
+              onResetFilter={handleResetFilter}
+              isDefault={isDefault}
+            />
 
             <Stack direction="row" spacing={1} flexShrink={0} sx={{ my: 1 }}>
-              {/* <ShopFilterSidebar
-              formik={formik}
-              isOpenFilter={openFilter}
-              onResetFilter={handleResetFilter}
-              onOpenFilter={handleOpenFilter}
-              onCloseFilter={handleCloseFilter}
-            /> */}
-              {/* <ShopProductSort /> */}
+              <ShopFilterSidebar
+                formik={formik}
+                isOpenFilter={openFilter}
+                onResetFilter={handleResetFilter}
+                onOpenFilter={handleOpenFilter}
+                onCloseFilter={handleCloseFilter}
+              />
+              <ShopProductSort />
             </Stack>
           </Stack>
           <ShopProductList
