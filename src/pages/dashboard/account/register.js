@@ -1,10 +1,11 @@
+import { Link as RouterLink } from 'gatsby'
 import React from 'react'
 import { capitalCase } from 'change-case'
 // import { Link as RouterLink } from 'react-router-dom'
-import { Link } from 'gatsby'
+
 // material
 import { styled } from '@mui/material/styles'
-import { Box, Card, Container, Typography, Tooltip } from '@mui/material'
+import { Box, Card, Container, Typography, Link, Tooltip } from '@mui/material'
 import registerIcon from '../../../../static/illustrations/illustration_register.png'
 import jwtLogo from '../../../../static/auth/ic_jwt.png'
 // import { Box, Card, Link, Container, Typography, Tooltip } from '@mui/material'
@@ -77,7 +78,7 @@ export default function Register() {
                   <Link
                     underline="none"
                     variant="subtitle2"
-                    // component={RouterLink}
+                    component={RouterLink}
                     to="/dashboard/account/login"
                   >
                     Login
