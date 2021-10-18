@@ -187,15 +187,17 @@ const theme = createTheme({
     // },
   },
   typography: {
-    fontFamily: 'Proxima Nova',
+    // fontFamily: 'Darker Grotesque',
+    fontFamily: 'Barlow',
 
-    //   h1: {
-    //     fontSize: '4.5rem',
-    //     fontFamily: 'Barlow',
-    //     fontStyle: 'normal',
-    //     fontWeight: 500,
-    //     color: '#7920ff',
-    //   },
+    h1: {
+      fontSize: '5.00rem',
+      fontFamily: 'Inter',
+      fontStyle: 'normal',
+      // fontWeight: 700,
+      letterSpacing: '-4px',
+      // color: '#7920ff',
+    },
     //   h2: {
     //     fontFamily: 'Barlow',
     //     fontSize: '3rem',
@@ -222,18 +224,18 @@ const theme = createTheme({
     //     fontStyle: 'normal',
     //     color: '#fff',
     //   },
-    //   body1: {
-    //     fontFamily: 'Barlow',
-    //     fontWeight: 400,
-    //     fontSize: '1.5rem',
-    //     color: '#000000',
-    //   },
-    //   body2: {
-    //     fontFamily: 'Barlow',
-    //     fontWeight: 400,
-    //     fontSize: '1.5rem',
-    //     color: '#fff',
-    //   },
+    body1: {
+      fontFamily: 'Barlow',
+      fontWeight: 400,
+      fontSize: '1.5rem',
+      // color: '#000000',
+    },
+    body2: {
+      fontFamily: 'Barlow',
+      fontWeight: 400,
+      fontSize: '1.5rem',
+      // color: '#fff',
+    },
   },
   overrides: {
     MuiChip: {

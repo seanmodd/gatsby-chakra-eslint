@@ -94,5 +94,41 @@ module.exports = {
       },
     },
     // `gatsby-plugin-offline`,
+    {
+      /* Include plugin */
+      resolve: 'gatsby-omni-font-loader',
+
+      /* Plugin options */
+      options: {
+        /* Font loading mode */
+        mode: 'async',
+
+        /* Enable font loading listener to handle FOUT */
+        enableListener: true,
+
+        /* Preconnect URL-s. This example is for Google Fonts */
+        preconnect: ['https://fonts.gstatic.com'],
+
+        /* Self-hosted fonts config. Add font files and font CSS files to "static" folder */
+        custom: [
+          {
+            /* Exact name of the font as defied in @font-face CSS rule */
+            name: ['ProximaNova'],
+            /* Path to the font CSS file inside the "static" folder with @font-face definition */
+            file: '/resources/stylesheets/main.css',
+          },
+        ],
+
+        /* Web fonts. File link should point to font CSS file. */
+        web: [
+          {
+            /* Exact name of the font as defied in @font-face CSS rule */
+            name: 'Darker Grotesque',
+            /* URL to the font CSS file with @font-face definition */
+            file: 'https://fonts.googleapis.com/css?family=Darker%20Grotesque:100,200,300,400,500,600,700,800,900',
+          },
+        ],
+      },
+    },
   ],
 }

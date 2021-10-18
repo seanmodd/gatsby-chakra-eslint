@@ -67,7 +67,7 @@ export default function CallToAction() {
         <Grid container direction="column">
           <Grid item classes={{ root: classes.headingContainer }}>
             <Typography
-              style={{ letterSpacing: '-6px' }}
+              // style={{ letterSpacing: '-6px' }}
               align={matchesMD ? 'center' : undefined}
               variant="h1"
             >
