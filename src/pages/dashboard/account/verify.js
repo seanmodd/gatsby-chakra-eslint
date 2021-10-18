@@ -49,20 +49,21 @@ export default function VerifyCode() {
               Please check your email!
             </Typography>
             <Typography sx={{ color: 'text.secondary' }}>
-              We have emailed a 6-digit confirmation code to acb@domain, please
-              enter the code in below box to verify your email.
+              A 6-digit confirmation code has been sent to the email address you
+              provided. Please enter the code in the below box to verify the
+              email belongs to you.
             </Typography>
 
             <Box sx={{ mt: 5, mb: 3 }}>
               <VerifyCodeForm />
             </Box>
 
-            <Typography variant="body2" align="center">
+            {/* <Typography variant="body2" align="center">
               Don’t have a code? &nbsp;
               <Link variant="subtitle2" underline="none" onClick={() => {}}>
                 Resend code
               </Link>
-            </Typography>
+            </Typography> */}
           </Box>
         </Container>
       </RootStyle>
