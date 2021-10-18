@@ -1,3 +1,4 @@
+import { PersistGate } from 'redux-persist/lib/integration/react'
 // import { ChakraProvider, CSSReset, ColorModeProvider } from '@chakra-ui/react'
 import 'simplebar/src/simplebar.css'
 // editor
@@ -28,9 +29,11 @@ import { SettingsProvider } from '../../_SHELL/contexts/SettingsContext'
 import { AuthProvider } from '../_MODERN/contexts/JWTContext'
 import { ApolloWrapper } from '../../apollo/ApolloWrapper'
 import { UserWrapper, FeedbackWrapper, CartWrapper } from '../../contexts'
+
 import theme from './theme'
 import Layout from './layout'
 import MainLayout from '../../_SHELL/layouts/main'
+import NotistackProvider from '../_MODERN/minimalComponents/NotistackProvider'
 
 const clientSideEmotionCache = createEmotionCache()
 export default ({ element }) => {
@@ -64,15 +67,17 @@ export default ({ element }) => {
                 <LoadingScreen />
                 <ThemeProvider theme={theme}>
                   <ApolloWrapper>
-                    <UserWrapper>
-                      <FeedbackWrapper>
-                        <CartWrapper>
-                          <AuthProvider>
-                            <MainLayout>{element}</MainLayout>
-                          </AuthProvider>
-                        </CartWrapper>
-                      </FeedbackWrapper>
-                    </UserWrapper>
+                    <NotistackProvider>
+                      <UserWrapper>
+                        <FeedbackWrapper>
+                          <CartWrapper>
+                            <AuthProvider>
+                              <MainLayout>{element}</MainLayout>
+                            </AuthProvider>
+                          </CartWrapper>
+                        </FeedbackWrapper>
+                      </UserWrapper>
+                    </NotistackProvider>
                   </ApolloWrapper>
                 </ThemeProvider>
               </RtlLayout>
