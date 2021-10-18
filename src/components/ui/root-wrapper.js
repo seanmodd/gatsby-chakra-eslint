@@ -1,10 +1,31 @@
-import { PersistGate } from 'redux-persist/lib/integration/react'
+// mock api
+import '../_MODERN/_apis_'
+
+// i18n
+import '../_MODERN/locales/i18n'
+// map
+import 'mapbox-gl/dist/mapbox-gl.css'
+
+// lightbox
+import 'react-image-lightbox/style.css'
+import 'lazysizes'
+import 'lazysizes/plugins/attrchange/ls.attrchange'
+import 'lazysizes/plugins/object-fit/ls.object-fit'
+import 'lazysizes/plugins/parent-fit/ls.parent-fit'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
 // import { ChakraProvider, CSSReset, ColorModeProvider } from '@chakra-ui/react'
 import 'simplebar/src/simplebar.css'
+
 // editor
 import 'react-quill/dist/quill.snow.css'
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 // next
+
+import { HelmetProvider } from 'react-helmet-async'
+import { Provider as ReduxProvider } from 'react-redux'
+import { PersistGate } from 'redux-persist/lib/integration/react'
+
 // import Head from 'next/head'
 import { CacheProvider } from '@emotion/react'
 // material
