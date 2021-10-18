@@ -25,7 +25,10 @@ import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 import { HelmetProvider } from 'react-helmet-async'
 import { Provider as ReduxProvider } from 'react-redux'
 import { PersistGate } from 'redux-persist/lib/integration/react'
-
+// material
+import AdapterDateFns from '@mui/lab/AdapterDateFns'
+import LocalizationProvider from '@mui/lab/LocalizationProvider'
+// redux
 // import Head from 'next/head'
 import { CacheProvider } from '@emotion/react'
 // material
@@ -33,6 +36,7 @@ import { NoSsr } from '@mui/material'
 import React from 'react'
 import { ThemeProvider } from '@material-ui/core/styles'
 import CssBaseline from '@mui/material'
+import { store, persistor } from '../_MODERN/redux/store'
 import ThemeConfig from '../../_SHELL/theme'
 import GlobalStyles from '../../_SHELL/theme/globalStyles'
 import SEO from './seo'
@@ -65,48 +69,56 @@ export default ({ element }) => {
   } = element
   console.log('element: ', element)
   return (
-    //! Below is the code from the next.js docs
-    <SettingsProvider>
-      {/* <ModernSettingsProvider> */}
-      <CollapseDrawerProvider>
-        <CacheProvider value={emotionCache}>
-          {/* <Head>
+    <HelmetProvider>
+      <ReduxProvider store={store}>
+        <PersistGate loading={<LoadingScreen />} persistor={persistor}>
+          <LocalizationProvider dateAdapter={AdapterDateFns}>
+            //! Below is the code from the next.js docs
+            <SettingsProvider>
+              {/* <ModernSettingsProvider> */}
+              <CollapseDrawerProvider>
+                <CacheProvider value={emotionCache}>
+                  {/* <Head>
             <meta
               name="viewport"
               content="initial-scale=1, width=device-width"
             />
           </Head> */}
 
-          <ThemeConfig>
-            <ThemePrimaryColor>
-              <RtlLayout>
-                <NoSsr>
-                  <Settings />
-                </NoSsr>
-                <GlobalStyles />
-                <ProgressBar />
-                <LoadingScreen />
-                <ThemeProvider theme={theme}>
-                  <ApolloWrapper>
-                    <NotistackProvider>
-                      <UserWrapper>
-                        <FeedbackWrapper>
-                          <CartWrapper>
-                            <AuthProvider>
-                              <MainLayout>{element}</MainLayout>
-                            </AuthProvider>
-                          </CartWrapper>
-                        </FeedbackWrapper>
-                      </UserWrapper>
-                    </NotistackProvider>
-                  </ApolloWrapper>
-                </ThemeProvider>
-              </RtlLayout>
-            </ThemePrimaryColor>
-          </ThemeConfig>
-        </CacheProvider>
-      </CollapseDrawerProvider>
-      {/* </ModernSettingsProvider> */}
-    </SettingsProvider>
+                  <ThemeConfig>
+                    <ThemePrimaryColor>
+                      <RtlLayout>
+                        <NoSsr>
+                          <Settings />
+                        </NoSsr>
+                        <GlobalStyles />
+                        <ProgressBar />
+                        <LoadingScreen />
+                        <ThemeProvider theme={theme}>
+                          <ApolloWrapper>
+                            <NotistackProvider>
+                              <UserWrapper>
+                                <FeedbackWrapper>
+                                  <CartWrapper>
+                                    <AuthProvider>
+                                      <MainLayout>{element}</MainLayout>
+                                    </AuthProvider>
+                                  </CartWrapper>
+                                </FeedbackWrapper>
+                              </UserWrapper>
+                            </NotistackProvider>
+                          </ApolloWrapper>
+                        </ThemeProvider>
+                      </RtlLayout>
+                    </ThemePrimaryColor>
+                  </ThemeConfig>
+                </CacheProvider>
+              </CollapseDrawerProvider>
+              {/* </ModernSettingsProvider> */}
+            </SettingsProvider>
+          </LocalizationProvider>
+        </PersistGate>
+      </ReduxProvider>
+    </HelmetProvider>
   )
 }
