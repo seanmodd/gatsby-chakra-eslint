@@ -1,4 +1,4 @@
-import '.'
+// import '.'
 import React from 'react'
 import { random, sample } from 'lodash'
 // utils
