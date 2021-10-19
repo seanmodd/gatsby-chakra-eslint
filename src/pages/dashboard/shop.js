@@ -33,7 +33,7 @@ import {
   ShopFilterSidebar,
 } from '../../components/_MODERN/minimalComponents/_dashboard/e-commerce/shop'
 import CartWidget from '../../components/_MODERN/minimalComponents/_dashboard/e-commerce/CartWidget'
-
+import {products} from '../../components/_MODERN/_apis_/products';
 // ----------------------------------------------------------------------
 
 function applyFilter(products, sortBy, filters) {
@@ -96,7 +96,7 @@ export default function EcommerceShop() {
   const { themeStretch } = useSettings()
   const dispatch = useDispatch()
   const [openFilter, setOpenFilter] = useState(false)
-  const { products, sortBy, filters } = useSelector(state => state.product)
+  const { products: ignoreme, sortBy, filters } = useSelector(state => state.product)
   const filteredProducts = applyFilter(products, sortBy, filters)
 
   const formik = useFormik({
