@@ -8,6 +8,8 @@ import ic_ecommerce from '../../static/icons/navbar/ic_ecommerce.svg'
 import ic_user from '../../static/icons/navbar/ic_user.svg'
 import ic_analytics from '../../static/icons/navbar/ic_analytics.svg'
 import ic_dashboard from '../../static/icons/navbar/ic_dashboard.svg'
+import ic_mail from '../../static/icons/navbar/ic_mail.svg'
+import danger14 from '../../static/icons/danger-14.svg'
 // ----------------------------------------------------------------------
 
 const getIcon = name => (
@@ -19,6 +21,8 @@ const ICONS = {
   ecommerce: getIcon(ic_ecommerce),
   analytics: getIcon(ic_analytics),
   dashboard: getIcon(ic_dashboard),
+  mail: getIcon(ic_mail),
+  danger: getIcon(danger14),
 }
 
 const sidebarConfig = [
@@ -80,7 +84,7 @@ const sidebarConfig = [
     //   },
     // ],
 
-    subheader: 'View The Shop',
+    subheader: 'Old Pages',
     items: [
       {
         title: 'New',
@@ -91,6 +95,34 @@ const sidebarConfig = [
         title: 'Pre-Owned',
         path: PATH_DASHBOARD.general.pagePreOwned,
         icon: ICONS.ecommerce,
+      },
+    ],
+  },
+  {
+    // items: [
+    //   {
+    //     title: 'Dashboard Home',
+    //     path: PATH_DASHBOARD.general.pageHome,
+    //     icon: ICONS.ecommerce,
+    //   },
+    // ],
+
+    subheader: 'More',
+    items: [
+      {
+        title: 'Shop',
+        path: PATH_DASHBOARD.general.pageShop,
+        icon: ICONS.ecommerce,
+      },
+      {
+        title: 'Contact',
+        path: PATH_DASHBOARD.general.pageInbox,
+        icon: ICONS.mail,
+      },
+      {
+        title: 'Contact',
+        path: PATH_DASHBOARD.general.pageInbox,
+        icon: ICONS.danger,
       },
     ],
   },

@@ -21,6 +21,9 @@ export const PATH_DASHBOARD = {
     //! Below is where the real links are:
     pageNew: path(ROOTS_DASHBOARD, '/dashboard/new'),
     pagePreOwned: path(ROOTS_DASHBOARD, '/dashboard/pre-owned'),
+    //! Below is where the real links are:
+    pageShop: path(ROOTS_DASHBOARD, '/dashboard/shop'),
+    pageInbox: path(ROOTS_DASHBOARD, '/dashboard/inbox'),
   },
   app: {
     root: path(ROOTS_DASHBOARD, '/dashboard/app'),
