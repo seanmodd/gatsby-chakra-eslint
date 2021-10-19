@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Icon } from '@iconify/react'
 import roundReply from '@iconify/icons-ic/round-reply'
-import { useNavigate, useParams } from 'react-router-dom'
+// import { useNavigate, useParams } from 'react-router-dom'
 import moreVerticalFill from '@iconify/icons-eva/more-vertical-fill'
 import arrowIosBackFill from '@iconify/icons-eva/arrow-ios-back-fill'
 // material
@@ -34,14 +34,17 @@ MailDetailsToolbar.propTypes = {
 }
 
 export default function MailDetailsToolbar({ mail, ...other }) {
-  const navigate = useNavigate()
-  const { systemLabel, customLabel } = useParams()
+  // const navigate = useNavigate()
+  // const { systemLabel, customLabel } = useParams()
+  // const baseUrl = PATH_DASHBOARD.mail.root
   const baseUrl = PATH_DASHBOARD.mail.root
-
+  const customLabel = []
+  const navigate = []
+  const idkmail = []
   const handleBack = () => {
-    if (systemLabel) {
-      return navigate(`${baseUrl}/${systemLabel}`)
-    }
+    // if (systemLabel) {
+    //   return navigate(`${baseUrl}/${systemLabel}`)
+    // }
     if (customLabel) {
       return navigate(`${baseUrl}/label/${customLabel}`)
     }
@@ -57,31 +60,23 @@ export default function MailDetailsToolbar({ mail, ...other }) {
           </IconButton>
         </Tooltip>
 
-        <MAvatar
-          alt={mail.from.name}
-          src={mail.from.avatar}
-          color={createAvatar(mail.from.name).color}
-        >
-          {createAvatar(mail.from.name).name}
-        </MAvatar>
-
-        <Box sx={{ ml: 2 }}>
+        <Box>
           <Typography display="inline" variant="subtitle2">
-            {mail.from.name}
+            {idkmail}
           </Typography>
           <Link variant="caption" sx={{ color: 'text.secondary' }}>
-            &nbsp; {`<${mail.from.email}>`}
+            &nbsp; {`<${idkmail}>`}
           </Link>
           <Typography
             variant="caption"
             sx={{ color: 'text.secondary', display: 'block' }}
           >
             To:&nbsp;
-            {mail.to.map(person => (
+            {/* {mail.to.map(person => (
               <Link color="inherit" key={person.email}>
                 {person.email}
               </Link>
-            ))}
+            ))} */}
           </Typography>
         </Box>
       </Box>
@@ -89,7 +84,7 @@ export default function MailDetailsToolbar({ mail, ...other }) {
       <Box sx={{ display: 'flex', alignItems: 'center' }}>
         <MHidden width="smDown">
           <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-            {fDateTimeSuffix(mail.createdAt)}
+            {/* {fDateTimeSuffix(mail.createdAt)} */}
           </Typography>
           <Tooltip title="Reply">
             <IconButton>

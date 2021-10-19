@@ -9,7 +9,13 @@ import ic_user from '../../static/icons/navbar/ic_user.svg'
 import ic_analytics from '../../static/icons/navbar/ic_analytics.svg'
 import ic_dashboard from '../../static/icons/navbar/ic_dashboard.svg'
 import ic_mail from '../../static/icons/navbar/ic_mail.svg'
-import danger14 from '../../static/icons/danger-14.svg'
+import danger14 from '../../static/icons/_danger-14.svg'
+import user8 from '../../static/icons/_user-8.svg'
+import user28 from '../../static/icons/_user-28.svg'
+import smiley8 from '../../static/icons/_smiley-8.svg'
+import car4 from '../../static/icons/_car-4.svg'
+import noun_newcar from '../../static/icons/noun_new-car.svg'
+import cleancar from '../../static/icons/noun_cleancar.svg'
 // ----------------------------------------------------------------------
 
 const getIcon = name => (
@@ -23,6 +29,12 @@ const ICONS = {
   dashboard: getIcon(ic_dashboard),
   mail: getIcon(ic_mail),
   danger: getIcon(danger14),
+  user8: getIcon(user8),
+  user28: getIcon(user28),
+  smiley8: getIcon(smiley8),
+  car4: getIcon(car4),
+  noun_newcar: getIcon(noun_newcar),
+  cleancar: getIcon(cleancar),
 }
 
 const sidebarConfig = [
@@ -56,6 +68,57 @@ const sidebarConfig = [
     ],
   },
 
+  {
+    // items: [
+    //   {
+    //     title: 'Dashboard Home',
+    //     path: PATH_DASHBOARD.general.pageHome,
+    //     icon: ICONS.ecommerce,
+    //   },
+    // ],
+
+    subheader: 'More',
+    items: [
+      {
+        title: 'Shop',
+        path: PATH_DASHBOARD.general.pageShop,
+        icon: ICONS.car4,
+      },
+      {
+        title: 'Login',
+        path: PATH_DASHBOARD.general.pageLogin,
+        icon: ICONS.smiley8,
+      },
+
+      {
+        title: 'Register',
+        path: PATH_DASHBOARD.general.pageRegister,
+        icon: ICONS.user8,
+      },
+      {
+        title: 'Reset',
+        path: PATH_DASHBOARD.general.pageReset,
+        icon: ICONS.user28,
+      },
+
+      {
+        title: 'Verify',
+        path: PATH_DASHBOARD.general.pageVerify,
+        icon: ICONS.noun_newcar,
+      },
+      {
+        title: 'Verify',
+        path: PATH_DASHBOARD.general.pageInbox,
+        icon: ICONS.cleancar,
+      },
+
+      {
+        title: 'Inbox',
+        path: PATH_DASHBOARD.general.pageInbox,
+        icon: ICONS.danger,
+      },
+    ],
+  },
   // GENERAL
   // ----------------------------------------------------------------------
   // {
@@ -95,30 +158,6 @@ const sidebarConfig = [
         title: 'Pre-Owned',
         path: PATH_DASHBOARD.general.pagePreOwned,
         icon: ICONS.ecommerce,
-      },
-    ],
-  },
-  {
-    // items: [
-    //   {
-    //     title: 'Dashboard Home',
-    //     path: PATH_DASHBOARD.general.pageHome,
-    //     icon: ICONS.ecommerce,
-    //   },
-    // ],
-
-    subheader: 'More',
-    items: [
-      {
-        title: 'Shop',
-        path: PATH_DASHBOARD.general.pageShop,
-        icon: ICONS.ecommerce,
-      },
-
-      {
-        title: 'Inbox',
-        path: PATH_DASHBOARD.general.pageInbox,
-        icon: ICONS.danger,
       },
     ],
   },

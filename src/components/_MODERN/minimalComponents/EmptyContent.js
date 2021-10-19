@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 // material
 import { styled } from '@mui/material/styles'
 import { Typography, Box } from '@mui/material'
+import emptyIcon from '../../../../static/illustrations/illustration_empty_content.svg'
 
 // ----------------------------------------------------------------------
 
@@ -30,7 +31,8 @@ export default function EmptyContent({ title, description, img, ...other }) {
       <Box
         component="img"
         alt="empty content"
-        src={img || '/static/illustrations/illustration_empty_content.svg'}
+        // src={img || emptyIcon}
+        src={emptyIcon}
         sx={{ height: 240, mb: 3 }}
       />
 

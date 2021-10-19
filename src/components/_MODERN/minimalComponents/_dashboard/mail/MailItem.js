@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Icon } from '@iconify/react'
-import { useParams, Link as RouterLink } from 'react-router-dom'
+// import { useParams, Link as RouterLink } from 'react-router-dom'
+import { Link as RouterLink } from 'gatsby'
 import starFill from '@iconify/icons-eva/star-fill'
 import linkFill from '@iconify/icons-eva/link-fill'
 import starOutline from '@iconify/icons-eva/star-outline'
@@ -52,7 +53,8 @@ const WrapStyle = styled(Link)(({ theme }) => ({
 
 const linkTo = (params, mailId) => {
   const { systemLabel, customLabel } = params
-  const baseUrl = PATH_DASHBOARD.mail.root
+  // const baseUrl = PATH_DASHBOARD.mail.root
+  const baseUrl = '/'
 
   if (systemLabel) {
     return `${baseUrl}/${systemLabel}/${mailId}`
@@ -79,7 +81,8 @@ export default function MailItem({
   onDeselect,
   ...other
 }) {
-  const params = useParams()
+  // const params = useParams()
+  const params = []
   const { labels } = useSelector(state => state.mail)
   const isAttached = mail.files.length > 0
 

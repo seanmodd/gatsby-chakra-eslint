@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+// import { useParams } from 'react-router-dom'
 // material
 import { styled } from '@mui/material/styles'
 import { Box, Divider, Typography } from '@mui/material'
@@ -31,14 +31,18 @@ const MarkdownWrapperStyle = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function MailDetails() {
-  const { mailId } = useParams()
+  // const { mailId } = useParams()
   const dispatch = useDispatch()
-  const mail = useSelector(state => state.mail.mails.byId[mailId])
-  const isAttached = mail && mail.files.length > 0
+  // const mail = useSelector(state => state.mail.mails.byId[mailId])
+  const mail = []
+  // const isAttached = mail && mail.files.length > 0
+  const isAttached = false
 
   useEffect(() => {
-    dispatch(getMail(mailId))
-  }, [dispatch, mailId])
+    dispatch(getMail({}))
+    // dispatch(getMail(mailId))
+  }, [dispatch])
+  // }, [dispatch, mailId])
 
   if (!mail) {
     return null

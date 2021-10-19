@@ -53,11 +53,16 @@ export default function Mail() {
               onCloseSidebar={() => setOpenSidebar(false)}
               onOpenCompose={() => setOpenCompose(true)}
             />
-            {/* {mailId ? (
+
             <MailDetails />
-          ) : (
+
             <MailList onOpenSidebar={() => setOpenSidebar(true)} />
-          )} */}
+
+            {/* {mailId ? (
+              <MailDetails />
+            ) : (
+              <MailList onOpenSidebar={() => setOpenSidebar(true)} />
+            )} */}
             <MailCompose
               isOpenCompose={openCompose}
               onCloseCompose={() => setOpenCompose(false)}

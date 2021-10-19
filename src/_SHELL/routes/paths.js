@@ -22,6 +22,11 @@ export const PATH_DASHBOARD = {
     pageNew: path(ROOTS_DASHBOARD, '/dashboard/new'),
     pagePreOwned: path(ROOTS_DASHBOARD, '/dashboard/pre-owned'),
     //! Below is where the real links are:
+    pageLogin: path(ROOTS_DASHBOARD, '/dashboard/account/login'),
+    pageRegister: path(ROOTS_DASHBOARD, '/dashboard/account/register'),
+    pageReset: path(ROOTS_DASHBOARD, '/dashboard/account/reset'),
+    pageVerify: path(ROOTS_DASHBOARD, '/dashboard/account/verify'),
+    //! Below is where the real links are:
     pageShop: path(ROOTS_DASHBOARD, '/dashboard/shop'),
     pageInbox: path(ROOTS_DASHBOARD, '/dashboard/inbox'),
   },
