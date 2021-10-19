@@ -114,13 +114,9 @@ const sidebarConfig = [
         path: PATH_DASHBOARD.general.pageShop,
         icon: ICONS.ecommerce,
       },
+
       {
-        title: 'Contact',
-        path: PATH_DASHBOARD.general.pageInbox,
-        icon: ICONS.mail,
-      },
-      {
-        title: 'Contact',
+        title: 'Inbox',
         path: PATH_DASHBOARD.general.pageInbox,
         icon: ICONS.danger,
       },
