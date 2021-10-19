@@ -15,7 +15,7 @@ import user28 from '../../static/icons/_user-28.svg'
 import smiley8 from '../../static/icons/_smiley-8.svg'
 import car4 from '../../static/icons/_car-4.svg'
 import noun_newcar from '../../static/icons/noun_new-car.svg'
-import cleancar from '../../static/icons/noun_cleancar.svg'
+import noun_cleancar from '../../static/icons/noun_cleancar.svg'
 // ----------------------------------------------------------------------
 
 const getIcon = name => (
@@ -34,7 +34,7 @@ const ICONS = {
   smiley8: getIcon(smiley8),
   car4: getIcon(car4),
   noun_newcar: getIcon(noun_newcar),
-  cleancar: getIcon(cleancar),
+  noun_cleancar: getIcon(noun_cleancar),
 }
 
 const sidebarConfig = [
@@ -109,7 +109,7 @@ const sidebarConfig = [
       {
         title: 'Verify',
         path: PATH_DASHBOARD.general.pageInbox,
-        icon: ICONS.cleancar,
+        icon: ICONS.noun_cleancar,
       },
 
       {
