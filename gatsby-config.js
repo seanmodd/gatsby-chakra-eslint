@@ -1,12 +1,5 @@
 //* Potential Problem: Commented out gatsby-plugin-offline
 require('dotenv').config()
-let credentials = require('./credentials.json')
-let sheetID = 1UIpxVZIyfSsu15tpb_4LuwMOJV58Nt2agBOD5wtIXOI
-let private_key = credentials.private_key
-credentials = {...credentials, private_key: private_key}
-// credentials = {...credentials, private_key: private_key.replace(/\\n/g, '\n')}
-
-
 
 module.exports = {
   siteMetadata: {
@@ -92,12 +85,12 @@ module.exports = {
     {
       resolve: 'gatsby-source-google-spreadsheets',
       options: {
-        spreadsheetId: sheetID,
+        spreadsheetId: '1UIpxVZIyfSsu15tpb_4LuwMOJV58Nt2agBOD5wtIXOI',
         spreadsheetName: 'gatsby',
         // apiKey: 'GOOGLE-API-KEY'
         // Or
-        credentials: require('./credentials.json')
-      }
+        credentials: require('./credentials.json'),
+      },
     },
 
     {
