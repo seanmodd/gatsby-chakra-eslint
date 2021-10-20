@@ -86,10 +86,23 @@ module.exports = {
       resolve: 'gatsby-source-google-spreadsheets',
       options: {
         spreadsheetId: '1UIpxVZIyfSsu15tpb_4LuwMOJV58Nt2agBOD5wtIXOI',
-        spreadsheetName: 'gatsby',
+        // spreadsheetId: '1IC83uQA6dUkNz3u0BVJS4w9e6YRzMAc5ETidPvZmpHk',
+        // spreadsheetName: 'gatsby',
         // apiKey: 'GOOGLE-API-KEY'
         // Or
-        credentials: require('./credentials.json'),
+        credentials: {
+          type: 'service_account',
+          project_id: process.env.PROJECT_ID,
+          private_key_id: process.env.PRIVATE_KEY_ID,
+          private_key: process.env.PRIVATE_KEY.replace(/(\\r)|(\\n)/g, '\n'),
+          client_email: process.env.CLIENT_EMAIL,
+          client_id: '',
+          // client_id: process.env.CLIENT_ID,
+          auth_uri: 'https://accounts.google.com/o/oauth2/auth',
+          token_uri: 'https://oauth2.googleapis.com/token',
+          auth_provider_x509_cert_url: process.env.AUTH_PROVIDER_URL,
+          client_x509_cert_url: process.env.CLIENT_CERT_URL,
+        },
       },
     },
 
