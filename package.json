@@ -78,6 +78,7 @@
     "gatsby-plugin-sitemap": "^4.10.0",
     "gatsby-plugin-web-font-loader": "^1.0.4",
     "gatsby-source-filesystem": "^2.3.30",
+    "gatsby-source-google-spreadsheets": "^3.0.8",
     "gatsby-source-strapi": "^1.0.2",
     "gatsby-transformer-sharp": "^3.14.0",
     "highlight.js": "11.2",
