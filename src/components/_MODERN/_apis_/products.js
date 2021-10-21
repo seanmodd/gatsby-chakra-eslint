@@ -1,3 +1,4 @@
+import { graphql, useStaticQuery } from 'gatsby'
 import React from 'react'
 import { random, sample } from 'lodash'
 import { paramCase } from 'change-case'

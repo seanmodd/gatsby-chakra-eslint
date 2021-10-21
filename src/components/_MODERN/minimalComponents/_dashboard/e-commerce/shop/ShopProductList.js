@@ -28,6 +28,7 @@ ProductList.propTypes = {
 
 export default function ProductList({ products, isLoad, ...other }) {
   console.log('From ShopProductList.js - products props: ', products)
+
   return (
     <Grid container spacing={3} {...other}>
       {products.map(product => (

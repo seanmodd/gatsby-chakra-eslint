@@ -1,3 +1,4 @@
+import { graphql, useStaticQuery } from 'gatsby'
 import React, { useEffect, useState } from 'react'
 import { useFormik } from 'formik'
 import { filter, includes, orderBy } from 'lodash'
@@ -37,6 +38,7 @@ import {
 } from '../../../components/_MODERN/minimalComponents/_dashboard/e-commerce/shop'
 import CartWidget from '../../../components/_MODERN/minimalComponents/_dashboard/e-commerce/CartWidget'
 import { products } from '../../../components/_MODERN/_apis_/products'
+import graphqldata from '../../../components/_MODERN/_apis_/NewProducts'
 // ----------------------------------------------------------------------
 
 function applyFilter(products, sortBy, filters) {
@@ -95,7 +97,7 @@ function applyFilter(products, sortBy, filters) {
   return products
 }
 
-export default function EcommerceShop() {
+export default function EcommerceShop({ data }) {
   const { themeStretch } = useSettings()
   const dispatch = useDispatch()
   const [openFilter, setOpenFilter] = useState(false)
@@ -104,8 +106,20 @@ export default function EcommerceShop() {
     sortBy,
     filters,
   } = useSelector(state => state.product)
+  // const filteredProducts = applyFilter(newData, sortBy, filters)
   const filteredProducts = applyFilter(products, sortBy, filters)
   console.log('From shop.js - products props: ', products)
+  console.log('From shop.js - data props: ', data)
+  const newData = data.allGoogleAllcarsSheet.edges
+  console.log(
+    'From shop.js - data.allGoogleAllcarsSheet.edges props: ',
+    newData
+  )
+  console.log(
+    'From shop.js connected to NewProducts.js - graphqldata props: ',
+    graphqldata
+  )
+
   const formik = useFormik({
     initialValues: {
       gender: filters.gender,
@@ -212,7 +226,8 @@ export default function EcommerceShop() {
             </Stack>
           </Stack>
           <ShopProductList
-            products={filteredProducts}
+            // products={filteredProducts}
+            products={newData}
             isLoad={!filteredProducts && !initialValues}
           />
 
@@ -222,3 +237,90 @@ export default function EcommerceShop() {
     </DashboardLayout>
   )
 }
+
+export const query = graphql`
+  query GoogleSheetsCJDandKia {
+    allGoogleAllcarsSheet {
+      totalCount
+      edges {
+        node {
+          drivetrainnew: carDrivetrain
+          carEngine
+          color: carExteriorColor
+          carFuelEconomy
+          carHighlightedFeatures1Feature
+          carHighlightedFeatures2Feature
+          carHighlightedFeatures3Feature
+          carHighlightedFeatures4Feature
+          carHighlightedFeatures5Feature
+          carHighlightedFeatures6Feature
+          carHighlightedFeatures7Feature
+          carHighlightedFeatures8Feature
+          name: carInfo
+          carInfo2
+          carName
+          carInteriorColor
+          carOdometer
+          carPackageOptions1Attribute1
+          carPackageOptions1Attribute10
+          carPackageOptions1Attribute12
+          carPackageOptions1Attribute11
+          carPackageOptions1Attribute2
+          carPackageOptions1Name
+          carPackageOptions1Attribute3
+          carPackageOptions1Price
+          carPackageOptions2Attribute1
+          carPackageOptions2Attribute10
+          carPackageOptions2Attribute11
+          carPackageOptions2Attribute12
+          carPackageOptions2Attribute2
+          carPackageOptions2Attribute3
+          carPackageOptions2Name
+          carPackageOptions2Price
+          carPackageOptions3Attribute1
+          carPackageOptions3Attribute10
+          carPackageOptions3Attribute11
+          carPackageOptions3Attribute12
+          carPackageOptions3Attribute2
+          carPackageOptions3Attribute3
+          carPackageOptions3Name
+          carPackageOptions3Price
+          carPackageOptions4Attribute1
+          carPackageOptions4Attribute10
+          carPackageOptions4Attribute11
+          carPackageOptions4Attribute12
+          carPackageOptions4Attribute2
+          carPackageOptions4Attribute3
+          carPackageOptions4Name
+          carPackageOptions4Price
+          carPackageOptions5Attribute1
+          carPackageOptions5Attribute10
+          carPackageOptions5Attribute11
+          carPackageOptions5Attribute12
+          carPackageOptions5Attribute2
+          carPackageOptions5Attribute3
+          carPackageOptions5Name
+          carPackageOptions5Price
+          carPackageOptions6Attribute1
+          carPackageOptions6Attribute2
+          carPackageOptions6Attribute3
+          carPackageOptions6Name
+          carPackageOptions6Price
+          price: carPrice
+          carSpecial
+          carSpecial2
+          carStock
+          carTransmission
+          carUrl
+          carVin
+          description: dealership
+          id: id
+          images: imageSource1
+          createdAt: refreshTime
+          requestedURLPath
+          status: vehicleStatus
+        }
+      }
+    }
+  }
+`
