@@ -93,7 +93,7 @@ function ThumbnailItem({ item }) {
   )
 }
 
-export default function ProductDetailsCarousel() {
+export default function ProductDetailsCarousel(props) {
   const [openLightbox, setOpenLightbox] = useState(false)
   const [selectedImage, setSelectedImage] = useState(null)
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -103,6 +103,7 @@ export default function ProductDetailsCarousel() {
   const slider2 = useRef(null)
 
   const { product } = useSelector(state => state.product)
+  console.log('This is props from ProductDetailsCarousel.js: ', props)
   const imagesLightbox = product.images.map(_image => _image)
 
   const handleOpenLightbox = url => {

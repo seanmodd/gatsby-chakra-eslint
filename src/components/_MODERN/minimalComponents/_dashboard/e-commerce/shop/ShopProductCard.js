@@ -33,9 +33,10 @@ ShopProductCard.propTypes = {
 
 export default function ShopProductCard({ product }) {
   // const { name, cover, price, colors, status, priceSale } = product
-  const { name, price, cover, status } = product
+  const { name, price, cover, status, id } = product
   console.log('From ShopProductCard.js - product props: ', product)
   // const linkTo = `${PATH_DASHBOARD.eCommerce.root}/product/${paramCase(name)}`
+  const linkTo = `/dashboard/cars/${id}`
 
   return (
     <Card>
@@ -58,12 +59,12 @@ export default function ShopProductCard({ product }) {
         <ProductImgStyle alt={name} src={cover} />
       </Box>
       <Stack spacing={2} sx={{ p: 3 }}>
-        {/* <Link to={linkTo} color="inherit" component={RouterLink}> */}
-        <Typography variant="subtitle2" noWrap>
-          {/* {product.carName} */}
-          {name}
-        </Typography>
-        {/* </Link> */}
+        <Link to={linkTo} color="inherit" component={RouterLink}>
+          <Typography variant="subtitle2" noWrap>
+            {/* {product.carName} */}
+            {name}
+          </Typography>
+        </Link>
 
         <Stack
           direction="row"

@@ -100,6 +100,7 @@ export default function EcommerceProductDetails(props) {
   const { name } = props.pageContext
   const [value, setValue] = useState('1')
   const { product, error } = useSelector(state => state.product)
+  console.log('This is product from CarDetail.js: ', product)
 
   useEffect(() => {
     dispatch(getProduct(name))
@@ -124,6 +125,78 @@ export default function EcommerceProductDetails(props) {
               { name },
             ]}
           />
+          <CartWidget />
+          {/* {product && ( */}
+          <>
+            <Card>
+              <Grid container>
+                <Grid item xs={12} md={6} lg={7}>
+                  {/* <ProductDetailsCarousel /> */}
+                </Grid>
+                <Grid item xs={12} md={6} lg={5}>
+                  {/* <ProductDetailsSumary /> */}
+                </Grid>
+              </Grid>
+            </Card>
+
+            <Grid container sx={{ my: 8 }}>
+              {PRODUCT_DESCRIPTION.map(item => (
+                <Grid item xs={12} md={4} key={item.title}>
+                  <Box
+                    sx={{
+                      my: 2,
+                      mx: 'auto',
+                      maxWidth: 280,
+                      textAlign: 'center',
+                    }}
+                  >
+                    <IconWrapperStyle>
+                      <Icon icon={item.icon} width={36} height={36} />
+                    </IconWrapperStyle>
+                    <Typography variant="subtitle1" gutterBottom>
+                      {item.title}
+                    </Typography>
+                    <Typography sx={{ color: 'text.secondary' }}>
+                      {item.description}
+                    </Typography>
+                  </Box>
+                </Grid>
+              ))}
+            </Grid>
+
+            <Card>
+              <TabContext value={value}>
+                <Box sx={{ px: 3, bgcolor: 'background.neutral' }}>
+                  <TabList onChange={handleChangeTab}>
+                    <Tab disableRipple value="1" label="Description" />
+                    <Tab
+                      disableRipple
+                      value="2"
+                      // label={`Review (${product.reviews.length})`}
+                      label="reviews"
+                      sx={{ '& .MuiTab-wrapper': { whiteSpace: 'nowrap' } }}
+                    />
+                  </TabList>
+                </Box>
+
+                <Divider />
+
+                <TabPanel value="1">
+                  <Box sx={{ p: 3 }}>
+                    {/* <Markdown children={product.description} /> */}
+                  </Box>
+                </TabPanel>
+                <TabPanel value="2">
+                  <ProductDetailsReview product={product} />
+                </TabPanel>
+              </TabContext>
+            </Card>
+          </>
+          {/* )} */}
+
+          {!product && SkeletonLoad}
+
+          {error && <Typography variant="h6">404 Product not found</Typography>}
         </Container>
       </Page>
     </DashboardLayout>
