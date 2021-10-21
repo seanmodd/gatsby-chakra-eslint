@@ -10,30 +10,33 @@ import {
   Stack,
 } from '@mui/material'
 
-import DashboardLayout from '../../_SHELL/layouts/dashboard'
+import DashboardLayout from '../../../_SHELL/layouts/dashboard'
 // redux
-import { useDispatch, useSelector } from '../../components/_MODERN/redux/store'
+import {
+  useDispatch,
+  useSelector,
+} from '../../../components/_MODERN/redux/store'
 import {
   getProducts,
   filterProducts,
-} from '../../components/_MODERN/redux/slices/product'
+} from '../../../components/_MODERN/redux/slices/product'
 // routes
 // import { PATH_DASHBOARD } from '../../routes/paths'
 // utils
-import fakeRequest from '../../components/_MODERN/utils/fakeRequest'
+import fakeRequest from '../../../components/_MODERN/utils/fakeRequest'
 // hooks
-import useSettings from '../../components/_MODERN/hooks/useSettings'
+import useSettings from '../../../components/_MODERN/hooks/useSettings'
 // components
-import Page from '../../components/_MODERN/minimalComponents/Page'
-import HeaderBreadcrumbs from '../../components/_MODERN/minimalComponents/HeaderBreadcrumbs'
+import Page from '../../../components/_MODERN/minimalComponents/Page'
+import HeaderBreadcrumbs from '../../../components/_MODERN/minimalComponents/HeaderBreadcrumbs'
 import {
   ShopTagFiltered,
   ShopProductSort,
   ShopProductList,
   ShopFilterSidebar,
-} from '../../components/_MODERN/minimalComponents/_dashboard/e-commerce/shop'
-import CartWidget from '../../components/_MODERN/minimalComponents/_dashboard/e-commerce/CartWidget'
-import {products} from '../../components/_MODERN/_apis_/products';
+} from '../../../components/_MODERN/minimalComponents/_dashboard/e-commerce/shop'
+import CartWidget from '../../../components/_MODERN/minimalComponents/_dashboard/e-commerce/CartWidget'
+import { products } from '../../../components/_MODERN/_apis_/products'
 // ----------------------------------------------------------------------
 
 function applyFilter(products, sortBy, filters) {
@@ -96,7 +99,11 @@ export default function EcommerceShop() {
   const { themeStretch } = useSettings()
   const dispatch = useDispatch()
   const [openFilter, setOpenFilter] = useState(false)
-  const { products: ignoreme, sortBy, filters } = useSelector(state => state.product)
+  const {
+    products: ignoreme,
+    sortBy,
+    filters,
+  } = useSelector(state => state.product)
   const filteredProducts = applyFilter(products, sortBy, filters)
 
   const formik = useFormik({

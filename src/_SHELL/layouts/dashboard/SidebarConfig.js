@@ -16,6 +16,9 @@ import smiley8 from '../../static/icons/_smiley-8.svg'
 import car4 from '../../static/icons/_car-4.svg'
 import noun_newcar from '../../static/icons/noun_new-car.svg'
 import noun_cleancar from '../../static/icons/noun_cleancar.svg'
+import noun_sell from '../../static/icons/noun_sell.svg'
+import noun_checkout from '../../static/icons/noun_checkout.svg'
+import noun_checkout2 from '../../static/icons/noun_checkout2.svg'
 // ----------------------------------------------------------------------
 
 const getIcon = name => (
@@ -35,20 +38,15 @@ const ICONS = {
   car4: getIcon(car4),
   noun_newcar: getIcon(noun_newcar),
   noun_cleancar: getIcon(noun_cleancar),
+  noun_sell: getIcon(noun_sell),
+  noun_checkout: getIcon(noun_checkout),
+  noun_checkout2: getIcon(noun_checkout2),
 }
 
 const sidebarConfig = [
-  // MANAGEMENT
-  // ----------------------------------------------------------------------
   {
     subheader: 'Profile',
-    // items: [
-    //   {
-    //     title: 'Dashboard Home',
-    //     path: PATH_DASHBOARD.general.pageHome,
-    //     icon: ICONS.dashboard,
-    //   },
-    // ],
+
     items: [
       {
         title: 'Dashboard',
@@ -67,16 +65,7 @@ const sidebarConfig = [
       },
     ],
   },
-
   {
-    // items: [
-    //   {
-    //     title: 'Dashboard Home',
-    //     path: PATH_DASHBOARD.general.pageHome,
-    //     icon: ICONS.ecommerce,
-    //   },
-    // ],
-
     subheader: 'More',
     items: [
       {
@@ -107,9 +96,19 @@ const sidebarConfig = [
         icon: ICONS.noun_newcar,
       },
       {
-        title: 'Verify',
-        path: PATH_DASHBOARD.general.pageInbox,
+        title: 'Sell',
+        path: PATH_DASHBOARD.general.pageCreate,
+        icon: ICONS.noun_checkout,
+      },
+      {
+        title: 'Details',
+        path: PATH_DASHBOARD.general.pageDetails,
         icon: ICONS.noun_cleancar,
+      },
+      {
+        title: 'Checkout',
+        path: PATH_DASHBOARD.general.pageCheckout,
+        icon: ICONS.noun_checkout2,
       },
 
       {
@@ -119,34 +118,8 @@ const sidebarConfig = [
       },
     ],
   },
-  // GENERAL
-  // ----------------------------------------------------------------------
-  // {
-  // items: [
-  //   {
-  //     title: 'Dashboard Home',
-  //     path: PATH_DASHBOARD.general.pageHome,
-  //     icon: ICONS.ecommerce,
-  //   },
-  // ],
 
-  //   items: [
-  //     {
-  //       title: 'Dashboard Home',
-  //       path: PATH_DASHBOARD.general.pageHome,
-  //       icon: ICONS.dashboard,
-  //     },
-  //   ],
-  // },
   {
-    // items: [
-    //   {
-    //     title: 'Dashboard Home',
-    //     path: PATH_DASHBOARD.general.pageHome,
-    //     icon: ICONS.ecommerce,
-    //   },
-    // ],
-
     subheader: 'Old Pages',
     items: [
       {

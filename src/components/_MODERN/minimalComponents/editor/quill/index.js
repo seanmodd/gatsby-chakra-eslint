@@ -68,7 +68,7 @@ export default function QuillEditor({
       maxStack: 100,
       userOnly: true,
     },
-    syntax: true,
+    syntax: false,
     clipboard: {
       matchVisual: false,
     },
