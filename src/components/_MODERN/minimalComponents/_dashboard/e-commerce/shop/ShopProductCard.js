@@ -33,6 +33,7 @@ ShopProductCard.propTypes = {
 
 export default function ShopProductCard({ product }) {
   const { name, cover, price, colors, status, priceSale } = product
+  console.log('From ShopProductCard.js - product props: ', product)
   const linkTo = `${PATH_DASHBOARD.eCommerce.root}/product/${paramCase(name)}`
 
   return (

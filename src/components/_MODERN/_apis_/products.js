@@ -77,10 +77,6 @@ const PRODUCT_SIZE = [
 
 export const products = [...Array(24)].map((_, index) => ({
   id: mockData.id(index),
-  // cover:
-  //   'https://cdn.shopify.com/s/files/1/0463/6734/2742/products/Womens-Air-Jordan-1-Seafoam-CD0461-002_900x900.jpg?v=1619382877',
-  //   images:
-  //     'https://cdn.shopify.com/s/files/1/0463/6734/2742/products/Womens-Air-Jordan-1-Seafoam-CD0461-002_900x900.jpg?v=1619382877',
   cover: mockData.image.product(index),
   images: [...Array(8)].map((_, index) => mockData.image.product(index)),
   name: PRODUCT_NAME[index],

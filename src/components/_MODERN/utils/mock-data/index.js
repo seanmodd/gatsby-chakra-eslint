@@ -14,7 +14,7 @@ import { price, rating, age, percent } from './number'
 // ----------------------------------------------------------------------
 
 const mockData = {
-  id: index => `e99f09a7-dd88-49d5-b1c8-1daf80c2d7b${index + 1}`,
+  id: index => `${index + 1}`,
   email: index => email[index],
   phoneNumber: index => phoneNumber[index],
   time: index => sub(new Date(), { days: index, hours: index }),

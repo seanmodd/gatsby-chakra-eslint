@@ -105,7 +105,7 @@ export default function EcommerceShop() {
     filters,
   } = useSelector(state => state.product)
   const filteredProducts = applyFilter(products, sortBy, filters)
-
+  console.log('From shop.js - products props: ', products)
   const formik = useFormik({
     initialValues: {
       gender: filters.gender,

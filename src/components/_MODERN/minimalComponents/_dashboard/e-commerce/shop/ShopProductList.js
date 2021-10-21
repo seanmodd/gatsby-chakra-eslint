@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 // material
 import { Skeleton, Grid } from '@mui/material'
-// import { products as newproducts } from '../../../../_apis_/products'
+
 import ShopProductCard from './ShopProductCard'
 
 // ----------------------------------------------------------------------
@@ -27,8 +27,7 @@ ProductList.propTypes = {
 }
 
 export default function ProductList({ products, isLoad, ...other }) {
-  // console.log('THIS IS PROP OF NEWPRODUCTS: ', newproducts)
-  console.log('THIS IS PROP OF PRODUCTS: ', products)
+  console.log('From ShopProductList.js - products props: ', products)
   return (
     <Grid container spacing={3} {...other}>
       {products.map(product => (
