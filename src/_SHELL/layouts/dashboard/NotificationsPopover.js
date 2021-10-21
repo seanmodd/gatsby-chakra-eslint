@@ -43,7 +43,7 @@ const TITLES = [
 
 const DESCRIPTIONS = [
   'waiting for shipping',
-  'answered to your comment on the Minimal',
+  'answered to your comment on the Car X',
   '5 unread messages',
   'sent from Guido Padberg',
   'Your order is being shipped',

@@ -14,7 +14,7 @@ export default function PageOne() {
 
   return (
     <DashboardLayout>
-      <Page title="Page One | Minimal-UI">
+      <Page title="Page One | Car X">
         <Container maxWidth={themeStretch ? false : 'xl'}>
           <Typography variant="h3" component="h1" paragraph>
             Page One

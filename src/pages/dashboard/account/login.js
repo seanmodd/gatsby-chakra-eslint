@@ -107,7 +107,7 @@ export default function Login() {
                   Get started
                 </Link>
                 <Typography variant="h4" gutterBottom>
-                  Sign in to Minimal
+                  Sign in to Car X
                 </Typography>
                 <Typography sx={{ color: 'text.secondary' }}>
                   Enter your details below.
@@ -126,8 +126,8 @@ export default function Login() {
             {method === 'firebase' && <AuthFirebaseSocials />}
 
             <Alert severity="info" sx={{ mb: 3 }}>
-              Use email : <strong>demo@minimals.cc</strong> / password :
-              <strong>&nbsp;demo1234</strong>
+              Use email : <strong>demo@shopcarx.com</strong> / password :
+              <strong>&nbsp;carx1234</strong>
             </Alert>
 
             {method !== 'auth0' ? (

@@ -33,25 +33,25 @@ const SOCIALS = [
 
 const LINKS = [
   {
-    headline: 'Minimal',
+    headline: 'Car X',
     children: [
-      { name: 'About us', href: '#' },
-      { name: 'Contact us', href: '#' },
+      { name: 'About', href: '#' },
+      { name: 'Contact', href: '#' },
       { name: 'FAQs', href: '#' },
     ],
   },
   {
     headline: 'Legal',
     children: [
-      { name: 'Terms and Condition', href: '#' },
+      { name: 'Terms', href: '#' },
       { name: 'Privacy Policy', href: '#' },
     ],
   },
   {
     headline: 'Contact',
     children: [
-      { name: 'support@minimals.cc', href: '#' },
-      { name: 'Los Angeles, 359  Hidden Valley Road', href: '#' },
+      { name: 'sean@senpex.com', href: '#' },
+      { name: '3566 Stevens Creek Blvd, San Jose, CA 95117', href: '#' },
     ],
   },
 ]
@@ -80,9 +80,9 @@ export default function MainFooter() {
           </Grid>
           <Grid item xs={8} md={3}>
             <Typography variant="body2" sx={{ pr: { md: 5 } }}>
-              The starting point for your next project with Minimal UI Kit,
-              built on the newest version of Material-UI ©, ready to be
-              customized to your style.
+              Thank you for visiting Car X ©, the company focused on making your
+              car shopping experience easier and more affordable than ever
+              before.
             </Typography>
 
             <Stack

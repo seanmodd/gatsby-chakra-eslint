@@ -32,7 +32,7 @@ export default function ResetPassword() {
 
   return (
     <DashboardLayout>
-      <RootStyle title="Reset Password | Minimal UI">
+      <RootStyle title="Reset Password | Car X">
         <LogoOnlyLayout />
 
         <Container>
