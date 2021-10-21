@@ -1,3 +1,5 @@
+//* Redux
+//* This gets fed into the CarDetails.js component
 //* React-Router-Dom
 import React from 'react'
 import { Icon } from '@iconify/react'

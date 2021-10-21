@@ -1,3 +1,6 @@
+//* Redux
+//* This gets fed directly into ProductDetailsCarousel.js via useSelector
+//* This gets fed directly into ProductDetailsSumary.js via useSelector and useDispatch
 import {
   useDispatch as useReduxDispatch,
   useSelector as useReduxSelector,

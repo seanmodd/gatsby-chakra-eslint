@@ -1,3 +1,5 @@
+//* Redux
+//* This gets fed into _MODERN/redux/store.js
 import { combineReducers } from 'redux'
 import { persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'

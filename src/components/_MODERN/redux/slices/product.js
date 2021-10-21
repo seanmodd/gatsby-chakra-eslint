@@ -1,3 +1,8 @@
+//* Redux
+//* This gets fed into _MODERN/redux/rootReducer.js
+//! ALSO
+//* Redux
+//* This gets fed directly into ProductDetailsSumary.js via onGotoStep and addToCart !!!
 import '../../_apis_'
 import { sum, map, filter, uniqBy, reject } from 'lodash'
 import { createSlice } from '@reduxjs/toolkit'

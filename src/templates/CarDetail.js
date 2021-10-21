@@ -1,3 +1,5 @@
+//* Redux
+//* This feeds in the redux store useDispatch and useSelector
 import React from 'react'
 import { Icon } from '@iconify/react'
 import { sentenceCase } from 'change-case'
@@ -135,34 +137,10 @@ export default function EcommerceProductDetails(props) {
                 </Grid>
                 <Grid item xs={12} md={6} lg={5}>
                   {/* <ProductDetailsSumary /> */}
+                  {name}
                 </Grid>
               </Grid>
             </Card>
-
-            <Grid container sx={{ my: 8 }}>
-              {PRODUCT_DESCRIPTION.map(item => (
-                <Grid item xs={12} md={4} key={item.title}>
-                  <Box
-                    sx={{
-                      my: 2,
-                      mx: 'auto',
-                      maxWidth: 280,
-                      textAlign: 'center',
-                    }}
-                  >
-                    <IconWrapperStyle>
-                      <Icon icon={item.icon} width={36} height={36} />
-                    </IconWrapperStyle>
-                    <Typography variant="subtitle1" gutterBottom>
-                      {item.title}
-                    </Typography>
-                    <Typography sx={{ color: 'text.secondary' }}>
-                      {item.description}
-                    </Typography>
-                  </Box>
-                </Grid>
-              ))}
-            </Grid>
 
             <Card>
               <TabContext value={value}>
@@ -173,7 +151,7 @@ export default function EcommerceProductDetails(props) {
                       disableRipple
                       value="2"
                       // label={`Review (${product.reviews.length})`}
-                      label="reviews"
+                      label="More Details"
                       sx={{ '& .MuiTab-wrapper': { whiteSpace: 'nowrap' } }}
                     />
                   </TabList>
@@ -183,20 +161,44 @@ export default function EcommerceProductDetails(props) {
 
                 <TabPanel value="1">
                   <Box sx={{ p: 3 }}>
-                    {/* <Markdown children={product.description} /> */}
+                    <Markdown children={name} />
                   </Box>
                 </TabPanel>
                 <TabPanel value="2">
-                  <ProductDetailsReview product={product} />
+                  {/* <ProductDetailsReview product={product} /> */}
+                  <Grid container sx={{ my: 8 }}>
+                    {PRODUCT_DESCRIPTION.map(item => (
+                      <Grid item xs={12} md={4} key={item.title}>
+                        <Box
+                          sx={{
+                            my: 2,
+                            mx: 'auto',
+                            maxWidth: 280,
+                            textAlign: 'center',
+                          }}
+                        >
+                          <IconWrapperStyle>
+                            <Icon icon={item.icon} width={36} height={36} />
+                          </IconWrapperStyle>
+                          <Typography variant="subtitle1" gutterBottom>
+                            {item.title}
+                          </Typography>
+                          <Typography sx={{ color: 'text.secondary' }}>
+                            {item.description}
+                          </Typography>
+                        </Box>
+                      </Grid>
+                    ))}
+                  </Grid>
                 </TabPanel>
               </TabContext>
             </Card>
           </>
           {/* )} */}
 
-          {!product && SkeletonLoad}
+          {/* {!product && SkeletonLoad} */}
 
-          {error && <Typography variant="h6">404 Product not found</Typography>}
+          {/* {error && <Typography variant="h6">404 Product not found</Typography>} */}
         </Container>
       </Page>
     </DashboardLayout>

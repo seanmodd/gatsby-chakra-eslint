@@ -1,3 +1,6 @@
+//* Redux
+//* This gets fed into _MODERN/_apis_/index.js
+//* Which gets fed into _MODERN/redux/slices/product.js
 import { graphql, useStaticQuery } from 'gatsby'
 import React from 'react'
 import { random, sample } from 'lodash'

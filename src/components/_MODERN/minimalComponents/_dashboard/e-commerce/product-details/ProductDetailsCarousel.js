@@ -1,3 +1,5 @@
+//* Redux
+//* This gets fed into the CarDetails.js component
 import React, { useState, useRef, useEffect } from 'react'
 import Slider from 'react-slick'
 import { findIndex } from 'lodash'
