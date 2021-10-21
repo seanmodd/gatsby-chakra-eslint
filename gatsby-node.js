@@ -49,12 +49,93 @@ exports.createPages = async ({ graphql, actions }) => {
                   checked
                   label
                 }
-
                 Color {
                   checked
                   label
                 }
               }
+            }
+          }
+        }
+        allGoogleAllcarsSheet {
+          totalCount
+          edges {
+            node {
+              carDrivetrain
+              carEngine
+              carExteriorColor
+              carFuelEconomy
+              carHighlightedFeatures1Feature
+              carHighlightedFeatures2Feature
+              carHighlightedFeatures3Feature
+              carHighlightedFeatures4Feature
+              carHighlightedFeatures5Feature
+              carHighlightedFeatures6Feature
+              carHighlightedFeatures7Feature
+              carHighlightedFeatures8Feature
+              carInfo
+              carInfo2
+              carName
+              carInteriorColor
+              carOdometer
+              carPackageOptions1Attribute1
+              carPackageOptions1Attribute10
+              carPackageOptions1Attribute12
+              carPackageOptions1Attribute11
+              carPackageOptions1Attribute2
+              carPackageOptions1Name
+              carPackageOptions1Attribute3
+              carPackageOptions1Price
+              carPackageOptions2Attribute1
+              carPackageOptions2Attribute10
+              carPackageOptions2Attribute11
+              carPackageOptions2Attribute12
+              carPackageOptions2Attribute2
+              carPackageOptions2Attribute3
+              carPackageOptions2Name
+              carPackageOptions2Price
+              carPackageOptions3Attribute1
+              carPackageOptions3Attribute10
+              carPackageOptions3Attribute11
+              carPackageOptions3Attribute12
+              carPackageOptions3Attribute2
+              carPackageOptions3Attribute3
+              carPackageOptions3Name
+              carPackageOptions3Price
+              carPackageOptions4Attribute1
+              carPackageOptions4Attribute10
+              carPackageOptions4Attribute11
+              carPackageOptions4Attribute12
+              carPackageOptions4Attribute2
+              carPackageOptions4Attribute3
+              carPackageOptions4Name
+              carPackageOptions4Price
+              carPackageOptions5Attribute1
+              carPackageOptions5Attribute10
+              carPackageOptions5Attribute11
+              carPackageOptions5Attribute12
+              carPackageOptions5Attribute2
+              carPackageOptions5Attribute3
+              carPackageOptions5Name
+              carPackageOptions5Price
+              carPackageOptions6Attribute1
+              carPackageOptions6Attribute2
+              carPackageOptions6Attribute3
+              carPackageOptions6Name
+              carPackageOptions6Price
+              carPrice
+              carSpecial
+              carSpecial2
+              carStock
+              carTransmission
+              carUrl
+              carVin
+              dealership
+              id
+              imageSource1
+              refreshTime
+              requestedURLPath
+              vehicleStatus
             }
           }
         }
@@ -99,139 +180,138 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-//   const resultdata = await graphql(
-//     `
-//     allGoogleAllcarsSheet {
-//       totalCount
-//       edges {
-//         node {
-//           drivetrainnew: carDrivetrain
-//           carEngine
-//           color: carExteriorColor
-//           carFuelEconomy
-//           carHighlightedFeatures1Feature
-//           carHighlightedFeatures2Feature
-//           carHighlightedFeatures3Feature
-//           carHighlightedFeatures4Feature
-//           carHighlightedFeatures5Feature
-//           carHighlightedFeatures6Feature
-//           carHighlightedFeatures7Feature
-//           carHighlightedFeatures8Feature
-//           name: carInfo
-//           carInfo2
-//           carName
-//           carInteriorColor
-//           carOdometer
-//           carPackageOptions1Attribute1
-//           carPackageOptions1Attribute10
-//           carPackageOptions1Attribute12
-//           carPackageOptions1Attribute11
-//           carPackageOptions1Attribute2
-//           carPackageOptions1Name
-//           carPackageOptions1Attribute3
-//           carPackageOptions1Price
-//           carPackageOptions2Attribute1
-//           carPackageOptions2Attribute10
-//           carPackageOptions2Attribute11
-//           carPackageOptions2Attribute12
-//           carPackageOptions2Attribute2
-//           carPackageOptions2Attribute3
-//           carPackageOptions2Name
-//           carPackageOptions2Price
-//           carPackageOptions3Attribute1
-//           carPackageOptions3Attribute10
-//           carPackageOptions3Attribute11
-//           carPackageOptions3Attribute12
-//           carPackageOptions3Attribute2
-//           carPackageOptions3Attribute3
-//           carPackageOptions3Name
-//           carPackageOptions3Price
-//           carPackageOptions4Attribute1
-//           carPackageOptions4Attribute10
-//           carPackageOptions4Attribute11
-//           carPackageOptions4Attribute12
-//           carPackageOptions4Attribute2
-//           carPackageOptions4Attribute3
-//           carPackageOptions4Name
-//           carPackageOptions4Price
-//           carPackageOptions5Attribute1
-//           carPackageOptions5Attribute10
-//           carPackageOptions5Attribute11
-//           carPackageOptions5Attribute12
-//           carPackageOptions5Attribute2
-//           carPackageOptions5Attribute3
-//           carPackageOptions5Name
-//           carPackageOptions5Price
-//           carPackageOptions6Attribute1
-//           carPackageOptions6Attribute2
-//           carPackageOptions6Attribute3
-//           carPackageOptions6Name
-//           carPackageOptions6Price
-//           price: carPrice
-//           carSpecial
-//           carSpecial2
-//           carStock
-//           carTransmission
-//           carUrl
-//           carVin
-//           description: dealership
-//           id: id
-//           cover: imageSource1
-//           createdAt: refreshTime
-//           requestedURLPath
-//           status: vehicleStatus
-//         }
-//       }
-//     }
-//   }
-// `
-//   )
+  //   const resultdata = await graphql(
+  //     `
+  //     allGoogleAllcarsSheet {
+  //       totalCount
+  //       edges {
+  //         node {
+  //           drivetrainnew: carDrivetrain
+  //           carEngine
+  //           color: carExteriorColor
+  //           carFuelEconomy
+  //           carHighlightedFeatures1Feature
+  //           carHighlightedFeatures2Feature
+  //           carHighlightedFeatures3Feature
+  //           carHighlightedFeatures4Feature
+  //           carHighlightedFeatures5Feature
+  //           carHighlightedFeatures6Feature
+  //           carHighlightedFeatures7Feature
+  //           carHighlightedFeatures8Feature
+  //           name: carInfo
+  //           carInfo2
+  //           carName
+  //           carInteriorColor
+  //           carOdometer
+  //           carPackageOptions1Attribute1
+  //           carPackageOptions1Attribute10
+  //           carPackageOptions1Attribute12
+  //           carPackageOptions1Attribute11
+  //           carPackageOptions1Attribute2
+  //           carPackageOptions1Name
+  //           carPackageOptions1Attribute3
+  //           carPackageOptions1Price
+  //           carPackageOptions2Attribute1
+  //           carPackageOptions2Attribute10
+  //           carPackageOptions2Attribute11
+  //           carPackageOptions2Attribute12
+  //           carPackageOptions2Attribute2
+  //           carPackageOptions2Attribute3
+  //           carPackageOptions2Name
+  //           carPackageOptions2Price
+  //           carPackageOptions3Attribute1
+  //           carPackageOptions3Attribute10
+  //           carPackageOptions3Attribute11
+  //           carPackageOptions3Attribute12
+  //           carPackageOptions3Attribute2
+  //           carPackageOptions3Attribute3
+  //           carPackageOptions3Name
+  //           carPackageOptions3Price
+  //           carPackageOptions4Attribute1
+  //           carPackageOptions4Attribute10
+  //           carPackageOptions4Attribute11
+  //           carPackageOptions4Attribute12
+  //           carPackageOptions4Attribute2
+  //           carPackageOptions4Attribute3
+  //           carPackageOptions4Name
+  //           carPackageOptions4Price
+  //           carPackageOptions5Attribute1
+  //           carPackageOptions5Attribute10
+  //           carPackageOptions5Attribute11
+  //           carPackageOptions5Attribute12
+  //           carPackageOptions5Attribute2
+  //           carPackageOptions5Attribute3
+  //           carPackageOptions5Name
+  //           carPackageOptions5Price
+  //           carPackageOptions6Attribute1
+  //           carPackageOptions6Attribute2
+  //           carPackageOptions6Attribute3
+  //           carPackageOptions6Name
+  //           carPackageOptions6Price
+  //           price: carPrice
+  //           carSpecial
+  //           carSpecial2
+  //           carStock
+  //           carTransmission
+  //           carUrl
+  //           carVin
+  //           description: dealership
+  //           id: id
+  //           cover: imageSource1
+  //           createdAt: refreshTime
+  //           requestedURLPath
+  //           status: vehicleStatus
+  //         }
+  //       }
+  //     }
+  //   }
+  // `
+  //   )
 
-//   if (result.errors) {
-//     throw result.errors
-//   }
+  //   if (result.errors) {
+  //     throw result.errors
+  //   }
 
-//   const cars = resultdata.data.allGoogleAllcarsSheet.edges
+  const cars = result.data.allGoogleAllcarsSheet.edges
 
-//   cars.forEach(car => {
-//     createPage({
-//       path: `/dashboard/cars/${car.node.id}`,
-//       component: require.resolve('./src/templates/CarDetail.js'),
-//       context: {
-//         name: car.node.carName,
-//         id: car.node.id,
-//         description: car.node.description,
-//         drivetrain: car.node.drivetrainnew,
-//         engine: car.node.carEngine,
-//         exteriorColor: car.node.color,
-//         fuelEconomy: car.node.carFuelEconomy,
-//         interiorColor: car.node.carInteriorColor,
-//         odometer: car.node.carOdometer,
-//         packageOptions: [
-//           {
-//             name: car.node.carPackageOptions1Name,
-//             price: car.node.carPackageOptions1Price,
-//             attributes: [
-//               {
-//                 name: car.node.carPackageOptions1Attribute1,
-//                 value: car.node.carPackageOptions1Attribute2,
-//               },
-//               {
-//                 name: car.node.carPackageOptions1Attribute3,
-//                 value: car.node.carPackageOptions1Attribute4,
-//               },
-//             ],
-//           },
-//         ],
-//         price: car.node.price,
-//         name: car.node.carName,
-//         otherName: car.node.carInfo2,
-//         info: car.node.carInfo,
-//       },
-//     })
-//   })
+  cars.forEach(car => {
+    createPage({
+      path: `/dashboard/cars/${car.node.id}`,
+      component: require.resolve('./src/templates/CarDetail.js'),
+      context: {
+        name: car.node.carName,
+        id: car.node.id,
+        description: car.node.description,
+        drivetrain: car.node.drivetrainnew,
+        engine: car.node.carEngine,
+        exteriorColor: car.node.color,
+        fuelEconomy: car.node.carFuelEconomy,
+        interiorColor: car.node.carInteriorColor,
+        odometer: car.node.carOdometer,
+        packageOptions: [
+          {
+            name: car.node.carPackageOptions1Name,
+            price: car.node.carPackageOptions1Price,
+            attributes: [
+              {
+                name: car.node.carPackageOptions1Attribute1,
+                value: car.node.carPackageOptions1Attribute2,
+              },
+              {
+                name: car.node.carPackageOptions1Attribute3,
+                value: car.node.carPackageOptions1Attribute4,
+              },
+            ],
+          },
+        ],
+        price: car.node.price,
+        name: car.node.carName,
+        otherName: car.node.carInfo2,
+        info: car.node.carInfo,
+      },
+    })
+  })
 }
-
 
 exports.onCreateWebpackConfig = ({ actions, stage, plugins }) => {
   if (stage === 'build-javascript' || stage === 'develop') {
