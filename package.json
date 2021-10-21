@@ -87,6 +87,7 @@
     "gatsby-source-google-spreadsheets": "^3.0.8",
     "gatsby-source-strapi": "^1.0.2",
     "gatsby-transformer-json": "^3.14.0",
+    "gatsby-transformer-remark": "^4.11.0",
     "gatsby-transformer-sharp": "^3.14.0",
     "highlight.js": "11.2",
     "history": "^5.0.1",
