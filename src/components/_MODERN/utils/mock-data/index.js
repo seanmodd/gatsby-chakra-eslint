@@ -42,14 +42,10 @@ const mockData = {
     price: index => price[index],
   },
   image: {
-    cover: index =>
-      `../../../../pages/static/mock-images/covers/cover_${index + 1}.jpg`,
-    feed: index =>
-      `../../../../pages/static/mock-images/feeds/feed_${index + 1}.jpg`,
-    product: index =>
-      `../../../../pages/static/mock-images/products/product_${index + 1}.jpg`,
-    avatar: index =>
-      `../../../../pages/static/mock-images/avatars/avatar_${index + 1}.jpg`,
+    cover: index => `/mock-images/covers/cover_${index + 1}.jpg`,
+    feed: index => `/mock-images/feeds/feed_${index + 1}.jpg`,
+    product: index => `/mock-images/products/product_${index + 1}.jpg`,
+    avatar: index => `/mock-images/avatars/avatar_${index + 1}.jpg`,
   },
 }
 
