@@ -7,10 +7,14 @@ import PropTypes from 'prop-types'
 import { styled } from '@mui/material/styles'
 import { Box } from '@mui/material'
 //
+
 import EditorToolbar, { formats } from './QuillEditorToolbar'
 
+const ReactQuill =
+  typeof window === 'object' ? require('react-quill') : () => false
 // const ReactQuill = dynamic(() => import('react-quill'), { ssr: false })
-const ReactQuill = require('react-quill')
+// const ReactQuill = (() => import('react-quill'), { ssr: false })
+// const ReactQuill = require('react-quill')
 // ----------------------------------------------------------------------
 
 const RootStyle = styled(Box)(({ theme }) => ({
@@ -57,6 +61,7 @@ export default function QuillEditor({
   ...other
 }) {
   const modules = {
+    syntax: false,
     toolbar: {
       container: `#${id}`,
     },

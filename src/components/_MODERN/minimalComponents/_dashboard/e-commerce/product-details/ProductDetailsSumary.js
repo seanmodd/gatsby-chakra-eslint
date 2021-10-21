@@ -1,6 +1,9 @@
+//* React-Router-Dom
 import React from 'react'
 import { Icon } from '@iconify/react'
 import { sentenceCase } from 'change-case'
+// import { useNavigate } from 'react-router-dom'
+import { navigate } from 'gatsby'
 import { useNavigate } from 'react-router-dom'
 import plusFill from '@iconify/icons-eva/plus-fill'
 import minusFill from '@iconify/icons-eva/minus-fill'
@@ -128,7 +131,7 @@ const Incrementer = props => {
 
 export default function ProductDetailsSumary() {
   const theme = useTheme()
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   const dispatch = useDispatch()
   const { product, checkout } = useSelector(state => state.product)
   const {

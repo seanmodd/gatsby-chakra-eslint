@@ -1,16 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 // next
-import dynamic from 'next/dynamic'
+// import dynamic from 'next/dynamic'
 //
 import { toolbarFull, toolbarSimple } from './DraftEditorToolbar'
 import DraftEditorStyle from './DraftEditorStyle'
 
-const Editor = dynamic(
-  () => import('react-draft-wysiwyg').then(mod => mod.Editor),
-  { ssr: false }
-)
-
+// const Editor = dynamic(
+//   () => import('react-draft-wysiwyg').then(mod => mod.Editor),
+//   { ssr: false }
+// )
+const { Editor } = require('react-draft-wysiwyg')
 // ----------------------------------------------------------------------
 
 DraftEditor.propTypes = {

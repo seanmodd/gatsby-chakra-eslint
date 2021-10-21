@@ -12,7 +12,7 @@ import roundForum from '@iconify/icons-ic/round-forum'
 import trash2Fill from '@iconify/icons-eva/trash-2-fill'
 import roundReport from '@iconify/icons-ic/round-report'
 import roundLabelImportant from '@iconify/icons-ic/round-label-important'
-import { NavLink as RouterLink } from 'gatsby'
+import { Link as RouterLink } from 'gatsby'
 // material
 import {
   Typography,

@@ -1,6 +1,6 @@
 import { graphql, useStaticQuery } from 'gatsby'
 
-export function NewProducts() {
+export default function NewProducts() {
   useStaticQuery(graphql`
     query GoogleSheetsCJDandKiaa {
       allGoogleAllcarsSheet {
