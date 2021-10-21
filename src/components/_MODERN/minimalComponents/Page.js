@@ -15,7 +15,7 @@ const Page = forwardRef(({ children, title = '', ...other }, ref) => {
   useEffect(() => {
     setActivePathname(window && window.location ? window.location.pathname : '')
   }, [])
-  console.log('activePathname for Page.js', activePathname)
+  console.log('From Page.js - here is the activePathname: ', activePathname)
 
   const sendPageViewEvent = useCallback(() => {
     track.pageview({

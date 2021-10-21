@@ -153,7 +153,10 @@ export default function MenuMobile({ isOffset, isHome, navConfig }) {
   useEffect(() => {
     setActivePathname(window && window.location ? window.location.pathname : '')
   }, [])
-  console.log('activePathname', activePathname)
+  console.log(
+    'From MenuMobile.js - this is the activePathname: ',
+    activePathname
+  )
   // const { pathname } = useRouter()
 
   const [open, setOpen] = useState(false)

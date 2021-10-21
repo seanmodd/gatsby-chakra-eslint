@@ -117,7 +117,6 @@ export default function MainFooter() {
                         style={{ textDecoration: 'none' }}
                         key={link.name}
                         to={link.href}
-                        passHref
                       >
                         <Link
                           color="inherit"

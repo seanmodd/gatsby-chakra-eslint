@@ -92,11 +92,12 @@ const SkeletonLoad = (
   </Grid>
 )
 
-export default function EcommerceProductDetails() {
+export default function EcommerceProductDetails(props) {
+  console.log('These are the props: ', props)
   const { themeStretch } = useSettings()
   const dispatch = useDispatch()
   // const { name } = useParams()
-  const name = 'product-1'
+  const { name } = props.pageContext
   const [value, setValue] = useState('1')
   const { product, error } = useSelector(state => state.product)
 
@@ -110,8 +111,20 @@ export default function EcommerceProductDetails() {
 
   return (
     <DashboardLayout>
-      <Page title="Ecommerce: Product Details | Minimal-UI">
-        Example page of car detail
+      <Page title="Ecommerce: Vehicle Details | Car X">
+        <Container maxWidth={themeStretch ? false : 'lg'}>
+          <HeaderBreadcrumbs
+            heading="Vehicle Details"
+            links={[
+              { name: 'Dashboard', href: '/dashboard' },
+              {
+                name: 'All Vehicles',
+                href: '/dashboard/e-commerce/shop',
+              },
+              { name },
+            ]}
+          />
+        </Container>
       </Page>
     </DashboardLayout>
   )

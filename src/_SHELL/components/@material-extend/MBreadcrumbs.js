@@ -23,7 +23,7 @@ LinkItem.propTypes = {
 function LinkItem({ link }) {
   const { href, name, icon } = link
   return (
-    <GatsbyLink key={name} to={href} passHref>
+    <GatsbyLink key={name} to={href}>
       <Link
         variant="body2"
         sx={{

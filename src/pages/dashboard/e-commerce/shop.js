@@ -228,7 +228,7 @@ export default function EcommerceShop({ data }) {
 
   return (
     <DashboardLayout>
-      <Page title="Ecommerce: Shop | Minimal-UI">
+      <Page title="All Vehicles | Car X">
         {values && (
           <Backdrop open={isSubmitting} sx={{ zIndex: 9999 }}>
             <CircularProgress />
@@ -237,14 +237,10 @@ export default function EcommerceShop({ data }) {
 
         <Container maxWidth={themeStretch ? false : 'lg'}>
           <HeaderBreadcrumbs
-            heading="Shop"
+            heading="All Vehicles"
             links={[
-              { name: 'Dashboard', href: '/' },
-              {
-                name: 'E-Commerce',
-                href: '/',
-              },
-              { name: 'Shop' },
+              { name: 'Dashboard', href: '/dashboard' },
+              { name: 'All Vehicles' },
             ]}
           />
           {!isDefault && (

@@ -26,7 +26,10 @@ export default function MainLayout({ children }) {
   useEffect(() => {
     setActivePathname(window && window.location ? window.location.pathname : '')
   }, [])
-  console.log('activePathname', activePathname)
+  console.log(
+    'From _SHELL/layouts/main/index.js - this is the activePathname: ',
+    activePathname
+  )
 
   // const isHome = pathname === '/'
   const isHome = activePathname === '/'

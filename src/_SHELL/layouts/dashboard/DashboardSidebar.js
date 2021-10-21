@@ -106,7 +106,10 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
   useEffect(() => {
     setActivePathname(window && window.location ? window.location.pathname : '')
   }, [])
-  console.log('activePathname', activePathname)
+  console.log(
+    'From DashboardSidebar.js - this is the activePathname',
+    activePathname
+  )
   // const { pathname } = useRouter()
 
   const {

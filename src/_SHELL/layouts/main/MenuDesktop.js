@@ -106,7 +106,7 @@ function MenuDesktopItem({
   useEffect(() => {
     setActivePathname(window && window.location ? window.location.pathname : '')
   }, [])
-  console.log('activePathname', activePathname)
+  console.log('Also from MenuDesktop.js - this is the activePathname: ', activePathname)
 
   // const isActive = pathname === path
   const isActive = activePathname === path
@@ -257,7 +257,10 @@ export default function MenuDesktop({ isOffset, isHome, navConfig }) {
   useEffect(() => {
     setActivePathname(window && window.location ? window.location.pathname : '')
   }, [])
-  console.log('activePathname', activePathname)
+  console.log(
+    'From MenuDesktop.js - this is the activePathname: ',
+    activePathname
+  )
 
   const [open, setOpen] = useState(false)
 

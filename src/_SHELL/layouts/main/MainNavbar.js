@@ -60,7 +60,7 @@ export default function MainNavbar() {
   useEffect(() => {
     setActivePathname(window && window.location ? window.location.pathname : '')
   }, [])
-  console.log('activePathname', activePathname)
+  console.log('From MainNavbar.js - this is the activePathname', activePathname)
 
   // const isHome = pathname === '/'
   const isHome = activePathname === '/'
