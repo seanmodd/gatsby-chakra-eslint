@@ -28,15 +28,22 @@ ProductList.propTypes = {
 
 export default function ProductList({ products, isLoad, ...other }) {
   console.log('From ShopProductList.js - products props: ', products)
+  const newProductList = products[0]
+  const productsTwo = { newProductList }
+  const productListMap = products.map((product, index) => product.node)
+
+  console.log('From ShopProductList.js - productListMap: ', productListMap)
 
   return (
     <Grid container spacing={3} {...other}>
-      {products.map(product => (
-        <Grid key={product.id} item xs={12} sm={6} md={3}>
-          <h1>Idk</h1>
-          <ShopProductCard product={product} />
-        </Grid>
-      ))}
+      {products.map(product => {
+        const myproduct = product.node
+        return (
+          <Grid item xs={12} sm={6} md={3}>
+            <ShopProductCard product={myproduct} />
+          </Grid>
+        )
+      })}
 
       {isLoad && SkeletonLoad}
     </Grid>

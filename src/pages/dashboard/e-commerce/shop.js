@@ -96,6 +96,61 @@ function applyFilter(products, sortBy, filters) {
   }
   return products
 }
+// function applyFilter(products, sortBy, filters) {
+//   // SORT BY
+//   if (sortBy === 'featured') {
+//     products = orderBy(products, ['sold'], ['desc'])
+//   }
+//   if (sortBy === 'newest') {
+//     products = orderBy(products, ['createdAt'], ['desc'])
+//   }
+//   if (sortBy === 'priceDesc') {
+//     products = orderBy(products, ['price'], ['desc'])
+//   }
+//   if (sortBy === 'priceAsc') {
+//     products = orderBy(products, ['price'], ['asc'])
+//   }
+//   // FILTER PRODUCTS
+//   if (filters.gender.length > 0) {
+//     products = filter(products, _product =>
+//       includes(filters.gender, _product.gender)
+//     )
+//   }
+//   if (filters.category !== 'All') {
+//     products = filter(
+//       products,
+//       _product => _product.category === filters.category
+//     )
+//   }
+//   if (filters.colors.length > 0) {
+//     products = filter(products, _product =>
+//       _product.colors.some(color => filters.colors.includes(color))
+//     )
+//   }
+//   if (filters.priceRange) {
+//     products = filter(products, _product => {
+//       if (filters.priceRange === 'below') {
+//         return _product.price < 25
+//       }
+//       if (filters.priceRange === 'between') {
+//         return _product.price >= 25 && _product.price <= 75
+//       }
+//       return _product.price > 75
+//     })
+//   }
+//   if (filters.rating) {
+//     products = filter(products, _product => {
+//       const convertRating = value => {
+//         if (value === 'up4Star') return 4
+//         if (value === 'up3Star') return 3
+//         if (value === 'up2Star') return 2
+//         return 1
+//       }
+//       return _product.totalRating > convertRating(filters.rating)
+//     })
+//   }
+//   return products
+// }
 
 export default function EcommerceShop({ data }) {
   const { themeStretch } = useSettings()
@@ -106,8 +161,7 @@ export default function EcommerceShop({ data }) {
     sortBy,
     filters,
   } = useSelector(state => state.product)
-  // const filteredProducts = applyFilter(newData, sortBy, filters)
-  const filteredProducts = applyFilter(products, sortBy, filters)
+
   console.log('From shop.js - products props: ', products)
   console.log('From shop.js - data props: ', data)
   const newData = data.allGoogleAllcarsSheet.edges
@@ -119,7 +173,9 @@ export default function EcommerceShop({ data }) {
     'From shop.js connected to NewProducts.js - graphqldata props: ',
     graphqldata
   )
-
+  // const filteredProducts = applyFilter(newData, sortBy, filters)
+  // const filteredProducts = applyFilter(products, sortBy, filters)
+  const filteredProducts = newData
   const formik = useFormik({
     initialValues: {
       gender: filters.gender,
@@ -226,8 +282,8 @@ export default function EcommerceShop({ data }) {
             </Stack>
           </Stack>
           <ShopProductList
-            // products={filteredProducts}
-            products={newData}
+            products={filteredProducts}
+            // products={newData}
             isLoad={!filteredProducts && !initialValues}
           />
 
@@ -315,7 +371,7 @@ export const query = graphql`
           carVin
           description: dealership
           id: id
-          images: imageSource1
+          cover: imageSource1
           createdAt: refreshTime
           requestedURLPath
           status: vehicleStatus
