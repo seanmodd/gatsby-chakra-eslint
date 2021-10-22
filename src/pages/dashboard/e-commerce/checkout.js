@@ -117,15 +117,15 @@ export default function EcommerceCheckout() {
 
   return (
     <DashboardLayout>
-      <Page title="Ecommerce: Checkout | Minimal-UI">
+      <Page title="Ecommerce: Checkout | Car X">
         <Container maxWidth={themeStretch ? false : 'lg'}>
           <HeaderBreadcrumbs
             heading="Checkout"
             links={[
               { name: 'Dashboard', href: PATH_DASHBOARD.root },
               {
-                name: 'E-Commerce',
-                href: PATH_DASHBOARD.eCommerce.root,
+                name: 'All Vehicles',
+                href: '/dashboard/e-commerce/shop',
               },
               { name: 'Checkout' },
             ]}

@@ -76,7 +76,8 @@ const RootStyle = styled('div')(({ theme }) => ({
 const Incrementer = props => {
   const [field, , helpers] = useField(props)
   // eslint-disable-next-line react/prop-types
-  const { available } = props
+  // const { available } = props
+
   const { value } = field
   const { setValue } = helpers
 
@@ -122,7 +123,7 @@ const Incrementer = props => {
       <MIconButton
         size="small"
         color="inherit"
-        disabled={value >= available}
+        // disabled={value >= available}
         onClick={incrementQuantity}
       >
         <Icon icon={plusFill} width={16} height={16} />
@@ -131,27 +132,32 @@ const Incrementer = props => {
   )
 }
 
-export default function ProductDetailsSumary() {
+export default function ProductDetailsSumary({ product, checkout }) {
   const theme = useTheme()
   // const navigate = useNavigate()
   const dispatch = useDispatch()
-  const { product, checkout } = useSelector(state => state.product)
+
+  // const { product, checkout } = useSelector(state => state.product)
+  const { state } = useSelector(state => state)
+  console.log('This is from ProductDetailsSumary.js state: ', state)
+
   const {
     id,
     name,
-    sizes,
+    // sizes,
     price,
-    cover,
-    status,
-    colors,
-    available,
-    priceSale,
-    totalRating,
-    totalReview,
-    inventoryType,
+    // cover,
+    // status,
+    // colors,
+    // available,
+    // priceSale,
+    // totalRating,
+    // totalReview,
+    // inventoryType,
   } = product
 
   const alreadyProduct = checkout.cart.map(item => item.id).includes(id)
+  const available = 1
   const isMaxQuantity =
     checkout.cart
       .filter(item => item.id === id)
@@ -170,12 +176,12 @@ export default function ProductDetailsSumary() {
     initialValues: {
       id,
       name,
-      cover,
-      available,
+      // cover,
+      // available,
       price,
-      color: colors[0],
-      size: sizes[4],
-      quantity: available < 1 ? 0 : 1,
+      // color: colors[0],
+      // size: sizes[4],
+      // quantity: available < 1 ? 0 : 1,
     },
     onSubmit: async (values, { setSubmitting }) => {
       try {
@@ -207,23 +213,25 @@ export default function ProductDetailsSumary() {
     <RootStyle>
       <FormikProvider value={formik}>
         <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
-          <Label
+          {/* <Label
             variant={theme.palette.mode === 'light' ? 'ghost' : 'filled'}
-            color={inventoryType === 'in_stock' ? 'success' : 'error'}
+            // color={inventoryType === 'in_stock' ? 'success' : 'error'}
+            // color={inventoryType === 'success'}
             sx={{ textTransform: 'uppercase' }}
           >
             {sentenceCase(inventoryType)}
-          </Label>
+          </Label> */}
           <Typography
             variant="overline"
             sx={{
               mt: 2,
               mb: 1,
               display: 'block',
-              color: status === 'sale' ? 'error.main' : 'info.main',
+              // color: status === 'sale' ? 'error.main' : 'info.main',
+              color: 'info.main',
             }}
           >
-            {status}
+            {/* {status} */}
           </Typography>
 
           <Typography variant="h5" paragraph>
@@ -236,10 +244,10 @@ export default function ProductDetailsSumary() {
             alignItems="center"
             sx={{ mb: 2 }}
           >
-            <Rating value={totalRating} precision={0.1} readOnly />
+            {/* <Rating value={totalRating} precision={0.1} readOnly /> */}
             <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-              ({fShortenNumber(totalReview)}
-              reviews)
+              {/* ({fShortenNumber(totalReview)}
+              reviews) */}
             </Typography>
           </Stack>
 
@@ -248,9 +256,9 @@ export default function ProductDetailsSumary() {
               component="span"
               sx={{ color: 'text.disabled', textDecoration: 'line-through' }}
             >
-              {priceSale && fCurrency(priceSale)}
+              {/* {priceSale && fCurrency(priceSale)} */}
             </Box>
-            &nbsp;{fCurrency(price)}
+            {/* &nbsp;{fCurrency(price)} */}
           </Typography>
 
           <Divider sx={{ borderStyle: 'dashed' }} />
@@ -261,10 +269,10 @@ export default function ProductDetailsSumary() {
               alignItems="center"
               justifyContent="space-between"
             >
-              <Typography variant="subtitle1" sx={{ mt: 0.5 }}>
+              {/* <Typography variant="subtitle1" sx={{ mt: 0.5 }}>
                 Color
-              </Typography>
-              <ColorSinglePicker
+              </Typography> */}
+              {/* <ColorSinglePicker
                 {...getFieldProps('color')}
                 colors={colors}
                 sx={{
@@ -273,7 +281,7 @@ export default function ProductDetailsSumary() {
                     justifyContent: 'flex-end',
                   }),
                 }}
-              />
+              /> */}
             </Stack>
 
             <Stack direction="row" justifyContent="space-between">
@@ -298,11 +306,11 @@ export default function ProductDetailsSumary() {
                   </Link>
                 }
               >
-                {sizes.map(size => (
+                {/* {sizes.map(size => (
                   <option key={size} value={size}>
                     {size}
                   </option>
-                ))}
+                ))} */}
               </TextField>
             </Stack>
 
@@ -311,7 +319,7 @@ export default function ProductDetailsSumary() {
                 Quantity
               </Typography>
               <div>
-                <Incrementer name="quantity" available={available} />
+                {/* <Incrementer name="quantity" available={available} /> */}
                 <Typography
                   variant="caption"
                   sx={{
@@ -321,11 +329,11 @@ export default function ProductDetailsSumary() {
                     color: 'text.secondary',
                   }}
                 >
-                  Available: {available}
+                  {/* Available: {available} */}
                 </Typography>
 
                 <FormHelperText error>
-                  {touched.quantity && errors.quantity}
+                  {/* {touched.quantity && errors.quantity} */}
                 </FormHelperText>
               </div>
             </Stack>

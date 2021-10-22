@@ -95,14 +95,18 @@ const SkeletonLoad = (
 )
 
 export default function EcommerceProductDetails(props) {
-  console.log('These are the props: ', props)
+  console.log('From CarDetail.js page, these are the props: ', props)
   const { themeStretch } = useSettings()
   const dispatch = useDispatch()
   // const { name } = useParams()
   const { name } = props.pageContext
   const [value, setValue] = useState('1')
-  const { product, error } = useSelector(state => state.product)
-  console.log('This is product from CarDetail.js: ', product)
+  const { checkout, error } = useSelector(state => state.product)
+  const product = props.pageContext
+
+  console.log('From CarDetail.js page, this is product: ', product)
+  // console.log('From CarDetail.js page, this is products: ', products)
+  console.log('From CarDetail.js page, this is checkout: ', checkout)
 
   useEffect(() => {
     dispatch(getProduct(name))
@@ -136,7 +140,7 @@ export default function EcommerceProductDetails(props) {
                   {/* <ProductDetailsCarousel /> */}
                 </Grid>
                 <Grid item xs={12} md={6} lg={5}>
-                  {/* <ProductDetailsSumary /> */}
+                  <ProductDetailsSumary product={product} checkout={checkout} />
                   {name}
                 </Grid>
               </Grid>
