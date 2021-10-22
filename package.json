@@ -144,6 +144,7 @@
     "stylis": "^4.0.1",
     "stylis-plugin-rtl": "^2.0.2",
     "uuid": "^8.3.2",
+    "valtio": "^1.2.5",
     "worker-loader": "^3.0.8",
     "yup": "^0.32.11",
     "zlib": "^1.0.5",
