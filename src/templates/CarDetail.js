@@ -137,7 +137,7 @@ export default function EcommerceProductDetails(props) {
             <Card>
               <Grid container>
                 <Grid item xs={12} md={6} lg={7}>
-                  {/* <ProductDetailsCarousel /> */}
+                  <ProductDetailsCarousel />
                 </Grid>
                 <Grid item xs={12} md={6} lg={5}>
                   <ProductDetailsSumary product={product} checkout={checkout} />

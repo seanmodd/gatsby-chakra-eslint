@@ -78,7 +78,9 @@ const Incrementer = props => {
   const [field, , helpers] = useField(props)
   // eslint-disable-next-line react/prop-types
   // const { available } = props
-
+  // const available = 'yes'
+  // const available = true
+  const available = 1
   const { value } = field
   const { setValue } = helpers
 
@@ -124,9 +126,10 @@ const Incrementer = props => {
       <MIconButton
         size="small"
         color="inherit"
-        // disabled={value >= available}
+        disabled={value >= available}
         onClick={incrementQuantity}
       >
+        quantity goes here
         <Icon icon={plusFill} width={16} height={16} />
       </MIconButton>
     </Box>
@@ -141,6 +144,8 @@ export default function ProductDetailsSumary({ product, checkout }) {
   // const { product, checkout } = useSelector(state => state.product)
   const { state } = useSelector(state => state)
   console.log('This is from ProductDetailsSumary.js state: ', state)
+  console.log('This is from ProductDetailsSumary.js product: ', product)
+  console.log('This is from ProductDetailsSumary.js checkout: ', checkout)
 
   const {
     id,

@@ -95,7 +95,8 @@ function ThumbnailItem({ item }) {
   )
 }
 
-export default function ProductDetailsCarousel(props) {
+// export default function ProductDetailsCarousel(props) {
+export default function ProductDetailsCarousel({ product }) {
   const [openLightbox, setOpenLightbox] = useState(false)
   const [selectedImage, setSelectedImage] = useState(null)
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -104,9 +105,14 @@ export default function ProductDetailsCarousel(props) {
   const slider1 = useRef(null)
   const slider2 = useRef(null)
 
-  const { product } = useSelector(state => state.product)
-  console.log('This is props from ProductDetailsCarousel.js: ', props)
-  const imagesLightbox = product.images.map(_image => _image)
+  // const { product } = useSelector(state => state.product)
+  // console.log('This is props from ProductDetailsCarousel.js: ', props)
+  console.log(
+    'This ProductDetailsCarousel.js which has product destructured: ',
+    product
+  )
+  // const imagesLightbox = product.images.map(_image => _image)
+  const imagesLightbox = {}
 
   const handleOpenLightbox = url => {
     const selectedImage = findIndex(imagesLightbox, index => index === url)
@@ -117,7 +123,7 @@ export default function ProductDetailsCarousel(props) {
   const settings1 = {
     dots: false,
     arrows: false,
-    slidesToShow: 1,
+    // slidesToShow: 1,
     draggable: false,
     slidesToScroll: 1,
     adaptiveHeight: true,
@@ -132,7 +138,7 @@ export default function ProductDetailsCarousel(props) {
     focusOnSelect: true,
     variableWidth: true,
     centerPadding: '0px',
-    slidesToShow: product.images.length > 3 ? 3 : product.images.length,
+    // slidesToShow: product.images.length > 3 ? 3 : product.images.length,
   }
 
   useEffect(() => {
@@ -159,7 +165,7 @@ export default function ProductDetailsCarousel(props) {
             position: 'relative',
           }}
         >
-          <Slider {...settings1} asNavFor={nav2} ref={slider1}>
+          {/* <Slider {...settings1} asNavFor={nav2} ref={slider1}>
             {product.images.map(item => (
               <LargeItem
                 key={item}
@@ -167,17 +173,19 @@ export default function ProductDetailsCarousel(props) {
                 onOpenLightbox={handleOpenLightbox}
               />
             ))}
-          </Slider>
+          </Slider> */}
           <CarouselControlsArrowsIndex
             index={currentIndex}
-            total={product.images.length}
+            // total={product.images.length}
+            total={0}
             onNext={handleNext}
             onPrevious={handlePrevious}
           />
+          ProductDetailsCarousel.js
         </Box>
       </Box>
 
-      <Box
+      {/* <Box
         sx={{
           my: 3,
           mx: 'auto',
@@ -211,15 +219,15 @@ export default function ProductDetailsCarousel(props) {
             <ThumbnailItem key={item} item={item} />
           ))}
         </Slider>
-      </Box>
+      </Box> */}
 
-      <LightboxModal
+      {/* <LightboxModal
         images={imagesLightbox}
         photoIndex={selectedImage}
         setPhotoIndex={setSelectedImage}
         isOpen={openLightbox}
         onClose={() => setOpenLightbox(false)}
-      />
+      /> */}
     </RootStyle>
   )
 }
