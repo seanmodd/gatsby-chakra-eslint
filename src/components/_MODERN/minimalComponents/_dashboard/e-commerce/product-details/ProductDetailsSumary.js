@@ -162,6 +162,7 @@ export default function ProductDetailsSumary({ product, checkout }) {
     dealerhsip,
     engine,
     fuelEconomy,
+    allHighlights,
     highlightedFeatures,
     id,
     imageSource1,
@@ -181,7 +182,7 @@ export default function ProductDetailsSumary({ product, checkout }) {
     vehicleStatus: inventoryType,
     vin,
   } = product
-  const carFeatures = highlightedFeatures.map(feature => (
+  const carFeatures = allHighlights.map(feature => (
     <Box
       key={feature}
       sx={{
@@ -200,6 +201,20 @@ export default function ProductDetailsSumary({ product, checkout }) {
       </Typography>
     </Box>
   ))
+  console.log(
+    'This is from ProductDetailsSumary.js, it is carFeatures which we mapped: ',
+    carFeatures
+  )
+  const { highlight1 } = highlightedFeatures
+  const { highlight2 } = highlightedFeatures
+  const { highlight3 } = highlightedFeatures
+  const { highlight4 } = highlightedFeatures
+  const { highlight5 } = highlightedFeatures
+  const { highlight6 } = highlightedFeatures
+  console.log(
+    'This is from ProductDetailsSumary.js, it is highlight1 which we mapped: ',
+    highlight1
+  )
 
   const alreadyProduct = checkout.cart.map(item => item.id).includes(id)
   const available = 1
@@ -369,6 +384,24 @@ export default function ProductDetailsSumary({ product, checkout }) {
                 Highlights:
               </Typography>
               <div>
+                <Typography variant="subtitle1" sx={{ mt: 0.5 }}>
+                  {highlight1}
+                </Typography>
+                <Typography variant="subtitle1" sx={{ mt: 0.5 }}>
+                  {highlight2}
+                </Typography>
+                <Typography variant="subtitle1" sx={{ mt: 0.5 }}>
+                  {highlight3}
+                </Typography>
+                <Typography variant="subtitle1" sx={{ mt: 0.5 }}>
+                  {highlight4}
+                </Typography>
+                <Typography variant="subtitle1" sx={{ mt: 0.5 }}>
+                  {highlight5}
+                </Typography>
+                <Typography variant="subtitle1" sx={{ mt: 0.5 }}>
+                  {highlight6}
+                </Typography>
                 {/* <Incrementer name="quantity" available={available} /> */}
                 <Typography
                   variant="caption"
@@ -379,7 +412,7 @@ export default function ProductDetailsSumary({ product, checkout }) {
                     color: 'text.secondary',
                   }}
                 >
-                  {/* Available: {available} */}
+                  {highlight1}
                 </Typography>
 
                 <FormHelperText error>
