@@ -4,11 +4,12 @@
 //?* Setup is imported from _providerComposer.js
 import React from 'react'
 import FirstProvider from './FirstProvider'
-import { ProviderComposer } from './_providerComposer'
+import LoggedInProvider from './LoggedInProvider'
+import { ProviderComposer } from './__providerComposer'
 
 function ContextProvider({ children }) {
   return (
-    <ProviderComposer contexts={[<FirstProvider />]}>
+    <ProviderComposer contexts={[<FirstProvider />, <LoggedInProvider />]}>
       {children}
     </ProviderComposer>
   )

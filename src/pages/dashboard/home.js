@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { Container, Typography } from '@mui/material'
 // layouts
 import { proxy, useSnapshot } from 'valtio'
@@ -13,6 +13,7 @@ import Search from '../../valtio/components/Search'
 import Cities from '../../valtio/components/Cities'
 import List from '../../_global-components/List'
 import Form from '../../_global-components/Form'
+import { LoginContext } from '../../_store/_Contexts'
 // ----------------------------------------------------------------------
 
 const state = proxy({
@@ -21,13 +22,19 @@ const state = proxy({
 })
 export default function PageOne() {
   const { themeStretch } = useSettings()
-
+  const { loggedIn, setLoggedIn } = useContext(LoginContext)
+  console.log(
+    'From HOME.JS, this is loggedIn from useContext(LoginContext): ',
+    loggedIn
+  )
   return (
     <DashboardLayout>
       <Page title="Dashboard Homepage | Car X Dashboard">
         <Container maxWidth={themeStretch ? false : 'xl'}>
           <Typography variant="h3" component="h1" paragraph>
             Dashboard Homepage
+            {loggedIn && <h1>You are logged in!</h1>}
+            {!loggedIn && <h1>You are logged OUT!</h1>}
           </Typography>
           <Typography gutterBottom>
             More sample Typography Text with gutterBottom

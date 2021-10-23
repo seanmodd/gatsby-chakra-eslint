@@ -8,5 +8,4 @@ const FirstContext = createContext({})
 
 const LoginContext = createContext({})
 
-// export { FirstContext, LoginContext }
 export { FirstContext, LoginContext }

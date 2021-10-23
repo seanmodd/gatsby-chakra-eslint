@@ -60,8 +60,8 @@ import theme from './theme'
 import Layout from './layout'
 import MainLayout from '../../_SHELL/layouts/main'
 import NotistackProvider from '../_MODERN/minimalComponents/NotistackProvider'
-import MyIndexProvider from '../../_store/FirstProvider'
-import { ContextProvider } from '../../_store/_index'
+
+import { ContextProvider } from '../../_store/__index'
 // import { useGlobalState, mystate } from '../../_store/useGlobalState'
 
 const clientSideEmotionCache = createEmotionCache()
@@ -76,7 +76,6 @@ export default ({ element }) => {
     <HelmetProvider>
       {/* <Context.Provider value={{ mystate }}> */}
       <ContextProvider>
-        {/* <MyIndexProvider> */}
         <ReduxProvider store={store}>
           <PersistGate loading={<LoadingScreen />} persistor={persistor}>
             <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -126,7 +125,6 @@ export default ({ element }) => {
           </PersistGate>
         </ReduxProvider>
         {/* </Context.Provider> */}
-        {/* </MyIndexProvider> */}
       </ContextProvider>
     </HelmetProvider>
   )
