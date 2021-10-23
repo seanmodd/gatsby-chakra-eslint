@@ -148,19 +148,58 @@ export default function ProductDetailsSumary({ product, checkout }) {
   console.log('This is from ProductDetailsSumary.js checkout: ', checkout)
 
   const {
-    id,
-    name,
     // sizes,
-    price,
-    // cover,
-    // status,
+    cover,
+    status,
     // colors,
     // available,
-    // priceSale,
+    price: priceSale,
     // totalRating,
     // totalReview,
     // inventoryType,
+    //! below is all the props destructured out of product:
+    carName,
+    dealerhsip,
+    engine,
+    fuelEconomy,
+    highlightedFeatures,
+    id,
+    imageSource1,
+    info,
+    interiorColor,
+    moreInfo,
+    name,
+    odometer,
+    packageOptions,
+    price,
+    refreshTime,
+    special,
+    special2,
+    stock,
+    transmission,
+    url,
+    vehicleStatus: inventoryType,
+    vin,
   } = product
+  const carFeatures = highlightedFeatures.map(feature => (
+    <Box
+      key={feature}
+      sx={{
+        py: 0.5,
+        px: 0.75,
+        border: 1,
+        lineHeight: 0,
+        borderRadius: 1,
+        display: 'flex',
+        alignItems: 'center',
+        borderColor: 'grey.50032',
+      }}
+    >
+      <Typography variant="body2" component="span">
+        {feature}
+      </Typography>
+    </Box>
+  ))
 
   const alreadyProduct = checkout.cart.map(item => item.id).includes(id)
   const available = 1
@@ -222,11 +261,16 @@ export default function ProductDetailsSumary({ product, checkout }) {
           {/* <Label
             variant={theme.palette.mode === 'light' ? 'ghost' : 'filled'}
             // color={inventoryType === 'in_stock' ? 'success' : 'error'}
+            sx={{ textTransform: 'uppercase' }}
             // color={inventoryType === 'success'}
+          > */}
+          <Label
+            variant={theme.palette.mode === 'light' ? 'ghost' : 'filled'}
+            color={inventoryType === 'New' ? 'success' : 'error'}
             sx={{ textTransform: 'uppercase' }}
           >
             {sentenceCase(inventoryType)}
-          </Label> */}
+          </Label>
           <Typography
             variant="overline"
             sx={{
@@ -262,9 +306,9 @@ export default function ProductDetailsSumary({ product, checkout }) {
               component="span"
               sx={{ color: 'text.disabled', textDecoration: 'line-through' }}
             >
-              {/* {priceSale && fCurrency(priceSale)} */}
+              {/* {priceSale && fCurrency(`${priceSale}`)} */}
             </Box>
-            {/* &nbsp;{fCurrency(price)} */}
+            &nbsp;{fCurrency(price)}
           </Typography>
 
           <Divider sx={{ borderStyle: 'dashed' }} />
@@ -322,7 +366,7 @@ export default function ProductDetailsSumary({ product, checkout }) {
 
             <Stack direction="row" justifyContent="space-between">
               <Typography variant="subtitle1" sx={{ mt: 0.5 }}>
-                Quantity
+                Highlights:
               </Typography>
               <div>
                 {/* <Incrementer name="quantity" available={available} /> */}

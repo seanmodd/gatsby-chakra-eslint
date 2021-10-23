@@ -106,13 +106,48 @@ export default function ProductDetailsCarousel({ product }) {
   const slider2 = useRef(null)
 
   // const { product } = useSelector(state => state.product)
+  const { state } = useSelector(state => state)
   // console.log('This is props from ProductDetailsCarousel.js: ', props)
-  console.log(
-    'This ProductDetailsCarousel.js which has product destructured: ',
-    product
-  )
+  console.log('This is from ProductDetailsCarousel.js state: ', state)
+  console.log('This is from ProductDetailsCarpisel.js product: ', product)
+
+  const {
+    // sizes,
+    cover,
+    status,
+    // colors,
+    // available,
+    price: priceSale,
+    // totalRating,
+    // totalReview,
+    // inventoryType,
+    //! below is all the props destructured out of product:
+    carName,
+    dealerhsip,
+    engine,
+    fuelEconomy,
+    highlightedFeatures,
+    id,
+    imageSource1,
+    info,
+    interiorColor,
+    moreInfo,
+    name,
+    odometer,
+    packageOptions,
+    price,
+    refreshTime,
+    special,
+    special2,
+    stock,
+    transmission,
+    url,
+    vehicleStatus: inventoryType,
+    vin,
+  } = product
+
   // const imagesLightbox = product.images.map(_image => _image)
-  const imagesLightbox = {}
+  const imagesLightbox = { imageSource1 }
 
   const handleOpenLightbox = url => {
     const selectedImage = findIndex(imagesLightbox, index => index === url)
@@ -123,7 +158,7 @@ export default function ProductDetailsCarousel({ product }) {
   const settings1 = {
     dots: false,
     arrows: false,
-    // slidesToShow: 1,
+    slidesToShow: 1,
     draggable: false,
     slidesToScroll: 1,
     adaptiveHeight: true,
@@ -165,23 +200,28 @@ export default function ProductDetailsCarousel({ product }) {
             position: 'relative',
           }}
         >
-          {/* <Slider {...settings1} asNavFor={nav2} ref={slider1}>
-            {product.images.map(item => (
+          <Slider {...settings1} asNavFor={nav2} ref={slider1}>
+            {/* {product.images.map(item => (
               <LargeItem
                 key={item}
                 item={item}
                 onOpenLightbox={handleOpenLightbox}
               />
-            ))}
-          </Slider> */}
+            ))} */}
+
+            <LargeItem
+              key={imageSource1}
+              item={imageSource1}
+              onOpenLightbox={handleOpenLightbox}
+            />
+          </Slider>
           <CarouselControlsArrowsIndex
             index={currentIndex}
             // total={product.images.length}
-            total={0}
+            total={1}
             onNext={handleNext}
             onPrevious={handlePrevious}
           />
-          ProductDetailsCarousel.js
         </Box>
       </Box>
 

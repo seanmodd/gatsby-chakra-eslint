@@ -137,7 +137,7 @@ export default function EcommerceProductDetails(props) {
             <Card>
               <Grid container>
                 <Grid item xs={12} md={6} lg={7}>
-                  <ProductDetailsCarousel />
+                  <ProductDetailsCarousel product={product} />
                 </Grid>
                 <Grid item xs={12} md={6} lg={5}>
                   <ProductDetailsSumary product={product} checkout={checkout} />
@@ -155,7 +155,7 @@ export default function EcommerceProductDetails(props) {
                       disableRipple
                       value="2"
                       // label={`Review (${product.reviews.length})`}
-                      label="More Details"
+                      label="Highlights"
                       sx={{ '& .MuiTab-wrapper': { whiteSpace: 'nowrap' } }}
                     />
                   </TabList>
