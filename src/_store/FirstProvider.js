@@ -1,6 +1,6 @@
 import React from 'react'
 import useGlobalState from './useGlobalStateFirst'
-import { FirstContext } from './Context'
+import { FirstContext } from './_Contexts'
 
 const FirstProvider = ({ children }) => {
   const store = useGlobalState()

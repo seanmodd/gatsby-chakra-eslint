@@ -6,7 +6,7 @@ import React, { createContext } from 'react'
 
 const FirstContext = createContext({})
 
-// const LoginContext = createContext({})
+const LoginContext = createContext({})
 
 // export { FirstContext, LoginContext }
-export { FirstContext }
+export { FirstContext, LoginContext }
