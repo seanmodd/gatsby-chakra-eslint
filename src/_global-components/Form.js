@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
-import Context from '../_store/FirstContext'
+import { FirstContext } from '../_store/Context'
 
 function Form() {
-  const { state, actions } = useContext(Context)
+  const { state, actions } = useContext(FirstContext)
   console.log('FROM FORM.JS, this is actions: ', actions)
   const handleSubmit = e => {
     e.preventDefault()

@@ -1,11 +1,11 @@
 import React, { useContext } from 'react'
-import Context from '../_store/FirstContext'
+import { FirstContext } from '../_store/Context'
 
 function List(props) {
-  const { state } = useContext(Context)
+  const { state } = useContext(FirstContext)
   console.log('From LIST.JS, this is props: ', props)
   console.log('From LIST.JS, this is state: ', state)
-  console.log('From LIST.JS, this is Context: ', Context)
+  console.log('From LIST.JS, this is FirstContext: ', FirstContext)
   return (
     <div>
       <h4>List.js which is {state.value}</h4>
