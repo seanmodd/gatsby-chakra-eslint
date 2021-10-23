@@ -1,3 +1,6 @@
+// eslint-disable-next-line
+//** This retrieves data from _Contexts
+
 import React, { useContext } from 'react'
 import { FirstContext } from '../_store/_Contexts'
 

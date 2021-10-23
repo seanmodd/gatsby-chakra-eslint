@@ -1,3 +1,8 @@
+// eslint-disable-next-line
+//*? This sends the component to "home.js" to get matched with the Context there...
+// eslint-disable-next-line
+//** This retrieves data from _Contexts
+
 import React, { useContext } from 'react'
 import { FirstContext, LoginContext } from '../_store/_Contexts'
 
