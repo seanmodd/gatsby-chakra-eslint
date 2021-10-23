@@ -11,6 +11,8 @@ import useSettings from '../../_SHELL/hooks/useSettings'
 import Page from '../../_SHELL/components/Page'
 import Search from '../../valtio/components/Search'
 import Cities from '../../valtio/components/Cities'
+import List from '../../_global-components/List'
+import Form from '../../_global-components/Form'
 // ----------------------------------------------------------------------
 
 const state = proxy({
@@ -37,6 +39,8 @@ export default function PageOne() {
           </Typography>
           {/* <Search /> */}
           {/* <Cities /> */}
+          <List />
+          <Form />
         </Container>
       </Page>
     </DashboardLayout>

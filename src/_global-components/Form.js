@@ -1,11 +1,39 @@
-import React from 'react';
+import React, { useContext } from 'react'
+import Context from '../_store/FirstContext'
 
 function Form() {
+  const { state, actions } = useContext(Context)
+  console.log('FROM FORM.JS, this is actions: ', actions)
+  const handleSubmit = e => {
+    e.preventDefault()
+    actions.setState(state.todo)
+    // actions.setTodo('')
+  }
+
   return (
-    <div>
-      Enter
-    </div>
-  );
+    <>
+      <h4>This is from the Form Component</h4>
+      <form action="submit">
+        <input
+          value={state.value}
+          onChange={
+            e =>
+              actions({
+                type: 'setState',
+                payload: { ...state, value: e.target.value },
+              })
+            // console.log(
+            //   'From FORM.JS, this is e.target.value: ',
+            //   e.target.value
+            // )
+          }
+        />
+        <button type="submit" onClick={handleSubmit}>
+          Submit
+        </button>
+      </form>
+    </>
+  )
 }
 
-export default Form;
+export default Form
