@@ -1,3 +1,6 @@
+// eslint-disable-next-line
+//*? This sends data to "FirstProvider.js"
+
 import React, { useState } from 'react'
 
 function useGlobalStateFirst() {

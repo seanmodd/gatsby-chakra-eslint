@@ -1,7 +1,8 @@
 // eslint-disable-next-line
-//*? This sends data of Contexts to Form.js, List.js
+//*? This sends data of Contexts to home.js within the dashboard!
 // eslint-disable-next-line
-//?* Setup is imported from _providerComposer.js
+//*? This sends data of Contexts to Form.js, List.js
+
 import React, { createContext } from 'react'
 
 const FirstContext = createContext({})
