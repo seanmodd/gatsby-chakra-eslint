@@ -3,15 +3,15 @@
 // eslint-disable-next-line
 //*? This sends the Context data to "__index.js" */
 // eslint-disable-next-line
-//?* This retrieves data from "useGlobalStateFirst.js"
+//?* This retrieves data from "useGlobalStateFirst.js" which is now "FirstProvider.js" */
 
 import React from 'react'
-import useGlobalStateFirst from '../_state/useGlobalStateFirst'
+import first_reducer from '../_state/first_reducer'
 
 import { FirstContext } from '../__contexts'
 
 const FirstProvider = ({ children }) => {
-  const store = useGlobalStateFirst()
+  const store = first_reducer()
   return <FirstContext.Provider value={store}>{children}</FirstContext.Provider>
 }
 
