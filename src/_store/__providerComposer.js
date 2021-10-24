@@ -1,5 +1,5 @@
 // eslint-disable-next-line
-//*? This sends the consolidated Context Setup to "__index.js" */
+//*? This is for setting up all the consolidated Context within "__index.js" */
 
 import React from 'react'
 

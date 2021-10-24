@@ -6,9 +6,9 @@
 //?* This retrieves data from "useGlobalStateFirst.js"
 
 import React from 'react'
-import useGlobalStateFirst from './useGlobalStateFirst'
+import useGlobalStateFirst from '../_state/useGlobalStateFirst'
 
-import { FirstContext } from './_Contexts'
+import { FirstContext } from '../__contexts'
 
 const FirstProvider = ({ children }) => {
   const store = useGlobalStateFirst()

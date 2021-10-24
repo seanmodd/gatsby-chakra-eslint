@@ -1,8 +1,8 @@
 // eslint-disable-next-line
-//** This retrieves data from _Contexts
+//** This retrieves data from __contexts
 
 import React, { useContext } from 'react'
-import { FirstContext } from '../_store/_Contexts'
+import { FirstContext } from '../_store/__contexts'
 
 function Form() {
   const { state, actions } = useContext(FirstContext)

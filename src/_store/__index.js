@@ -6,7 +6,7 @@
 //?* This retrieves data of Contexts from from FirstProvider.js (the context provider) _providerComposer.js
 
 import React from 'react'
-import FirstProvider from './FirstProvider'
+import FirstProvider from './_providers/FirstProvider'
 import LoggedInProvider from './LoggedInProvider'
 import { ProviderComposer } from './__providerComposer'
 

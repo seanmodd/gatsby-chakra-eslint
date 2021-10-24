@@ -8,7 +8,7 @@
 import React, { useState } from 'react'
 
 import useLoggedInState from './useLoggedInState'
-import { LoginContext } from './_Contexts'
+import { LoginContext } from '../__contexts'
 
 const LoggedInProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(false)
