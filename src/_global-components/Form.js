@@ -2,7 +2,7 @@
 //** This retrieves data from __contexts
 
 import React, { useContext } from 'react'
-import { FirstContext } from '../_store/__contexts'
+import { FirstContext } from '../__store/__contexts'
 
 function Form() {
   const { state, actions } = useContext(FirstContext)

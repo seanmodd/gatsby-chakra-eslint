@@ -8,8 +8,8 @@
 // ?* This retrieves the setup from './_providerComposer.js'
 
 import React from 'react'
-import FirstProvider from './_providers/FirstProvider'
-import LoggedInProvider from './_providers/LoggedInProvider'
+import FirstProvider from './__providers/first/first.provider'
+import LoggedInProvider from './__providers/loggedin/loggedin.provider'
 import { ProviderComposer } from './__providerComposer'
 
 function ContextProvider({ children }) {

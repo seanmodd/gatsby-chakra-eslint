@@ -61,7 +61,7 @@ import Layout from './layout'
 import MainLayout from '../../_SHELL/layouts/main'
 import NotistackProvider from '../_MODERN/minimalComponents/NotistackProvider'
 
-import { ContextProvider } from '../../_store/__index'
+import { ContextProvider } from '../../__store/__index'
 // import { useGlobalState, mystate } from '../../_store/useGlobalState'
 
 const clientSideEmotionCache = createEmotionCache()

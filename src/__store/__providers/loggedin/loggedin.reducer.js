@@ -1,5 +1,5 @@
 // eslint-disable-next-line
-//*? This sends data to "LoggedInProvider.js"
+//*? This sends data to "loggedin.provider.js"
 
 import React, { useState } from 'react'
 

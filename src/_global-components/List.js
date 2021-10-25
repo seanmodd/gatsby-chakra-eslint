@@ -4,7 +4,7 @@
 //** This retrieves data from __contexts
 
 import React, { useContext } from 'react'
-import { FirstContext, LoginContext } from '../_store/__contexts'
+import { FirstContext, LoginContext } from '../__store/__contexts'
 
 function List(props) {
   const { state } = useContext(FirstContext)

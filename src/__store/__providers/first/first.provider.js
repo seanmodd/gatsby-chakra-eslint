@@ -6,9 +6,9 @@
 //?* This retrieves data from "useGlobalStateFirst.js" which is now "FirstProvider.js" */
 
 import React from 'react'
-import first_reducer from '../_state/first_reducer'
+import first_reducer from './first.reducer'
 
-import { FirstContext } from '../__contexts'
+import { FirstContext } from '../../__contexts'
 
 const FirstProvider = ({ children }) => {
   const store = first_reducer()
