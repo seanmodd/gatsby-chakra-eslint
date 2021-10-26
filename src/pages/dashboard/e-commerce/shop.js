@@ -161,7 +161,6 @@ export default function EcommerceShop({ data }) {
     sortBy,
     filters,
   } = useSelector(state => state.product)
-
   console.log('From shop.js - products props: ', products)
   console.log('From shop.js - data props: ', data)
   const newData = data.allGoogleAllcarsSheet.edges
@@ -173,9 +172,21 @@ export default function EcommerceShop({ data }) {
     'From shop.js connected to NewProducts.js - graphqldata props: ',
     graphqldata
   )
-  // const filteredProducts = applyFilter(newData, sortBy, filters)
-  // const filteredProducts = applyFilter(products, sortBy, filters)
-  const filteredProducts = newData
+  console.log(
+    'From shop.js connected to NewProducts.js - products props: ',
+    products
+  )
+  console.log(
+    'From shop.js connected to NewProducts.js - sortBy props: ',
+    sortBy
+  )
+  console.log(
+    'From shop.js connected to NewProducts.js - filters props: ',
+    filters
+  )
+
+  const filteredProducts = applyFilter(ignoreme, sortBy, filters)
+  // const filteredProducts = newData
   const formik = useFormik({
     initialValues: {
       gender: filters.gender,

@@ -37,10 +37,12 @@ export default function ProductList({ products, isLoad, ...other }) {
   return (
     <Grid container spacing={3} {...other}>
       {products.map(product => {
-        const myproduct = product.node
+        {
+          /* const myproduct = product.node */
+        }
         return (
           <Grid item xs={12} sm={6} md={3}>
-            <ShopProductCard product={myproduct} />
+            <ShopProductCard product={product} />
           </Grid>
         )
       })}

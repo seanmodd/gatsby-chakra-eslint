@@ -31,10 +31,12 @@ ShopProductCard.propTypes = {
   product: PropTypes.object,
 }
 
-export default function ShopProductCard({ product }) {
+export default function ShopProductCard(props) {
   // const { name, cover, price, colors, status, priceSale } = product
-  const { name, price, cover, status, id } = product
-  console.log('From ShopProductCard.js - product props: ', product)
+  console.log('😄 props', props)
+  // console.log('😈', product)
+  const { name, price, cover, status, id } = props.product
+  console.log('😛 From ShopProductCard.js - product props: ', props.product)
   // const linkTo = `${PATH_DASHBOARD.eCommerce.root}/product/${paramCase(name)}`
   const linkTo = `/dashboard/cars/${id}`
 

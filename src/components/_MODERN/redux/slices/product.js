@@ -7,7 +7,10 @@ import '../../_apis_'
 import { sum, map, filter, uniqBy, reject } from 'lodash'
 import { createSlice } from '@reduxjs/toolkit'
 // utils
-import axios from '../../utils/axios'
+// import axios from '../../utils/axios'
+import axios from 'axios'
+
+axios.defaults.baseURL = 'https://admin.shopcarx.com'
 
 // ----------------------------------------------------------------------
 
@@ -229,8 +232,9 @@ export function getProducts() {
   return async dispatch => {
     dispatch(slice.actions.startLoading())
     try {
-      const response = await axios.get('/api/products')
-      dispatch(slice.actions.getProductsSuccess(response.data.products))
+      const response = await axios.get('/products')
+      console.log('😈', response.data)
+      dispatch(slice.actions.getProductsSuccess(response.data))
     } catch (error) {
       dispatch(slice.actions.hasError(error))
     }
@@ -243,7 +247,7 @@ export function getProduct(name) {
   return async dispatch => {
     dispatch(slice.actions.startLoading())
     try {
-      const response = await axios.get('/api/products/product', {
+      const response = await axios.get('/products/product', {
         params: { name },
       })
       dispatch(slice.actions.getProductSuccess(response.data.product))
