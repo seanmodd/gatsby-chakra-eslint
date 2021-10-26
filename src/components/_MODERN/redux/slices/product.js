@@ -204,7 +204,7 @@ const slice = createSlice({
 // Reducer
 export default slice.reducer
 
-// Actions
+// Actions aka Action Types or action.type
 export const {
   getCart,
   addCart,
