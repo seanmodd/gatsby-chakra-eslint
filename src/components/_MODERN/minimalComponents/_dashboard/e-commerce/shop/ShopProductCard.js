@@ -42,7 +42,6 @@ export default function ShopProductCard(props) {
 
   return (
     <Card>
-
       <Box sx={{ pt: '100%', position: 'relative' }}>
         {status && (
           <Label
@@ -95,12 +94,30 @@ export default function ShopProductCard(props) {
     </Card>
   )
 }
-    console.log("🚀 ~ file: ShopProductCard.js ~ line 98 ~ ShopProductCard ~ Card", Card)
-    console.log("🚀 ~ file: ShopProductCard.js ~ line 98 ~ ShopProductCard ~ Card", Card)
-    console.log("🚀 ~ file: ShopProductCard.js ~ line 98 ~ ShopProductCard ~ Card", Card)
-    console.log("🚀 ~ file: ShopProductCard.js ~ line 98 ~ ShopProductCard ~ Card", Card)
-    console.log("🚀 ~ file: ShopProductCard.js ~ line 98 ~ ShopProductCard ~ Card", Card)
-    console.log("🚀 ~ file: ShopProductCard.js ~ line 98 ~ ShopProductCard ~ Card", Card)
+console.log(
+  '🚀 ~ file: ShopProductCard.js ~ line 98 ~ ShopProductCard ~ Card',
+  Card
+)
+console.log(
+  '🚀 ~ file: ShopProductCard.js ~ line 98 ~ ShopProductCard ~ Card',
+  Card
+)
+console.log(
+  '🚀 ~ file: ShopProductCard.js ~ line 98 ~ ShopProductCard ~ Card',
+  Card
+)
+console.log(
+  '🚀 ~ file: ShopProductCard.js ~ line 98 ~ ShopProductCard ~ Card',
+  Card
+)
+console.log(
+  '🚀 ~ file: ShopProductCard.js ~ line 98 ~ ShopProductCard ~ Card',
+  Card
+)
+console.log(
+  '🚀 ~ file: ShopProductCard.js ~ line 98 ~ ShopProductCard ~ Card',
+  Card
+)
 
 // <Card>
 // HERE
