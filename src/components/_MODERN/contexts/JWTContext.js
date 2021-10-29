@@ -24,7 +24,7 @@ const handlers = {
       user,
     }
   },
-  LOGIN: (state, action) => {
+LOGIN: (state, action) => {
     const { user } = action.payload
 
     return {
